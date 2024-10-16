@@ -13,3 +13,7 @@ Route::get('/hello',function(){
    
 Route::get('list',[AccountController::class,'list'])->name('list_account');
 Route::get('show/{id}', [AccountController::class,'show']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

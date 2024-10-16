@@ -14,7 +14,6 @@
  <td> {{$account->id}} </td>
  <td> {{$account->accountno }} </td>
  <td> {{$account->type }} </td>
-Page 8 of 9
  <td> {{$account->balance}} </td>
  <td> {{$account->interest}} </td>
 

@@ -6,11 +6,16 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@vitejs/plugin-vue": "^4.5.0",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
+        "bootstrap": "^5.2.3",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.47",
-        "tailwindcss": "^3.4.13",
-        "vite": "^5.0"
+        "sass": "^1.56.1",
+        "tailwindcss": "^3.4.14",
+        "vite": "^5.0",
+        "vue": "^3.2.37"
     }
 }
