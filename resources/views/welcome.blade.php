@@ -6,9 +6,8 @@
         
         <title>Laravel</title>
         @vite('resources/css/app.css')
-
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-        <p class=" text-2xl text-red-500">Hello World</p>
+    <body>
+        <p class=" bg-black text-blue-800 text-2xl">Hello World</p>
     </body>
 </html>
