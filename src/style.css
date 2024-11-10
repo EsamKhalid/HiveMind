@@ -1,9 +1,11 @@
+@import 'poppins_wrapper.css';
+
 body {
     margin: 0;
     padding: 0;
     background-color: #1a1a1a;
     color: #ffffff;
-    font-family: Arial, sans-serif;
+    font-family: Poppins;
 }
 
 #scene-container {
