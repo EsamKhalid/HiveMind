@@ -1,6 +1,7 @@
 @import 'poppins_wrapper.css';
 
-body {
+body 
+{
     margin: 0;
     padding: 0;
     background-color: #1a1a1a;
@@ -8,7 +9,8 @@ body {
     font-family: Poppins;
 }
 
-#scene-container {
+#scene-container 
+{
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -17,7 +19,8 @@ body {
     z-index: 1;
 }
 
-.control-panel {
+.control-panel 
+{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 15px;
@@ -26,40 +29,48 @@ body {
     min-width: 200px;
 }
 
-#file-input {
+#file-input 
+{
     top: 20px;
     left: 20px;
 }
 
-#camera-controls {
+#camera-controls 
+{
     top: 20px;
     right: 20px;
 }
 
-#lighting-controls {
+#lighting-controls 
+{
     bottom: 20px;
     right: 20px;
 }
 
-#material-controls {
+#material-controls 
+{
     bottom: 20px;
     left: 20px;
 }
 
-.control-group {
+.control-group 
+{
     margin: 10px 0;
 }
 
-.control-group label {
+.control-group label 
+{
     display: block;
     margin-bottom: 5px;
 }
 
-.control-group input[type="range"] {
+.control-group input[type="range"] 
+{
     width: 100%;
 }
 
-.control-group select {
+.control-group select 
+{
     width: 100%;
     padding: 5px;
     background-color: #333;
@@ -67,12 +78,14 @@ body {
     border: 1px solid #555;
 }
 
-h3 {
+h3 
+{
     margin: 0 0 15px 0;
     color: #fff;
 }
 
-input[type="file"] {
+input[type="file"] 
+{
     background-color: #333;
     color: white;
     padding: 10px;
@@ -82,7 +95,8 @@ input[type="file"] {
     box-sizing: border-box;
 }
 
-input[type="file"]::file-selector-button {
+input[type="file"]::file-selector-button 
+{
     background-color: #555;
     color: white;
     padding: 5px 10px;
@@ -92,6 +106,7 @@ input[type="file"]::file-selector-button {
     margin-right: 10px;
 }
 
-input[type="file"]::file-selector-button:hover {
+input[type="file"]::file-selector-button:hover 
+{
     background-color: #666;
 }
