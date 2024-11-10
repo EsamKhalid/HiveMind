@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+#scene-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.control-panel {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    z-index: 2;
+    min-width: 200px;
+}
+
+#file-input {
+    top: 20px;
+    left: 20px;
+}
+
+#camera-controls {
+    top: 20px;
+    right: 20px;
+}
+
+#lighting-controls {
+    bottom: 20px;
+    right: 20px;
+}
+
+#material-controls {
+    bottom: 20px;
+    left: 20px;
+}
+
+.control-group {
+    margin: 10px 0;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+}
+
+.control-group select {
+    width: 100%;
+    padding: 5px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+h3 {
+    margin: 0 0 15px 0;
+    color: #fff;
+}
+
+input[type="file"] {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #555;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #666;
+}
