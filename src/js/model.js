@@ -13,7 +13,7 @@ export class ModelLoader
     {
         this.scene = scene;
         this.materialManager = materialManager;
-        this.LOADER = new OBJLoader();
+        this.loader = new OBJLoader();
         this.setupEventListeners();
     }
 
@@ -24,40 +24,37 @@ export class ModelLoader
             const FILE = event.target.files[0];
             if (FILE) 
             {
-                this.loadModel(FILE);
+                this.LOAD_MODEL(FILE);
             }
         });
     }
 
-    loadModel(file) 
+    LOAD_MODEL(file) 
     {
-        const READER = new FileReader();
-        READER.onload = () => 
-        {
-            if (this.materialManager.currentModel) 
+        const reader = new FileReader();
+        reader.onload = (e) => 
             {
+            if (this.materialManager.currentModel) {
                 this.scene.remove(this.materialManager.currentModel);
             }
 
-            this.LOADER.load
+            this.loader.load
             (
+                e.target.result,
                 (obj) => 
-                    {
+                {
                     this.PROC_MODEL(obj);
                 },
             );
         };
-        READER.readAsDataURL(file);
+        reader.readAsDataURL(file);
     }
 
-    PROC_MODEL(obj) 
-    {
-        obj.traverse((child) => 
-        {
+    PROC_MODEL(obj) {
+        obj.traverse((child) => {
             if (child instanceof THREE.Mesh) 
-            {
-                if (!child.material || document.getElementById('material-type').value !== 'original') 
                 {
+                if (!child.material || document.getElementById('material-type').value !== 'original') {
                     child.material = this.materialManager.getCurrentMaterial();
                 }
             }
