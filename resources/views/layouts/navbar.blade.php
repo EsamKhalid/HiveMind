@@ -18,7 +18,7 @@
                 </div>
             </a>
             <ul class="text-center list-none inline-flex">
-
+                <li class="flex justify-center size-full"><a href="{{route('home')}}">Home</a></li>
                 <li class="flex justify-center size-full"><a href="{{route('beauty')}}">Beauty</a></li>
                 <li class="flex justify-center size-full"><a href="{{route('health')}}">Health</a></li>
                 <li class="flex justify-center size-full"><a href="{{route('clothing')}}">Clothing</a></li>
