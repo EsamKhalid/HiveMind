@@ -34,4 +34,9 @@ class TestController extends Controller
     public function basket(){
         return view('basket.basket');
     }
+
+    public function signUp(){
+        return view('user.signUp');
+    }
+
 }

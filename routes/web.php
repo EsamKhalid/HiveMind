@@ -22,4 +22,5 @@ Route::get('basket', [TestController::class, 'basket'])->name('basket');
 
 Route::get('about', [TestController::class, 'about'])->name('about');
 
+Route::get('signUp', [TestController::class, 'signUp'])->name('signUp');
 
