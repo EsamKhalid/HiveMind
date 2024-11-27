@@ -62,7 +62,7 @@ $(document).ready(function()
         // MAKING THE AJAX REQUEST TO THE PHP FILE
         $.ajax(
         {
-            url: 'password.php', // TARGET PHP FILE
+            url: '/HiveMind/public/phpPass/password.php', // TARGET PHP FILE
             method: 'POST', // POST REQUEST METHOD
             data: JSON.stringify(requestData), // SEND REQUEST DATA AS JSON
             contentType: 'application/json', // SPECIFY CONTENT TYPE
