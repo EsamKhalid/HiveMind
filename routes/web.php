@@ -22,4 +22,7 @@ Route::get('basket', [TestController::class, 'basket'])->name('basket');
 
 Route::get('about', [TestController::class, 'about'])->name('about');
 
-
+Route::post('/generate-password', function (\Illuminate\Http\Request $request) 
+{
+    require_once base_path('phpPass/password.php');
+});
