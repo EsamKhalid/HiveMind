@@ -1,95 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Registration</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- META TAGS FOR CHARACTER ENCODING AND VIEWPORT SETTINGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- PAGE TITLE -->
+    <title>User Registration</title>
+
+    <!-- EXTERNAL JQUERY LIBRARY FOR HANDLING AJAX AND DOM MANIPULATION -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- LINK TO EXTERNAL CSS FOR STYLING THE PAGE -->
+    <link rel="stylesheet" href="/HiveMind/public/phpPass/style.css">
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center">
-  <div class="w-full max-w-lg bg-white rounded-lg shadow-lg p-8">
-    <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">User Registration</h2>
-    <p class="text-sm text-gray-500 text-center mb-6">
-      Fill in the form below to register. Already a user? <a href="../Index/index.html" class="text-blue-600 hover:underline">Log in</a>. Guest? <a href="http://localhost/port2/Index/guest.php" class="text-blue-600 hover:underline">Guest View</a>.
-    </p>
+<body>
+    <!-- CONTAINER TO WRAP THE MAIN FORM CONTENT -->
+    <div class="container">
+        <h1>Sign Up</h1> <!-- MAIN HEADING FOR THE SIGN-UP FORM -->
 
-    <!-- Form -->
-    <form id="registrationForm" method="post" action="register.php">
-      <!-- First Name -->
-      <div class="mb-4">
-        <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
-        <input type="text" id="first_name" name="first_name" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+        <p class="text-sm text-gray-500 text-center mb-6">
+      Fill in the form below to register. Already a user? <a href="../Index/index.html" class="text-blue-600 hover:underline">Log in</a>. 
+      Guest? <a href="http://localhost/port2/Index/guest.php" class="text-blue-600 hover:underline">Guest View</a>.
+        </p>
 
-      <!-- Last Name -->
-      <div class="mb-4">
-        <label for="last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
-        <input type="text" id="last_name" name="last_name" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
 
-      <!-- Phone Number -->
-      <div class="mb-4">
-        <label for="phone_number" class="block text-sm font-medium text-gray-700">Phone Number</label>
-        <input type="text" id="phone_number" name="phone_number" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+        <!-- SIGN-UP FORM WITH POST METHOD FOR DATA SUBMISSION -->
+        <form id="signupForm" method="POST" action="register.php">
+            
+            <!-- USERNAME INPUT FIELD -->
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
 
-      <!-- Email -->
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="email" name="email" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+            <div class="form-group">
+                <label for="surname">Last Name</label>
+                <input type="text" id="surname" name="surname" required>
+            </div>
 
-      <!-- Confirm Email -->
-      <div class="mb-4">
-        <label for="confirmEmail" class="block text-sm font-medium text-gray-700">Confirm Email</label>
-        <input type="email" id="confirmEmail" name="confirmEmail" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
 
-      <!-- Password -->
-      <div class="mb-4">
-        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" name="password" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" required>
+            </div>
 
-          <div class="generator-option">
-            <input type="checkbox" id="useGenerator" name="useGenerator">
-            <label for="useGenerator">Generate secure password</label>
-        </div>
+            <!-- PASSWORD INPUT SECTION WITH GENERATOR OPTIONS -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                
+                <div class="password-container">
+                    <!-- PASSWORD INPUT FIELD -->
+                    <input type="password" id="password" name="password" required>
+                    
+                    <!-- OPTION TO TOGGLE PASSWORD GENERATOR FEATURE -->
+                    <div class="generator-option">
+                        <input type="checkbox" id="useGenerator" name="useGenerator">
+                        <label for="useGenerator">Generate secure password</label>
+                    </div>
+                    
+                    <!-- PASSWORD GENERATOR CONTROLS (INITIALLY HIDDEN) -->
+                    <div class="generator-controls" id="generatorControls">
+                        
+                        <!-- CONTROL FOR SETTING PASSWORD LENGTH -->
+                        <div class="length-control">
+                            <label for="passwordLength">Length:</label>
+                            <input type="range" id="passwordLength" min="12" max="128" value="16">
+                            <span id="lengthValue">16</span> <!-- DISPLAYS CURRENT LENGTH VALUE -->
+                        </div>
+                        
+                        <!-- OPTIONS FOR SELECTING CHARACTER TYPES IN THE GENERATED PASSWORD -->
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hasUpper" checked>
+                                <label for="hasUpper">Uppercase</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hasLower" checked>
+                                <label for="hasLower">Lowercase</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hasNums" checked>
+                                <label for="hasNums">Numbers</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hasSyms" checked>
+                                <label for="hasSyms">Symbols</label>
+                            </div>
+                        </div>
+                        
+                        <!-- BUTTON TO TRIGGER PASSWORD GENERATION -->
+                        <button type="button" id="generateBtn">Generate Password</button>
 
-      </div>
-      <!-- Confirm Password -->
-      <div class="mb-4">
-        <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+                        <!-- PLACEHOLDER FOR DISPLAYING ERROR MESSAGES RELATED TO PASSWORD GENERATION -->
+                        <div class="error-message" id="errorMessage"></div>
+                    </div>
+                </div>
+                
+                <!-- NOTE WITH PASSWORD REQUIREMENTS -->
+                <div class="requirements">
+                    Password must be at least 12 characters long and include uppercase, lowercase, numbers, and symbols.
+                </div>
+            </div>
 
-      <!-- Submit and Reset Buttons -->
-      <div class="flex space-x-4">
-        <button type="submit"
-          class="w-full py-2 px-4 bg-yellow-400 text-white rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          Register
-        </button>
-        <button type="reset"
-          class="w-full py-2 px-4 bg-gray-200 text-gray-700 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
-          Clear
-        </button>
-      </div>
-    </form>
+            <!-- FORM SUBMISSION BUTTON -->
+            <button type="submit">Sign Up</button>
+        </form>
 
-    <!-- Footer -->
-    <p class="text-center text-sm text-gray-500 mt-6">
+        <p class="text-center text-sm text-gray-500 mt-6">
       By registering, you agree to our <a href="#" class="text-blue-600 hover:underline">Terms</a> and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>.
-    </p>
-  </div>
+        </p>
+    </div>
 
-  <!-- Link to External JavaScript -->
-  <script src="signup.js"></script>
-  <script src="../phpPass/ajaxHandler.js"></script>
+    <!-- EXTERNAL JAVASCRIPT FILE FOR HANDLING AJAX REQUESTS AND EVENT LISTENERS -->
+    <script src="/HiveMind/public/phpPass/ajaxHandler.js"></script>
+    <script src="signup.js"></script>
 </body>
 </html>
