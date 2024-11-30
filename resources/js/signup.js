@@ -1,17 +1,22 @@
 function validatePassword(password) {
-    // Regular expression for password (same as defined in the database)
+    // Regular expression for password
     var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
     return passwordRegex.test(password);
 }
 
 // Function to validate email against regular expression
 function validateEmail(email) {
-    // Regular expression for email (same as defined in the database)
+    // Regular expression for email
     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
 
-// Function to handle form submission
+function validatePhoneNumber(phoneNumber) {
+    // Regular expression to match common phone number patterns
+    const phoneRegex = /^\+?[0-9]{7,15}$/; // Allows optional '+' at the start and 7-15 digits
+    return phoneRegex.test(phoneNumber);
+}
+
 function validateForm() {
     // Retrieve form inputs
     var firstName = document.getElementById('first_name').value.trim();
@@ -51,7 +56,15 @@ function validateForm() {
         alert("Email and Confirm Email do not match!");
         return false;
     }
+    
+    // Validate phone number
+    if (!validatePhoneNumber(phoneNumber)) {
+        alert("Invalid Phone number!");
+        return false;
+    }
 
     // Form validation passed, proceed with form submission
     return true;
 }
+
+

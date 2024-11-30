@@ -14,7 +14,8 @@
     </p>
 
     <!-- Form -->
-    <form id="registrationForm" method="post" action="register.php">
+    <form id="registrationForm" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" onsubmit="return validateForm()">
+
       <!-- First Name -->
       <div class="mb-4">
         <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
@@ -87,55 +88,79 @@
   <script src="signup.js"></script>
 
 
-<!--Backend handling -->
+ <!--Backend handling -->
 
-  <?php
-  function validatePassword($password) {
-      $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/';
-      return preg_match($passwordRegex, $password);
-  }
+ <?php
+ function validatePassword($password) {
+     $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/';
+     return preg_match($passwordRegex, $password);
+ }
 
-  function validateEmail($email) {
-      $emailRegex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-      return preg_match($emailRegex, $email);
-  }
+ function validateEmail($email) {
+     $emailRegex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+     return preg_match($emailRegex, $email);
+ }
 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      require_once('../connectdb.php');
+ function validatePhone($phone_number) {
+     $phoneRegex = '/^\+?[0-9]{7,15}$/'; // Adjusted to allow international formats
+     return preg_match($phoneRegex, $phone_number);
+ }
 
-      $password = isset($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : false;
-      $email = isset($_POST['email']) ? $_POST['email'] : false;
-      $phone_number = isset($_POST['phone_number']) ? $_POST['phone_number'] : false;
-      $first_name = isset($_POST['first_name']) ? $_POST['first_name'] : false;
-      $last_name = isset($_POST['last_name']) ? $_POST['last_name'] : false;
+ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+     require_once('../connectdb.php');
 
-      if (!$first_name || !$last_name || !$password || !$email || !$phone_number) {
-          exit("Invalid input!");
-      }
+     // Collect and sanitize input
+     $first_name = htmlspecialchars(trim($_POST['first_name'] ?? ''));
+     $last_name = htmlspecialchars(trim($_POST['last_name'] ?? ''));
+     $phone_number = htmlspecialchars(trim($_POST['phone_number'] ?? ''));
+     $password = $_POST['password'] ?? '';
+     $email = htmlspecialchars(trim($_POST['email'] ?? ''));
 
-      if (!validatePassword($_POST['password'])) {
-          exit("Password does not meet the required criteria!<br>Follow this link to <a href='register.html'>try again</a>");
-      }
+     // Validate required fields
+     if (empty($first_name) || empty($last_name) || empty($phone_number) || empty($password) || empty($email)) {
+         exit("Invalid input! Please fill in all fields.");
+     }
 
-      if (!validateEmail($_POST['email'])) {
-          exit("Email does not meet the required criteria!<br>Follow this link to <a href='register.html'>try again</a>");
-      }
+     // Validate password
+     if (!validatePassword($password)) {
+         exit("Password does not meet the required criteria!<br>
+             Password must be at least 8 characters, include one uppercase letter, one lowercase letter, and one digit.<br>
+             <a href='register.html'>Try again</a>");
+     }
 
-      try {
-          $stat = $db->prepare("INSERT INTO users (first_name, last_name, phone_number, password, email) VALUES (?, ?, ?, ?, ?)");
-          $stat->execute(array($first_name, $last_name, $phone_number, $password, $email));
+     // Validate email
+     if (!validateEmail($email)) {
+         exit("Invalid email format!<br>
+             <a href='register.html'>Try again</a>");
+     }
 
-          session_start();
-          $_SESSION["first_name"] = $first_name;
-          header("Location:../Projects/projects.php");
-          exit();
-      } catch (PDOException $ex) {
-          echo "Sorry, a database error occurred!<br>";
-          echo "Error details: <em>" . $ex->getMessage() . "</em>";
-          echo "<br>Follow this link to <a href='register.html'>try again</a>";
-      }
-  }
-  ?>
+     // Validate phone number
+     if (!validatePhone($phone_number)) {
+         exit("Invalid phone number format!<br>
+             <a href='register.html'>Try again</a>");
+     }
+
+     // Hash the password
+     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+     // Insert into database
+     try {
+         $stat = $db->prepare("INSERT INTO users (first_name, last_name, phone_number, password, email) VALUES (?, ?, ?, ?, ?)");
+         $stat->execute([$first_name, $last_name, $phone_number, $hashedPassword, $email]);
+
+         session_start();
+         $_SESSION["first_name"] = $first_name;
+         header("Location: ../Projects/projects.php");
+         exit();
+     } catch (PDOException $ex) {
+         echo "Sorry, a database error occurred!<br>";
+         echo "Error details: <em>" . $ex->getMessage() . "</em><br>";
+         echo "<a href='register.html'>Try again</a>";
+     }
+ }
+ ?>
+</body>
+</html>
 
 </body>
 </html>
