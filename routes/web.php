@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
     return view('home');
@@ -31,3 +32,5 @@ Route::get('show/{id}', [UserController::class,'show']);
 
 
 Route::get('products',[ProductController::class,'list'])->name('products');
+
+Route::get('register',[RegisterController::class,'test'])->name('register');
