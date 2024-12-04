@@ -21,11 +21,11 @@
                         <h2 class="text-xl font-bold mb-2">Contact Us</h2>
                         <p class="text-gray-600 mb-4">Contact us either via phone or email address.</p>
                         <a href="+353-123-4567" class="text-orange-900">+353-123-4567</a><br>
-                        <a href="mailto:hivemind.business@outlook.com" class="text-orange-900">admin@hivemind.com</a>
-                        <p>Find us at our bee-quarters at:</p>
-                        <p class="text-lg">HiveMind</p>
-                        <p class="text-lg">123 Beehive Lane</p>
-                        <p class="text-lg">Dublin, Ireland</p>
+                        <a href="mailto:hivemind.business@outlook.com" class="text-orange-900">admin@hivemind.com</a><br><br>
+                        <p class="text-gray-600 mb-4">Find us at our bee-quarters at:</p>
+                        <p class="text-gray-950">HiveMind</p>
+                        <p class="text-gray-950">123 Beehive Lane</p>
+                        <p class="text-gray-950">Dublin, Ireland</p>
                     </div>
 
                     <!-- card 2: contact form -->
