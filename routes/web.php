@@ -42,4 +42,4 @@ Route::get('/form', function () {
     return view('form');
 });
 
-Route::post('/form-submit', [UserController::class, 'store'])->name('your.store.route');
+Route::post('/form-submit', [UserController::class, 'store'])->name('form.route');

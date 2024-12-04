@@ -12,14 +12,18 @@ class UserController extends Controller
 {
     // Validate the request
     $request->validate([
-        'name' => 'required|string|max:255',
+        'first_name' => 'required|string|max:255',
         'email' => 'required|email|unique:users',
+        'last_name' => 'required|string|max:255',
+        'password' => 'required|string|min:8',
     ]);
 
     // Create a new record
     Users::create([
-        'name' => $request->input('name'),
+        'first_name' => $request->input('first_name'),
         'email' => $request->input('email'),
+        'last_name' => $request->input('last_name'),
+        'password' => bcrypt($request->input('password')),
     ]);
 
     return redirect()->back()->with('success', 'Data saved successfully!');
