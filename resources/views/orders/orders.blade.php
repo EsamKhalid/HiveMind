@@ -44,8 +44,6 @@
     </section> -->
     
     
-    
-    
     <section class="max-w-7xl mx-auto p-6">
         @if (empty($orders))
             <div class="text-center mt-10">
