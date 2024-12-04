@@ -30,7 +30,7 @@
             </ul>
             <div class="logoTextCenter NavLogoContainer">
                 <a href="{{route('basket')}}" class="fas fa-shopping-basket fa-2xl"></a>
-                <a href="{{route('account')}}" class="far fa-user fa-solid fa-2xl"></a>
+                <a href="{{route('login')}}" class="far fa-user fa-solid fa-2xl"></a>
             </div>
         </nav>
         <div class="cdwa-right h-[20px] w-screen border-b-2 border-amber"></div>
