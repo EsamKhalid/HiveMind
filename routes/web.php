@@ -35,3 +35,11 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 Route::get('register',[RegisterController::class,'test'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+
+
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+Route::post('/form-submit', [UserController::class, 'store'])->name('your.store.route');
