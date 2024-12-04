@@ -44,6 +44,8 @@
     </section> -->
     
     
+    
+    
     <section class="max-w-7xl mx-auto p-6">
         @if (empty($orders))
             <div class="text-center mt-10">
@@ -54,7 +56,7 @@
                 @foreach ($orders as $order)
                     <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
                         <div class="mb-4">
-                            <h3 class="text-2xl font-bold text-blue-600">Product: {{ $order['product_name'] }}</h3>
+                            <h3 class="text-2xl font-bold text-grey-800">Product: {{ $order['product_name'] }}</h3>
                         </div>
                         <div class="text-gray-700">
                             <p class="mb-2"><strong>Order ID:</strong> {{ $order['order_id'] }}</p>
