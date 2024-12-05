@@ -8,15 +8,20 @@
 <script>
     function checkForm() {
         event.preventDefault();
-        formInputs = document.querySelector("#delivery-details-form").children;
+        formInputs = document.querySelector("#delivery-details-form");
         
         for(const child of formInputs){
-            console.log(child.querySelector)
+            if(!child.value){
+                console.log(child.value)
+            }else{
+                child.setAttribute('class',child.getAttribute('class') + 'outline-pink-500' )
+                console.log('THEY SHOULD HAVE A PINK OUTLINE NOW')
+            }
         }
     }
 </script>
 
-<body>
+<body class="dark">
     @include ("layouts.navbar")
 
     <div
@@ -59,9 +64,10 @@
                             First Name
                         </label>
                         <input
-                            class="appearance-none block w-full bg-yellow-200 text-yellow-700 border hidden:border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            class="field appearance-none block w-full bg-yellow-200 text-yellow-700 border hidden:border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             id="grid-first-name" type="text" placeholder="Jane">
                         <p hidden class="text-red-500 text-xs italic">Please fill out this field.</p>
+                        
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
@@ -69,10 +75,10 @@
                             Last Name
                         </label>
                         <input
-                            class="appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                            class="field appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
                             id="grid-last-name" type="text" placeholder="Doe">
                     </div>
-                    <p hidden class="text-red-500 text-xs italic">Please fill out this field.</p>
+                    <p hidden class="showsonempty text-red-500 text-xs italic">Please fill out this field.</p>
 
                 </div>
                 <div class="flex flex-wrap  mb-2 w-[100%]">
@@ -81,7 +87,7 @@
                             Address
                         </label>
                         <input
-                            class="appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                            class=" field appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
                             id="grid-address" type="text" placeholder="    ">
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-2">
@@ -91,7 +97,7 @@
                             City
                         </label>
                         <input
-                            class="appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                            class="field appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
                             id="grid-country" type="text" placeholder="    ">
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -100,7 +106,7 @@
                             Country
                         </label>
                         <input
-                            class="appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                            class="field appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
                             id="grid-city" type="text" placeholder="    ">
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -110,8 +116,9 @@
                         </label>
                         <div class="relative">
                             <select
-                                class="block appearance-none w-full bg-yellow-200 border border-yellow-200 text-yellow-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
-                                id="grid-state">
+                                class="field block appearance-none w-full bg-yellow-200 border border-yellow-200 text-yellow-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                                id="grid-state" value=" " >
+                                <option></option>
                                 <option value="bedfordshire">Bedfordshire</option>
                                 <option value="berkshire">Berkshire</option>
                                 <option value="bristol">Bristol</option>
@@ -173,17 +180,17 @@
                         </div>
                     </div>
                     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
+                        <label class="field block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
                             for="grid-zip">
                             Postcode
                         </label>
                         <input
                             class="appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
-                            id="grid-zip" type="text" placeholder="A12 3BC">
+                            id="grid-zip" type="text" placeholder="A12 3BC" >
                     </div>
                 </div>
                 <div class="flex flex-wrap"><button
-                        class="bg-amber rounded-lg p-3 mt-3 ml-auto pl-5 pr-5" onclick="checkForm()">Proceed</button></div>
+                        class="bg-amber rounded-lg p-3 mt-3 ml-auto pl-5 pr-5" onclick="checkForm()" value="BUTTON!">Proceed</button></div>
             </form>
         </div>
     </div>

@@ -6,6 +6,7 @@
 </head>
 <script>
     const listItems = [
+
         {
             name: 'Tumbler',
             price: '12.99',
@@ -13,6 +14,14 @@
             description: "item description - Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu commodo neque. Duis ut dui non arcu mollisvehicula et nec orci",
             img: 'https://www.kurin.com/wp-content/uploads/placeholder-square-300x300.jpg',
             id: 't45'
+        },
+        {
+            name: 'Phone Case',
+            price: '12.00',
+            quantity: 1,
+            description:'FORTNITE!',
+            img: 'https://eatyourphoto.co.uk/wp-content/uploads/2023/08/fortnite-square-topper-600x600.jpg',
+            id: 'treem5'
         },
         {
             name: 'Phone Case',
