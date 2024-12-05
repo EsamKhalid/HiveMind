@@ -5,45 +5,45 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <script>
-    const listItems = [
 
+    const listItems = [
         {
+            id: 't45',
             name: 'Tumbler',
             price: '12.99',
             quantity: 1,
             description: "item description - Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu commodo neque. Duis ut dui non arcu mollisvehicula et nec orci",
-            img: 'https://www.kurin.com/wp-content/uploads/placeholder-square-300x300.jpg',
-            id: 't45'
+            img: 'https://www.kurin.com/wp-content/uploads/placeholder-square-300x300.jpg'
         },
         {
+            id: 'treem5',
+            name: 'Phone Case',
+            price: '12.00',
+            quantity: 10,
+            description: 'FORTNITE!',
+            img: 'https://eatyourphoto.co.uk/wp-content/uploads/2023/08/fortnite-square-topper-600x600.jpg',
+        },
+        {
+            id: 'trem7',
             name: 'Phone Case',
             price: '12.00',
             quantity: 1,
-            description:'FORTNITE!',
+            description: 'FORTNITE!',
             img: 'https://eatyourphoto.co.uk/wp-content/uploads/2023/08/fortnite-square-topper-600x600.jpg',
-            id: 'treem5'
-        },
-        {
-            name: 'Phone Case',
-            price: '12.00',
-            quantity: 1,
-            description:'FORTNITE!',
-            img: 'https://eatyourphoto.co.uk/wp-content/uploads/2023/08/fortnite-square-topper-600x600.jpg',
-            id: 'treem5'
         }
     ]
-    
-    document.addEventListener('DOMContentLoaded',function populateBasket() {
+
+    document.addEventListener('DOMContentLoaded', function populateBasket() {
         for (let i of listItems) {
             if (!document.querySelector(`#quantity-input-${i.id}`)) {
                 var item = document.createElement('li');
                 item.className = 'bg-yellow-200 rounded-lg mb-10 p-10 flex justify-between items-center xs:p-0';
-                item.id=`${i.id}`
+                item.id = `${i.id}`
                 item.innerHTML =
                     `<span class="item-img-text-link flex text-wrap"><img class="w-[100px] h-[100px]"
                             src=${i.img} width="130px"
                             height="130px" alt="IMAGE" />
-                        <div class="ml-3 max-w-[50%]"><a class="text-3xl text-nowrap">${i.name}</a>
+                        <div class="ml-3 max-w-[50%]"><a id='item-name'class="text-3xl text-nowrap">${i.name}</a>
                             <p id="item-description" class="text-lg leading-5 w-[100%]">${i.description}</p>
                             <p id="item-price" class="text-lg font-bold leading-9">£${i.price}</p>
                         </div>
@@ -92,24 +92,28 @@
                     `
                 document.getElementById("items").append(item);
                 console.log(item)
-            }else{
+            } else {
                 console.log('WORKS!')
             }
         }
         getTotal()
 
-    },false);
-    
+    }, false);
+
     function addOne(id) {
-        const elementname =id
+        const elementname = id
+        console.log(elementname)
         const quantity = elementname.querySelector('#quantity-input')
-        quantity.value = parseInt(quantity.value) +1;
+        quantity.value = parseInt(quantity.value) + 1;
         getTotal();
     }
     function loseOne(id) {
-        const elementname =id
+        const elementname = id
         const quantity = elementname.querySelector('#quantity-input')
-        quantity.value = parseInt(quantity.value) -1;
+        quantity.value = parseInt(quantity.value) - 1;
+        if (quantity.value <= 0) {
+            id.remove()
+        }
         getTotal();
     }
     function getTotal() {
@@ -117,6 +121,7 @@
         let count = 0;
         var sum = 0;
         let itemcount = 0;
+        let records = []
         for (let e of checkedElements) {
             console.log(e.parentElement);
             count += 1
@@ -124,40 +129,43 @@
                 document.getElementById('total').innerText = "£0.00";
             } else {
                 if (e.checked) {
+
                     var quantityText = e.parentElement.querySelector('#quantity-input').value;
                     var priceText = e.parentElement.parentElement.querySelector('#item-price').innerText;
 
-                    let price = parseFloat(priceText.substring(1));
-                    let quantity = parseInt(quantityText);
-                    itemcount += quantity
-                    sum += price * quantity;
-                    document.getElementById('total').innerText = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(sum);
-                    document.getElementById('count').innerText = " " + itemcount.toString()
-                    
+                    let prc = parseFloat(priceText.substring(1));
+                    let qty = parseInt(quantityText);
+                    itemcount += qty
+                    sum += prc * qty;
+
                     console.log(sum)
-                    console.log(quantity)
-                    console.log(price)
+                    console.log(qty)
+                    console.log(prc)
+                    const iname = e.parentElement.parentElement.querySelector('#item-name').innerText;
+                    const idesc = e.parentElement.parentElement.querySelector('#item-description').innerText;
+                    
+                    records.push({id:e.parentElement.parentElement.id, name: iname, description: idesc, price: prc, quantity: qty})
                 } else {
                     count -= 1
                 }
+                addCheckedItemToLocalStorage(records,sum,itemcount)
+                
             }
         }
+        
+
 
     }
-    function addCheckedItemsToCheckout() {
-        const checkedElements = document.getElementsByClassName('isinOrder');
-        let elements = [];
-        for (let e of checkedElements) {
-            if (e.checked) {
-                elements.push(e.parentElement)
-            }
-        }
-        console.log(elements)
+    function addCheckedItemToLocalStorage(recs,sum,itemcount,id) {
+        localStorage.setItem('total-box-items', JSON.stringify(recs));
+        console.log(JSON.parse(localStorage.getItem('total-box-items')))
+        localStorage.setItem('basketitemcount',JSON.stringify(" " + itemcount.toString()))
+        localStorage.setItem('total-price',JSON.stringify(new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(sum)))
     }
-     
+
 </script>
 
-<body >
+<body>
     @include('layouts.navbar')
 
 
@@ -167,24 +175,21 @@
             class="min-w-[700px] w-[100%] bg-yellow-50 text-3xl text-grey-300 rounded-lg p-10 m-10 mt-10 lg:w-[80%]">
             <p class="text-6xl mt-10 mb-10">Basket</p>
             <ul id="items" onload="populateBasket()">
-                 
+
             </ul>
         </div>
         <div
             class=" bg-yellow-50 text-3xl text-grey-300 rounded-lg  ml-5 mt-10 mr-5 mb-10 flex-wrap min-w[160px] w-[100%] lg:w-max md:flex-nowrap md:p-10 lg:relative ">
-            <div class="ml-5 mt-10">
-                <p>Items in basket:<span id="count"> </span></p>
-                <p>Total:</p>
-                <span id="total"></span>
-            </div>
-
-            <a href={{ route('checkout') }}><button class="bg-yellow-400 hover:bg-yellow-500 rounded-lg mb-10 p-4 mr-5 ml-5 mt-10 w-full h-56 lg:h-24 text-7xl lg:text-3xl"
-                onClick="addCheckedItemsToCheckout()"> GO
-                TO
-                CHECKOUT</button> 
-                </a>
+            @include('layouts.total-box-blade')
+            <a href={{ route('checkout') }}><button
+                    class="bg-yellow-400 hover:bg-yellow-500 rounded-lg mb-10 p-4 mr-5 ml-5 mt-10 w-full h-56 lg:h-24 text-7xl lg:text-3xl"
+                    onClick="addCheckedItemsToCheckout()"> GO
+                    TO
+                    CHECKOUT</button>
+            </a>
 
         </div>
+
     </div>
 
     </div>

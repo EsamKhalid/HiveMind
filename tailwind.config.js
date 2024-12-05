@@ -36,6 +36,21 @@ export default {
                 saffron: "#eabc49",
                 temp: "#ffeaa2",
             },
+            animation: {
+                'slide-fade-in': 'slideIn 0.5s ease-in-out',
+                'slide-fade-out': 'slideOut 0.5s ease-in-out',
+              },
+              keyframes: {
+                slideIn: {
+                  '0%': { transform: 'translateX(100%)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideOut: {
+                  '0%': { transform: 'translateX(0)', opacity: '1' },
+                  '100%': { transform: 'translateX(100%)', opacity: '0' },
+                }
+            },
+            
         },
     },
 
