@@ -7,19 +7,31 @@ use App\Models\Products;
 
 class ProductController extends Controller
 {
-    /** List all products */
-    public function list()
-    {
-        return view('products/products', ['product' => Products::all()]);
+        public function list(Request $request){
+            
+           $search = $request->input('product_name');
+        $filter = $request->input('filter');
+
+        $products = Products::query();
+
+        if ($search) {
+            $products->where('product_name', 'like', '%' . $search . '%');
+        }
+
+        if ($filter && $filter != 'none') {
+            $products->where('product_type', '=', $filter);
+        }
+
+        $products = $products->get();
+
+        return view('products.products', compact('products', 'search', 'filter'));  
     }
 
-    /** Show a specific product by its ID */
-    public function show($id)
+   
+
+   public function show($id)
     {
-        $product = Products::find($id);
-        if (!$product) {
-            abort(404, 'Product not found');
-        }
-        return view('products/show', ['product' => $product]);
+        $product = Products::findOrFail($id);
+        return view('products.show', ['product' => $product]); 
     }
 }
