@@ -9,10 +9,11 @@ class OrderController extends Controller
 {
     // need to create Order and Product Models for this to work - I did this
     // I was using dummy orders data for frontend testing, now trying to use actual data
+    // Edit - Page functional when connected with the database!!
     public function index()
     {
 
-    $orders = collect([
+    /*$orders = collect([
         (object)[
             'id' => 1,
             'order_date' => '2024-12-04',
@@ -53,12 +54,12 @@ class OrderController extends Controller
                 ]
             ])
         ]
-    ]);
+    ]);*/
     
     // Fetch authenticated user's orders with related items and products
-    /* $orders = Order::with(['orderItems.product'])
+    $orders = Order::with(['orderItems.product'])
         ->where('user_id', auth()->id()) 
-        ->get(); */
+        ->get(); 
 
     return view('orders.orders', ['orders' => $orders]);
     }
