@@ -68,7 +68,7 @@
                 <a 
                     href="{{ route('register') }}" 
                     class="text-blue-500 hover:underline text-sm">
-                    Not a customer yet? Register here.
+                    Not a customer yet? Register now.
                 </a>
             </div>
         </form>
