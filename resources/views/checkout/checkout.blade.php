@@ -10,25 +10,29 @@
         let cleanval = sanitiseStr(input.value.trim())
         if (cleanval == '') {
             input.classList.add('outline-pink-500', 'border-pink-500', 'bg-pink-100');
-            input.classList.remove('focus:bg-white');
+            input.classList.remove('bg-yellow-200', 'focus:bg-white');
         } else {
             input.classList.remove('outline-pink-500', 'border-pink-500', 'bg-pink-100');
-            input.classList.add('focus:bg-white');
+            input.classList.add('focus:bg-white', 'bg-yellow-200');
+
         }
     }
 
     function checkForm(tabId) {
         event.preventDefault();
-        formInputs = document.querySelector(tabId);
+        let record = []
+        formInputs = document.getElementsByClassName(`${tabId}-field`);
         let isValid = true
         for (const input of formInputs) {
+            console.log(input)
             if (input.value.trim() == '') {
                 input.classList.add('outline-pink-500', 'border-pink-500', 'bg-pink-100');
-                input.classList.remove('focus:bg-white');
+                input.classList.remove('bg-yellow-200', 'focus:bg-white');
                 isValid = false
             } else {
                 input.classList.remove('outline-pink-500', 'border-pink-500', 'bg-pink-100');
-                input.classList.add('focus:bg-white');
+                input.classList.add('focus:bg-white', 'bg-yellow-200');
+                record.push(sanitiseStr(input.value.trim()))
             }
         }
         if (isValid) {
@@ -38,11 +42,11 @@
             for (const input of formInputs) {
                 let cleanval = sanitiseStr(input.value.trim());
                 if (!cleanval == "BUTTON!") {
-                    outputString.add(cleanval)
+                    outputString.push(cleanval)
                 }
             }
-            localStorage.setItem('delivery-details', JSON.stringify(outputString));
-            formInputs.remove()
+            localStorage.setItem(tabId,JSON.stringify(record))
+            tabcontrolForward(tabId);
         } else {
             console.log('invalid :c')
         }
@@ -52,41 +56,92 @@
         return str.replace(/<[^>]*>?/gm, ""); //sanitises inputs
     }
 
-    document.addEventListener('DOMContentLoaded',() => {tab = 1;})
+    document.addEventListener('DOMContentLoaded', () => { tab = 1; })
 
-    function tabcontrol(tabId){
-        let workingArea;
+    document.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+    })
+
+
+    function tabcontrolForward(tabId) {
+
+        let currform;
+        let newform;
         switch (tabId) {
-            case 'delivery-details-section':
-                workingArea = document.querySelector('delivery-details-section')
-
+            case 'delivery':
+                tab = 2
+                currform = document.getElementById('delivery-details-section')
+                currform.classList.add('hidden')
+                document.getElementById('billing-information-section').classList.remove('hidden')
                 break;
 
-            case 'billing-information-section':
-                workingArea=document.querySelector('billing-information-section')
+            case 'billing':
+                currform = document.getElementById('billing-information-section')
+                currform.classList.add('hidden')
+                tab = 3
+                document.getElementById('confirmation-section').classList.remove('hidden')
                 break;
 
-            case 'conformation-section':
-                workingArea=document.querySelector('conformation-section')
-
+            case 'confirm':
+                document.getElementById('checkout-wrapper').classList.add('hidden')
+                document.getElementById('ty-for-shopping').classList.remove('hidden')
                 break;
-            
         }
+        fillIfAlready(tabId)
     }
+    function tabControlBackward(tabId) {
+        let currform;
+        let newform;
+        let newtabid;
+        switch (tabId) {
+            case 'billing':
+                currform = document.getElementById('billing-information-section')
+                currform.classList.add('hidden')
+                tab = 3
+                document.getElementById('delivery-details-section').classList.remove('hidden')
+                newtabid = 'delivery'
+                break;
+
+            case 'confirmation':
+                currform = document.getElementById('confirmation-section')
+                currform.classList.add('hidden')
+                tab = 3
+                document.getElementById('billing-information-section').classList.remove('hidden')
+                newtabid = 'billing'
+                break;
+                default:
+                    console.log(tabId)
+                    break;
+        }
+        fillIfAlready(newtabid)
+    }
+    function fillIfAlready(tabId){
+        let fields = document.getElementsByClassName(`${tabId}-field`);
+        let storedValues = JSON.parse(localStorage.getItem(tabId) || '[]');
+
+        let i=0
+        for(const input of fields){
+            console.log(storedValues[i])
+            let values = storedValues
+            input.value = values[i]
+            i++;
+    }
+}
+    
 
 </script>
 
 <body>
     @include ("layouts.navbar")
-    <Div
+    <Div id="checkout-wrapper"
         class="flex flex-nowrap justify-center items-center align-middle bg-yellow-100 sm:w-fit m-auto mt-5 pl-[10%] pr-[10%] pb-[10%] pt-10">
-
-        <div class="">
-
+        <div class="form-with-total">
             <ol class="flex items-center w-full text-sm text-center dark:text-yellow-800 sm:text-xl">
                 <li
                     class="flex md:w-full items-center text-yellow-600 dark:text-yellow-800 sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-yellow-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-yellow-700">
-                    <span
+
+                    <span id="stepper-title-1"
                         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-yellow-200 dark:after:text-yellow-500">
 
                         <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true"
@@ -96,30 +151,31 @@
                         </svg>
                         Delivery <span class="hidden sm:inline-flex sm:ms-2">Details</span>
                     </span>
+
                 </li>
                 <li
                     class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-yellow-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-yellow-700">
-                    <span
+                    <span id="stepper-title-2"
                         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-yellow-200 dark:after:text-yellow-500">
-                        <span class="me-2">2</span>
+                        <span id="two-in-stepper" class="me-2">2</span>
                         Billing<span class="hidden sm:inline-flex sm:ms-2">Information</span>
 
                     </span>
                 </li>
                 <li class="flex items-center">
-                    <span class="me-2">3</span>
+                    <span id="stepper-title-2" class="me-2">3</span>
                     Confirmation
                 </li>
             </ol>
-            <form>
-                <div id="delivery-details-section" class=" tab w-full max-w-lg center mt-5 ml-auto mr-auto">
+            <form id="three-step-form">
+                <div id="delivery-details-section" onload="fillIfalready(this)" class="tab w-full max-w-lg center mt-5 ml-auto mr-auto">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
                                 for="grid-first-name">
                                 First Name
                             </label>
-                            <input onfocusout="checkField(this)" class=" field appearance-none block w-full bg-yellow-200 text-yellow-700 border rounded
+                            <input onfocusout="checkField(this)" class=" delivery-field appearance-none block w-full bg-yellow-200 text-yellow-700 border rounded
                             py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"
                                 type="text">
 
@@ -129,11 +185,11 @@
                                 for="grid-last-name">
                                 Last Name
                             </label>
-                            <input onfocusout="checkField(this)" class=" field appearance-none block w-full bg-yellow-200 text-yellow-700 border
+                            <input onfocusout="checkField(this)" class=" delivery-field appearance-none block w-full bg-yellow-200 text-yellow-700 border
                             border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white
                             focus:border-yellow-500" id="grid-last-name" type="text">
                         </div>
-                        <p hidden class="showsonempty text-red-500 text-xs italic">Please fill out this field.</p>
+
 
                     </div>
                     <div class="flex flex-wrap  mb-2 w-[100%]">
@@ -141,7 +197,7 @@
                             for="grid-address">
                             Address
                         </label>
-                        <input onfocusout="checkField(this)" class=" field appearance-none block w-full bg-yellow-200 text-yellow-700 border
+                        <input onfocusout="checkField(this)" class=" delivery-field appearance-none block w-full bg-yellow-200 text-yellow-700 border
                         border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white
                         focus:border-yellow-500" id="grid-address" type="text" placeholder="    ">
                     </div>
@@ -151,7 +207,7 @@
                                 for="grid-city">
                                 City
                             </label>
-                            <input onfocusout="checkField(this)" class=" field appearance-none block w-full bg-yellow-200 text-yellow-700 border
+                            <input onfocusout="checkField(this)" class=" delivery-field appearance-none block w-full bg-yellow-200 text-yellow-700 border
                             border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white
                             focus:border-yellow-500" id="grid-country" type="text" placeholder="    ">
                         </div>
@@ -160,19 +216,19 @@
                                 for="grid-country">
                                 Country
                             </label>
-                            <input onfocusout="checkField(this)" class=" field appearance-none block w-full bg-yellow-200 text-yellow-700 border
+                            <input onfocusout="checkField(this)" class=" delivery-field appearance-none block w-full bg-yellow-200 text-yellow-700 border
                             border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white
                             focus:border-yellow-500" id="grid-city" type="text" placeholder="    ">
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
-                                for="grid-state">
+                                for="grid-county">
                                 County
                             </label>
                             <div class="relative">
                                 <select onfocusout="checkField(this)"
-                                    class="field block appearance-none w-full bg-yellow-200 border border-yellow-200 text-yellow-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
-                                    id="grid-state" value=" ">
+                                    class="delivery-field block appearance-none w-full bg-yellow-200 border border-yellow-200 text-yellow-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                                    id="grid-county" value=" ">
                                     <option></option>
                                     <option value="bedfordshire">Bedfordshire</option>
                                     <option value="berkshire">Berkshire</option>
@@ -235,30 +291,84 @@
                             </div>
                         </div>
                         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label class="field block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
-                                for="grid-zip">
+                            <label class=" block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
+                                for="grid-postcode">
                                 Postcode
                             </label>
-                            <input onfocusout="checkField(this)" class=" appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200
+                            <input onfocusout="checkField(this)" class=" delivery-field appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200
                             rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
                                 id="grid-zip" type="text" placeholder="A12 3BC">
                         </div>
                     </div>
-                    <div class="flex flex-wrap"><button class="bg-amber rounded-lg p-3 mt-3 ml-auto pl-5 pr-5"
-                            onclick="checkForm();" value="BUTTON!">Proceed</button></div>
+                    <div class="flex flex-wrap justify-end">
+
+                        <button class="bg-amber rounded-lg p-3 mt-3  ml-3 pl-5 pr-5" onclick="checkForm('delivery');"
+                            value="BUTTON!">Proceed</button>
+                    </div>
                 </div>
-                <div id="billing-information-section" class="hidden tab w-full max-w-lg center mt-5 ml-auto mr-auto">
-                    Billing</div>
-                <div id="conformation-section" class=" hidden tab w-full max-w-lg center mt-5 ml-auto mr-auto">
-                    CONFORMATION
+                <div id="billing-information-section" onload="fillIfalready(this)" class="hidden tab w-full max-w-lg center mt-5 ml-auto mr-auto">
+
+                    <div class="flex flex-wrap  mb-2 w-[100%]">
+                        <label class="block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
+                            for="grid-Card Num">
+                            Card Number
+                        </label>
+                        <input onfocusout="checkField(this)" class=" billinga-field appearance-none block w-full bg-yellow-200 text-yellow-700 border
+                        border-yellow-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white
+                        focus:border-yellow-500" id="grid-address" type="text" placeholder="    ">
+                    </div>
+                    <div class="flex">
+                        <div class="w-full md:w-1/3 mr-3 mb-6 md:mb-0">
+                            <label class=" block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
+                                for="grid-expiry-date">
+                                Expiry Date
+                            </label>
+                            <input onfocusout="checkField(this)" class=" billing-field appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200
+                            rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                                id="grid-exp-date" type="date" placeholder="">
+
+                        </div>
+                        <div class="w-full md:w-1/3  mb-6 md:mb-0">
+                            <label class=" block uppercase tracking-wide text-yellow-700 text-xs font-bold mb-2"
+                                for="grid-cvc">
+                                CVC
+                            </label>
+                            <input onfocusout="checkField(this)" class=" billing-field appearance-none block w-full bg-yellow-200 text-yellow-700 border border-yellow-200
+                            rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500"
+                                id="grid-cvn" type="" placeholder="">
+                        </div>
+                    </div>
+
+
+                    <div class="flex flex-wrap">
+                        <button class="bg-amber rounded-lg p-3 mt-3 ml-3 pl-5 pr-5"
+                            onclick="tabControlBackward('billing');" value="BUTTON!">Back</button>
+                        <button class="bg-amber rounded-lg p-3 mt-3 ml-auto pl-5 pr-5" onclick="checkForm('billing');"
+                            value="BUTTON!">Proceed</button>
+
+                    </div>
+                </div>
+                <div id="confirmation-section" onload="fillIfalready(this)"class="hidden tab w-full max-w-lg center mt-5 ml-auto mr-auto">
+                    <ul id="checkout-items" class="mb-auto  text-yellow-800 text-nowrap align-top md:text-xl">
+                        @include('layouts.total-box-blade')
+
+                        <div class="flex flex-wrap">
+                        <button class="bg-amber rounded-lg p-3 mt-3 ml-3 pl-5 pr-5"
+                            onclick="tabControlBackward('confirmation');" value="BUTTON!">Back</button>
+                        <button class="bg-amber rounded-lg p-3 mt-3 ml-auto pl-5 pr-5" onclick="checkForm('confirm');"
+                            value="BUTTON!">CONFIRM</button>
+                    </div>
+
+                    </ul>
                 </div>
             </form>
 
         </div>
-        <ul id="checkout-items" class="mb-auto  text-yellow-800 text-nowrap align-top md:text-xl">
-            @include('layouts.total-box-blade')
-        </ul>
+
     </Div>
+    <div id="ty-for-shopping" class="hidden text-9xl justify-center">
+        THANK YOU FOR SHOPPING
+    </div>
 
 </body>
 
