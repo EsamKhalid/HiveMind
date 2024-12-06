@@ -29,7 +29,7 @@ class AuthController extends Controller
             return redirect()->route('dashboard')->with('success', 'Login successful!');
         }
 
-        return back()->withErrors(['login' => 'Invalid email or password!'])->withInput();
+        return back()->withErrors(['login' => 'Invalid email or password.'])->withInput();
     }
 
     public function logout()
