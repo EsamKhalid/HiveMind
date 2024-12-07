@@ -11,7 +11,7 @@ class Baskets extends Model
     use HasFactory;
 
     // Define the table if it's not the default 'baskets'
-    protected $table = 'baskets';
+    protected $table = 'basket';
 
     // Define the fillable fields
     protected $fillable = [

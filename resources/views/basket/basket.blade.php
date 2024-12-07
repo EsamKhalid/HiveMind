@@ -3,189 +3,119 @@
 
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
+
+
+    <script>
+        window.listItems = @json($basketItems);
+    </script>
 </head>
-<script>
-    const listItems = [
-        {
-            name: 'Tumbler',
-            price: '12.99',
-            quantity: 1,
-            description: "item description - Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu commodo neque. Duis ut dui non arcu mollisvehicula et nec orci",
-            img: 'https://www.kurin.com/wp-content/uploads/placeholder-square-300x300.jpg',
-            id: 't45'
-        },
-        {
-            name: 'Phone Case',
-            price: '12.00',
-            quantity: 1,
-            description:'FORTNITE!',
-            img: 'https://eatyourphoto.co.uk/wp-content/uploads/2023/08/fortnite-square-topper-600x600.jpg',
-            id: 'treem5'
-        }
-    ]
-    
-    document.addEventListener('DOMContentLoaded',function populateBasket() {
-        for (let i of listItems) {
-            if (!document.querySelector(`#quantity-input-${i.id}`)) {
-                var item = document.createElement('li');
-                item.className = 'bg-yellow-200 rounded-lg mb-10 p-10 flex justify-between items-center xs:p-0';
-                item.id=`${i.id}`
-                item.innerHTML =
-                    `<span class="item-img-text-link flex text-wrap"><img class="w-[100px] h-[100px]"
-                            src=${i.img} width="130px"
-                            height="130px" alt="IMAGE" />
-                        <div class="ml-3 max-w-[50%]"><a class="text-3xl text-nowrap">${i.name}</a>
-                            <p id="item-description" class="text-lg leading-5 w-[100%]">${i.description}</p>
-                            <p id="item-price" class="text-lg font-bold leading-9">£${i.price}</p>
-                        </div>
-                    </span>
-                    <!-- FORM FOR QTY BUTTONS -->
-                    <div class="flex">
-                    <form class="max-w-xs">
-                        <div class="relative flex items-center max-w-[8rem]">
 
-                            <button type="button" onClick="loseOne(${i.id})" id="decrement-button"
-                                data-input-counter-decrement="${i.id}"
-                                class="w-[40px] bg-yellow-100 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:border-yellow-600 hover:bg-yellow-200 border border-yellow-300 rounded-s-lg p-3 h-11 focus:ring-yellow-100 dark:focus:ring-yellow-500 focus:ring-2 focus:outline-none">
-
-                                <!-- minus icon -->
-                                <svg class="w-3 h-3 text-white dark:text-grey-300" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 1h16" />
-                                </svg>
-                            </button>
-                            
-                            <input type="text" id="quantity-input" data-input-counter
-                                data-input-counter-min="1" data-input-counter-max="50"
-                                aria-describedby="helper-text-explanation"
-                                class="quantity-input w-[70px] bg-yellow-50 border-x-0 border-yellow-300 h-11 text-center text-white text-sm focus:ring-blue-500 focus:border-blue-500 block py-2.5 dark:bg-yellow-500 dark:border-yellow-600 dark:placeholder-yellow-400 dark:text-grey-300 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="${i.quantity}" value="1" required />
-
-                            <!-- DATABASE REQUIRED FOR VALUE -->
-                            <button type="button" onClick="addOne(${i.id})" id="increment-button"
-                                data-input-counter-increment="${i.id}"
-                                class="w-[40px] bg-yellow-100 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:border-yellow-600 hover:bg-yellow-200 border border-yellow-300 rounded-e-lg p-3 h-11 focus:ring-yellow-100 dark:focus:ring-yellow-500 focus:ring-2 focus:outline-none">
-
-                                <!--plus icon -->
-                                <svg class="w-3 h-3 text-white dark:text-grey-300" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </button>
-                        </div>
-                        
-                    </form>
-                    <input type="checkbox" checked="true" onclick="getTotal()"
-                        class="isinOrder bg-yellow-100 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:border-yellow-600 hover:bg-yellow-200 border checked:bg-yellow-500 focus:bg-yellow-500 active:bg-yellow-500 ml-8 mt-auto mb-auto" />
-                    </div>
-                    `
-                document.getElementById("items").append(item);
-                console.log(item)
-            }else{
-                console.log('WORKS!')
-            }
-        }
-        getTotal()
-
-    },false);
-    
-    function addOne(id) {
-        const elementname =id
-        const quantity = elementname.querySelector('#quantity-input')
-        quantity.value = parseInt(quantity.value) +1;
-        getTotal();
-    }
-    function loseOne(id) {
-        const elementname =id
-        const quantity = elementname.querySelector('#quantity-input')
-        quantity.value = parseInt(quantity.value) -1;
-        getTotal();
-    }
-    function getTotal() {
-        const checkedElements = document.getElementsByClassName('isinOrder');
-        let count = 0;
-        var sum = 0;
-        let itemcount = 0;
-        for (let e of checkedElements) {
-            console.log(e.parentElement);
-            count += 1
-            if (count == 0) {
-                document.getElementById('total').innerText = "£0.00";
-            } else {
-                if (e.checked) {
-                    var quantityText = e.parentElement.querySelector('#quantity-input').value;
-                    var priceText = e.parentElement.parentElement.querySelector('#item-price').innerText;
-
-                    let price = parseFloat(priceText.substring(1));
-                    let quantity = parseInt(quantityText);
-                    itemcount += quantity
-                    sum += price * quantity;
-                    document.getElementById('total').innerText = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(sum);
-                    document.getElementById('count').innerText = " " + itemcount.toString()
-                    
-                    console.log(sum)
-                    console.log(quantity)
-                    console.log(price)
-                } else {
-                    count -= 1
-                }
-            }
-        }
-
-    }
-    function addCheckedItemsToCheckout() {
-        const checkedElements = document.getElementsByClassName('isinOrder');
-        let elements = [];
-        for (let e of checkedElements) {
-            if (e.checked) {
-                elements.push(e.parentElement)
-            }
-        }
-        console.log(elements)
-    }
-     
-</script>
-
-<body >
+<body>
     @include('layouts.navbar')
-
 
     <div class="flex flex-wrap lg:flex-nowrap" onload="populateBasket()">
         <div id="basket-items-wrapper"
             class="min-w-[700px] w-[100%] bg-yellow-50 text-3xl text-grey-300 rounded-lg p-10 m-10 mt-10 lg:w-[80%]">
             <p class="text-6xl mt-10 mb-10">Basket</p>
             <ul id="items" onload="populateBasket()">
-                 
             </ul>
         </div>
+
         <div
-            class=" bg-yellow-50 text-3xl text-grey-300 rounded-lg  ml-5 mt-10 mr-5 mb-10 flex-wrap min-w[160px] w-[100%] lg:w-max md:flex-nowrap md:p-10 lg:relative ">
+            class="bg-yellow-50 text-3xl text-grey-300 rounded-lg ml-5 mt-10 mr-5 mb-10 flex-wrap min-w[160px] w-[100%] lg:w-max md:flex-nowrap md:p-10 lg:relative">
             <div class="ml-5 mt-10">
                 <p>Items in basket:<span id="count"> </span></p>
                 <p>Total:</p>
                 <span id="total"></span>
             </div>
-
             <button class="bg-yellow-400 hover:bg-yellow-500 rounded-lg mb-10 p-4 mr-5 ml-5 mt-10 w-full h-56 lg:h-24 text-7xl lg:text-3xl"
-                onClick="addCheckedItemsToCheckout()"> GO
-                TO
-                CHECKOUT</button>
-
+                onClick="addCheckedItemsToCheckout()">GO TO CHECKOUT</button>
         </div>
     </div>
 
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function populateBasket() {
+            const listItems = window.listItems;
 
+            for (let i of listItems) {
+                const productID = i.product_id;
 
-     @foreach($basketItems as $item)
-            <div>
-                <p>ID {{$item->product_id}}</p>
-            </div>
+                if (!document.querySelector(`#quantity-input-${productID}`)) {
+                    var item = document.createElement('li');
+                    item.className = 'bg-yellow-200 rounded-lg mb-10 p-10 flex justify-between items-center xs:p-0';
+                    item.id = `${productID}`;
 
-            @endforeach
+                    item.innerHTML = `
+                        <span class="item-img-text-link flex text-wrap">
+                            <img class="w-[100px] h-[100px]" src="https://via.placeholder.com/130" width="130px" height="130px" alt="IMAGE" />
+                            <div class="ml-3 max-w-[50%]">
+                                <a class="text-3xl text-nowrap">${i.product_name}</a>
+                                <p id="item-description" class="text-lg leading-5 w-[100%]">${i.description}</p>
+                                <p id="item-price" class="text-lg font-bold leading-9">£${i.price}</p>
+                            </div>
+                        </span>
+                        <div class="flex">
+                            <form class="max-w-xs">
+                                <div class="relative flex items-center max-w-[8rem]">
+                                    <button type="button" onClick="loseOne(${productID})"
+                                        class="w-[40px] bg-yellow-100 hover:bg-yellow-200 border rounded-s-lg p-3 h-11">-</button>
+                                    <input type="text" id="quantity-input-${productID}" value="${i.quantity}"
+                                        class="w-[70px] text-center" readonly />
+                                    <button type="button" onClick="addOne(${productID})"
+                                        class="w-[40px] bg-yellow-100 hover:bg-yellow-200 border rounded-e-lg p-3 h-11">+</button>
+                                </div>
+                            </form>
+                            <input type="checkbox" checked="true" onclick="getTotal()"
+                                class="isinOrder bg-yellow-100 border ml-8 mt-auto mb-auto" />
+                        </div>
+                    `;
+                    document.getElementById("items").append(item);
+                }
+            }
+            getTotal();
+        });
 
+        function addOne(id) {
+            const input = document.getElementById(`quantity-input-${id}`);
+            let value = parseInt(input.value);
+            input.value = value + 1;
+            getTotal();
+        }
+
+        function loseOne(id) {
+            const input = document.getElementById(`quantity-input-${id}`);
+            let value = parseInt(input.value);
+            if (value > 1) {
+                input.value = value - 1;
+            }
+            getTotal();
+        }
+
+        function getTotal() {
+            const checkedElements = document.querySelectorAll('.isinOrder:checked');
+            let sum = 0;
+            let itemcount = 0;
+
+            checkedElements.forEach(e => {
+                const parent = e.closest('li');
+                const price = parseFloat(parent.querySelector('#item-price').innerText.substring(1));
+                const quantity = parseInt(parent.querySelector('[id^="quantity-input"]').value);
+                itemcount += quantity;
+                sum += price * quantity;
+            });
+
+            document.getElementById('total').innerText = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(sum);
+            document.getElementById('count').innerText = " " + itemcount;
+        }
+
+        function addCheckedItemsToCheckout() {
+            const checkedElements = document.querySelectorAll('.isinOrder:checked');
+            let elements = [];
+            checkedElements.forEach(e => elements.push(e.closest('li')));
+            console.log(elements);
+        }
+    </script>
 </body>
 
 </html>

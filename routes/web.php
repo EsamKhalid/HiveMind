@@ -49,3 +49,4 @@ Route::get('list',[UserController::class,'list'])->name('list_user');
 //Route::get('products',[ProductController::class,'list'])->name('products');
 Route::get('products',[ProductController::class,'list'])->name('products');
 Route::get('products/{id}', [ProductController::class, 'show'])->name('products.show'); 
+    Route::delete('/basket/remove/{productID}',[BasketController::class, 'removeFromBasket'])->name('basket.remove');
