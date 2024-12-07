@@ -76,12 +76,18 @@
                 tab = 2
                 document.getElementById('delivery-details-section').classList.add('hidden')
                 document.getElementById('billing-information-section').classList.remove('hidden')
+                document.getElementById('one-in-stepper').classList.add('hidden')
+                document.getElementById('section-one-check').classList.remove('hidden')
+
                 break;
 
             case 'billing':
                 tab = 3
                 document.getElementById('billing-information-section').classList.add('hidden')
                 document.getElementById('confirmation-section').classList.remove('hidden')
+                document.getElementById('two-in-stepper').classList.add('hidden')
+                document.getElementById('section-two-check').classList.remove('hidden')
+
                 break;
 
             case 'confirm':
@@ -102,6 +108,8 @@
                 document.getElementById('delivery-details-section').classList.remove('hidden')
                 newtabid = 'delivery'
                 tab = 3
+                document.getElementById('one-in-stepper').classList.remove('hidden')
+                document.getElementById('section-one-check').classList.add('hidden')
                 break;
 
             case 'confirmation':
@@ -109,6 +117,8 @@
                 document.getElementById('billing-information-section').classList.remove('hidden')
                 newtabid = 'billing'
                 tab = 2
+                document.getElementById('two-in-stepper').classList.remove('hidden')
+                document.getElementById('section-two-check').classList.add('hidden')
                 break;
                 default:
                     console.log(tabId)
@@ -144,12 +154,13 @@
 
                     <span id="stepper-title-1"
                         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-yellow-200 dark:after:text-yellow-500">
-
-                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true"
+                        <span id="one-in-stepper" class="me-2">1</span>
+                        <svg id="section-one-check" class="hidden w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path
                                 d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                         </svg>
+
                         Delivery <span class="hidden sm:inline-flex sm:ms-2">Details</span>
                     </span>
 
@@ -159,7 +170,12 @@
                     <span id="stepper-title-2"
                         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-yellow-200 dark:after:text-yellow-500">
                         <span id="two-in-stepper" class="me-2">2</span>
-                        Billing<span class="hidden sm:inline-flex sm:ms-2">Information</span>
+                        <svg id="section-two-check" class="hidden w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                        </svg>
+                        Billing<span class="sm:inline-flex sm:ms-2">Information</span>
 
                     </span>
                 </li>
