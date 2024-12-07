@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!--Hello Mr Backender, this is a comment that you should delete-->
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <script>
+    //global variable to represent form stage
     var tab = 1;
+
+    //function that runs on lost focus of an input field - currently only triggers on "is empty/padded with spaces"
     function checkField(input) {
         let cleanval = sanitiseStr(input.value.trim())
         if (cleanval == '') {
@@ -17,53 +20,53 @@
 
         }
     }
-
+    //Bigger more scary check that loops through the current form stage's inputs
     function checkForm(tabId) {
         event.preventDefault();
-        let record = []
-        formInputs = document.getElementsByClassName(`${tabId}-field`);
+        let record = [] //variable to hold values of input in order
+        formInputs = document.getElementsByClassName(`${tabId}-field`); //gets form inputs
         let isValid = true
         for (const input of formInputs) {
             console.log(input)
-            if (input.value.trim() == '') {
+            if (input.value.trim() == '') { //checks that they're not empty/padded with spaces
                 input.classList.add('outline-pink-500', 'border-pink-500', 'bg-pink-100');
                 input.classList.remove('bg-yellow-200', 'focus:bg-white');
                 isValid = false
             } else {
                 input.classList.remove('outline-pink-500', 'border-pink-500', 'bg-pink-100');
                 input.classList.add('focus:bg-white', 'bg-yellow-200');
-                record.push(sanitiseStr(input.value.trim()))
+                record.push(sanitiseStr(input.value.trim())) //adds inputs with correct formatting to record variable
             }
         }
-        if (isValid) {
-            console.log('valid c:')
 
-            let outputString = []
+        //section for form progression
+        if (isValid) { 
+            console.log('valid c:') //debug message
+            let outputString = [] 
             for (const input of formInputs) {
-                let cleanval = sanitiseStr(input.value.trim());
-                if (!cleanval == "BUTTON!") {
+                let cleanval = sanitiseStr(input.value.trim()); //cleans inputs to prevent html/xml injection
+                if (!cleanval == "BUTTON!") { //all buttons on the forms will have this value - just saves space in localstorage by not adding the text "BUTTON!" to the records
                     outputString.push(cleanval)
                 }
             }
-            localStorage.setItem(tabId,JSON.stringify(record))
-            tabcontrolForward(tabId);
+            localStorage.setItem(tabId,JSON.stringify(record)) //adds record to local storage
+            tabcontrolForward(tabId); //checks are only done for forward progression of the form - there's no way to skip stages
         } else {
-            console.log('invalid :c')
+            console.log('invalid :c') //debug message
         }
     }
 
     function sanitiseStr(str) {
-        return str.replace(/<[^>]*>?/gm, ""); //sanitises inputs
+        return str.replace(/<[^>]*>?/gm, ""); //sanitises inputs removing anything that could be dangerous 
     }
 
-    document.addEventListener('DOMContentLoaded', () => { tab = 1; })
+    document.addEventListener('DOMContentLoaded', () => { tab = 1; }) // just a precaution to ensure that the first stage of the form is visible
 
     document.addEventListener('submit', function(event) {
-        event.preventDefault(); 
-
+        event.preventDefault();  
     })
 
-
+    //does what it says on the tin - moves to the next tab/form section
     function tabcontrolForward(tabId) {
 
         let currform;
@@ -71,15 +74,13 @@
         switch (tabId) {
             case 'delivery':
                 tab = 2
-                currform = document.getElementById('delivery-details-section')
-                currform.classList.add('hidden')
+                document.getElementById('delivery-details-section').classList.add('hidden')
                 document.getElementById('billing-information-section').classList.remove('hidden')
                 break;
 
             case 'billing':
-                currform = document.getElementById('billing-information-section')
-                currform.classList.add('hidden')
                 tab = 3
+                document.getElementById('billing-information-section').classList.add('hidden')
                 document.getElementById('confirmation-section').classList.remove('hidden')
                 break;
 
@@ -90,25 +91,24 @@
         }
         fillIfAlready(tabId)
     }
+    //does what it says on the tin - moves to the previous tab/form section
     function tabControlBackward(tabId) {
         let currform;
         let newform;
         let newtabid;
         switch (tabId) {
             case 'billing':
-                currform = document.getElementById('billing-information-section')
-                currform.classList.add('hidden')
-                tab = 3
+                document.getElementById('billing-information-section').classList.add('hidden')
                 document.getElementById('delivery-details-section').classList.remove('hidden')
                 newtabid = 'delivery'
+                tab = 3
                 break;
 
             case 'confirmation':
-                currform = document.getElementById('confirmation-section')
-                currform.classList.add('hidden')
-                tab = 3
+                document.getElementById('confirmation-section').classList.add('hidden')
                 document.getElementById('billing-information-section').classList.remove('hidden')
                 newtabid = 'billing'
+                tab = 2
                 break;
                 default:
                     console.log(tabId)
@@ -116,6 +116,7 @@
         }
         fillIfAlready(newtabid)
     }
+    //THIS IS THE THING THAT RE-POPULATES THE FORMS IF YOU'VE ALREADY INPUTTED INTO THEM
     function fillIfAlready(tabId){
         let fields = document.getElementsByClassName(`${tabId}-field`);
         let storedValues = JSON.parse(localStorage.getItem(tabId) || '[]');
@@ -366,9 +367,21 @@
         </div>
 
     </Div>
-    <div id="ty-for-shopping" class="hidden text-9xl justify-center">
-        THANK YOU FOR SHOPPING
-    </div>
+    <div id="ty-for-shopping" class="hidden w-screen h-screen bg-yellow-50">
+        <div class="justify-center text-center  ">
+            <div class="text-6xl  text-yellow-800 pt-[20%] mb-10">
+                THANK YOU FOR SHOPPING!
+            </div>
+            <div class="flex justify-evenly w-[100%]">
+            <button class="text-3xl bg-yellow-300 p-5 px-10 m-5 rounded-md" >
+            <a href="{{ route('products') }}">Continue Shopping</a>
+                </button>
+                <button class="text-3xl bg-yellow-300 p-5 px-10 m-5 rounded-md">
+                <a href="{{ route(name: 'home') }}">View Orders</a>
+                </button>
+                </div>
+        </div>
+        </div>
 
 </body>
 
