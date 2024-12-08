@@ -34,8 +34,14 @@ class TestController extends Controller
     public function basket(){
         return view('basket.basket');
     }
+//<<<<<<< checkout-page
+    public function checkout(){
+        return view('checkout.checkout');
+    }
+//=======
 
     // public function products(){
     //     return view('products.products');
     // }
+//>>>>>>> musa-basket-checkout
 }
