@@ -14,6 +14,11 @@
     src: url(/public/fonts/Montserrat-Regular.ttf);
 }
 
+@font-face {
+    font-family: "gillsansmt";
+    src: url(/public/fonts/gillsansmt.ttf);
+}
+
 * {
     @apply font-Montserrat;
 }
@@ -26,7 +31,11 @@
 
 body {
     color: rgb(var(--foreground-rgb));
-    @apply bg-ghost-white text-raisin-black;
+    @apply bg-ghost-white text-raisin-black h-screen;
+}
+
+main {
+    @apply h-full;
 }
 
 @layer utilities {
@@ -36,26 +45,64 @@ body {
 }
 
 @layer components {
+    /* my added code!! */
+    .navbar {
+        @apply flex justify-between items-center bg-amber text-white px-6 py-4;
+    }
+
+    .navbar img {
+        @apply h-12 w-auto mr-3; /* height of logo */
+    }
+
+    .navbar h1 {
+        @apply text-2xl font-bold; /* logo text styling */
+    }
+
+    .navbar ul {
+        @apply hidden md:flex space-x-8 text-lg; /* show links in a row on medium screens and larger */
+    }
+
+    .navbar ul li a {
+        @apply hover:text-gray-200 transition; /* hover effect */
+    }
+
+    .navbar .fas,
+    .navbar .far {
+        @apply fa-xl hover:text-gray-200 transition; /* icons hover effect and size */
+    }
+
+    /* the end of my added code */
+
+    /*
     .navbar ul li {
         transition-duration: 200ms;
-        @apply text-sm rounded mr-[25px] sm:mr-[20px] cursor-pointer hover:bg-ghost-white hover:text-night
-    md:p-5 sm:text-xl md:text-2xl p-1;
+        @apply text-sm rounded mr-[25px] sm:mr-[20px] cursor-pointer hidden hover:bg-ghost-white hover:text-night
+    md:p-5 md:flex md:text-2xl  p-1;
     }
+    */
 
+    .category {
+        transition-duration: 200ms;
+        @apply block bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform;
+    }
+    
+    /*
     .categories ul li {
         transition-duration: 200ms;
-        @apply text-xl rounded mx-[2px] h-[50px] cursor-pointer hover:bg-ghost-white hover:text-night p-1 bg-amber w-screen text-center hover:border-amber hover:border;
+        @apply text-xl rounded mx-[2px] h-[100px] cursor-pointer hover:bg-ghost-white hover:text-night p-1 bg-amber w-screen text-center hover:border-amber hover:border;
     }
+    */
 
     /* .navbar ul li {
-    @apply text-sm  cursor-pointer hover:bg-jms-blue
-  } */
+        @apply text-sm  cursor-pointer hover:bg-jms-blue
+    } */
 
     .NavLogoContainer a {
-        @apply hover:bg-ghost-white m-[5px] flex items-center justify-center 
+        @apply hover:bg-ghost-white m-[5px] hidden items-center justify-center 
     cursor-pointer duration-200 rounded
     size-[30px]
-    sm:size-[50px];
+    md:flex
+    md:size-[50px];
     }
 
     .NavLogoContainer a > * {
@@ -201,8 +248,8 @@ body {
             transparent 90%,
             white 75%
         );
-        background-size: 40px 40px;
-        @apply bg-amber w-full h-[25px];
+        background-size: 25px 25px; /* changed the thickness of stripes */
+        @apply bg-amber w-full h-[13px]; /* changed the height of stripes */
     }
 
     .cdb-right {
@@ -272,5 +319,70 @@ body {
     .projectFlex {
         transition: 200ms ease-in-out;
         @apply hover:flex-[6] hover:cursor-pointer;
+    }
+
+    #show {
+        @apply visible;
+    }
+    #main:hover + #show {
+        @apply h-[1000px];
+    }
+
+    #main:hover {
+        @apply bg-black;
+    }
+
+    .wrapper {
+        background-color: #e1e2e2;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .wrapper:before,
+    .wrapper:after {
+        content: "";
+        position: absolute;
+        height: 130px;
+        width: 150px;
+        z-index: 2;
+    }
+
+    .wrapper:after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+    }
+
+    .wrapper:before {
+        left: 0;
+        top: 0;
+    }
+
+    .wrapper .track {
+        display: flex;
+        width: calc(150px * 10);
+        animation: scroll 15s 0.5s linear infinite;
+    }
+
+    .wrapper .logo {
+        width: 500px;
+    }
+
+    .wrapper .logo img {
+        @apply size-fit;
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(calc(-150px * 5));
+        }
     }
 }

@@ -169,7 +169,6 @@
     @include('layouts.navbar')
 
 
-
     <div class="flex flex-wrap lg:flex-nowrap" onload="populateBasket()">
         <div id="basket-items-wrapper"
             class="min-w-[700px] w-[100%] bg-yellow-50 text-3xl text-grey-300 rounded-lg p-10 m-10 mt-10 lg:w-[80%]">
