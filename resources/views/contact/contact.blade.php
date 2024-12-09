@@ -2,19 +2,22 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us</title>
     </head>
     <body class="text-center">
         @include('layouts.navbar')
 
-        <main><div class="hero bg-yellow-50 text-center py-16">
+        <!-- title -->
+        <section class="bg-yellow-50 text-center py-16">
             <h1 class="text-4xl font-bold text-orange-950">Get in Touch</h1>
             <p class="text-lg text-gray-600 mt-4"> 
                 Want to get in touch? We'd be buzzing (get it?) to hear from you. Here's how you can reach us...
             </p>
-       
+        </section>
 
             <!-- contact details -->
-                <div class="contact-options grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-white">
+                <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-white">
                     <!-- card 1: contact options -->
                     <div class="card bg-yellow-50 p-6 rounded-lg shadow-md text-center">
                         <div class="icon text-3xl text-blue-600 mb-4">📞</div>
@@ -23,9 +26,9 @@
                         <a href="+353-123-4567" class="text-orange-900">+353-123-4567</a><br>
                         <a href="mailto:hivemind.business@outlook.com" class="text-orange-900">admin@hivemind.com</a><br><br>
                         <p class="text-gray-600 mb-4">Find us at our bee-quarters at:</p>
-                        <p class="text-lg">HiveMind</p>
-                        <p class="text-lg">123 Beehive Lane</p>
-                        <p class="text-lg">Dublin, Ireland</p>
+                        <p class="text-gray-950">HiveMind</p>
+                        <p class="text-gray-950">123 Beehive Lane</p>
+                        <p class="text-gray-950">Dublin, Ireland</p>
                     </div>
 
                     <!-- card 2: contact form -->
@@ -36,20 +39,13 @@
                         
                         <!-- contact form -->
                         <form action="/submit-form" method="POST" id="contact-us-form">
-                            <!-- name -->
                             <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
-
-                            <!-- email -->
                             <input type="email" name="email" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
-
-                            <!-- message -->
                             <textarea name="message" placeholder="Your Message" class="w-full p-3 mb-4 border border-gray-300 rounded" rows="4" required></textarea>
-
-                            <!-- submit button -->
                             <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-500">Submit</button>
                         </form>
                     </div>
-                </div>
+                </section>
                 
                 <!-- pop-up when user submits an enquiry -->
                 <div class="popup-overlay hidden fixed top-0 left-0 w-full h-full" id="popupOverlay"></div>
@@ -61,9 +57,7 @@
                     </div>
                 </div>
 
-            </section></main>
-        
-        
+            </section>
 
             <!-- javascript for the pop-up -->
             <script>
@@ -88,8 +82,7 @@
                         // handle form submission
                         form.addEventListener('submit', function (event) {
                             event.preventDefault(); // prevent default form submission
-                            openPopup(); // open the popup
-                        });
+                            openPopup();
 
                         // close popup on close button click
                         closePopup.addEventListener('click', closePopupFunc);
@@ -103,11 +96,7 @@
                     });
 
             </script>
-
-
         </main>
-
-        @include('layouts.footer') <!-- add footer to contacts page -->
-
+        @include('layouts.footer')
     </body>
 </html>
