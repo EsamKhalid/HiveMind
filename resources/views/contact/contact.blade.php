@@ -6,7 +6,7 @@
     <body class="text-center">
         @include('layouts.navbar')
 
-        <main class="h-screen"><div class="hero bg-yellow-50 text-center py-16">
+        <main><div class="hero bg-yellow-50 text-center py-16">
             <h1 class="text-4xl font-bold text-orange-950">Get in Touch</h1>
             <p class="text-lg text-gray-600 mt-4"> 
                 Want to get in touch? We'd be buzzing (get it?) to hear from you. Here's how you can reach us...
