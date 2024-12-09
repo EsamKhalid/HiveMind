@@ -63,9 +63,7 @@ class OrderController extends Controller
     $orders = Order::with(['orderItems.products'])
         ->where('user_id', auth()->id()) 
         ->get(); 
-
-        echo $orders[0]->orderItems[0]->products->product_name;
-
+        
     return view('orders.orders', ['orders' => $orders]);
     }
 } 

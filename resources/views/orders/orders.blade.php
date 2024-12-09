@@ -80,8 +80,6 @@
 
 
 
-
-
                                     }}<br />
                                     Quantity: {{ $item->quantity }}<br />
                                     Price: £{{ number_format($item->product->price, 2) }}

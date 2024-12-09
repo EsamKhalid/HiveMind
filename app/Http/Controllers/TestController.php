@@ -31,7 +31,7 @@ class TestController extends Controller
         return view('user.account');
     }
 
-    public function checkout(){
-        return view('checkout.checkout');
-    }
+    // public function products(){
+    //     return view('products.products');
+    // }
 }

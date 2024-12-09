@@ -176,15 +176,12 @@ class BasketController extends Controller
        
 
        // echo $request->input('product_id');
+
+    
          
 
        return redirect()->route('basket.view');
 
     }
 
-    //public function toCheckout()
-    //{
-    //    $redirect = Auth::user();
-    //    return redirect()->route('checkout.view');
-    //}
 }
