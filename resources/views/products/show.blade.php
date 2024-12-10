@@ -7,8 +7,8 @@
     <body>
         @include('layouts.navbar')
         <a
-            href="{{ route('products') }}"
-            class="fas fa-arrow-left fa-4x p-5"
+            href="{{ url()->previous() }}"
+            class="fas fa-arrow-left fa-3x p-5"
         ></a>
         <div class="flex justify-center">
             <div class="w-1/2 h-[50vh] flex justify-center">
@@ -28,9 +28,18 @@
                     <p class="text-justify">
                         {{ $product->description }}
                     </p>
-                    <button type="button" class="bg-amber w-full">
-                        Add to Basket
-                    </button>
+
+                    <form action="{{ route('basket.add') }}" method="post">
+                        @csrf
+                        <input
+                            type="hidden"
+                            name="product_id"
+                            value="{{ $product->id }}"
+                        />
+                        <button type="submit" class="bg-amber w-full">
+                            Add to Basket
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

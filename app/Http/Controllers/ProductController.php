@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
         public function list(Request $request){
             
-           $search = $request->input('search');
+        $search = $request->input('search');
         $filter = $request->input('filter');
 
         $categoryButton = $request->input('categoryButton');

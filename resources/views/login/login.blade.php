@@ -73,10 +73,6 @@
             </div>
         </form>
     </main>
-    </br>
-    </br>
-    </br>
-    </br>
     @include('layouts.footer')
 </body>
 </html>

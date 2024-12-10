@@ -69,7 +69,7 @@
                 </form>
 
                 <a
-                    href="{{ route('basket') }}"
+                    href="{{ route('basket.view') }}"
                     class="fas fa-shopping-basket fa-xl hover:text-gray-200"
                 ></a>
 
@@ -86,8 +86,5 @@
                 @endauth
             </div>
         </nav>
-
-        <!-- bottom diagonal stripes -->
-        <div class="cdwa-right h-[13px] w-screen"></div>
     </div>
 </body>

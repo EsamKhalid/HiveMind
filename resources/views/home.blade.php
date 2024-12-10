@@ -181,14 +181,11 @@
                                     </div>
                                 </div>
                             </button>
-
+                            
                         </div>
                     </form>
                 </div>
             </section>
-
-
-
         </main>
         @include('layouts.footer')
     </body>

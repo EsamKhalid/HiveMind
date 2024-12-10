@@ -31,10 +31,6 @@ class TestController extends Controller
         return view('user.account');
     }
 
-    public function basket(){
-        return view('basket.basket');
-    }
-
     // public function products(){
     //     return view('products.products');
     // }

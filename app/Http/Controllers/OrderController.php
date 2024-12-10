@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Products;
 
 class OrderController extends Controller
 {
@@ -57,11 +60,10 @@ class OrderController extends Controller
     ]); */
     
     // Fetch authenticated user's orders with related items and products
-    $orders = Order::with(['orderItems.product'])
+    $orders = Order::with(['orderItems.products'])
         ->where('user_id', auth()->id()) 
         ->get(); 
-
+        
     return view('orders.orders', ['orders' => $orders]);
-
     }
 } 

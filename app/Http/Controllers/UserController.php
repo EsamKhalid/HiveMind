@@ -12,4 +12,8 @@ class UserController extends Controller
     return view('user.account');
   }
 
+    public function list()
+    {
+        return view('/list', ['user' => Users::all()]);
+    }
 }
