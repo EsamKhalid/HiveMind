@@ -239,11 +239,15 @@ class BasketController extends Controller
             $totalPrice += $item->price * $item->quantity;
         }
 
+
         return $totalPrice;
+
+
 
         
 
     }
+
 
     //public function clearBasket() {
 //
@@ -256,4 +260,6 @@ class BasketController extends Controller
     //    $redirect = Auth::user();
     //    return redirect()->route('checkout.view');
     //}
+
+
 }

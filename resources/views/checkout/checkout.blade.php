@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -36,6 +37,7 @@
                     <input type="hidden" name="type" value="shipping" />
                     <div>
                         <button type="submit" class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">Go To Confirmation</button>
+
                     </div>
                 </form>
             </div>

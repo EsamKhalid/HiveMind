@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <body>
         @include('layouts.navbar')
 
@@ -179,12 +181,12 @@
                                     </div>
                                 </div>
                             </button>
+                            
                         </div>
                     </form>
                 </div>
             </section>
         </main>
-
         @include('layouts.footer')
     </body>
 </html>
