@@ -7,6 +7,7 @@
     </head>
 
     <body class="text-center">
+    
         @include('layouts.navbar')
         
         <main>
@@ -34,13 +35,13 @@
                     </div>
 
 
+
                 <!-- card 2: contact form -->
                 <div class="card bg-yellow-50 p-6 rounded-lg shadow-md text-center">
                     <div class="icon text-3xl text-green-600 mb-4">✉️</div>
                     <h2 class="text-xl font-bold mb-2">Online Enquiry</h2>
                     <p class="text-gray-600 mb-4">Fill out the form below, and we'll get back to you as soon as possible.</p>
                         
-
                     <!-- contact form -->
                     <form action="/submit-form" method="POST" id="contact-us-form">
                         <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
@@ -49,6 +50,7 @@
                         <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-500">Submit</button>
                     </form>
                 </div>
+
             </section>
 
                 <!-- pop-up when user submits an enquiry -->
@@ -60,21 +62,21 @@
                         </div>
                     </div>
                 </div>
-            </section>
+
 
             <!-- javascript for the pop-up -->
             <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const form = document.getElementById('contact-us-form');
-                        const popupOverlay = document.getElementById('popupOverlay');
-                        const popup = document.getElementById('popup');
-                        const closePopup = document.getElementById('closePopup');
+                document.addEventListener('DOMContentLoaded', function () {
+                    const form = document.getElementById('contact-us-form');
+                    const popupOverlay = document.getElementById('popupOverlay');
+                    const popup = document.getElementById('popup');
+                    const closePopup = document.getElementById('closePopup');
 
-                        // function to open the popup
-                        function openPopup() {
-                            popupOverlay.classList.remove('hidden');
-                            popup.classList.remove('hidden');
-                        }
+                    // function to open the popup
+                    function openPopup() {
+                        popupOverlay.classList.remove('hidden');
+                        popup.classList.remove('hidden');
+                    }
 
                         // function to close the popup
                         function closePopupFunc() {
@@ -84,25 +86,23 @@
                             form.reset();
                         }
 
-                        // handle form submission
-                        form.addEventListener('submit', function (event) {
-                            event.preventDefault(); // prevent default form submission
-                            openPopup();
-
-                        });
-
-
-                        // close popup on close button click
-                        closePopup.addEventListener('click', closePopupFunc);
-
-                        // close popup when clicking on the overlay
-                        popupOverlay.addEventListener('click', function (event) {
-                            if (event.target === popupOverlay) {
-                                closePopupFunc();
-                            }
-                        });
+                    // handle form submission
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault(); // prevent default form submission
+                        openPopup();
                     });
 
+
+                    // close popup on close button click
+                    closePopup.addEventListener('click', closePopupFunc);
+
+                    // close popup when clicking on the overlay
+                    popupOverlay.addEventListener('click', function (event) {
+                        if (event.target === popupOverlay) {
+                            closePopupFunc();
+                        }
+                    });
+                });
             </script>
         </main>
         @include('layouts.footer')
