@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\CheckoutController;
 
 use App\Http\Controllers\BasketController;
 
@@ -79,3 +80,7 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     //Route::post('/basket/add/{productID}',[BasketController::class, 'addToBasket'])->name('basket.add');
 
     //Route::delete('/basket/remove/{productID}',[BasketController::class, 'removeFromBasket'])->name('basket.remove');
+    Route::get('checkout', [CheckoutController::class, 'view'])->name('checkout.view');  
+
+    Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.saveAddress');
+    Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
