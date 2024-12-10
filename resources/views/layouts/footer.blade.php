@@ -1,4 +1,3 @@
-<div class="mt-[133%]">
 <footer
     style="background-image: url(/Images/honeycomb21.png); background-size: cover; background-position: center; opacity: 0.8;"
     class="absolute bottom:0 w-full border border-amber"
