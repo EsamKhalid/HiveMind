@@ -1,6 +1,7 @@
+<div class="mt-[133%]">
 <footer
     style="background-image: url(/Images/honeycomb21.png); background-size: cover; background-position: center; opacity: 0.8;"
-    class="w-full border border-amber"
+    class="absolute bottom:0 w-full border border-amber"
 >
     <div class="container mx-auto flex flex-wrap justify-between py-8">
         <!-- adding first third of footer (left side), includes contact information / link to contact page -->
@@ -33,3 +34,4 @@
         </div>
     </div>
 </footer>
+</div>
