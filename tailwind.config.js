@@ -19,6 +19,7 @@ export default {
                 "Blender-Pro-Book": ["Blender-Pro-Book"],
                 Nemesys: ["nemesys"],
                 Montserrat: ["montserrat"],
+                gillsansmt: ["gillsansmt"],
             },
             colors: {
                 "cybpnk-grey": "#21201f",
