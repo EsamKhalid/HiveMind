@@ -129,6 +129,7 @@ class BasketController extends Controller
 
         
         $basketItem->delete();
+
         
     
         //return view('basket.basket', ['basketItems' => $basketItems]); 
@@ -179,6 +180,29 @@ class BasketController extends Controller
          
 
        return redirect()->route('basket.view');
+    
+
+    }
+
+    public function basketTotal(Request $request){
+
+        $user = Auth::user();
+        $basket = Basket::where('user_id', $user->id)->first();
+
+        $basketItem = BasketItems::where('basket_id',$basket->id)
+           -> join('products','basket_items.product_id',"=",'products.id')
+           -> select(
+            'basket_items.*',
+            'products.price',
+            )->get();
+
+        $totalPrice = 0;
+
+        foreach ($basketItem as $item) {
+            $totalPrice += $basketItem->price * $basketItem->quantity;
+        }
+    
+        return $totalPrice;
 
     }
 
