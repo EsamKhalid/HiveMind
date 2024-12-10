@@ -9,7 +9,7 @@ class SignupController extends Controller{
 
 
     public function signup(){
-        return view('signup');
+        return view('signup.signup');
     }
 
 
@@ -19,9 +19,11 @@ class SignupController extends Controller{
             'last_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:12',
             'email_address' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
+
+    
         Users::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,

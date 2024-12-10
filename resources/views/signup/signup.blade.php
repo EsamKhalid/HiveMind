@@ -1,98 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Registration</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center">
-  <div class="w-full max-w-lg bg-white rounded-lg shadow-lg p-8">
-    <h2 class="text-2xl font-bold text-gray-800 text-center mb-4">User Registration</h2>
-    <p class="text-sm text-gray-500 text-center mb-6">
-      Fill in the form below to register. Already a user? <a href="#" class="text-blue-600 hover:underline">Log in</a>. Guest? <a href="#" class="text-blue-600 hover:underline">Guest View</a>.
-    </p>
+    <head>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body>
+        @include('layouts.navbar')
 
-    <!-- Form -->
-    <form action="{{ route('signup') }}" method="post">
-      @csrf
+        <main class="mt-12">
+            <div class="flex justify-center">
+                <h1 class="text-4xl font-bold text-gray-800 mb-6">Sign Up</h1>
+            </div>
 
-      @if ($errors->any())
-        <div class="mb-4 text-red-500">
-          <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-      @endif
+            <div class="flex justify-center">
+                <form
+                    action="{{ route('signup.store') }}"
+                    method="post"
+                    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96 max-w-sm"
+                >
+                    @csrf
 
-      <!-- First Name -->
-      <div class="mb-4">
-        <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
-        <input type="text" id="first_name" name="first_name" value="{{ old('first_name') }}" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+                    <div class="mb-4">
+                        <label
+                            for="first_name"
+                            class="block text-gray-700 text-sm font-bold mb-2"
+                            >First Name:</label
+                        >
+                        <input
+                            type="text"
+                            name="first_name"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            maxlength="50"
+                            value="{{ old('first_name') }}"
+                            placeholder="First Name"
+                            autofocus
+                        />
+                    </div>
 
-      <!-- Last Name -->
-      <div class="mb-4">
-        <label for="last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
-        <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+                    <div class="mb-4">
+                        <label
+                            for="first_name"
+                            class="block text-gray-700 text-sm font-bold mb-2"
+                            >Last Name:</label
+                        >
+                        <input
+                            type="text"
+                            name="last_name"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            maxlength="50"
+                            value="{{ old('last_name') }}"
+                            placeholder="Last Name"
+                            autofocus
+                        />
+                    </div>
 
-      <!-- Phone Number -->
-      <div class="mb-4">
-        <label for="phone_number" class="block text-sm font-medium text-gray-700">Phone Number</label>
-        <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+                    <div class="mb-4">
+                        <label
+                            for="email_address"
+                            class="block text-gray-700 text-sm font-bold mb-2"
+                            >Email:</label
+                        >
+                        <input
+                            type="email"
+                            name="email_address"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            maxlength="50"
+                            value="{{ old('email_address') }}"
+                            placeholder="Email"
+                            autofocus
+                        />
+                    </div>
 
-      <!-- Email -->
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="email" name="email" value="{{ old('email') }}" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+                    <div class="mb-4">
+                        <label
+                            for="phone_number"
+                            class="block text-gray-700 text-sm font-bold mb-2"
+                            >Phone Number:</label
+                        >
+                        <input
+                            type="text"
+                            name="phone_number"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            maxlength="50"
+                            value="{{ old('phone_number') }}"
+                            placeholder="Phone Number"
+                            autofocus
+                        />
+                    </div>
 
-      <!-- Confirm Email -->
-      <div class="mb-4">
-        <label for="email_confirmation" class="block text-sm font-medium text-gray-700">Confirm Email</label>
-        <input type="email" id="email_confirmation" name="email_confirmation" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+                    <div class="mb-6">
+                        <label
+                            for="password"
+                            class="block text-gray-700 text-sm font-bold mb-2"
+                            >Password:</label
+                        >
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Enter your password"
+                        />
+                        @error('password')
+                        <div class="text-red-500">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-6">
+                        <label
+                            for="confirm_password"
+                            class="block text-gray-700 text-sm font-bold mb-2"
+                            >Confirm Password:</label
+                        >
+                        <input
+                            type="password"
+                            name="password_confirmation"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder="Enter your password"
+                        />
+                    </div>
 
-      <!-- Password -->
-      <div class="mb-4">
-        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" name="password" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
+                    <div class="flex items-center justify-between">
+                        <button
+                            type="submit"
+                            class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                            Sign Up
+                        </button>
+                        <button
+                            type="reset"
+                            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                            Clear
+                        </button>
+                    </div>
 
-      <!-- Confirm Password -->
-      <div class="mb-4">
-        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-        <input type="password" id="password_confirmation" name="password_confirmation" required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-      </div>
-
-      <!-- Submit and Reset Buttons -->
-      <div class="flex space-x-4">
-        <button type="submit"
-          class="w-full py-2 px-4 bg-yellow-400 text-white rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          Register
-        </button>
-        <button type="reset"
-          class="w-full py-2 px-4 bg-gray-200 text-gray-700 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
-          Clear
-        </button>
-      </div>
-    </form>
-
-    <!-- Footer -->
-    <p class="text-center text-sm text-gray-500 mt-6">
-      By registering, you agree to our <a href="#" class="text-blue-600 hover:underline">Terms</a> and <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>.
-    </p>
-  </div>
-</body>
+                    <div class="mt-4 text-center">
+                        <a
+                            href="{{ route('login') }}"
+                            class="text-blue-500 hover:underline text-sm"
+                        >
+                            Already a customer? Login here
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
 </html>
