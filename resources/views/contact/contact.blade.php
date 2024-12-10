@@ -80,6 +80,8 @@
                         function closePopupFunc() {
                             popupOverlay.classList.add('hidden');
                             popup.classList.add('hidden');
+                            //resets form after submission window is closed
+                            form.reset();
                         }
 
                         // handle form submission
