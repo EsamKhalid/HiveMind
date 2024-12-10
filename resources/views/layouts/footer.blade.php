@@ -15,21 +15,18 @@
             </p>
         </div>
         <!-- adding second third of footer (middle), includes donation button -->
-        <div class="w-full md:w-1/3 flex flex-col items-start mb-4 md:mb-0">
-            <h3 class="text-lg font-semibold text-gray-800">Support Our Cause</h3>
-            <p class="text-sm text-gray-800">Help us save the bees by donating today!</p>
-            <a
-                href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE"
-                class="bg-white text-gray-800 hover:bg-white hover:text-amber font-bold py-2 px-4 rounded mt-4 inline-block"
-                >Donate</a
-            >
+        <div class="w-full md:w-1/3 mt-4 md:mt-0 flex flex-col items-start">
+            <h3 class="text-base font-semibold">Support Our Cause</h3>
+            <p class="text-sm">Help us save the bees by donating today!</p>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE" class="bg-white text-black hover:bg-white hover:text-amber font-bold py-2 px-4 rounded mt-4 inline-block">Donate</a>
         </div>
-        <!-- adding third third of footer (right side), includes google maps embed-->
-        <div class="w-full md:w-1/3 flex flex-col items-start">
-            <h3 class="text-lg font-semibold text-gray-800">Find Us Here!</h3>
-            <div class="relative w-full h-64">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d629667.5904227577!2d-7.296735727730728!3d51.9405375026017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x484481318da1a1bb%3A0xf6348014bd14200!2sHive%20Mind!5e0!3m2!1sen!2suk!4v1733242255053!5m2!1sen!2suk" style="border: 0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+        <div class="w-full md:w-1/3 mt-4 md:mt-0">
+            <!-- adding third third of footer (right side), includes google maps embed-->
+            <h3 class="text-base font-semibold">Find Us Here!</h3>
+                <!-- size it a bit so the edge is not touching the bottom-->
+                <div class="relative h-48 w-9/12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d629667.5904227577!2d-7.296735727730728!3d51.9405375026017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x484481318da1a1bb%3A0xf6348014bd14200!2sHive%20Mind!5e0!3m2!1sen!2suk!4v1733242255053!5m2!1sen!2suk" width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy"></iframe>
+                </div>
         </div>
     </div>
 </footer>
