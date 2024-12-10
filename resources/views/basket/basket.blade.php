@@ -84,14 +84,6 @@
                 </div>
             </div>
         </div>
-        <!--checkout button-->
-        <button type="Checkout"
-            class="w-full py-2 px-4 bg-yellow-400 text-white rounded-lg shadow-md hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            @csrf
-            
-            <a href="{{ route('checkout.view') }}" class="bg-ghost-white rounded-lg text-4xl p-1 h-fit w-full m-4">Checkout</a>
-            
-        </button>
     </main>
     @include('layouts.footer')
 </body>

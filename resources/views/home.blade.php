@@ -183,7 +183,9 @@
                     </form>
                 </div>
             </section>
+            <div>
+                @include('layouts.footer')
+            </div>
         </main>
-        @include('layouts.footer')
     </body>
 </html>
