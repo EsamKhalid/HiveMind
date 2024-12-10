@@ -67,24 +67,17 @@
                                 @foreach ($order->orderItems as $item)
                                 <li class="mb-2">
                                     <strong
-                                        >{{ $item->product->product_name }}</strong
+                                        >{{ $item->products->product_name }}</strong
                                     ><br />
                                     Description:
-                                    {{ $item->product->description
-
-
-
-
-
-
-
+                                    {{ $item->products->description
 
 
 
 
                                     }}<br />
                                     Quantity: {{ $item->quantity }}<br />
-                                    Price: £{{ number_format($item->product->price, 2) }}
+                                    Price: £{{ number_format($item->products->price, 2) }}
                                 </li>
                                 @endforeach
                             </ul>
