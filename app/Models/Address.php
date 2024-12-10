@@ -5,12 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Address extends Model
+class Addresses extends Model
 {
-    use HasFactory;
+    //
+    //use HasFactory;
 
+    
+
+    // Define the table if it's not the default 'registers'
     protected $table = 'addresses';
 
+    protected $primaryKey = 'id';
+
+    // Define the fillable fields
     protected $fillable = [
         'user_id',
         'street_address',
@@ -18,7 +25,7 @@ class Address extends Model
         'county',
         'country',
         'post_code',
-        'shipping_address',
+        'type',
     ];
 
     // Each address belongs to one user
