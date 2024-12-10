@@ -56,7 +56,7 @@
                 </div>
             </section>
 
-            <div class="py-12">
+            <section class="py-12">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-2xl font-bold text-orange-900 mb-6">
                         Shop our products by category
@@ -185,13 +185,11 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </section>
 
-            <!-- finally fixed footer issue by using a div -->
-            <div>
-                @include('layouts.footer')
-            </div>
+
 
         </main>
+        @include('layouts.footer')
     </body>
 </html>
