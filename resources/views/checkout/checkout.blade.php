@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body>
-        <header></header>
-        @include('layouts.navbar')
+<head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="flex flex-col min-h-screen">
+    <header></header>
+    @include('layouts.navbar')
 
-        <main>
-            <div class="flex justify-center m-4">
-                <div class="inline-block">
-                    <p class="text-6xl">Checkout</p>
-                    <form
-                        action="{{ route('checkout.saveAddress') }}"
-                        method="post"
-                    >
-                        @csrf
-                        <label for="street_address">Street Address</label>
-                        <input type="text" name="street_address" required />
-                        <br />
-                        <label for="city">City</label>
-                        <input type="text" name="city" required />
-                        <br />
-                        <label for="county">County</label>
-                        <input type="text" name="county" required />
-                        <br />
-                        <label for="country">Country</label>
-                        <input type="text" name="country" required />
-                        <br />
-                        <label for="post_code">Post Code</label>
-                        <input type="text" name="post_code" required />
-                        <input type="hidden" name="type" value="shipping" />
-                        <button type="submit">Go To confirmation</button>
-                    </form>
-                </div>
+    <main class="flex-grow">
+        <div class="flex justify-center m-4">
+            <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+                <p class="text-6xl mb-8 text-center">Checkout</p>
+                <form action="{{ route('checkout.saveAddress') }}" method="post" class="space-y-4">
+                    @csrf
+                    <div>
+                        <label for="street_address" class="block text-sm font-medium text-gray-700">Street Address</label>
+                        <input type="text" name="street_address" id="street_address" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <div>
+                        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                        <input type="text" name="city" id="city" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <div>
+                        <label for="county" class="block text-sm font-medium text-gray-700">County</label>
+                        <input type="text" name="county" id="county" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <div>
+                        <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                        <input type="text" name="country" id="country" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <div>
+                        <label for="post_code" class="block text-sm font-medium text-gray-700">Post Code</label>
+                        <input type="text" name="post_code" id="post_code" required class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    </div>
+                    <input type="hidden" name="type" value="shipping" />
+                    <div>
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Go To Confirmation</button>
+                    </div>
+                </form>
             </div>
-        </main>
+        </div>
+    </main>
 
-        @include('layouts.footer')
-    </body>
+    @include('layouts.footer')
+</body>
 </html>
