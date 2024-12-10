@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <body>
         @include('layouts.navbar')
 
@@ -54,7 +56,7 @@
                 </div>
             </section>
 
-            <section class="py-12">
+            <div class="py-12">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-2xl font-bold text-orange-900 mb-6">
                         Shop our products by category
@@ -179,12 +181,17 @@
                                     </div>
                                 </div>
                             </button>
+
                         </div>
                     </form>
                 </div>
-            </section>
-        </main>
+            </div>
 
-        @include('layouts.footer')
+            <!-- finally fixed footer issue by using a div -->
+            <div>
+                @include('layouts.footer')
+            </div>
+
+        </main>
     </body>
 </html>
