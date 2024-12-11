@@ -11,6 +11,15 @@
         @include('layouts.navbar')
         
         <main>
+            @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <!-- title -->
         <section class="bg-yellow-50 text-center py-16">
             <h1 class="text-4xl font-bold text-orange-950">Get in Touch</h1>
@@ -47,7 +56,7 @@
                         @csrf
                         <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
                         <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
-                        <textarea name="enquiry" placeholder="Your Message" class="w-full p-3 mb-4 border border-gray-300 rounded" rows="4" required></textarea>
+                        <textarea name="enquiry" placeholder="Your Message (max 500 characters)" class="w-full p-3 mb-4 border border-gray-300 rounded" rows="4" required></textarea>
                         <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-500">Submit</button>
                     </form>
                 </div>
