@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('enquiries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('name');
+            $table->string('email_address')->unique();;
             $table->string('enquiry');
             $table->timestamps();
         });

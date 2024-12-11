@@ -43,10 +43,11 @@
                     <p class="text-gray-600 mb-4">Fill out the form below, and we'll get back to you as soon as possible.</p>
                         
                     <!-- contact form -->
-                    <form action="/submit-form" method="POST" id="contact-us-form">
+                    <form action="{{ route('contact.store') }}" method="POST" id="contact-us-form">
+                        @csrf
                         <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
-                        <input type="email" name="email" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
-                        <textarea name="message" placeholder="Your Message" class="w-full p-3 mb-4 border border-gray-300 rounded" rows="4" required></textarea>
+                        <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded" required>
+                        <textarea name="enquiry" placeholder="Your Message" class="w-full p-3 mb-4 border border-gray-300 rounded" rows="4" required></textarea>
                         <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-500">Submit</button>
                     </form>
                 </div>
@@ -65,7 +66,7 @@
 
 
             <!-- javascript for the pop-up -->
-            <script>
+            <!-- <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     const form = document.getElementById('contact-us-form');
                     const popupOverlay = document.getElementById('popupOverlay');
@@ -103,7 +104,7 @@
                         }
                     });
                 });
-            </script>
+            </script> -->
         </main>
         @include('layouts.footer')
     </body>

@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enquiries extends Model
 {
+
+    protected $table = 'enquiries';
     //
     protected $fillable = [
-        'user_id',
+        'name',
+        'email_address',
         'enquiry',
     ];
 

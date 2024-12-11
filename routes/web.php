@@ -85,4 +85,5 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.saveAddress');
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
 
-    Route::get('contact',[ContactController::class,'view'])->name('contact');
+    Route::get('contact', [ContactController::class, 'view'])->name('contact');
+    Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
