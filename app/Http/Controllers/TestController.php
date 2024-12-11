@@ -15,10 +15,7 @@ class TestController extends Controller
         return view('home');
     }
 
-    public function contact(){
-        return view('contact.contact');
-    }
-
+    
     public function products(){
         return view('products.products');
     }

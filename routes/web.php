@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\BasketController;
 
@@ -22,7 +23,6 @@ Route::get('test', [TestController::class, 'test'])->name('test');
 Route::get('home', [TestController::class, 'home'])->name('home');
 
 //Route::get('products', [TestController::class, 'products'])->name('products');
-Route::get('contact', [TestController::class, 'contact'])->name('contact');
 
 
 
@@ -84,3 +84,5 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.saveAddress');
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
+
+    Route::get('contact',[ContactController::class,'view'])->name('contact');
