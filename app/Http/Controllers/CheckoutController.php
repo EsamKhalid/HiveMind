@@ -71,9 +71,9 @@ class CheckoutController extends Controller
             'user_id' => $user->id,
             'order_date' => now(),
             'order_status' => 'pending',
-            'total_amount' => $total_amount,
+            'total_amount' => $basket->total_amount,
             'payment_method' => 'card',
-            'amount_paid' => $total_amount,
+            'amount_paid' => $basket->$total_amount,
             'payment_date' => now(),
         ]);
 
@@ -84,6 +84,12 @@ class CheckoutController extends Controller
                 'quantity' => $order_item->quantity,
 
             ]);
+
+        $basket = Basket::where('user_id', $user->id)->first();
+
+        BasketItems::where('basket_id', $basket->id)->delete();
+
+        $basket->delete();
 
 
         return redirect()->route('checkout.confirmation');

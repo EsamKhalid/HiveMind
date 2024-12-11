@@ -63,7 +63,7 @@ class OrderController extends Controller
     $orders = Order::with(['orderItems.products'])
         ->where('user_id', auth()->id()) 
         ->get(); 
-        
+
     return view('orders.orders', ['orders' => $orders]);
     }
 } 

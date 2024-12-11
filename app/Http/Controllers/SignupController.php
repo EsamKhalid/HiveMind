@@ -30,7 +30,7 @@ class SignupController extends Controller{
             'password' => bcrypt($request->password),
         ]);
 
-        return redirect()->route('account')->with('success', 'Signup successful!');
+        return redirect()->route('login')->with('success', 'Signup successful!');
     }
 }
 

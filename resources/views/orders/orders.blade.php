@@ -60,11 +60,19 @@
                             <ul>
                                 @foreach ($order->orderItems as $item)
                                 <li class="mb-2">
-                                    <a href="{{route('products.show', $item->products->id)}}">
-                                    <strong class="hover: underline">{{ $item->products->product_name }}</strong></a><br/>
+
+                                    <strong
+                                        >{{ $item->products->product_name }}</strong
+                                    ><br />
                                     Description:
-                                    {{ $item->products->description }}<br/>
-                                    Quantity: {{ $item->quantity }}<br/>
+                                    {{ $item->products->description
+
+
+
+
+                                    }}<br />
+                                    Quantity: {{ $item->quantity }}<br />
+
                                     Price: £{{ number_format($item->products->price, 2) }}
                                 </li>
                                 @endforeach
