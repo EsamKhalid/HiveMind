@@ -16,14 +16,18 @@ class BasketController extends Controller
     //
     public function view()
     {
+        //check if user is logged in
         $user = Auth::user();
 
+        //if not logged in, redirect to login page
         if (!$user) {
-            return "user not found";
+            return redirect()->route('login');
         }
 
+        //creates basket object from the database using the user id
         $basket = Basket::where('user_id', $user->id)->first();
 
+        //if there is no basket, it creates it and adds to the database
         if (!$basket) {
             $basket = Basket::Create([
                 'user_id' => $user->id,

@@ -10,9 +10,24 @@
     <main>
 
         <div class="flex m-4">
-            <div class="w-[80%]">
+            <div class="w-full">
 
                 <p class="text-6xl">Basket</p>
+                <div class="flex border w-full h-[100px] bg-red-50">
+                    <div class="bg-white w-full"></div>
+                    <div class="bg-amber w-full">
+                        @if(count($basketItems) === 0)
+                            <p>no Items in basket</p>
+                        @else
+                        <ul>
+                            @foreach($basketItems as $basketItem)
+                            <div class="bg-white mt-2 mx-2 rounded"><p>{{$basketItem->product_name}}</p></div>
+                            
+                            @endforeach
+                        </ul>
+                        @endif
+                    </div>
+                </div>
                 @if(count($basketItems) === 0)
                     <p>No items in basket</p>
                 @else
@@ -20,7 +35,7 @@
                         class="bg-yellow-50 text-3xl text-grey-300 rounded-lg ml-5 mt-10 mr-5 mb-10 flex-wrap min-w[160px]  md:p-10 lg:relative]">
                         @foreach($basketItems as $basketItem)
 
-                            <li class="bg-yellow-200 rounded-2xl mb-10 p-10 flex justify-between items-center xs:p-0 w-[100%]">
+                            <!-- <li class="bg-yellow-200 rounded-2xl mb-10 p-10 flex justify-between items-center xs:p-0 w-[100%]">
                                 <div class="flex justify-between">
                                     <img src="https://via.placeholder.com/130" />
                                     <span class="item-img-text-link text-wrap ml-3 max-w-[50%] my-auto mx-[10%]">
@@ -28,9 +43,6 @@
                                         <p class="text-2xl leading-8 w-[100%]">Price: {{$basketItem->price}}</p>
                                         <p class="text-2xl leading-8 w-[100%]">Quantity: {{$basketItem->quantity}}</p>
                                     </span>
-
-
-
                                 </div>
                                 <div>
                                     <form action="{{ route('basket.updateQuantity') }}" method="post">
@@ -50,7 +62,7 @@
 
 
                                 </div>
-                            </li>
+                            </li> -->   
 
                         @endforeach
                 @endif
