@@ -77,6 +77,69 @@ class BasketController extends Controller
         //return view('basket.basket');
     }
 
+
+
+    public function increaseQuantity(Request $request){
+        $user = Auth::user();
+
+        $productId = $request->input('product_id');
+
+        $basket = Basket::where('user_id', $user->id)->first();
+
+        $basketItems = BasketItems::where('basket_id', $basket->id)
+            ->join('products', 'basket_items.product_id', '=', 'products.id')
+            ->select(
+                'basket_items.*', // Select all basket item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+        $basketItem = $basketItems->where('product_id', $productId)->first();
+
+        $basketItem->quantity += 1;
+        $basketItem->save();
+
+    
+        //redirect back to basket page
+        return redirect()->route('basket.view');
+    }
+
+    public function decreaseQuantity(Request $request){
+        $user = Auth::user();
+
+        $productId = $request->input('product_id');
+
+        $basket = Basket::where('user_id', $user->id)->first();
+
+        $basketItems = BasketItems::where('basket_id', $basket->id)
+            ->join('products', 'basket_items.product_id', '=', 'products.id')
+            ->select(
+                'basket_items.*', // Select all basket item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+        $basketItem = $basketItems->where('product_id', $productId)->first();
+
+         if($basketItem->quantity == 1){
+            $basketItem->delete();
+        }
+        else{
+            //reduce quant by 1
+             $basketItem->quantity -= 1;
+             $basketItem->save();
+        }
+
+    
+        //redirect back to basket page
+        return redirect()->route('basket.view');
+    }
+
+
+
+
     public function updateQuantity(Request $request)
     {
         $user = Auth::user();

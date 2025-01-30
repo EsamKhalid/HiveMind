@@ -30,7 +30,9 @@
                                     <p>{{$basketItem->product_name}}</p>
 
                                     <form
-                                        action="{{ route('basket.remove') }}"
+                                        action="{{
+                                            route('basket.decreaseQuantity')
+                                        }}"
                                         method="post"
                                         class="flex"
                                     >
@@ -40,15 +42,32 @@
                                             name="product_id"
                                             value="{{ $basketItem->product_id }}"
                                         />
+
                                         <button
                                             class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
                                             type="submit"
                                         >
                                             -
                                         </button>
-                                        <p class="m-4 h-fit mt-3">
-                                            {{$basketItem->quantity}}
-                                        </p>
+                                    </form>
+                                    <p class="m-4 h-fit mt-3">
+                                        {{$basketItem->quantity}}
+                                    </p>
+
+                                    <form
+                                        action="{{
+                                            route('basket.increaseQuantity')
+                                        }}"
+                                        method="post"
+                                        class="flex"
+                                    >
+                                        @csrf
+                                        <input
+                                            type="hidden"
+                                            name="product_id"
+                                            value="{{ $basketItem->product_id }}"
+                                        />
+
                                         <button
                                             class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
                                             type="submit"
