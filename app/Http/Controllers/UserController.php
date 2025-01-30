@@ -23,7 +23,11 @@ class UserController extends Controller
     }
 
 
-    public function details(){
-      return view('account.details');
+    public function settings(){
+      return view('user.settings');
+    }
+
+    public function terms(){
+      return view('user.terms');
     }
 }

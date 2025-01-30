@@ -90,3 +90,5 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
     Route::get('details', [DetailsController::class, 'view'])->name('user.details');
+    Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
+    Route::get('settings', [UserController::class, 'settings'])->name('user.settings');

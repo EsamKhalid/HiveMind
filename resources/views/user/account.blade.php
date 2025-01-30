@@ -46,12 +46,14 @@
                                 >
                             </li>
                             <li>
-                                <a href="{{ route('products') }}"
+                                <a href="{{ route('user.terms') }}"
                                     >Terms & Conditions</a
                                 >
                             </li>
                             <li>
-                                <a href="{{ route('products') }}">Settings</a>
+                                <a href="{{ route('user.settings') }}"
+                                    >Settings</a
+                                >
                             </li>
                             <li><a href="{{ route('logout') }}">Log out</a></li>
                         </ul>
