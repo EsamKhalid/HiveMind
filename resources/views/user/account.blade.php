@@ -41,7 +41,7 @@
                             <li><a href="{{ route('orders') }}">Orders</a></li>
                             <!-- these pages aren't implemented yet, redirects to products page for now -->
                             <li>
-                                <a href="{{ route('account.details') }}"
+                                <a href="{{ route('user.details') }}"
                                     >Details</a
                                 >
                             </li>
