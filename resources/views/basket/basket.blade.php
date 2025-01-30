@@ -10,72 +10,76 @@
             <div class="flex m-4">
                 <div class="w-full">
                     <p class="text-6xl">Basket</p>
-                    <div class="flex border w-full h-[100px] bg-red-50">
+                    <div class="flex border w-full bg-red-50">
                         <div class="bg-white w-full"></div>
-                        <div class="bg-amber w-full justify-between">
+                        <div class="bg-amber w-[40%] min-w-fit justify-between">
                             @if(count($basketItems) === 0)
                             <p>no Items in basket</p>
                             @else
                             <ul>
                                 @foreach($basketItems as $basketItem)
                                 <div
-                                    class="bg-white mt-2 mx-2 rounded flex justify-between text-center align-middle"
+                                    class="bg-white mt-2 mx-2 rounded flex justify-between text-center items-center p-2"
                                 >
                                     <img
-                                        class="size-[125px]"
+                                        class="size-[125px] rounded"
                                         src="{{
                                             asset('../Images/placeholder.avif')
                                         }}"
                                     />
-                                    <p>{{$basketItem->product_name}}</p>
 
-                                    <form
-                                        action="{{
-                                            route('basket.decreaseQuantity')
-                                        }}"
-                                        method="post"
-                                        class="flex"
-                                    >
-                                        @csrf
-                                        <input
-                                            type="hidden"
-                                            name="product_id"
-                                            value="{{ $basketItem->product_id }}"
-                                        />
-
-                                        <button
-                                            class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                            type="submit"
-                                        >
-                                            -
-                                        </button>
-                                    </form>
-                                    <p class="m-4 h-fit mt-3">
-                                        {{$basketItem->quantity}}
+                                    <p class="text-2xl text-cente h-fit">
+                                        {{$basketItem->product_name}}
                                     </p>
 
-                                    <form
-                                        action="{{
-                                            route('basket.increaseQuantity')
-                                        }}"
-                                        method="post"
-                                        class="flex"
-                                    >
-                                        @csrf
-                                        <input
-                                            type="hidden"
-                                            name="product_id"
-                                            value="{{ $basketItem->product_id }}"
-                                        />
-
-                                        <button
-                                            class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                            type="submit"
+                                    <div class="flex">
+                                        <form
+                                            action="{{
+                                                route('basket.decreaseQuantity')
+                                            }}"
+                                            method="post"
+                                            class="flex"
                                         >
-                                            +
-                                        </button>
-                                    </form>
+                                            @csrf
+                                            <input
+                                                type="hidden"
+                                                name="product_id"
+                                                value="{{ $basketItem->product_id }}"
+                                            />
 
+                                            <button
+                                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                type="submit"
+                                            >
+                                                -
+                                            </button>
+                                        </form>
+                                        <p class="m-4 h-fit mt-3">
+                                            {{$basketItem->quantity}}
+                                        </p>
+
+                                        <form
+                                            action="{{
+                                                route('basket.increaseQuantity')
+                                            }}"
+                                            method="post"
+                                            class="flex"
+                                        >
+                                            @csrf
+                                            <input
+                                                type="hidden"
+                                                name="product_id"
+                                                value="{{ $basketItem->product_id }}"
+                                            />
+
+                                            <button
+                                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                type="submit"
+                                            >
+                                                +
+                                            </button>
+                                        </form>
+                                    </div>
                                     <form
                                         action="{{ route('basket.remove') }}"
                                         method="post"
@@ -100,15 +104,7 @@
                             @endif
                         </div>
                     </div>
-                    @if(count($basketItems) === 0)
-                    <p>No items in basket</p>
-                    @else
-                    <ul
-                        class="bg-yellow-50 text-3xl text-grey-300 rounded-lg ml-5 mt-10 mr-5 mb-10 flex-wrap min-w[160px] md:p-10 lg:relative]"
-                    >
-                        @foreach($basketItems as $basketItem) @endforeach
-                    </ul>
-                    @endif
+
                     <div class="flex justify-end">
                         <h2>Total Price: {{$basket->total_amount}}</h2>
                         <a></a>
