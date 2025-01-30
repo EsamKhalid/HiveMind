@@ -10,16 +10,107 @@
             <div class="flex m-4">
                 <div class="w-full">
                     <p class="text-6xl">Basket</p>
-                    <div class="flex border w-full bg-red-50">
-                        <div class="bg-white w-full"></div>
-                        <div class="bg-amber w-[40%] min-w-fit justify-between">
+                    <div class="flex border w-full justify-center">
+                        <div class="bg-white min-w-[20%] px-5">
+                            <form
+                                action="{{ route('checkout.saveAddress') }}"
+                                method="post"
+                                class="space-y-4"
+                            >
+                                @csrf
+                                <div>
+                                    <label
+                                        for="street_address"
+                                        class="block text-sm font-medium text-gray-700"
+                                        >Street Address</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="street_address"
+                                        id="street_address"
+                                        required
+                                        class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="city"
+                                        class="block text-sm font-medium text-gray-700"
+                                        >City</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="city"
+                                        id="city"
+                                        required
+                                        class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="county"
+                                        class="block text-sm font-medium text-gray-700"
+                                        >County</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="county"
+                                        id="county"
+                                        required
+                                        class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="country"
+                                        class="block text-sm font-medium text-gray-700"
+                                        >Country</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="country"
+                                        id="country"
+                                        required
+                                        class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="post_code"
+                                        class="block text-sm font-medium text-gray-700"
+                                        >Post Code</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="post_code"
+                                        id="post_code"
+                                        required
+                                        class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                    />
+                                </div>
+                                <input
+                                    type="hidden"
+                                    name="type"
+                                    value="shipping"
+                                />
+                                <div>
+                                    <button
+                                        type="submit"
+                                        class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                    >
+                                        Go To Confirmation
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="bg-amber min-w-fit justify-between">
                             @if(count($basketItems) === 0)
                             <p>no Items in basket</p>
                             @else
                             <ul>
                                 @foreach($basketItems as $basketItem)
                                 <div
-                                    class="bg-white mt-2 mx-2 rounded flex justify-between text-center items-center p-2"
+                                    class="bg-white mt-2 mx-2 rounded flex justify-between text-center items-center p-2 [&_*]:pr-3"
                                 >
                                     <img
                                         class="size-[125px] rounded"
