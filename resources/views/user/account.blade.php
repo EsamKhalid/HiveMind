@@ -13,7 +13,7 @@
             >
                 <!-- want to add customer's name when they log in -->
                 <h1 class="text-6xl font-bold text-orange-950 pt-10 mb-20">
-                    Hi [insert name]
+                    Hi {{ $user->first_name}}
                 </h1>
 
                 <div class="flex justify-between">
@@ -41,7 +41,9 @@
                             <li><a href="{{ route('orders') }}">Orders</a></li>
                             <!-- these pages aren't implemented yet, redirects to products page for now -->
                             <li>
-                                <a href="{{ route('products') }}">Details</a>
+                                <a href="{{ route('account.details') }}"
+                                    >Details</a
+                                >
                             </li>
                             <li>
                                 <a href="{{ route('products') }}"
