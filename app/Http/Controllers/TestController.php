@@ -31,4 +31,8 @@ class TestController extends Controller
     // public function products(){
     //     return view('products.products');
     // }
+
+    public function faq() { 
+        return view('faq.faq'); 
+    }
 }

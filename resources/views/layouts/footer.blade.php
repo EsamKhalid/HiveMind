@@ -12,6 +12,7 @@
             <p class="text-lg">Phone: +353-123-4567</p>
             <p class="text-lg">Email: admin@hivemind.com</p>
             <p class="text-lg">Have an enquiry? Fill in a <a href="{{ route('contact') }}" class="text-lg text-blue-500 hover:underline">Contact Form</a>
+            <p class="text-lg">Check out our <a href="{{ route('faq') }}" class="text-lg text-blue-500 hover:underline">FAQs</a> for more information.</p>
             </p>
         </div>
         <!-- adding second third of footer (middle), includes donation button -->
