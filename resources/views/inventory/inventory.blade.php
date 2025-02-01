@@ -14,7 +14,7 @@
         <h2 class="absolute inset-0 text-9xl font-bold text-gray-300 opacity-20"> 
             INVENTORY
         </h2>
-        <h2 class="relative text-4xl font-bold text-gray-800 translate-y-10">Inventory</h2>
+        <h2 class="relative text-4xl font-bold text-gray-800 translate-y-10">INVENTORY</h2>
     </div>
 
     <div class="min-h-screen flex items-center justify-center">
