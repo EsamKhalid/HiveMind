@@ -29,8 +29,7 @@
                 <button
                     type="button"
                     onclick="TOGGLE_SEARCH()"
-                    class="text-white hover:text-gray-200"
-                >
+                    class="text-red-700 hover:text-red-500">
                     <i class="fas fa-search fa-xl"></i>
                 </button>
             </div>
