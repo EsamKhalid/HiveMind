@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 10, 2);
             $table->text('ingredients');
-            $table->text('directions');
-            $table->text('additional_info');
+            $table->text('directions')->nullable();
+            $table->text('additional_info')->nullable();
             $table->timestamps();
         });
   
