@@ -10,7 +10,7 @@
             <div class="flex m-4">
                 <div class="w-full">
                     <p class="text-6xl">Basket</p>
-                    <div class="flex border w-full justify-center">
+                    <div class="flex border w-full justify-center min-w-fit">
                         <div class="bg-white min-w-[20%] px-5">
                             <form
                                 action="{{ route('checkout.saveAddress') }}"
@@ -98,14 +98,27 @@
                                         type="submit"
                                         class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
                                     >
-                                        Go To Confirmation
+                                        Save Address
                                     </button>
                                 </div>
+                                <!-- <div>
+                                    <button
+                                        type="submit"
+                                        class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                    >
+                                        Go To Confirmation
+                                    </button>
+                                </div> -->
                             </form>
                         </div>
                         <div class="bg-amber min-w-fit justify-between">
                             @if(count($basketItems) === 0)
-                            <p>no Items in basket</p>
+
+                            <div
+                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit text-center w-[400px] m-5"
+                            >
+                                No items in basket
+                            </div>
                             @else
                             <ul>
                                 @foreach($basketItems as $basketItem)
