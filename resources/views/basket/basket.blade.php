@@ -10,7 +10,7 @@
             <div class="flex m-4">
                 <div class="w-full">
                     <p class="text-6xl">Basket</p>
-                    <div class="flex border w-full justify-center min-w-fit">
+                    <div class="flex w-full justify-center min-w-fit">
                         <div class="bg-white min-w-[20%] px-5">
                             <form
                                 action="{{ route('checkout.saveAddress') }}"
