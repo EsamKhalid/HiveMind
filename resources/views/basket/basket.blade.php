@@ -115,7 +115,7 @@
                             @if(count($basketItems) === 0)
 
                             <div
-                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit text-center w-[400px] m-5"
+                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md h-fit text-center w-[400px] m-5"
                             >
                                 No items in basket
                             </div>
