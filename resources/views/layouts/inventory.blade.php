@@ -7,9 +7,6 @@
     <div class="overflow-hidden">
         <nav class="bg-yellow-500 p-4 flex justify-between items-center">
             <a href="#" class="flex items-center hover:text-gray-200 duration-200">
-
-                <!-- MAJORITY OF THIS FUNCTIONALITY IS TAKEN FROM OTHER LAYOUT FILES --->
-
                 <img
                     src="{{ asset('../Images/HiveMind Logo.png') }}"
                     alt="HiveMind Logo"
@@ -17,13 +14,14 @@
                 />
             </a>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-4 relative">
                 <input
                     type="text"
                     name="search"
                     id="SEARCH-IO"
                     placeholder="Search"
-                    class="w-0 p-0 opacity-0 transition-all duration-300 ease-in-out bg-white text-gray-800 rounded-full shadow-lg focus:outline-none"
+                    class="absolute right-20 w-0 min-w-0 p-0 opacity-0 transition-all duration-300 ease-in-out bg-white text-gray-1000 rounded-full shadow-lg focus:outline-none"
+                    oninput="ADJUST_SEARCH_WIDTH()"
                 />
 
                 <button
@@ -35,12 +33,16 @@
             </div>
         </nav>
     </div>
+
     <script>    
     function TOGGLE_SEARCH() 
     {
         const SEARCH_IO = document.getElementById('SEARCH-IO');
-        const HIDDEN = SEARCH_IO.classList.toggle('w-48');
+        const HIDDEN = SEARCH_IO.classList.toggle('w-48');          // SCALE THE WIDTH ON EVENT
         
+        // A BUNCH OF ON-EVENT TOGGLES TO CHANGE ELEMENTS
+        // OF THE SEARCH ICON SUCH AS WIDTH, OPACITY AND POSITION
+
         SEARCH_IO.classList.toggle('w-0', !HIDDEN);
         SEARCH_IO.classList.toggle('p-0', !HIDDEN);
         SEARCH_IO.classList.toggle('opacity-0', !HIDDEN);
@@ -49,5 +51,22 @@
         
         if (HIDDEN) SEARCH_IO.focus();
     }
-</script>
+
+    // THIS COULD PROBABLY BE MADE MORE SCALIBLE FOR OBTUSE
+    // RESOLUTIONS AND ASPECT RATIOS, BUT IT SERVES ITS PURPOSE FOR NOW
+
+    function ADJUST_SEARCH_WIDTH() 
+    {
+        const SEARCH_IO = document.getElementById('SEARCH-IO');
+        const LENGTH = SEARCH_IO.value.length;
+        const BASE_WIDTH = 150; 
+        const MAX = 550;
+
+        let NEW_WIDTH = BASE_WIDTH + LENGTH * 8;
+        NEW_WIDTH = Math.min(NEW_WIDTH, MAX);
+
+        SEARCH_IO.style.width = `${NEW_WIDTH}px`;
+    }
+
+    </script>
 </body>
