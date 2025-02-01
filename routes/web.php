@@ -84,7 +84,7 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     //Route::delete('/basket/remove/{productID}',[BasketController::class, 'removeFromBasket'])->name('basket.remove');
     Route::get('checkout', [CheckoutController::class, 'view'])->name('checkout.view');  
 
-    Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.saveAddress');
+    Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact');

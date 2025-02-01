@@ -68,6 +68,7 @@ class CheckoutController extends Controller
             $address->county = $request->county;
             $address->country = $request->country;
             $address->post_code = $request->post_code;
+            $address->save();
         }
 
     

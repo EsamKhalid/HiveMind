@@ -13,7 +13,7 @@
                     <div class="flex w-full justify-center min-w-fit">
                         <div class="bg-white min-w-[20%] px-5">
                             <form
-                                action="{{ route('checkout.saveAddress') }}"
+                                action="{{ route('checkout.storeAddress') }}"
                                 method="post"
                                 class="space-y-4"
                             >
