@@ -11,6 +11,8 @@ use App\Models\Products;
 
 use App\Models\Users;
 
+use App\Models\Addresses;
+
 class BasketController extends Controller
 {
     //
@@ -69,9 +71,14 @@ class BasketController extends Controller
         //      'products.price'
         //     )->get();
 
+
+
+       $address = Addresses::where('user_id',$user->id)->first();
+
         return view('basket.basket', [
             'basketItems' => $basketItems,
-            'basket' => $basket
+            'basket' => $basket,
+            'address' => $address
         ]);
         //return view('basket.basket', ['basket' => $basket]);
         //return view('basket.basket');

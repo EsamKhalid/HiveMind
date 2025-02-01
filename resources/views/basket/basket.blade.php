@@ -28,6 +28,7 @@
                                         type="text"
                                         name="street_address"
                                         id="street_address"
+                                        value="{{$address->street_address}}"
                                         required
                                         class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                     />
@@ -42,6 +43,7 @@
                                         type="text"
                                         name="city"
                                         id="city"
+                                        value="{{$address->city}}"
                                         required
                                         class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                     />
@@ -56,6 +58,7 @@
                                         type="text"
                                         name="county"
                                         id="county"
+                                        value="{{$address->county}}"
                                         required
                                         class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                     />
@@ -70,6 +73,7 @@
                                         type="text"
                                         name="country"
                                         id="country"
+                                        value="{{$address->country}}"
                                         required
                                         class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                     />
@@ -84,6 +88,7 @@
                                         type="text"
                                         name="post_code"
                                         id="post_code"
+                                        value="{{$address->post_code}}"
                                         required
                                         class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                     />
