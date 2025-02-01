@@ -1,57 +1,31 @@
 <!DOCTYPE html>
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-
-    <!-- TFW YOU TRY TO BE SMART AND ADD THIS TO ANOTHER CSS FILE --->
-     <!-- BUT VITE SAYS NUH UH AND BREAKS EVERYTHING --->
-
-    <style>
-        .search-input 
-        {
-            width: 0;
-            padding: 0;
-            visibility: hidden;
-            transition: all 0.3s ease-in-out;
-        }
-        
-        .search-input.active 
-        {
-            width: 12rem;
-            padding: 0.5rem 1rem;
-            visibility: visible;
-        }
-        
-        .navbar 
-        {
-            background-color: #FFC107;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div class="overflow-hidden">
-        <nav class="navbar">
+        <nav class="bg-yellow-500 p-4 flex justify-between items-center">
             <a href="#" class="flex items-center hover:text-gray-200 duration-200">
 
-            <!-- MAJORITY OF THIS FUNCTIONALITY IS TAKEN FROM OTHER LAYOUT FILES --->
+                <!-- MAJORITY OF THIS FUNCTIONALITY IS TAKEN FROM OTHER LAYOUT FILES --->
 
-            <img
+                <img
                     src="{{ asset('../Images/HiveMind Logo.png') }}"
                     alt="HiveMind Logo"
                     class="h-12 w-auto mr-3"
                 />
             </a>
-            
+
             <div class="flex items-center space-x-4">
                 <input
                     type="text"
                     name="search"
+                    id="SEARCH-IO"
                     placeholder="Search"
-                    class="search-input bg-white text-gray-800 placeholder-gray-500 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-700"
+                    class="w-0 p-0 opacity-0 transition-all duration-300 ease-in-out bg-white text-gray-800 rounded-full shadow-lg focus:outline-none"
                 />
+
                 <button
                     type="button"
                     onclick="TOGGLE_SEARCH()"
@@ -62,18 +36,19 @@
             </div>
         </nav>
     </div>
-    <script>
-
-        function TOGGLE_SEARCH() 
-        {
-            const SEARCH = document.querySelector('.search-input');
-            SEARCH.classList.toggle('active');
-
-            if (SEARCH.classList.contains('active')) 
-            {
-                SEARCH.focus();
-            }
-        }
-
-    </script>
+    <script>    
+    function TOGGLE_SEARCH() 
+    {
+        const SEARCH_IO = document.getElementById('SEARCH-IO');
+        const HIDDEN = SEARCH_IO.classList.toggle('w-48');
+        
+        SEARCH_IO.classList.toggle('w-0', !HIDDEN);
+        SEARCH_IO.classList.toggle('p-0', !HIDDEN);
+        SEARCH_IO.classList.toggle('opacity-0', !HIDDEN);
+        SEARCH_IO.classList.toggle('p-2', HIDDEN);
+        SEARCH_IO.classList.toggle('opacity-100', HIDDEN);
+        
+        if (HIDDEN) SEARCH_IO.focus();
+    }
+</script>
 </body>
