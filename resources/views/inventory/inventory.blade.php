@@ -10,14 +10,17 @@
 <body>
     @include('layouts.inventory')
 
+    <div class="text-center mt-4">
+        <h2 class="text-4xl font-bold text-gray-800">Inventory</h2>
+    </div>
+
     <div class="min-h-screen flex items-center justify-center">
-        <div class="text-center">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Inventory</h2>
+        <div class="container mx-auto px-4">
             <div class="grid grid-cols-4 gap-10 bg-gray-200 p-6 rounded-lg shadow-md max-w-fit mx-auto" id="INVENTORY">
             </div>
         </div>
     </div>
-
+    
     <script>
         
         // THE FOLLOWING WOULD DO EXACTLY AS IT WOULD IN HTML
