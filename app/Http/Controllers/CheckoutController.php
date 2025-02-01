@@ -35,8 +35,14 @@ class CheckoutController extends Controller
             'post_code' => 'required',
             'type' => 'required',
         ]);
+        
 
-        Addresses::create([
+        //get the address of the user, returns null if they dont have an address
+        $address = Addresses::where('user_id',$user->id)->first();
+
+
+        if($address == null){
+            Addresses::create([
             'user_id' => $user->id,
             'street_address' => $request->street_address,
             'city' => $request->city,
@@ -46,50 +52,57 @@ class CheckoutController extends Controller
             'type' => "shipping",
         ]);
 
-        Addresses::create([
-            'user_id' => $user->id,
-            'street_address' => $request->street_address,
-            'city' => $request->city,
-            'county' => $request->county,
-            'country' => $request->country,
-            'post_code' => $request->post_code,
-            'type' => "billing",
-        ]);
+        // Addresses::create([
+        //     'user_id' => $user->id,
+        //     'street_address' => $request->street_address,
+        //     'city' => $request->city,
+        //     'county' => $request->county,
+        //     'country' => $request->country,
+        //     'post_code' => $request->post_code,
+        //     'type' => "billing",
+        // ]);
+        }
+        else{
+            $address->street_address = $request->street_address;
+            $address->city = $request->city;
+            $address->county = $request->county;
+            $address->country = $request->country;
+            $address->post_code = $request->post_code;
+        }
 
+    
+        // $basketItems = BasketItems::where('basket_id', $basket->id)
+        //     ->join('products', 'basket_items.product_id', '=', 'products.id')
+        //     ->select(
+        //         'basket_items.*',
+        //         'products.product_name',
+        //         'products.description',
+        //         'products.price'
+        //     )->get();
 
+        // $order = Order::create([
+        //     'user_id' => $user->id,
+        //     'order_date' => now(),
+        //     'order_status' => 'pending',
+        //     'total_amount' => $basket->total_amount,
+        //     'payment_method' => 'card',
+        //     'amount_paid' => $basket->$total_amount,
+        //     'payment_date' => now(),
+        // ]);
 
-        $basketItems = BasketItems::where('basket_id', $basket->id)
-            ->join('products', 'basket_items.product_id', '=', 'products.id')
-            ->select(
-                'basket_items.*',
-                'products.product_name',
-                'products.description',
-                'products.price'
-            )->get();
+        // foreach ($basketItems as $order_item)
+        //     OrderItem::create([
+        //         'order_id' => $order->id,
+        //         'product_id' => $order_item->product_id,
+        //         'quantity' => $order_item->quantity,
 
-        $order = Order::create([
-            'user_id' => $user->id,
-            'order_date' => now(),
-            'order_status' => 'pending',
-            'total_amount' => $basket->total_amount,
-            'payment_method' => 'card',
-            'amount_paid' => $basket->$total_amount,
-            'payment_date' => now(),
-        ]);
+        //     ]);
 
-        foreach ($basketItems as $order_item)
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $order_item->product_id,
-                'quantity' => $order_item->quantity,
+        // $basket = Basket::where('user_id', $user->id)->first();
 
-            ]);
+        // BasketItems::where('basket_id', $basket->id)->delete();
 
-        $basket = Basket::where('user_id', $user->id)->first();
-
-        BasketItems::where('basket_id', $basket->id)->delete();
-
-        $basket->delete();
+        // $basket->delete();
 
 
         return redirect()->route('basket.view');
