@@ -242,7 +242,10 @@
                                         class="bg-white text-grey-800 py-2 mx-3 rounded-lg shadow-lg hover:text-amber w-full"
                                     >
                                         @csrf
-                                        <a href="{{ route('checkout.view') }}"
+                                        <a
+                                            href="{{
+                                                route('checkout.checkout')
+                                            }}"
                                             >Checkout</a
                                         >
                                     </button>
