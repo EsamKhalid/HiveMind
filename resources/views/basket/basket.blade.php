@@ -119,7 +119,7 @@
                                 </div> -->
                                 </form>
                             </div>
-                            <div class="bg-amber min-w-fit justify-between">
+                            <div class="min-w-fit justify-between h-[90%]">
                                 @if(count($basketItems) === 0)
 
                                 <div
@@ -142,7 +142,7 @@
                                             }}"
                                         />
 
-                                        <p class="text-2xl text-cente h-fit">
+                                        <p class="text-2xl text-center h-fit">
                                             {{$basketItem->product_name}}
                                         </p>
 
@@ -220,30 +220,36 @@
                                     </div>
 
                                     @endforeach
-                                </ul>
-                                <div class="">
-                                    <button
-                                        type="Checkout"
-                                        class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    <div
+                                        class="text-2xl p-2 mx-2 bg-white text-grey-800 rounded shadow-md"
                                     >
-                                        @csrf
-                                        <a href="{{ route('checkout.view') }}"
-                                            >Checkout</a
+                                        <h2>
+                                            Subtotal: {{$basket->total_amount}}
+                                        </h2>
+                                        <button
+                                            type="Checkout"
+                                            class="p-2 bg-white text-grey-800 rounded-lg shadow-lg hover:text-amber w-full"
                                         >
-                                    </button>
-                                </div>
+                                            @csrf
+                                            <a
+                                                href="{{
+                                                    route('checkout.view')
+                                                }}"
+                                                >Checkout</a
+                                            >
+                                        </button>
+                                    </div>
+                                </ul>
+
                                 @endif
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex justify-end">
-                        <h2>Total Price: {{$basket->total_amount}}</h2>
-                        <a></a>
-
-                        @if(count($basketItems) === 0)
-                        <p></p>
-                        @else @endif
+                    <div class="flex justify-center">
+                        <div
+                            class="w-1/2 flex-col text-center justify-center"
+                        ></div>
                     </div>
                 </div>
             </div>
