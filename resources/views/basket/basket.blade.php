@@ -10,7 +10,13 @@
             <div class="flex m-4">
                 <div class="w-full">
                     <p class="text-6xl">Basket</p>
+                    <div class="w-full flex justify-center">
+                        @if($errors->any())
+                        <h4 class="text-3xl">{{$errors->first()}}</h4>
+                        @endif</div>
+                    
                     <div class="flex justify-center">
+                        
                         <div
                             class="flex justify-center bg-amber px-5 py-12 w-fit"
                         >
@@ -22,7 +28,7 @@
                                     method="post"
                                     class="space-y-10 h-full"
                                 >
-                                    @csrf
+                                    @csrf @if($address != null)
                                     <div>
                                         <label
                                             for="street_address"
@@ -120,6 +126,105 @@
                                     </button>
                                 </div> -->
                                 </form>
+                                @else
+                                <div>
+                                        <label
+                                            for="street_address"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Street Address</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="street_address"
+                                            id="street_address"
+                                            value="Street Address"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="city"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >City</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="city"
+                                            id="city"
+                                            value="City"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="county"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >County</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="county"
+                                            id="county"
+                                            value="County"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="country"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Country</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="country"
+                                            id="country"
+                                            value="Country"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="post_code"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Post Code</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="post_code"
+                                            id="post_code"
+                                            value="Post Code"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <input
+                                        type="hidden"
+                                        name="type"
+                                        value="shipping"
+                                    />
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                        >
+                                            Save Address
+                                        </button>
+                                    </div>
+                                    <!-- <div>
+                                    <button
+                                        type="submit"
+                                        class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                    >
+                                        Go To Confirmation
+                                    </button>
+                                </div> -->
+                                </form>
+                                @endif
                             </div>
                             <div class="min-w-fit justify-between h-[90%]">
                                 @if(count($basketItems) === 0)

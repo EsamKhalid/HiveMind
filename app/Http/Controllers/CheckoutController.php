@@ -115,6 +115,8 @@ class CheckoutController extends Controller
         $basket = Basket::where('user_id', $user->id)->first();
         $total_amount = 0;
 
+        $address = Addresses::where('user_id',$user->id)->first();
+
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
             ->select(
@@ -123,6 +125,11 @@ class CheckoutController extends Controller
                 'products.description',
                 'products.price'
             )->get();
+
+        
+        if($address == null){
+            return redirect()->route('basket.view')->withErrors(['msg' => ' PLEASE FILL IN ADDRESS']);
+        }
 
         $order = Order::create([
             'user_id' => $user->id,

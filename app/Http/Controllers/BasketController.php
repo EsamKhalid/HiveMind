@@ -75,6 +75,7 @@ class BasketController extends Controller
 
        $address = Addresses::where('user_id',$user->id)->first();
 
+
         return view('basket.basket', [
             'basketItems' => $basketItems,
             'basket' => $basket,
