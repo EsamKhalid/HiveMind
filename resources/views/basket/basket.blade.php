@@ -11,7 +11,9 @@
                 <div class="w-full">
                     <p class="text-6xl">Basket</p>
                     <div class="flex justify-center">
-                        <div class="flex justify-center bg-amber p-5 w-fit">
+                        <div
+                            class="flex justify-center bg-amber px-5 py-12 w-fit"
+                        >
                             <div class="bg-white min-w-[450px] p-5 rounded">
                                 <form
                                     action="{{
@@ -128,60 +130,86 @@
                                     No items in basket
                                 </div>
                                 @else
-                                <ul class="h-full">
-                                    @foreach($basketItems as $basketItem)
-                                    <div
-                                        class="bg-white mx-2 rounded flex justify-between text-center items-center p-2 [&_*]:pr-3 mb-2"
-                                    >
-                                        <img
-                                            class="size-[125px] rounded"
-                                            src="{{
-                                                asset(
-                                                    '../Images/placeholder.avif'
-                                                )
-                                            }}"
-                                        />
-
-                                        <p class="text-2xl text-center h-fit">
-                                            {{$basketItem->product_name}}
-                                        </p>
-
-                                        <div class="flex">
-                                            <form
-                                                action="{{
-                                                    route(
-                                                        'basket.decreaseQuantity'
+                                <div
+                                    class="overflow-y-auto h-[630px] mb-4 rounded"
+                                >
+                                    <ul class="h-full">
+                                        @foreach($basketItems as $basketItem)
+                                        <div
+                                            class="bg-white mx-2 rounded flex justify-between text-center items-center p-2 [&_*]:pr-3 mb-2"
+                                        >
+                                            <img
+                                                class="size-[125px] rounded"
+                                                src="{{
+                                                    asset(
+                                                        '../Images/placeholder.avif'
                                                     )
                                                 }}"
-                                                method="post"
-                                                class="flex"
-                                            >
-                                                @csrf
-                                                <input
-                                                    type="hidden"
-                                                    name="product_id"
-                                                    value="{{ $basketItem->product_id }}"
-                                                />
+                                            />
 
-                                                <button
-                                                    class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                                    type="submit"
-                                                >
-                                                    -
-                                                </button>
-                                            </form>
-                                            <p class="m-4 h-fit mt-3">
-                                                {{$basketItem->quantity}}
+                                            <p
+                                                class="text-2xl text-center h-fit"
+                                            >
+                                                {{$basketItem->product_name}}
                                             </p>
 
+                                            <div class="flex">
+                                                <form
+                                                    action="{{
+                                                        route(
+                                                            'basket.decreaseQuantity'
+                                                        )
+                                                    }}"
+                                                    method="post"
+                                                    class="flex"
+                                                >
+                                                    @csrf
+                                                    <input
+                                                        type="hidden"
+                                                        name="product_id"
+                                                        value="{{ $basketItem->product_id }}"
+                                                    />
+
+                                                    <button
+                                                        class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                        type="submit"
+                                                    >
+                                                        -
+                                                    </button>
+                                                </form>
+                                                <p class="m-4 h-fit mt-3">
+                                                    {{$basketItem->quantity}}
+                                                </p>
+
+                                                <form
+                                                    action="{{
+                                                        route(
+                                                            'basket.increaseQuantity'
+                                                        )
+                                                    }}"
+                                                    method="post"
+                                                    class="flex"
+                                                >
+                                                    @csrf
+                                                    <input
+                                                        type="hidden"
+                                                        name="product_id"
+                                                        value="{{ $basketItem->product_id }}"
+                                                    />
+
+                                                    <button
+                                                        class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                        type="submit"
+                                                    >
+                                                        +
+                                                    </button>
+                                                </form>
+                                            </div>
                                             <form
                                                 action="{{
-                                                    route(
-                                                        'basket.increaseQuantity'
-                                                    )
+                                                    route('basket.remove')
                                                 }}"
                                                 method="post"
-                                                class="flex"
                                             >
                                                 @csrf
                                                 <input
@@ -189,57 +217,36 @@
                                                     name="product_id"
                                                     value="{{ $basketItem->product_id }}"
                                                 />
-
                                                 <button
-                                                    class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                    class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber"
                                                     type="submit"
                                                 >
-                                                    +
+                                                    remove
                                                 </button>
                                             </form>
                                         </div>
-                                        <form
-                                            action="{{
-                                                route('basket.remove')
-                                            }}"
-                                            method="post"
-                                        >
-                                            @csrf
-                                            <input
-                                                type="hidden"
-                                                name="product_id"
-                                                value="{{ $basketItem->product_id }}"
-                                            />
-                                            <button
-                                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber"
-                                                type="submit"
-                                            >
-                                                remove
-                                            </button>
-                                        </form>
-                                    </div>
 
-                                    @endforeach
-                                    <div
-                                        class="text-2xl p-2 mx-2 bg-white text-grey-800 rounded shadow-md"
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div
+                                    class="text-2xl text-grey-800 rounded w-full"
+                                >
+                                    <h2
+                                        class="text-2xl text-center mb-2 p-2 mx-3 bg-white text-grey-800 rounded shadow-md"
                                     >
-                                        <h2>
-                                            Subtotal: {{$basket->total_amount}}
-                                        </h2>
-                                        <button
-                                            type="Checkout"
-                                            class="p-2 bg-white text-grey-800 rounded-lg shadow-lg hover:text-amber w-full"
+                                        Subtotal: {{$basket->total_amount}}
+                                    </h2>
+                                    <button
+                                        type="Checkout"
+                                        class="bg-white text-grey-800 py-2 mx-3 rounded-lg shadow-lg hover:text-amber w-full"
+                                    >
+                                        @csrf
+                                        <a href="{{ route('checkout.view') }}"
+                                            >Checkout</a
                                         >
-                                            @csrf
-                                            <a
-                                                href="{{
-                                                    route('checkout.view')
-                                                }}"
-                                                >Checkout</a
-                                            >
-                                        </button>
-                                    </div>
-                                </ul>
+                                    </button>
+                                </div>
 
                                 @endif
                             </div>
