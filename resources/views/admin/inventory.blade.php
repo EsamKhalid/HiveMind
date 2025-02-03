@@ -11,35 +11,24 @@
     @include('layouts.navbar')
 
     <div class="relative text-center mt-4">
-        <h2 class="absolute inset-0 text-9xl font-bold text-gray-300 opacity-20"> 
-            INVENTORY
-        </h2>
         <h2 class="relative text-4xl font-bold text-gray-800 translate-y-10">INVENTORY</h2>
     </div>
 
     @if(count($products) === 0)
         <div class="flex justify-center mt-5"><h1 class="text-3xl">No Products Found</h1></div>
     @else
-            <div class="flex justify-center">
-                <div class="grid grid-cols-5 gap-0 w-3/4">
-                    @foreach($products as $product)
-                        ><div class="size-full p-1">
+        <div class="container mx-auto mt-10">
+            <ul class="space-y-10">
+            @foreach($products as $product)
+                <li class="text-sm">
+                                Product:{{strtoupper($product->product_name)}}
 
-                            <p class = "text-center text-xl">
-                                {{strtoupper($product->product_name)}}
-                            </p>
-
-                            <p class = "text-center text-xl">
                                 Type:{{strtoupper($product -> product_type)}}
-                            </p>
 
-                            <p class="text-center text-x1">
                                 Price: £{{strtoupper($product->price)}}
-                            </p>
-
-                    @endforeach
-                </div>
-            </div>
+                </li>
+            @endforeach
+            </ul>
         </div>
     @endif
 
