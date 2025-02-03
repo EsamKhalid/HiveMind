@@ -16,4 +16,5 @@ class Supplier extends Model
         'supplier_email',
         'supplier_phone',
     ];
+    
 }
