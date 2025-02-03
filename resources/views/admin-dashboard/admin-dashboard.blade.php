@@ -6,12 +6,12 @@
     <title>Dashboard</title>
 </head>
 
-<body class="bg-yellow-200 dark:bg-black">
+<body class="bg-white dark:bg-black">
 @include('layouts.sidebar')
 
-    <div id="card" class="m-auto px-[30%] py-[15%] bg-yellow-500 dark:bg-yellow-400 flex-shrink-0">
+    <div id="card" class="m-auto min-w-[50%] bg-yellow-500 dark:bg-gray-400 flex-shrink-0">
             <div class="text-7xl">
-            HELLO
+            Hello, Admin User
             </div>
         </div>
 </body>
