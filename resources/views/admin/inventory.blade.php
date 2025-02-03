@@ -19,44 +19,29 @@
 
     @if(count($products) === 0)
         <div class="flex justify-center mt-5"><h1 class="text-3xl">No Products Found</h1></div>
-        
-
-        @else
-
-        <div class="inline-block mt-5">
-            @if($search)
-            <div class="flex justify-center">
-                <div class="flex justify-between my-3 w-3/4 border">
-                    <h1 class="text-center text-3xl">
-                        Displaying {{ sizeof($products) }} Product(s)
-                    </h1>
-                </div>
-            </div>
-
-            @endif
+    @else
             <div class="flex justify-center">
                 <div class="grid grid-cols-5 gap-0 w-3/4">
                     @foreach($products as $product)
-                    <a
-                        href="{{route('products.show', $product->id)}}"
-                        class="w-fit"
                         ><div class="size-full p-1">
-                            <img
-                                class="h-[100%]"
-                                src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
-                            />
-                             <h1 class="text-center text-xl">
+
+                            <p class = "text-center text-xl">
                                 {{strtoupper($product->product_name)}}
-                            </h1>
-                            <p>£{{$product->price}}</p>
-                        </div></a
-                    >
+                            </p>
+
+                            <p class = "text-center text-xl">
+                                Type:{{strtoupper($product -> product_type)}}
+                            </p>
+
+                            <p class="text-center text-x1">
+                                Price: £{{strtoupper($product->price)}}
+                            </p>
 
                     @endforeach
                 </div>
             </div>
         </div>
-        @endif
+    @endif
 
 </body>
 </html>
