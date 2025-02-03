@@ -17,7 +17,8 @@
 </div>
 
 <script>
-    function TOGGLE_SEARCH() {
+    function TOGGLE_SEARCH() 
+    {
         const SEARCH_IO = document.getElementById('SEARCH-IO');
         const HIDDEN = SEARCH_IO.classList.toggle('w-48');
 
@@ -30,7 +31,8 @@
         if (HIDDEN) SEARCH_IO.focus();
     }
 
-    function ADJUST_SEARCH_WIDTH() {
+    function ADJUST_SEARCH_WIDTH() 
+    {
         const SEARCH_IO = document.getElementById('SEARCH-IO');
         const LENGTH = SEARCH_IO.value.length;
         const BASE_WIDTH = 150;
