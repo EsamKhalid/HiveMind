@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Users;
 
 class UserController extends Controller
 {
 
   public function account(){
-    return view('user.account');
+
+    if(Auth::check()){
+      return view('user.account');
+    }
+    else{
+      return redirect()->route('login');
+    }
+
+    
   }
 
     public function list()
