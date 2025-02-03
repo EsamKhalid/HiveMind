@@ -71,15 +71,8 @@
                                     ><br />
                                     Description:
                                     {{ $item->products->description
-
-
-
-
-
-
                                     }}<br />
                                     Quantity: {{ $item->quantity }}<br />
-
                                     Price: £{{ number_format($item->products->price, 2) }}
                                 </li>
                                 @endforeach
