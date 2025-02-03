@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Products;
 
 class InventoryController extends Controller
 {
     //
-    public function index()
+    public function view()
     {
-        return view('inventory.index');
+        return view('admin.inventory');
+
+        $products = Products::query();
+        $products = $products->get();
     }
+
 }

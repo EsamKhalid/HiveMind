@@ -12,6 +12,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\InventoryController;
 
 Route::get('/', function () {
     return view('home');
@@ -87,3 +88,5 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
+
+    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
