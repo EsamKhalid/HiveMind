@@ -11,8 +11,11 @@ class UserController extends Controller
 
 
   public function view(){
+
+    $user = Auth::user();
+
    if(Auth::check()){
-      return view('user.account');
+      return view('user.account', ['user' => $user]);
     }
     else{
       return redirect()->route('login');
