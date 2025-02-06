@@ -16,8 +16,16 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+
+        //this one has better validation but not using for time being
+
+        // $request->validate([
+        //     'email' => 'required|string|email:rfc,dns|max:50',
+        //     'password' => 'required|string',
+        // ]);
+
         $request->validate([
-            'email' => 'required|string|email:rfc,dns|max:50',
+            'email' => 'required|string|email|max:50',
             'password' => 'required|string',
         ]);
 

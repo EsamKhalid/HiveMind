@@ -9,12 +9,15 @@ use App\Models\Users;
 class UserController extends Controller
 {
 
+
   public function view(){
-
-    $user = Auth::user();
-
-
-    return view('user.account', ['user' => $user]);
+   if(Auth::check()){
+      return view('user.account');
+    }
+    else{
+      return redirect()->route('login');
+    }
+ 
   }
 
     public function list()

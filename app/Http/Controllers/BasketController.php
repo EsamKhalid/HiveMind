@@ -11,19 +11,25 @@ use App\Models\Products;
 
 use App\Models\Users;
 
+use App\Models\Addresses;
+
 class BasketController extends Controller
 {
     //
     public function view()
     {
+        //check if user is logged in
         $user = Auth::user();
 
+        //if not logged in, redirect to login page
         if (!$user) {
-            return "user not found";
+            return redirect()->route('login');
         }
 
+        //creates basket object from the database using the user id
         $basket = Basket::where('user_id', $user->id)->first();
 
+        //if there is no basket, it creates it and adds to the database
         if (!$basket) {
             $basket = Basket::Create([
                 'user_id' => $user->id,
@@ -65,13 +71,82 @@ class BasketController extends Controller
         //      'products.price'
         //     )->get();
 
+
+
+       $address = Addresses::where('user_id',$user->id)->first();
+
+
         return view('basket.basket', [
             'basketItems' => $basketItems,
-            'basket' => $basket
+            'basket' => $basket,
+            'address' => $address
         ]);
         //return view('basket.basket', ['basket' => $basket]);
         //return view('basket.basket');
     }
+
+
+
+    public function increaseQuantity(Request $request){
+        $user = Auth::user();
+
+        $productId = $request->input('product_id');
+
+        $basket = Basket::where('user_id', $user->id)->first();
+
+        $basketItems = BasketItems::where('basket_id', $basket->id)
+            ->join('products', 'basket_items.product_id', '=', 'products.id')
+            ->select(
+                'basket_items.*', // Select all basket item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+        $basketItem = $basketItems->where('product_id', $productId)->first();
+
+        $basketItem->quantity += 1;
+        $basketItem->save();
+
+    
+        //redirect back to basket page
+        return redirect()->route('basket.view');
+    }
+
+    public function decreaseQuantity(Request $request){
+        $user = Auth::user();
+
+        $productId = $request->input('product_id');
+
+        $basket = Basket::where('user_id', $user->id)->first();
+
+        $basketItems = BasketItems::where('basket_id', $basket->id)
+            ->join('products', 'basket_items.product_id', '=', 'products.id')
+            ->select(
+                'basket_items.*', // Select all basket item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+        $basketItem = $basketItems->where('product_id', $productId)->first();
+
+         if($basketItem->quantity == 1){
+            $basketItem->delete();
+        }
+        else{
+            //reduce quant by 1
+             $basketItem->quantity -= 1;
+             $basketItem->save();
+        }
+
+    
+        //redirect back to basket page
+        return redirect()->route('basket.view');
+    }
+
+
+
 
     public function updateQuantity(Request $request)
     {
@@ -260,6 +335,5 @@ class BasketController extends Controller
     //    $redirect = Auth::user();
     //    return redirect()->route('checkout.view');
     //}
-
 
 }
