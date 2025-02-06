@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
 
@@ -45,7 +46,7 @@ Route::get('list',[UserController::class,'list'])->name('list_user');
 Route::get('products',[ProductController::class,'list'])->name('products');
 Route::get('products/{id}', [ProductController::class, 'show'])->name('products.show'); 
 
-Route::get('account',[UserController::class,'account'])->name('account');
+Route::get('account',[UserController::class,'view'])->name('account');
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -67,7 +68,7 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 
 
-    Route::get('basket',[BasketController::class, 'view'])->name('basket.view');
+    Route::get('basket',[BasketController::class, 'view'])->name('basket');
 
    // Route::get('basket',[BasketController::class, 'updateQuantity'])->name('basket.updateQuantity');
    Route::post('basket/update-quantity',[BasketController::class, 'updateQuantity'])->name('basket.updateQuantity');
@@ -90,3 +91,7 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
+
+    Route::get('details', [DetailsController::class, 'view'])->name('user.details');
+    Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
+    Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
