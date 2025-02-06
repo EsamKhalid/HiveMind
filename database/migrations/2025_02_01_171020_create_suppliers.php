@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            //$table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->string('supplier_name');
             $table->string('supplier_email');
             $table->string('supplier_phone');
             $table->timestamps();
         });
+
+        DB::table('users')->insert([['first_name'=> 'test', 'last_name' => 'user', 'email_address' => 'test@user.com', 'phone_number' => '0', 'password' => bcrypt('password')]]);
     }
 
     /**
