@@ -12,9 +12,10 @@ class StockOrder extends Model
 
     protected $fillable = [
         //'stock_order_id',
-        'stock_id',
+        'product_id',
         'supplier_id',
         'stock_quantity',
         'lead_time',
+        'order_date',
     ];
 }
