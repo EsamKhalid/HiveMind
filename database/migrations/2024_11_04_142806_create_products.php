@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('ingredients');
             $table->text('directions')->nullable();
             $table->text('additional_info')->nullable();
+            $table->integer('stock_level');
+            $table->integer('reorder_level');
             $table->timestamps();
         });
   
