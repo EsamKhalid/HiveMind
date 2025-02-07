@@ -29,7 +29,7 @@
                         <button
                             class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700"
                         >
-                            <a href="{{ route('basket') }}">View basket</a>
+                            <a href="{{ route('basket.view') }}">View basket</a>
                         </button>
                     </div>
 
