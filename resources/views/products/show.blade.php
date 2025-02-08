@@ -15,7 +15,7 @@
                 <div class="flex justify-center pr-5">
                     <img
                         class="size-full"
-                        src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
+                        src="{{ asset('../Images/placeholder.avif') }}"
                     />
                 </div>
                 <div class="inline-block justify-center size-[400px]">

@@ -1,5 +1,7 @@
 @import "@fortawesome/fontawesome-free/css/all.css";
 
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,7 +30,6 @@
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
 }
-
 
 body {
     color: rgb(var(--foreground-rgb));
@@ -99,7 +100,7 @@ main {
         transition-duration: 200ms;
         @apply block bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform;
     }
-    
+
     /*
     .categories ul li {
         transition-duration: 200ms;

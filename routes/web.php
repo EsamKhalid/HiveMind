@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\InventoryController;
@@ -46,7 +47,7 @@ Route::get('list',[UserController::class,'list'])->name('list_user');
 Route::get('products',[ProductController::class,'list'])->name('products');
 Route::get('products/{id}', [ProductController::class, 'show'])->name('products.show'); 
 
-Route::get('account',[UserController::class,'account'])->name('account');
+Route::get('account',[UserController::class,'view'])->name('account');
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -74,6 +75,8 @@ Route::get('products',[ProductController::class,'list'])->name('products');
    Route::post('basket/update-quantity',[BasketController::class, 'updateQuantity'])->name('basket.updateQuantity');
 
    Route::post('basket/remove',[BasketController::class, 'removeFromBasket'])->name('basket.remove');
+   Route::post('basket/increaseQuantity',[BasketController::class,'increaseQuantity'])->name('basket.increaseQuantity');
+   Route::post('basket/decreaseQuantity',[BasketController::class,'decreaseQuantity'])->name('basket.decreaseQuantity');
 
    Route::post('basket/add',[BasketController::class, 'addToBasket'])->name('basket.add');
 
@@ -83,10 +86,14 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     //Route::delete('/basket/remove/{productID}',[BasketController::class, 'removeFromBasket'])->name('basket.remove');
     Route::get('checkout', [CheckoutController::class, 'view'])->name('checkout.view');  
 
-    Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.saveAddress');
+    Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
+    Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
     Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
+    Route::get('details', [DetailsController::class, 'view'])->name('user.details');
+    Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
+    Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
