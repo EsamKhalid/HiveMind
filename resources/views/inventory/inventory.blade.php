@@ -60,6 +60,52 @@
     </div>
 </div>
     <script>
+
+    // NOW CREATE THE GRID BASED ON THE INVENTORY CONTAINER DEFINED ABOVE
+
+    const GRID = document.getElementById('INVENTORY');
+
+    // HARD-CODED PRODUCT TYPES
+    // THIS IS WHAT WILL BE CHANGED WHEN DB INTEGRATION WITH BACKEND IS FINALISED
+
+    const PRODUCT_TYPES = 
+    {
+        BEAUTY:
+        {
+            ITEMS: [ 'Eye Shadow Palette', 'Lip Gloss', 'Nail Polish Set', 'Highligher and Blush (2 in 1)', 'Beauty Sponge', 'Honey Body Spray']
+        }
+    };
+
+    function PRODUCT_GEN()
+    {
+        const PRODUCTS = [];
+        let BOX_POS = 0;            // USED FOR DYNAMIC RESIZING IN ACCORDANCE WITH THE STYLING OF THE CLASSES
+
+        Object.entries(PRODUCT_TYPES).foreach(([TYPE, CATEGORY]) =>
+        {
+            CATEGORY.ITEMS.foreach(ITEM) =>
+            {
+                PRODUCTS.push
+                ({
+                    TITLE: ITEM,
+                    TYPE: TYPE,
+                    POSITION: BOX_POS++;
+                });
+            }
+        });
+    }
+
+    // ASSUME THAT THE AVAILABLE PRODUCTS ARE ALL
+
+    let ALL_PRODUCTS = PRODUCT_GEN();
+    
+    function FILTER_PRODUCTS(FILTER_TYPE)
+    {
+        let FILTERED = ALL_PRODUCTS;
+    }
+
+    FILTER_PRODUCTS('ALL');
+
     </script>
 </body>
 </html>
