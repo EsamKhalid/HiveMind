@@ -14,6 +14,8 @@ use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
 
+use App\Http\Controllers\ReportController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -56,6 +58,8 @@ Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 
 Route::get('products/{id}', [ProductController::class, 'show'])->name('products.show'); 
 
+//Report Controller
+Route::get('reports',[ReportController::class,'list'])->name('reports');
 
 // for signup page
 Route::get('signup.signup', [SignupController::class, 'signup'])->name('signup');
