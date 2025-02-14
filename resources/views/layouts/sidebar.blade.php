@@ -21,7 +21,7 @@
                         <div id="top-half-sidebar" class="flex flex-col dark:text-white">
                             <a class="text-3xl my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{ route('admin-dashboard') }}><p>Notifications</p><i class="fa-solid fa-inbox text-yellow-500 text-4xl"></i></a>
                             <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('admin-dashboard' /*inventory*/)}}><p>Inventory</p> <i class="fa-solid fa-warehouse text-yellow-500 text-4xl"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('admin-dashboard' /*User MNG Page*/)}}><p>Manage users</p> <i class="fa-solid fa-sitemap text-yellow-500 text-4xl"></i></a>
+                            <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('user-management' /*User MNG Page*/)}}><p>Manage users</p> <i class="fa-solid fa-sitemap text-yellow-500 text-4xl"></i></a>
                             <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('admin-dashboard' /*STATS*/)}}><p>View Statistics</p> <i class="fa-solid fa-chart-line text-yellow-500 text-4xl"></i></a>
                             <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Customer View</p> <i class="fa-solid fa-right-left text-yellow-500 text-4xl"></i></a>
                         </div>
