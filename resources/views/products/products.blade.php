@@ -3,11 +3,11 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
+    <body class="dark:bg-stone-900">
         <header>@include('layouts.navbar')</header>
         <main class="mb-auto h-screen
         "><div class="justify-center py-5">
-            <p class="text-6xl text-center">Shop us</p>
+            <p class="text-6xl text-center dark:text-white">Shop us</p>
         </div>
 
         <div class="flex justify-center">
@@ -41,7 +41,7 @@
         
 
         @if(count($products) === 0)
-        <div class="flex justify-center mt-5"><h1 class="text-3xl">No Products Found</h1></div>
+        <div class="flex justify-center mt-5"><h1 class="text-3xl dark:text-white">No Products Found</h1></div>
         
 
         @else
@@ -50,7 +50,7 @@
             @if($search)
             <div class="flex justify-center">
                 <div class="flex justify-between my-3 w-3/4 border">
-                    <h1 class="text-center text-3xl">
+                    <h1 class="text-center text-3xl dark:text-white">
                         Displaying {{ sizeof($products) }} Product(s)
                     </h1>
                 </div>
@@ -65,15 +65,15 @@
                         class="w-fit"
                         ><div class="size-full p-1">
                             <img
-                                class="h-[60%]"
+                                class="h-[60%] dark:brightness-75 dark:hover:brightness-90"
                                 src="{{
                                     asset('../Images/placeholder.avif')
                                 }}"
                             />
-                             <h1 class="text-center text-xl">
+                             <h1 class="text-center text-xl dark:text-white">
                                 {{strtoupper($product->product_name)}}
                             </h1>
-                            <p>£{{$product->price}}</p>
+                            <p class="dark:text-white">£{{$product->price}}</p>
                         </div></a
                     >
 

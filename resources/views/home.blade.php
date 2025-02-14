@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <body>
+    <body class="dark:bg-stone-900">
         @include('layouts.navbar')
 
         <main>
             <!-- added a backdrop -->
             <section
-                class="bg-white py-40 bg-cover bg-center"
-                style="background-image: url('{{
+                class="bg-white dark:bg-stone-900 py-40 bg-cover bg-center dark:brightness-70"
+                style=" background-image: url('{{
                     asset('../Images/hd bee backdrop lols.jpeg')
                 }}');"
             >
@@ -36,20 +36,20 @@
                 </div>
             </section>
 
-            <section class="bg-yellow-100 py-20 text-center">
+            <section class="bg-yellow-100 py-20 text-center dark:bg-stone-800">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-orange-900 mb-5">
+                    <h2 class="text-3xl font-bold text-orange-900 dark:text-amber mb-5">
                         Help our mission to save the bees
                     </h2>
-                    <p class="text-orange-800 text-lg mb-3">
+                    <p class="text-orange-800 text-lg mb-3 dark:text-amber">
                         100% natural ingredients, cruelty-free and sweet like
                         honey.
                     </p>
-                    <p class="text-orange-800 text-lg mb-3">
+                    <p class="text-orange-800 text-lg mb-3 dark:text-amber">
                         With your contribution, our bees can continue to keep
                         the world spinning.
                     </p>
-                    <p class="text-orange-800 text-lg mb-6">
+                    <p class="text-orange-800 text-lg mb-6 dark:text-amber">
                         Browse our wide range of products below and be(e) a
                         star.
                     </p>
@@ -58,7 +58,7 @@
 
             <section class="py-12">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-2xl font-bold text-orange-900 mb-6">
+                    <h2 class="text-2xl font-bold text-orange-900 mb-6 dark:text-amber">
                         Shop our products by category
                     </h2>
                     <!-- 5 columns to display 5 categories -->
@@ -72,17 +72,17 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white rounded-lg shadow-md dark:bg-amber">
                                     <img
                                         src="{{
                                             asset('../Images/placeholder.avif')
                                         }}"
                                         alt="Health"
-                                        class="w-full h-64 object-cover rounded-t-lg"
+                                        class="w-full h-64 object-cover rounded-t-lg "
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-bold text-gray-900 "
                                         >
                                             Health
                                         </h3>
@@ -95,7 +95,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white rounded-lg shadow-md dark:bg-amber">
                                     <img
                                         src="{{
                                             asset('../Images/placeholder.avif')
@@ -105,7 +105,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-bold text-gray-900"
                                         >
                                             Skincare
                                         </h3>
@@ -118,7 +118,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white rounded-lg shadow-md dark:bg-amber">
                                     <img
                                         src="{{
                                             asset('../Images/placeholder.avif')
@@ -128,7 +128,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-bold text-gray-900"
                                         >
                                             Beauty
                                         </h3>
@@ -141,7 +141,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white rounded-lg shadow-md dark:bg-amber">
                                     <img
                                         src="{{
                                             asset('../Images/placeholder.avif')
@@ -151,7 +151,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-bold text-gray-900"
                                         >
                                             Haircare
                                         </h3>
@@ -164,7 +164,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white rounded-lg shadow-md dark:bg-amber">
                                     <img
                                         src="{{
                                             asset('../Images/placeholder.avif')
@@ -174,7 +174,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-bold text-gray-900"
                                         >
                                             Merchandise
                                         </h3>

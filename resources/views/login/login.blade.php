@@ -7,11 +7,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="dark:bg-stone-900">
     @include('layouts.navbar')
 
     <main class="mt-12 flex flex-col items-center">
-        <h1 class="text-4xl font-bold text-gray-800 mb-6">Login</h1>
+        <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">Login</h1>
 
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 w-96">
@@ -23,16 +23,16 @@
             </div>
         @endif
 
-        <form id="loginForm" action="{{ route('login.submit') }}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96 max-w-sm">
+        <form id="loginForm" action="{{ route('login.submit') }}" method="post" class="bg-white dark:bg-stone-600 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96 max-w-sm">
             @csrf
 
             <div class="mb-4">
-                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                <label for="email" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">Email:</label>
                 <input 
                     type="email" 
                     name="email" 
                     id="email" 
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-stone-300 leading-tight focus:outline-none focus:shadow-outline" 
                     maxlength="50" 
                     value="{{ old('email') }}" 
                     placeholder="Enter your email"
@@ -41,12 +41,12 @@
             </div>
 
             <div class="mb-6">
-                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                <label for="password" class="block text-gray-700 dark:text-white text-sm font-bold mb-2">Password:</label>
                 <input 
                     type="password" 
                     name="password" 
                     id="password" 
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:bg-stone-300 leading-tight focus:outline-none focus:shadow-outline" 
                     placeholder="Enter your password" 
                 />
             </div>
@@ -67,7 +67,7 @@
             <div class="mt-4 text-center">
                 <a 
                     href="{{ route('signup') }}" 
-                    class="text-blue-500 hover:underline text-sm">
+                    class="text-blue-500 dark:text-amber hover:underline text-sm">
                     Not a customer yet? Create an account
                 </a>
             </div>

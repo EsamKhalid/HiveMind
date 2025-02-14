@@ -1,8 +1,8 @@
 <footer
-    style="background-color: #FBBF24; color: white;"
-    class="bottom:0 w-full border border-amber"
+     
+    class="bottom:0 w-full border border-amber bg-[#FBBF24]  dark:border-stone-800 dark:bg-stone-800 text-white "
 >
-    <div class="container mx-auto flex flex-wrap justify-between py-8">
+    <div class="container mx-auto flex flex-wrap justify-between py-8 dark:bg-stone-800">
         <!-- adding first third of footer (left side), includes contact information / link to contact page -->
         <div class="w-full md:w-1/3 flex flex-col items-start mb-4 md:mb-0">
             <h1 class="text-2xl font-bold">Contact Us</h1>
@@ -15,10 +15,10 @@
             </p>
         </div>
         <!-- adding second third of footer (middle), includes donation button -->
-        <div class="w-full md:w-1/3 flex flex-col items-start mb-4 md:mb-0">
+        <div class="w-full md:w-1/3 flex flex-col items-start mb-4 md:mb-0 ">
             <h2 class="text-2xl font-bold">Support Our Cause</h2>
             <p class="text-lg">Help us save the bees by donating today!</p>
-            <a href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE" class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 mt-4 inline-block">Donate</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE" class="bg-yellow-600 dark:bg-stone-700 text-white  px-6 py-3 rounded-md hover:bg-yellow-700 dark:hover:bg-stone-800 mt-4 inline-block">Donate</a>
         </div>
         <!-- adding third third of footer (right side), includes google maps embed-->
         <div class="w-full md:w-1/3 flex flex-col items-start mb-4 md:mb-0">

@@ -3,13 +3,13 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="flex flex-col min-h-screen">
+    <body class="flex flex-col min-h-screen dark:bg-stone-900">
         @include('layouts.navbar')
 
         <main>
             <div class="flex m-4">
                 <div class="w-full">
-                    <p class="text-6xl">Basket</p>
+                    <p class="text-6xl text-amber">Basket</p>
                     <div class="w-full flex justify-center">
                         @if($errors->any())
                         <h4 class="text-3xl">{{$errors->first()}}</h4>
@@ -18,9 +18,9 @@
                     <div class="flex justify-center">
                         
                         <div
-                            class="flex justify-center bg-amber px-5 py-12 w-fit"
+                            class="flex justify-center bg-amber dark:bg-stone-700 px-5 py-12 w-fit"
                         >
-                            <div class="bg-white min-w-[450px] p-5 rounded">
+                            <div class="bg-white min-w-[450px] p-5 rounded dark:bg-stone-400">
                                 <form
                                     action="{{
                                         route('checkout.storeAddress')
@@ -230,7 +230,7 @@
                                 @if(count($basketItems) === 0)
 
                                 <div
-                                    class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md h-fit text-center w-[400px] m-5"
+                                    class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md h-fit text-center w-[400px] m-5 dark:bg-stone-400"
                                 >
                                     No items in basket
                                 </div>
@@ -241,7 +241,7 @@
                                     <ul class="h-full">
                                         @foreach($basketItems as $basketItem)
                                         <div
-                                            class="bg-white mx-2 rounded flex justify-between text-center items-center p-2 [&_*]:pr-3 mb-2"
+                                            class="bg-white mx-2 rounded flex justify-between text-center items-center p-2 [&_*]:pr-3 mb-2 dark:bg-stone-200"
                                         >
                                             <img
                                                 class="size-[125px] rounded"
@@ -338,13 +338,13 @@
                                     class="text-2xl text-grey-800 rounded w-full"
                                 >
                                     <h2
-                                        class="text-2xl text-center mb-2 p-2 mx-3 bg-white text-grey-800 rounded shadow-md"
+                                        class="text-2xl text-center mb-2 p-2 mx-3 bg-white text-grey-800 rounded shadow-md w-full"
                                     >
                                         Subtotal: {{$basket->total_amount}}
                                     </h2>
                                     <button
                                         type="Checkout"
-                                        class="bg-white text-grey-800 py-2 mx-3 rounded-lg shadow-lg hover:text-amber w-full"
+                                        class="bg-orange-400 text-grey-800 py-2 mx-3 rounded-lg shadow-lg hover:text-amber w-full dark:bg-amber"
                                     >
                                         @csrf
                                         <a
