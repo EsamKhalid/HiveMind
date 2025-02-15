@@ -97,3 +97,10 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     Route::get('details', [DetailsController::class, 'view'])->name('user.details');
     Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+    
+    // NOTE FROM HARRY (15/02/25)
+    // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
+    // YOU MIGHT HAVE TO UPDATE THIS ROUTE GET ACCORDINGLY ASSUMING YOU ARE RUNNING FROM "resources/views/admin/inventory.blade.php"
+
+    Route::get('/inventory', [ProductController::class, 'inventory_products']);
+    Route::get('admin', [AdminController::class, 'adm'])->name('adm');
