@@ -100,23 +100,32 @@
 
         function GENERATE_CARD_HTML(PRODUCT) 
         {
-            return `
-                <div class="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
-                    <div class="absolute top-2 right-2">
-                        <span class="text-xs flex items-center gap-1 text-gray-500">
-                            <i class="fas ${TYPE_ICONS[PRODUCT.product_type]}"></i>
-                        </span>
-                    </div>
+            // LOWER-CASE TO REFLECT DEFINE IN DB SCHEMA
+
+            const { stock_level } = PRODUCT;
+
+            const [STATUS, COLOUR] = stock_level === 0 
+            ? ['Out of Stock', 'text-red-600'] : stock_level < 20 
+            ? ['Running Low', 'text-amber-600'] : ['Sufficient Stock', 'text-green-600'];
+
+        return `
+            <div class="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
+                <div class="absolute top-2 right-2">
+                    <span class="text-xs flex items-center gap-1 text-gray-500">
+                        <i class="fas ${TYPE_ICONS[PRODUCT.product_type]}"></i>
+                    </span>
+                </div>
                     <div class="mt-3">
-                        <div class="text-lg font-bold">${PRODUCT.product_name.toUpperCase()}</div>
-                        <div class="text-gray-700">£${PRODUCT.price}</div>
-                        <div class="text-sm ${PRODUCT.stock_level > 0 ? 'text-green-600' : 'text-red-600'}">
-                            ${PRODUCT.stock_level > 0 ? 'In Stock' : 'Out of Stock'}
+                    <div class="text-lg font-bold">${PRODUCT.product_name.toUpperCase()}</div>
+                    <div class="text-gray-700">£${PRODUCT.price}</div>
+                    <div class="text-sm ${COLOUR}">
+                    ${STATUS}
                         </div>
                     </div>
                 </div>
             `;
         }
+
 
         function FILTER_PRODUCTS(FILTER_TYPE) 
         {
