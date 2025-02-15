@@ -100,15 +100,17 @@
 
         function GENERATE_CARD_HTML(PRODUCT) 
         {
-            // LOWER-CASE TO REFLECT DEFINE IN DB SCHEMA
+            // LOWER-CASE TO REFLECT DEFINEIN DB SCHEMA
 
             const { stock_level } = PRODUCT;
 
             const [STATUS, COLOUR] = stock_level === 0 
-            ? ['Out of Stock', 'text-red-600'] : stock_level < 20 
-            ? ['Running Low', 'text-amber-600'] : ['Sufficient Stock', 'text-green-600'];
+            ? ['Out of Stock', 'text-red-400']  : stock_level < 6 
+            ? ['Extremely Low', 'text-red-500'] : stock_level < 20 
+            ? ['Running Low', 'text-amber-600'] 
+            : ['Sufficient Stock', 'text-green-600'];
 
-        return `
+            return `
             <div class="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
                 <div class="absolute top-2 right-2">
                     <span class="text-xs flex items-center gap-1 text-gray-500">
