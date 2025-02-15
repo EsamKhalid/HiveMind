@@ -159,6 +159,9 @@ class CheckoutController extends Controller
 
             ]);
 
+            $product = Products::find($order_item->product_id); //Retrieves the product id of the basket item.
+            $product->stock_level = $product->stock_level - $order_item->quantity; //Reduces the stock level of the product by the quantity of item in basket.
+            $product->save();
         }
 
         $basket = Basket::where('user_id', $user->id)->first();
