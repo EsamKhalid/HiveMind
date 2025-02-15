@@ -33,6 +33,7 @@ class BasketController extends Controller
         if (!$basket) {
             $basket = Basket::Create([
                 'user_id' => $user->id,
+                'guest_id' => null,
                 'total_amount' => 0
             ]);
         }
@@ -242,6 +243,7 @@ class BasketController extends Controller
         if (!$basket) {
             $basket = Basket::Create([
                 'user_id' => $user->id,
+                'guest_id' => null,
                 'total_amount' => 0
             ]);
         }
