@@ -15,6 +15,7 @@ class ProductController extends Controller
         $categoryButton = $request->input('categoryButton');
 
         $products = Products::query();
+        $inv_products = Products::all();        // SCHEMA FOR INVENTORY FILTER
 
         if($categoryButton){
             $products->where('product_type', '=', $categoryButton);
