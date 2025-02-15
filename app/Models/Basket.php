@@ -16,6 +16,7 @@ class Basket extends Model
     // Define the fillable fields
     protected $fillable = [
         'user_id',
+        'guest_id',
         'total_amount',
     ];
 
