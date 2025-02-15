@@ -24,11 +24,16 @@ class DetailsController extends Controller
         'last_name' => 'required|string|max:255',
         'email_address' => 'required|string|email|max:255|unique:users,email_address,' . $user->id,
         'phone_number' => 'nullable|regex:/^[0-9\-\+\(\) ]+$/|max:15',
+        'current_password' => ['required'],
         'password' => ['nullable', 'string', 'min:8', 'confirmed'],
     ], [
         'password.confirmed' => 'The password confirmation does not match.',
         'phone_number.regex' => 'Please enter a valid phone number.',
     ]);
+
+    if (!Hash::check($request->current_password, $user->password)) {
+        return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+    }
 
     $user->first_name = $request->first_name;
     $user->last_name = $request->last_name;

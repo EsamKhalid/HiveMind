@@ -59,6 +59,12 @@
             </div>
 
             <div>
+                <label class="block text-sm font-semibold">Current Password</label>
+                <input type="password" name="current_password" required
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+            </div>
+
+            <div>
                 <label class="block text-sm font-semibold">New Password (Optional)</label>
                 <input type="password" name="password" id="password"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
