@@ -26,6 +26,8 @@
                                 Type:{{strtoupper($product -> product_type)}}
 
                                 Price: £{{strtoupper($product->price)}}
+
+                                Stock:{{strtoupper($product->stock_level)}}
                 </li>
             @endforeach
             </ul>
