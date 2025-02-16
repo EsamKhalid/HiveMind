@@ -14,13 +14,20 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id('id');
             $table->string('report_name');
+            $table->date('date_created');
             $table->timestamps();
             $table->string('report_link');
             
         });
 
+        // date added field Report added
+        //date picker
+        
+
+
+
         DB::table('reports')->insert([
-            ['report_name' => 'Annual', 'created_at'=> now(),'updated_at' => now(),'report_link' => 'https://www.php.net/'],['report_name' => 'Annual Report', 'created_at'=> '2024/09/01','updated_at' => '2024/09/01','report_link' => 'https://herd.laravel.com/windows']
+            ['report_name' => 'Annual', 'date_created'=> '2025/09/01','report_link' => 'https://www.php.net/'],['report_name' => 'Annual Report', 'date_created'=> '2024/09/01','report_link' => 'https://herd.laravel.com/windows']
             
             ]);
     }

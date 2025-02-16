@@ -2,6 +2,11 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <title>jQuery UI Datepicker - Format date</title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     </head>
     <body>
         <header>@include('layouts.navbar')</header>
@@ -9,24 +14,41 @@
         "><div class="justify-center py-5">
             <p class="text-6xl text-center">Reports</p>
         </div>
-        {{--search bar--}}
+        
         <div class="flex justify-center">
-            <div class="flex justify-center w-[75vw] border">
+            <div class="flex justify-center ">
                 <form
                     action="{{ route('reports') }}"
                     method="GET"
                     class="w-full mr-3"
                 >
+                    {{--search bar--}}
                     <input
                         type="text"
                         name="search"
-                        placeholder="Enter name or YYYY-MM-DD or YYYY"
-                        value="{{ request('report_name') }}" {{-- what does this do?--}}
-                        class="rounded w-full"
+                        placeholder="Report Name"
+                        value="{{ request('search') }}"
+                        
+                        size="50"
                     />
+                    {{--date picker--}}
+                    <input 
+                        type="text" 
+                        placeholder="DATE"
+                        name="date"
+                        id="datepicker"
+                        value="{{ request('date') }}"
+                        size="25"
+                    />
+                    <button type="submit" class="bg-amber text-white px-4 py-2 rounded">
+                        Search
+                    </button>
+                    
                 </form>
             </div>
+            
         </div>
+        
 
         
 
@@ -52,12 +74,7 @@
                         <h1 class=" rounded w-full ml-3 ">
                             
                             
-                            Created
-                        </h1>
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            
-                            Last Updated
+                            Date Created
                         </h1>
                     </div></a
                 >
@@ -74,13 +91,9 @@
                         <h1 class=" rounded w-full ml-3 ">
                             
                             
-                            {{ $report->created_at }}
+                            {{ $report->date_created }}
                         </h1>
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            
-                            {{ $report->updated_at }}
-                        </h1>
+                        
                     </div></a
                 >
 
@@ -90,6 +103,15 @@
         
         @endif 
         </main>
+        <script>
+            $(document).ready(function() {
+                $("#datepicker").datepicker({
+                    dateFormat: "yy-mm-dd", // Format: YYYY-MM-DD
+                    changeMonth: true,
+                    changeYear: true
+                });
+            });
+        </script>
         
     </body>
    

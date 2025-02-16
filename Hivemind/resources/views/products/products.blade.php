@@ -20,7 +20,7 @@
                     <input
                         type="text"
                         name="search"
-                        value="{{ request('product_name') }}"
+                        value="{{ request('search') }}" 
                         class="rounded w-full"
                     />
                     <br />

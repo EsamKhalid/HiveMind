@@ -13,6 +13,7 @@ class Reports extends Model
 
     protected $fillable = [
         'report_name',
+        'date_created',
         'report_link'        
     ];
 

@@ -1,35 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Carbon\Traits\ToStringFormat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Reports;
-use Illuminate\Support\Arr;
-
+use phpDocumentor\Reflection\Types\Null_;
 
 class ReportController extends Controller
 {
         public function list(Request $request){
             
         $search = $request->input('search');
+        $date = $request->input('date');
         $type = gettype($search);
         $reports = Reports::query();
-        $date = date_parse($search);
-        //trying to get this working
         
         
-        if(is_numeric($search)){
-            //search year
-            $reports->where('created_at', 'like', '%' . $search . '%');
+        
+        
 
-        }elseif (checkdate($date["month"],$date["day"],$date["year"])) {
+        
+        
+        if(!empty($date)){
             //search by date
-            $reports->where('created_at', 'like', '%' . $search . '%');
-        }else {
+                      
+            $reports->where('date_created', 'like', '%' . $date . '%');
+           
+
+        }
+        if(!empty($search)){
+            
             //search by name
+            
             $reports->where('report_name', 'like', '%' . $search . '%');
         }
+            
+       
             
 
 
