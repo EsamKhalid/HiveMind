@@ -11,7 +11,7 @@
         </div>
 
         <div class="flex justify-center">
-            <div class="flex justify-center w-[75vw] border">
+            <div class="flex justify-center">
                 <form
                     action="{{ route('products') }}"
                     method="GET"
@@ -22,6 +22,7 @@
                         name="search"
                         value="{{ request('search') }}" 
                         class="rounded w-full"
+                        size="75"
                     />
                     <br />
                 </form>
