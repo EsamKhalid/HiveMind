@@ -50,7 +50,7 @@
         <div class="inline-block mt-5">
             @if($search)
             <div class="flex justify-center">
-                <div class="flex justify-between my-3 ">
+                <div class="flex justify-between my-3 w-3/4">
                     <h1 class="text-center text-3xl">
                         Displaying {{ sizeof($products) }} Product(s)
                     </h1>
