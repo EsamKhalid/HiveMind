@@ -1,4 +1,29 @@
+<script >
+    (function() {
+            // Check for saved theme or system preference and apply it
+            const currentTheme = localStorage.getItem("theme");
+            const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if (currentTheme === "dark" || (!currentTheme && deviceTheme)) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        })();
 
+function toggleTheme(){
+    var currentTheme = localStorage.getItem("theme");
+
+    if(!currentTheme){
+        localStorage.setItem("theme","dark");
+    }else if(currentTheme == "dark"){
+        localStorage.setItem("theme","light");
+    }else{
+        localStorage.setItem("theme","dark");
+    }
+    document.documentElement.classList.toggle("dark")
+
+}
+</script>
 <div id="sidebar" class="flex w-[0%] h-[100%]">
         <div class="flex ">
             <input type="checkbox" id="drawer-toggle" class="relative sr-only peer opacity-0">
@@ -26,7 +51,7 @@
                             <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Customer View</p> <i class="fa-solid fa-right-left text-yellow-500 text-4xl"></i></a>
                         </div>
                         <div id="bottom-half-sidebar" class="flex flex-col mb-[30%] dark:text-white">
-                            <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"><p>Theme</p> <i class="fa-solid fa-lightbulb ml-5 mr-1 text-yellow-500"></i></a>
+                            <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex hover:cursor-pointer" onclick="toggleTheme()"><p>Theme</p> <i class="fa-solid fa-lightbulb ml-5 mr-1 text-yellow-500"></i></a>
                             <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('account' /*Customer View*/)}}><p>Account</p> <i class="fa-solid fa-user ml-5 mr-1 text-yellow-500"></i></a>
                             <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Settings</p> <i class="fa-solid fa-gear ml-5 mr-1 text-yellow-500"></i></a>
                             <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Help</p><i class="fa-solid fa-circle-question ml-5 mr-1 text-yellow-500"></i></a>
