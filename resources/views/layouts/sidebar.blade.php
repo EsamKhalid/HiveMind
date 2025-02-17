@@ -14,22 +14,22 @@
                         <img src="{{ asset('../Images/HiveMind dark Logo.png') }}" alt="HiveMind Logo"
                             class="h-16 w-auto mr-3"/>
 
-                        <p class="my-auto text-4xl dark:text-white">HiveMind</p>
+                        <p class="my-auto text-base md:text-2xl 2xl:text-4xl dark:text-white">HiveMind</p>
                     </div>
                     <hr class="solid border-black dark:border-yellow-300">
                     <div class="flex flex-col justify-between  h-full">
                         <div id="top-half-sidebar" class="flex flex-col dark:text-white">
-                            <a class="text-3xl my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{ route('admin-dashboard') }}><p>Notifications</p><i class="fa-solid fa-inbox text-yellow-500 text-4xl"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('admin-dashboard' /*inventory*/)}}><p>Inventory</p> <i class="fa-solid fa-warehouse text-yellow-500 text-4xl"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('user-management' /*User MNG Page*/)}}><p>Manage users</p> <i class="fa-solid fa-sitemap text-yellow-500 text-4xl"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('admin-dashboard' /*STATS*/)}}><p>View Statistics</p> <i class="fa-solid fa-chart-line text-yellow-500 text-4xl"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Customer View</p> <i class="fa-solid fa-right-left text-yellow-500 text-4xl"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{ route('admin-dashboard') }}><p>Notifications</p><i class="fa-solid fa-inbox text-yellow-500 text-base md:text-2xl 2xl:text-4xl"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('admin-dashboard' /*inventory*/)}}><p>Inventory</p> <i class="fa-solid fa-warehouse text-yellow-500 text-base md:text-2xl 2xl:text-4xl"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('user-management' /*User MNG Page*/)}}><p>Manage users</p> <i class="fa-solid fa-sitemap text-yellow-500 text-base md:text-2xl 2xl:text-4xl"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('admin-dashboard' /*STATS*/)}}><p>View Statistics</p> <i class="fa-solid fa-chart-line text-yellow-500 text-base md:text-2xl 2xl:text-4xl"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Customer View</p> <i class="fa-solid fa-right-left text-yellow-500 text-base md:text-2xl 2xl:text-4xl"></i></a>
                         </div>
                         <div id="bottom-half-sidebar" class="flex flex-col mb-[30%] dark:text-white">
-                            <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"><p>Theme</p> <i class="fa-solid fa-lightbulb ml-5 mr-1 text-yellow-500"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('account' /*Customer View*/)}}><p>Account</p> <i class="fa-solid fa-user ml-5 mr-1 text-yellow-500"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Settings</p> <i class="fa-solid fa-gear ml-5 mr-1 text-yellow-500"></i></a>
-                            <a class="text-3xl my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Help</p><i class="fa-solid fa-circle-question ml-5 mr-1 text-yellow-500"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"><p>Theme</p> <i class="fa-solid fa-lightbulb ml-5 mr-1 text-yellow-500"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('account' /*Customer View*/)}}><p>Account</p> <i class="fa-solid fa-user ml-5 mr-1 text-yellow-500"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Settings</p> <i class="fa-solid fa-gear ml-5 mr-1 text-yellow-500"></i></a>
+                            <a class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex" href={{route('home' /*Customer View*/)}}><p>Help</p><i class="fa-solid fa-circle-question ml-5 mr-1 text-yellow-500"></i></a>
                         </div>
                     </div>
                 </div>
