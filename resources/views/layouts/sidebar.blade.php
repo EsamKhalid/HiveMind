@@ -1,4 +1,29 @@
+<script >
+    (function() {
+            // Check for saved theme or system preference and apply it
+            const currentTheme = localStorage.getItem("theme");
+            const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            if (currentTheme === "dark" || (!currentTheme && deviceTheme)) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        })();
 
+function toggleTheme(){
+    var currentTheme = localStorage.getItem("theme");
+
+    if(!currentTheme){
+        localStorage.setItem("theme","dark");
+    }else if(currentTheme == "dark"){
+        localStorage.setItem("theme","light");
+    }else{
+        localStorage.setItem("theme","dark");
+    }
+    document.documentElement.classList.toggle("dark")
+
+}
+</script>
 <div id="sidebar" class="flex w-[0%] h-[100%]">
         <div class="flex ">
             <input type="checkbox" id="drawer-toggle" class="relative sr-only peer opacity-0">
