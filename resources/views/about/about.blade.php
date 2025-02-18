@@ -8,7 +8,7 @@
         <header>@include('layouts.navbar')</header>
         <div class="aboutUsPage">
             <h2
-                class="text-5xl font-semibold tracking-tight text-black sm:text-7xl text-center margin-top: 1rem"
+                class="text-5xl font-semibold tracking-tight text-black sm:text-7xl text-center pt-6"
             >
                 About HiveMind
             </h2>
