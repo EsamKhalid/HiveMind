@@ -12,7 +12,7 @@
     <a  href="{{ route('account') }}"
         class="fas fa-arrow-left fa-3x pl-4 pt-2"></a>
 
-    <div class="max-w-4xl mx-auto mt-2 mb-20 p-8 bg-white rounded-lg shadow-md">
+    <div class="max-w-4xl w-[2/3] mx-auto mt-2 mb-20 p-8 bg-white rounded-lg shadow-md">
         <h1 class="text-3xl font-bold mb-6">Update Your Details</h1>
 
         @if(session('success'))
@@ -33,17 +33,18 @@
 
         <form action="{{ route('user.details.update') }}" method="POST" class="space-y-4" novalidate>
             @csrf
+            <div class="flex flex-row">
+                <div>
+                    <label class="block text-sm font-semibold">First Name</label>
+                    <input type="text" name="first_name" value="{{ old('first_name', $user->first_name) }}" required 
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                </div>
 
-            <div>
-                <label class="block text-sm font-semibold">First Name</label>
-                <input type="text" name="first_name" value="{{ old('first_name', $user->first_name) }}" required 
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
-            </div>
-
-            <div>
-                <label class="block text-sm font-semibold">Last Name</label>
-                <input type="text" name="last_name" value="{{ old('last_name', $user->last_name) }}" required 
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                <div class="ml-8">
+                    <label class="block text-sm font-semibold">Last Name</label>
+                    <input type="text" name="last_name" value="{{ old('last_name', $user->last_name) }}" required 
+                        class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
+                </div>
             </div>
 
             <div>
@@ -76,7 +77,7 @@
                     class="w-full px-4 py-2 mb-6 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>
 
-            <button type="submit" class="w-full bg-yellow-400 text-black py-2 rounded-lg hover:bg-yellow-500">
+            <button type="submit" class="w-[50%] bg-yellow-400 text-black py-2 rounded-lg hover:bg-yellow-500">
                 Update Details
             </button>
         </form>
