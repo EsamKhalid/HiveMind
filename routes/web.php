@@ -92,9 +92,14 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     Route::get('contact', [ContactController::class, 'view'])->name('contact');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
-    // Routes added my Aryan for details page
+    // Routes for details page - Aryan
     Route::get('details', [DetailsController::class, 'view'])->name('user.details');
     Route::post('details/update', [DetailsController::class, 'update'])->name('user.details.update');
+    
+    // Routes for return order functionality - Aryan
+    Route::get('/orders/{id}/return', [OrderController::class, 'showReturnForm'])->name('orders.return');
+    Route::post('/orders/{id}/return', [OrderController::class, 'submitReturnRequest'])->name('orders.return.submit');
+
 
     Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
