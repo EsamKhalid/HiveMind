@@ -66,17 +66,19 @@
                             <ul>
                                 @foreach ($order->orderItems as $item)
                                 <li class="mb-2">
-                                    <strong
-                                        >{{ $item->products->product_name }}</strong
-                                    ><br />
-                                    Description:
-                                    {{ $item->products->description
-                                    }}<br />
-                                    Quantity: {{ $item->quantity }}<br />
+                                    <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold">
+                                        {{ $item->products->product_name }}
+                                    </a><br/>
+                                    Description: {{ $item->products->description }}<br/>
+                                    Quantity: {{ $item->quantity }}<br/>
                                     Price: £{{ number_format($item->products->price, 2) }}
                                 </li>
                                 @endforeach
                             </ul>
+                            <a href="{{ route('orders.return', $order->id) }}" 
+                            class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500 block mt-4 mr-[50%] text-center">
+                                Return items
+                            </a>
                         </div>
                     </div>
                     @endforeach
