@@ -10,7 +10,7 @@
 <body>
     @include('layouts.navbar')
 
-    <main class="mt-12 flex flex-col items-center">
+    <main class="mt-12 mb-12 flex flex-col items-center">
         <h1 class="text-4xl font-bold text-gray-800 mb-6">Login</h1>
 
         @if ($errors->any())

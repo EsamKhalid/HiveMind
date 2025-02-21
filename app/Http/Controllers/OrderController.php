@@ -13,17 +13,32 @@ class OrderController extends Controller
     public function index()
     {
 
-    if(Auth::check()){
+    if(Auth::check()) {
         $orders = Order::with(['orderItems.products'])
         ->where('user_id', auth()->id()) 
         ->get(); 
 
         return view('orders.orders', ['orders' => $orders]);
     }
-    else{
+    else {
         return redirect()->route('login');
     }
-
     
     }
+
+    public function showReturnForm($id) {
+        $order = Order::with('orderItems.products')->findOrFail($id);
+        return view('orders.return', compact('order'));
+    }
+
+    public function submitReturnRequest(Request $request, $id) {
+        $order = Order::findOrFail($id);
+    
+        $order->order_status = 'Return Requested';
+        $order->save();
+    
+        return redirect()->route('orders')->with('success', 'Return request submitted successfully.');
+    }
+    
+    
 } 
