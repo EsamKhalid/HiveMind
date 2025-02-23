@@ -35,7 +35,8 @@ class LoginController extends Controller
             Auth::login($user);
             if($user->permission_level == "admin"){
                 echo 'user is an admin';
-                return redirect()->route('admin-dashboard')->with('success','Admin Login successful!');
+                //return redirect()->route('admin.dashboard')->with('success','Admin Login successful!');
+                return-redirect()->route('products');
             }else{
                 return redirect()->route('products')->with('success', 'Login successful!');
             }
