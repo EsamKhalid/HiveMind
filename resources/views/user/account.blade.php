@@ -33,6 +33,8 @@
                         </button>
                     </div>
 
+                    @if($user->permission_level == "admin")
+
                     <div class="flex flex-col space-y-4 mb-8 h-full">
                         <a
                             class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 h-full"
@@ -40,6 +42,8 @@
                             >Go to Admin Portal</a
                         >
                     </div>
+
+                    @endif
 
                     <!-- section for user to view orders, account settings etc. // some features not yet implemented -->
                     <div
