@@ -92,6 +92,7 @@
                         ></a>
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('home') }}"
                             ><p>Customer View</p>
                             <i
                                 class="fa-solid fa-right-left text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
@@ -112,6 +113,7 @@
                         ></a>
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('account') }}"
                             ><p>Account</p>
                             <i
                                 class="fa-solid fa-user ml-5 mr-1 text-yellow-500"
