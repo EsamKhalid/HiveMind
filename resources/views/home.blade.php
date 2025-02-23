@@ -11,7 +11,7 @@
         <main>
             <!-- added a backdrop -->
             <section
-                class="bg-white dark:bg-stone-900 py-40 bg-cover bg-center dark:brightness-70"
+                class="bg-white dark:bg-stone-900 py-40 bg-cover bg-center dark:brightness-[80%] dark:transition-all dark:duration-200"
                 style=" background-image: url('{{
                     asset('../Images/hd bee backdrop lols.jpeg')
                 }}');"
@@ -36,7 +36,7 @@
                 </div>
             </section>
 
-            <section class="bg-yellow-100 py-20 text-center dark:bg-stone-800">
+            <section class="bg-yellow-100 py-20 text-center dark:bg-stone-800 transition-colors duration-1000">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-bold text-orange-900 dark:text-amber mb-5">
                         Help our mission to save the bees

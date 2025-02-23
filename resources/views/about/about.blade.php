@@ -6,9 +6,9 @@
     </head>
     <body>
         <header>@include('layouts.navbar')</header>
-        <div class="aboutUsPage dark:bg-stone-950">
+        <div class="aboutUsPage dark:bg-stone-950 transition-colors duration-1000">
             <h2
-                class="text-5xl  tracking-tight text-black dark:text-white sm:text-7xl text-center mt-[5%] "
+                class="text-5xl tracking-tight text-black dark:text-white sm:text-7xl text-center mt-[5%] "
             >
                 About <strong class="font-bold drop-shadow-lg">HiveMind</strong>
             </h2>

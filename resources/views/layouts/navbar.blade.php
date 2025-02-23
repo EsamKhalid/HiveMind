@@ -27,11 +27,11 @@ function toggleTheme(){
 }
 </script>
 </head>
-<body>
+<body class="transition-all ease-in-out duration-1000">
     <div class="overflow-hidden">
         <!-- navbar -->
         <nav
-            class="navbar flex justify-between items-center bg-amber dark:bg-stone-800 text-white px-6 py-4"
+            class="navbar flex justify-between items-center bg-amber dark:bg-stone-800 text-white px-6 py-4 transition-colors duration-1000"
         >
             <!-- logo section -->
 

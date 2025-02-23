@@ -21,7 +21,7 @@
         </div>
         @endif
         <!-- title -->
-        <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16">
+        <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000">
             <h1 class="text-4xl font-bold text-orange-950 dark:text-amber">Get in Touch</h1>
             <p class="text-lg text-gray-600 dark:text-white mt-4"> 
                 Want to get in touch? We'd be buzzing (get it?) to hear from you. Here's how you can reach us...
@@ -29,9 +29,9 @@
         </section>
 
             <!-- contact details -->
-                <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-white dark:bg-stone-900">
+                <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-white dark:bg-stone-900 transition-all duration-1000">
                     <!-- card 1: contact options -->
-                    <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center">
+                    <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center transition-all duration-1000">
                         <div class="icon text-3xl text-blue-600 mb-4 dark:text-white">📞</div>
                         <h2 class="text-xl font-bold mb-2 dark:text-amber">Contact Us</h2>
                         <p class="text-gray-600 mb-4 dark:text-white">Contact us either via phone or email address.</p>
@@ -46,7 +46,7 @@
 
 
                 <!-- card 2: contact form -->
-                <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center">
+                <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center transition-all duration-1000">
                     <div class="icon text-3xl text-green-600 mb-4">✉️</div>
                     <h2 class="text-xl font-bold mb-2 dark:text-amber">Online Enquiry</h2>
                     <p class="text-gray-600 mb-4 dark:text-white">Fill out the form below, and we'll get back to you as soon as possible.</p>
@@ -64,7 +64,7 @@
             </section>
 
                 <!-- pop-up when user submits an enquiry -->
-                <div class="popup-overlay hidden fixed top-0 left-0 w-full h-full" id="popupOverlay"></div>
+                <div class="popup-overlay hidden fixed top-0 left-0 w-full h-full transition-all duration-1000" id="popupOverlay"></div>
                     <div class="popup hidden fixed top-10 left-1/2 -translate-x-1/2 bg-white p-5 rounded-lg shadow-lg" id="popup">
                         <span class="close absolute top-1 right-2.5 text-xl cursor-pointer text-gray-800" id="closePopup">&times;</span>
                         <div class="popup-content text-center">

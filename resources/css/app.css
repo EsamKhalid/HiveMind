@@ -37,6 +37,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    @apply transition-colors ease-in-out duration-1000 ;
 }
 
 main {
