@@ -33,13 +33,7 @@ class LoginController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
-            if($user->permission_level == "admin"){
-                echo 'user is an admin';
-                return redirect()->route('admin-dashboard')->with('success','Admin Login successful!');
-            }else{
-                return redirect()->route('products')->with('success', 'Login successful!');
-            }
-            
+            return redirect()->route('products')->with('success', 'Login successful!');
         }
 
         return back()->withErrors(['login' => 'Invalid email or password.'])->withInput();
