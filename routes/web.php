@@ -14,6 +14,7 @@ use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
 
+use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('home');
 });
@@ -63,7 +64,17 @@ Route::post('signup.signup', [SignupController::class, 'store'])->name('signup.s
 
 Route::get('products',[ProductController::class,'list'])->name('products');
 
-/**Middleware is a mehcnism that allows you to perform actions such as authentication, logging, validaition and such 
+
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+
+
+
+
+
+
+/**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
  * before or after the request is processed by your controller. Ultimately, it acts as a bridge between request and a response. */
 
 
