@@ -6,11 +6,11 @@
         <title>Contact Us</title>
     </head>
 
-    <body class="text-center">
+    <body>
     
         @include('layouts.navbar')
         
-        <main>
+        <main class="text-center">
             @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
