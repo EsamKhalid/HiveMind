@@ -6,8 +6,11 @@
     </head>
 
     <body class="bg-white dark:bg-stone-950 flex">
-        @include('layouts.sidebar')
+        <!-- @include('layouts.sidebar') -->
 
         <h1>User Management</h1>
+        @foreach($users as $user)
+        <p>{{$user->first_name}}</p>
+        @endforeach
     </body>
-</html>
+</html
