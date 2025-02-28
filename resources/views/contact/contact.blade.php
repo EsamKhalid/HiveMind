@@ -6,11 +6,11 @@
         <title>Contact Us</title>
     </head>
 
-    <body class="text-center">
+    <body>
     
         @include('layouts.navbar')
         
-        <main>
+        <main class="text-center">
             @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -41,8 +41,10 @@
                         <p class="text-gray-950">HiveMind</p>
                         <p class="text-gray-950">123 Beehive Lane</p>
                         <p class="text-gray-950">Dublin, Ireland</p>
+                        <br/>   
+                        <p class="text-gray-950">Check out our <a href="{{ route('faq') }}" class="text-lg text-blue-500 hover:underline">FAQs</a> for more information.</p>
                     </div>
-
+                    
 
 
                 <!-- card 2: contact form -->

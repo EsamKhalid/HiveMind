@@ -33,6 +33,10 @@ Route::get('account', [TestController::class, 'account'])->name('account');
 
 Route::get('about', [TestController::class, 'about'])->name('about');
 
+Route::get('terms', [TestController::class, 'terms'])->name('terms');
+
+Route::get('faq', [TestController::class, 'faq'])->name('faq'); 
+
 // routes for login page
 // Route::view('/login', 'login.login')->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
