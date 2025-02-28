@@ -15,6 +15,11 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\BasketController;
 
 use App\Http\Controllers\AdminController;
+
+
+use App\Http\Controllers\UserManagementController;
+
+
 Route::get('/', function () {
     return view('home');
 });
@@ -68,6 +73,7 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
+Route::get('/admin/user-management', [UserManagementController::class, 'view'])->name('admin.user-management');
 
 
 
