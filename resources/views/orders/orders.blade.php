@@ -75,10 +75,27 @@
                                 </li>
                                 @endforeach
                             </ul>
-                            <a href="{{ route('orders.return', $order->id) }}" 
-                            class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500 block mt-4 mr-[50%] text-center">
-                                Return items
-                            </a>
+                            @if ($order->order_status === 'Delivered')
+                                <a href="{{ route('orders.return', $order->id) }}" 
+                                    class="bg-blue-400 text-white px-4 py-2 mt-4 mr-[50%] rounded block text-center hover:bg-blue-500 transition-colors">
+                                    Return Items
+                                </a>
+                            @elseif ($order->order_status === 'Return Requested')
+                                <form action="{{ route('orders.cancelReturn', $order->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" 
+                                        class="bg-red-400 text-white px-4 py-2 mt-4 rounded hover:bg-red-500 transition-colors">
+                                        Cancel Return
+                                    </button>
+                                </form>
+                            @else
+                                <button class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" 
+                                        title="Cannot request return until order is delivered" 
+                                        disabled>
+                                    Return Items
+                                </button>
+                            @endif
                         </div>
                     </div>
                     @endforeach

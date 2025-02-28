@@ -98,7 +98,9 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     
     // Routes for return order functionality - Aryan
     Route::get('/orders/{id}/return', [OrderController::class, 'showReturnForm'])->name('orders.return');
-    Route::post('/orders/{id}/return', [OrderController::class, 'submitReturnRequest'])->name('orders.return.submit');
+    Route::post('/orders/{id}/return', [OrderController::class, 'returnRequest'])->name('orders.return.submit');
+    Route::patch('/orders/{id}/cancel-return', [OrderController::class, 'cancelReturn'])->name('orders.cancelReturn');
+
 
 
     Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
