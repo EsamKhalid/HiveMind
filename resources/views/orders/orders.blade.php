@@ -81,7 +81,8 @@
                                     Return Items
                                 </a>
                             @elseif ($order->order_status === 'Return Requested')
-                                <form action="{{ route('orders.cancelReturn', $order->id) }}" method="POST" class="inline-block">
+                                <form action="{{ route('orders.cancelReturn', $order->id) }}" method="POST" class="inline-block"
+                                    onsubmit="return confirm('Are you sure you want to cancel the return request?');">
                                     @csrf
                                     @method('PATCH')
                                     <button type="submit" 
@@ -95,6 +96,17 @@
                                         disabled>
                                     Return Items
                                 </button>
+                            @endif
+                            @if (in_array($order->order_status, ['Pending', 'Processing']))
+                                <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="inline-block"
+                                    onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" 
+                                        class="bg-red-500 text-white px-4 py-2 mt-2 rounded hover:bg-red-600 transition-colors">
+                                        Cancel Order
+                                    </button>
+                                </form>
                             @endif
                         </div>
                     </div>
