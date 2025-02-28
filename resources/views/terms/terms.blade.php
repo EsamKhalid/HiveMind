@@ -42,10 +42,10 @@
                 <div class="flex justify-center">
                     <div class="p-4 rounded-lg shadow-md w-1/3">
                         <ul class="list-disc list-inside text-left">
-                            <li>Republish material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
-                            <li>Sell, rent or sub-license material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
-                            <li>Reproduce, duplicate or copy material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
-                            <li>Redistribute content from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a> (unless content is specifically made for redistribution).</li>
+                            <li>It is not permitted to republish material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
+                            <li>Do not sell, rent or sub-license material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
+                            <li>Do not reproduce, duplicate or copy material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
+                            <li>Do not redistribute content from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a> (unless authorised by HiveMind).</li>
                         </ul>
                     </div>
                 </div>
