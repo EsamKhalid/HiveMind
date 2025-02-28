@@ -6,7 +6,7 @@
     <title>Dashboard</title>
 </head>
 
-<body class="bg-white dark:bg-stone-950 flex">
+<body class="bg-white dark:bg-stone-950 flex transition-colors duration-500">
 @include('layouts.sidebar')
     <div id="notifications" class=" mx-auto mb-auto flex-col w-[80%] mt-[4%]">
         <p class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"> <i class="fa-solid fa-inbox text-7xl mr-4 my-auto"></i>NOTIFICATIONS</p>
