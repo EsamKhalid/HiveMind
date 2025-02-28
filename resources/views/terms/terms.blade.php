@@ -7,10 +7,10 @@
     <body>
         <header>@include('layouts.navbar')</header>
         <div class="faqPage text-center">
-            <h2 class="text-5xl font-semibold tracking-tight sm:text-7xl text-center py-6"> Frequently Asked Questions </h2>
+            <h2 class="text-5xl font-semibold tracking-tight sm:text-7xl text-center py-6"> Terms and Conditions </h2>
             <br/>
-            <div class="bg-amber p-6 rounded-lg shadow-md text-white">
-                <h2 class="text-3xl font-bold mb-4">General Questions</h2>
+            <div class=" p-6 rounded-lg text-black">
+                <h2 class="text-3xl font-bold mb-4">Legal Infomation</h2>
                 <div class="mb-4">
                     <h3 class="text-xl font-semibold">What is HiveMind?</h3>
                     <p class="text-lg">HiveMind is an organization dedicated to saving bees and promoting sustainable beekeeping practices.</p>
@@ -21,7 +21,7 @@
                 </div>
             </div>
         
-            <div class="bg-amber p-6 rounded-lg shadow-md mt-8 text-white">
+            <div class=" p-6 rounded-lg  mt-8 text-black">
                 <h2 class="text-3xl font-bold mb-4">Donation Questions</h2>
                 <div class="mb-4">
                     <h3 class="text-xl font-semibold">How do I make a donation?</h3>
@@ -34,47 +34,47 @@
                 </div>
             </div>
         
-            <div class="bg-amber p-6 rounded-lg shadow-md mt-8 text-white">
+            <div class=" p-6 rounded-lg  mt-8 text-orange">
                 <h2 class="text-3xl font-bold mb-4">Resources</h2>
                 <ul>
                     <li class="mb-2">
-                        <a href="https://www.projectapism.org/" class="text-white hover:text-black
+                        <a href="https://www.projectapism.org/" class="text-black hover:text-blue
                         font-bold">Project Apis m.</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://www.nwf.org/" class="text-white hover:text-black 
+                        <a href="https://www.nwf.org/" class="text-black hover:text-blue
                         font-bold">National Wildlife Federation</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://xerces.org/" class="text-white hover:text-black 
+                        <a href="https://xerces.org/" class="text-black hover:text-blue
                         font-bold">The Xerces Society</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://www.pollinator.org/" class="text-white hover:text-black 
+                        <a href="https://www.pollinator.org/" class="text-black hover:text-blue
                         font-bold">Pollinator Partnership</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://www.beesfordevelopment.org/" class="text-white hover:text-black 
+                        <a href="https://www.beesfordevelopment.org/" class="text-black hover:text-blue 
                         font-bold">Bees for Development</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://www.planetbee.org/" class="text-white hover:text-black 
+                        <a href="https://www.planetbee.org/" class="text-black hover:text-blue
                         font-bold">Planet Bee Foundation</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://thebeeconservancy.org/" class="text-white hover:text-black 
+                        <a href="https://thebeeconservancy.org/" class="text-black hover:text-blue
                         font-bold">The Bee Conservancy</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://www.beeandbutterflyfund.org/" class="text-white hover:text-black 
+                        <a href="https://www.beeandbutterflyfund.org/" class="text-black hover:text-blue 
                         font-bold">The Bee & Butterfly Habitat Fund</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://karmahoneyproject.com/" class="text-white hover:text-black 
+                        <a href="https://karmahoneyproject.com/" class="text-black hover:text-blue
                         font-bold">Karma Honey Project</a>
                     </li>
                     <li class="mb-2">
-                        <a href="https://britishbeecharity.com/" class="text-white hover:text-black 
+                        <a href="https://britishbeecharity.com/" class="text-black hover:text-blue
                         font-bold">The British Bee Charity</a>
                     </li>
                 </ul>
