@@ -9,52 +9,82 @@
         <div class="faqPage text-center bg-yellow-50">
             <h2 class="text-5xl font-semibold tracking-tight sm:text-7xl text-center py-6"> Terms and Conditions </h2>
             <br/>
-            <div class=" p-6 rounded-lg text-black">
-                <h2 class="text-3xl font-bold mb-4">Legal Infomation</h2>
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold">What is HiveMind?</h3>
-                    <p class="text-lg">HiveMind is an organization dedicated to saving bees and promoting sustainable beekeeping practices.</p>
-                </div>
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold">How can I support HiveMind?</h3>
-                    <p class="text-lg">You can support HiveMind by donating, volunteering, or spreading awareness about our cause.</p>
-                </div>
-            </div>
-        
             <div class="p-6 rounded-lg mt-8 text-black">
-                <h2 class="text-3xl font-bold mb-4">Donations</h2>
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold">How to Make a Donation</h3>
-                    <p class="text-lg">You can make a donation through The British Bee Charity <a href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE" class="text-blue-500 hover:underline text-center">donation page</a>.</p>
-                </div>
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold">Tax-Deductible Donations</h3>
-                    <p class="text-lg">Yes, all donations to HiveMind are tax-deductible to the extent allowed by law. </p>
-                    <p class="text-lg">Please consult with your tax advisor for more information.</p>
+                <h2 class="text-3xl font-bold mb-4">Legal Information</h2>
+                <div class="flex justify-center">
+                    <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">What is HiveMind?</h3>
+                            <p class="text-lg">HiveMind is an organization dedicated to saving bees and promoting sustainable beekeeping practices.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">How can I support HiveMind?</h3>
+                            <p class="text-lg">You can support HiveMind by donating, volunteering, or spreading awareness about our cause.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        
             <div class="p-6 rounded-lg mt-8 text-black">
                 <h2 class="text-3xl font-bold mb-4">Use of Content</h2>
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold">Intellectual Property Rights</h3>
-                    <p class="text-lg">Unless otherwise stated, HiveMind and/or its licensors own the intellectual property rights for all material on HiveMind. </p>
-                    <p class="text-lg">All intellectual property rights are reserved. You may view and/or print pages from <a href="hivemind.test"> Hivemind. </a></p> 
-                    <p class="text-lg">Your own personal use subject to restrictions set in these terms and conditions.</p>
+                <div class="flex justify-center">
+                    <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Intellectual Property Rights</h3>
+                            <p class="text-lg">Unless otherwise stated, HiveMind owns the intellectual property rights for all material on HiveMind.</p>
+                            <p class="text-lg">All intellectual property rights are reserved.</p>
+                            <p class="text-lg">You may view and/or print pages from <a href="hivemind.test" class="text-lg text-blue-500 hover:underline">HiveMind</a> for your own personal use subject to restrictions set in these terms and conditions.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold">Restrictions</h3>
-                    <p class="text-lg">You must not:
-                        <ul class="list-disc list-inside">
+            </div>
+            <div class="p-6 rounded-lg mt-8 text-black">
+                <h2 class="text-3xl font-bold mb-4">Restrictions</h2>
+                <div class="flex justify-center">
+                    <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <ul class="list-disc list-inside text-left">
                             <li>Republish material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
                             <li>Sell, rent or sub-license material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
                             <li>Reproduce, duplicate or copy material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
-                            <li>Redistribute content from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind </a>(unless content is specifically made for redistribution).</li>
+                            <li>Redistribute content from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a> (unless content is specifically made for redistribution).</li>
                         </ul>
-                    </p>
+                    </div>
                 </div>
             </div>
-
+            <div class="p-6 rounded-lg mt-8 text-black">
+                <h2 class="text-3xl font-bold mb-4">Buying Goods from HiveMind</h2>
+                <div class="flex justify-center">
+                    <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Purchasing Products</h3>
+                            <p class="text-lg">When you purchase products from HiveMind, you are supporting our mission to save bees and promote sustainable beekeeping practices.</p>
+                            <p class="text-lg">All proceeds go towards our charitable activities.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Delivery</h3>
+                            <p class="text-lg">We aim to deliver your products within 5-7 working days.</p>
+                            <p class="text-lg">Please note that delivery times may vary depending on your location and the availability of the products.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Additional Charges</h3>
+                            <p class="text-lg">Additional charges may apply for delivery outside of the UK. 
+                            <p class="text-lg">Please check our delivery policy for more information.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Returns</h3>
+                            <p class="text-lg">If you are not satisfied with your purchase, you may return the product within 14 days.</p>
+                            <p class="text-lg">Please check our returns policy for more information.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Cancelling Orders</h3>
+                            <p class="text-lg">You may cancel your order within 24 hours of purchase.</p>
+                            <p class="text-lg">Please check our cancellation policy for more information.</p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold">Contact Us</h3>
+                            <p class="text-lg">If you have any questions or concerns, please contact us using our <a href="{{ route('contact') }}" class="text-lg text-blue-500 hover:underline">contact form</a></li>
+                    </div>
+                </div>
+            </div>
             <div class="p-6 rounded-lg mt-8 text-black">
                 <h2 class="text-3xl font-bold mb-4">Donation Links</h2>
                 <ul>
