@@ -32,7 +32,7 @@
                         <option value="Health" {{ request('filter') == 'Health' ? 'selected' : '' }}>Health</option>
                         <option value="Beauty" {{ request('filter') == 'Beauty' ? 'selected' : '' }}>Beauty</option>
                         <option value="Haircare" {{ request('filter') == 'Haircare' ? 'selected' : '' }}>Haircare</option>
-                        <option value="Merchandise" {{ request('filter') == 'Merchandise' ? 'selected' : '' }}>Merch</option>
+                        <option value="Merchandise" {{ request('filter') == 'Merchandise' ? 'selected' : '' }}>Merchandise  </option>
                     </select>
                 </form>
             </div>
