@@ -34,7 +34,7 @@ class UserManagementController extends Controller
         }
 
         if ($search) {
-            $users->where('first_name', 'like', '%' . $search . '%');
+            $users = $users->where('first_name', 'like', '%' . $search . '%') + $users->where('last_name', 'like', '%' . $search . '%');
         }
 
         if ($filter && $filter != 'none') {
