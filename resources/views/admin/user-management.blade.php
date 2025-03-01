@@ -10,6 +10,30 @@
 
         <div class="flex justify-center">
             <div class="mt-10">
+                <div class="flex justify-center">
+                    <div class="flex justify-center w-[75vw] border">
+                        <form
+                            action="{{ route('admin.user-management') }}"
+                            method="GET"
+                            class="w-full mr-3"
+                        >
+                            <input
+                                type="text"
+                                name="search"
+                                value="{{ request('product_name') }}"
+                                class="rounded w-full"
+                            />
+                            <br />
+                        </form>
+                        <form action="{{ route('admin.user-management') }}" method="GET">
+                            <select name="filter" onchange="this.form.submit()">
+                                <option value="none"{{ request('filter') == 'none' ? 'selected' : '' }}>None</option>
+                                <option value="User" {{ request('filter') == 'User' ? 'selected' : '' }}>User</option>
+                                <option value="Admin" {{ request('filter') == 'Admin' ? 'selected' : '' }}>Admin</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
                 <table class="table-auto w-full">
                     <thead>
                         <tr

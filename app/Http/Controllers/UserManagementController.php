@@ -20,4 +20,29 @@ class UserManagementController extends Controller
 
         return view('admin.user-management', compact('users'));
     }
+
+    public function list(Request $request){
+        $search = $request->input('search');
+        $filter = $request->input('filter');
+
+        $categoryButton = $request->input('categoryButton');
+
+        $users = Users::query();
+
+        if($categoryButton){
+            $users->where('permission_level', '=', $categoryButton);
+        }
+
+        if ($search) {
+            $users->where('first_name', 'like', '%' . $search . '%');
+        }
+
+        if ($filter && $filter != 'none') {
+            $users->where('permission_level', '=', $filter);
+        }
+
+        $users = $users->get();
+
+        return view('admin.user-management', compact('users', 'search', 'filter')); 
+    }
 }
