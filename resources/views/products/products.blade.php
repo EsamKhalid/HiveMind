@@ -32,7 +32,7 @@
                         <option value="Health" {{ request('filter') == 'Health' ? 'selected' : '' }}>Health</option>
                         <option value="Beauty" {{ request('filter') == 'Beauty' ? 'selected' : '' }}>Beauty</option>
                         <option value="Haircare" {{ request('filter') == 'Haircare' ? 'selected' : '' }}>Haircare</option>
-                        <option value="Merch" {{ request('filter') == 'Merch' ? 'selected' : '' }}>Merch</option>
+                        <option value="Merchandise" {{ request('filter') == 'Merchandise' ? 'selected' : '' }}>Merch</option>
                     </select>
                 </form>
             </div>
@@ -58,12 +58,12 @@
 
             @endif
             <div class="flex justify-center">
-                <div class="grid grid-cols-5 gap-0 w-3/4">
+                <div class="grid grid-cols-5 gap-0 w-3/4 mb-[10%]">
                     @foreach($products as $product)
                     <a
                         href="{{route('products.show', $product->id)}}"
                         class="w-fit"
-                        ><div class="size-full p-1">
+                        ><div class="size-full p-10">
                             <img
                                 class="h-[100%]"
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
@@ -71,7 +71,7 @@
                              <h1 class="text-center text-xl">
                                 {{strtoupper($product->product_name)}}
                             </h1>
-                            <p>£{{$product->price}}</p>
+                            <p class="text-center">£{{$product->price}}</p>
                         </div></a
                     >
 
@@ -81,7 +81,6 @@
         </div>
         @endif 
         </main>
-        
     </body>
    
     @include('layouts.footer')
