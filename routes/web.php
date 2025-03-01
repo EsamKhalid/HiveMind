@@ -75,6 +75,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('adm
 
 Route::get('/admin/user-management', [UserManagementController::class, 'view'])->name('admin.user-management');
 
+Route::get('/admin/user-management/user/{id}', [UserManagementController::class, 'show'])->name('admin.view-user');
 
 
 
