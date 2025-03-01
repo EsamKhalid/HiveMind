@@ -34,7 +34,7 @@ return new class extends Migration
             ['product_name' => 'Bee Pollen Powder 250g', 'product_type' => 'Health', 'description' => 'Health and Wellness Product: Pollen Powder 250g', 'price' => '15', 'created_at' => now(), 'updated_at' => now()],
 
             ['product_name' => 'Honey Shampoo', 'product_type' => 'Haircare', 'description' => 'Haircare: Shampoo', 'price' => '7', 'created_at' => now(), 'updated_at' => now()],
-            ['product_name' => 'Honey Condtioner', 'product_type' => 'Haircare', 'description' => 'Haircare: Condtioner', 'price' => '7', 'created_at' => now(), 'updated_at' => now()],
+            ['product_name' => 'Honey Conditioner', 'product_type' => 'Haircare', 'description' => 'Haircare: Condtioner', 'price' => '7', 'created_at' => now(), 'updated_at' => now()],
             ['product_name' => 'Honey Hair Mask', 'product_type' => 'Haircare', 'description' => 'Haircare: Mask', 'price' => '10', 'created_at' => now(), 'updated_at' => now()],
             ['product_name' => 'Honey Hair Mousse', 'product_type' => 'Haircare', 'description' => 'Haircare: Mousse', 'price' => '10', 'created_at' => now(), 'updated_at' => now()],
             ['product_name' => 'Honey-Infused Hair Oil', 'product_type' => 'Haircare', 'description' => 'Haircare: Hair Oil', 'price' => '8', 'created_at' => now(), 'updated_at' => now()],
@@ -45,11 +45,11 @@ return new class extends Migration
             ['product_name' => 'Honey Lip Balm', 'product_type' => 'Skincare', 'description' => 'Skincare: Lip Balm', 'price' => '7', 'created_at' => now(), 'updated_at' => now()],
             ['product_name' => 'Honey Sunscreen SPF50', 'product_type' => 'Skincare', 'description' => 'Skincare: Sunscreen', 'price' => '15', 'created_at' => now(), 'updated_at' => now()],
 
-            ['product_name' => 'HiveMind Logo Hoodie', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Hoodie', 'price' => '30', 'created_at' => now(), 'updated_at' => now()],
-            ['product_name' => 'HiveMind Beenie', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Beanie', 'price' => '15', 'created_at' => now(), 'updated_at' => now()],
+            ['product_name' => 'HiveMind Logo Sweatshirt', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Sweatshirt', 'price' => '30', 'created_at' => now(), 'updated_at' => now()],
+            ['product_name' => 'HiveMind Cap', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Cap', 'price' => '15', 'created_at' => now(), 'updated_at' => now()],
             ['product_name' => 'HiveMind T-Shirt', 'product_type' => 'Merchandise', 'description' => 'Merchandise: T-Shirt', 'price' => '18', 'created_at' => now(), 'updated_at' => now()],
-            ['product_name' => 'HiveMind Badge', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Badge', 'price' => '5', 'created_at' => now(), 'updated_at' => now()],
-            ['product_name' => 'HiveMind Bee Socks', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Socks', 'price' => '7', 'created_at' => now(), 'updated_at' => now()],
+            ['product_name' => 'HiveMind Tumbler', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Tumbler', 'price' => '5', 'created_at' => now(), 'updated_at' => now()],
+            ['product_name' => 'HiveMind Phone Case', 'product_type' => 'Merchandise', 'description' => 'Merchandise: Phone Case', 'price' => '7', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 

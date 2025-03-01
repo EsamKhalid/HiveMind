@@ -58,7 +58,7 @@
 
             <section class="py-12">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-2xl font-bold text-orange-900 mb-6">
+                    <h2 class="text-2xl font-bold text-orange-900 mb-6 dark:text-amber">
                         Shop our products by category
                     </h2>
                     <!-- 5 columns to display 5 categories -->
@@ -75,7 +75,8 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/healthcare.png')
+
                                         }}"
                                         alt="Health"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -98,7 +99,7 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/skincare.png')
                                         }}"
                                         alt="Skincare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -121,7 +122,7 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/beauty.png')
                                         }}"
                                         alt="Beauty"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -144,7 +145,8 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/haircare.png')
+
                                         }}"
                                         alt="Haircare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -160,14 +162,15 @@
                             </button>
 
                             <button
-                                value="Merch"
+                                value="Merchandise"
                                 name="categoryButton"
                                 class="category"
                             >
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/hivemind logo.png')
+
                                         }}"
                                         alt="Merchandise"
                                         class="w-full h-64 object-cover rounded-t-lg"
