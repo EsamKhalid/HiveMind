@@ -32,16 +32,17 @@
 
                     <h1>Supplier Details</h1>
 
-                    <label for="supplier_name">Supplier Name</label>
-                    <input type="text" name="supplier_name" required />
-                    <br />
-
-                    <label for="supplier_email">Supplier Email</label>
-                    <input type="email" name="supplier_email" required />
-                    <br />
-
-                    <label for="supplier_phone">Supplier Phone</label>
-                    <input type="tel" name="supplier_phone" required />
+                    <label for="supplier_id">Select Supplier</label>
+                    <select name="supplier_id" id="supplier_id" required>
+                        <option value="">Select Supplier</option>
+                        @foreach($suppliers as $supplier)
+                            <option value="{{ $supplier->id }}" name="{{ $supplier->supplier_name }}"
+                                email="{{ $supplier->supplier_email }}" phone="{{ $supplier->supplier_phone }}">
+                                {{ $supplier->supplier_name }} - {{ $supplier->supplier_email }} -
+                                {{ $supplier->supplier_phone }}
+                            </option>
+                        @endforeach
+                    </select>
                     <br />
 
                     <button type="submit">Record Stock Order</button>
