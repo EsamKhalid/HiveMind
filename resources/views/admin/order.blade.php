@@ -22,11 +22,11 @@
                     <h1>Stock Order</h1>
 
                     <label for="stock_quantity">Stock Quantity</label>
-                    <input type="number" name="stock_quantity" required />
+                    <input type="number" name="stock_quantity" required|min:1 />
                     <br />
 
-                    <label for="lead_time">Lead Time</label>
-                    <input type="number" name="lead_time" required />
+                    <label for="lead_time">Lead Time (in days)</label>
+                    <input type="number" name="lead_time" required|min:0 />
                     <br />
 
 
