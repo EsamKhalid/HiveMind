@@ -78,6 +78,11 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
+    Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
+    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
+    Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
+    Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
 });
 
 
@@ -130,9 +135,4 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/inventory', [ProductController::class, 'inventory_products']);
     Route::get('admin', [AdminController::class, 'adm'])->name('adm');
 
-    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
-    Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
-    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
-
-    Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
-    Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create'); 
+     
