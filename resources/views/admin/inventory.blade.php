@@ -114,6 +114,8 @@
 
             const { stock_level } = PRODUCT;
 
+            const route = `/admin/orders/${PRODUCT.id}`;
+
             const [STATUS, COLOUR] = stock_level === 0
                 ? ['Out of Stock', 'text-red-400'] : stock_level < 6
                     ? ['Extremely Low', 'text-red-500'] : stock_level < 20
@@ -133,9 +135,9 @@
                     <div class="text-sm ${COLOUR}">
                     ${STATUS}
                         </div>
-                    <a href="{{ route('admin.order', $product->id) }}"> 
-                        <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
-                    </a>
+                        <a href="${route}">
+                            <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
+                        </a>
                     </div>
                 </div>
             `;
