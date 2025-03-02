@@ -93,7 +93,6 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     Route::get('contact', [ContactController::class, 'view'])->name('contact');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
-    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
     Route::get('details', [DetailsController::class, 'view'])->name('user.details');
     Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
@@ -104,3 +103,7 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
     Route::get('/inventory', [ProductController::class, 'inventory_products']);
     Route::get('admin', [AdminController::class, 'adm'])->name('adm');
+
+    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
+    Route::get('admin/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
+    Route::post('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
