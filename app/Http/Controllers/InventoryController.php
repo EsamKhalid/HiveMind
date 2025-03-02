@@ -28,16 +28,9 @@ class InventoryController extends Controller
     public function show($id){
 
         $product = Products::findOrFail($id);
-        return view('admin.order', ['product' => $product]); 
-    }
-
-    public function saveSupplier(Request $request) {
-
-        $request->validate([
-            'supplier_name' => 'required',
-            'supplier_email' => 'required',
-            'supplier_phone' => 'required',
-        ]);
+        $suppliers = Supplier::all();
+        //return view('admin.order', ['product' => $product]); 
+        return view('admin.order', compact('product', 'suppliers'));
     }
 
     public function order(Request $request) {
@@ -54,15 +47,9 @@ class InventoryController extends Controller
             'supplier_phone' => 'required',
         ]);
 
-        $supplier = Supplier::create([
-            'supplier_name' => $request->supplier_name,
-            'supplier_email' => $request->supplier_email,
-            'supplier_phone' => $request->supplier_phone,
-        ]);
-
         StockOrder::create([
             'product_id' => $request->product_id,
-            'supplier_id' => $supplier->id,
+            'supplier_id' => $request->supplier_id,
             'stock_quantity' => $request->stock_quantity,
             'lead_time' => $request->lead_time,
             'order_date' => now(),
