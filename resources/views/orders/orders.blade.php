@@ -22,6 +22,17 @@
             </div>
         </header>
 
+        @if (session('success'))
+            <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="bg-red-100 text-red-800 p-4 rounded mb-4">
+                  {{ session('error') }}
+            </div>
+        @endif
+
         <main>
             <section class="max-w-7xl mx-auto p-6">
                 @if ($orders->isEmpty())
@@ -75,10 +86,39 @@
                                 </li>
                                 @endforeach
                             </ul>
-                            <a href="{{ route('orders.return', $order->id) }}" 
-                            class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500 block mt-4 mr-[50%] text-center">
-                                Return items
-                            </a>
+                            @if ($order->order_status === 'Delivered')
+                                <a href="{{ route('orders.return', $order->id) }}" 
+                                    class="bg-blue-400 text-white px-4 py-2 mt-4 mr-[50%] rounded block text-center hover:bg-blue-500 transition-colors">
+                                    Return Items
+                                </a>
+                            @elseif ($order->order_status === 'Return Requested')
+                                <form action="{{ route('orders.cancelReturn', $order->id) }}" method="POST" class="inline-block"
+                                    onsubmit="return confirm('Are you sure you want to cancel the return request?');">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" 
+                                        class="bg-red-400 text-white px-4 py-2 mt-4 rounded hover:bg-red-500 transition-colors">
+                                        Cancel Return
+                                    </button>
+                                </form>
+                            @else
+                                <button class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" 
+                                        title="Cannot request return until order is delivered" 
+                                        disabled>
+                                    Return Items
+                                </button>
+                            @endif
+                            @if (in_array($order->order_status, ['Pending', 'Processing']))
+                                <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="inline-block"
+                                    onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" 
+                                        class="bg-red-500 text-white px-4 py-2 mt-2 rounded hover:bg-red-600 transition-colors">
+                                        Cancel Order
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                     @endforeach

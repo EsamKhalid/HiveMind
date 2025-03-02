@@ -23,7 +23,11 @@
             @foreach ($order->orderItems as $item)
                 <div class="mb-4">
                     <input type="checkbox" name="items[]" value="{{ $item->id }}" id="item-{{ $item->id }}">
-                    <label for="item-{{ $item->id }}" class="ml-2">{{ $item->products->product_name }} - £{{ number_format($item->products->price, 2) }}</label>
+                    <label for="item-{{ $item->id }}" class="ml-2">
+                        {{ $item->products->product_name }} 
+                        - Quantity: {{ $item->quantity }} 
+                        - Total Price: £{{ number_format($item->products->price * $item->quantity, 2) }}
+                    </label>
                 </div>
             @endforeach
 
