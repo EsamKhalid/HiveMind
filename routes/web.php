@@ -106,8 +106,8 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     Route::get('admin', [AdminController::class, 'adm'])->name('adm');
 
     Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
-    Route::get('admin/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
-    Route::post('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
+    Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
+    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create'); 
