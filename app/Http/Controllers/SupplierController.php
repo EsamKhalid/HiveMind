@@ -25,5 +25,7 @@ class SupplierController extends Controller
             'supplier_email' => $request->supplier_email,
             'supplier_phone' => $request->supplier_phone,
         ]);
+
+        return redirect()->route('supplier.view');
     }
 }
