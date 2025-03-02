@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 </head>
+
 <body>
     @include('layouts.inventory')
     <div class="relative text-center mt-24 h-48">
@@ -15,50 +17,59 @@
         </h2>
     </div>
 
-     <!-- THE FOLLOWING SERVES TO ACT AS A SEPERATE BAR FOR FILTERING BASED ON PRODUCT TYPE -->
+    <!-- THE FOLLOWING SERVES TO ACT AS A SEPERATE BAR FOR FILTERING BASED ON PRODUCT TYPE -->
 
     <div class="sticky top-0 bg-white z-10 py-4">
         <div class="container mx-auto px-4">
             <div class="flex justify-center overflow-x-auto gap-4 mb-6 py-2">
-                <button onclick="FILTER_PRODUCTS('ALL')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700">
+                <button onclick="FILTER_PRODUCTS('ALL')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700">
                     <i class="fas fa-th-large"></i> All
                 </button>
-                <button onclick="FILTER_PRODUCTS('BEAUTY')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
+                <button onclick="FILTER_PRODUCTS('BEAUTY')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
                     <i class="fas fa-spa"></i> Beauty
                 </button>
-                <button onclick="FILTER_PRODUCTS('HEALTH')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
+                <button onclick="FILTER_PRODUCTS('HEALTH')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
                     <i class="fas fa-heartbeat"></i> Health
                 </button>
-                <button onclick="FILTER_PRODUCTS('HAIRCARE')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
+                <button onclick="FILTER_PRODUCTS('HAIRCARE')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
                     <i class="fas fa-air-freshener"></i> Hair
                 </button>
-                <button onclick="FILTER_PRODUCTS('SKINCARE')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
+                <button onclick="FILTER_PRODUCTS('SKINCARE')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
                     <i class="fas fa-pump-soap"></i> Skin
                 </button>
-                <button onclick="FILTER_PRODUCTS('BODYCARE')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                <button onclick="FILTER_PRODUCTS('BODYCARE')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
                     <i class="fas fa-shower"></i> Body
                 </button>
-                <button onclick="FILTER_PRODUCTS('MERCHANDISE')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
+                <button onclick="FILTER_PRODUCTS('MERCHANDISE')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
                     <i class="fas fa-tshirt"></i> Merchandise
                 </button>
-                <button onclick="FILTER_PRODUCTS('HOME')" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
+                <button onclick="FILTER_PRODUCTS('HOME')"
+                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
                     <i class="fas fa-home"></i> Home
                 </button>
             </div>
         </div>
 
-         <!-- CONTAINER USED FOR BEING ABLE TO DEFINE PRODUCTS TO THE INVENTORY BASED ON AN ID -->
+        <!-- CONTAINER USED FOR BEING ABLE TO DEFINE PRODUCTS TO THE INVENTORY BASED ON AN ID -->
         <!-- USES THE DEFINITION CITED FROM THE CONTROLLER TO BE ABLE TO FILTER ACCORDINGLY WITH THE CHAR DEFINED IN THE DB -->
 
         <!-- THANK YOU, BASANTA AND MUNEEB FOR THE IMPL. OF FOREACH -->
 
         <div class="container mx-auto px-4 pb-12">
-            <div class="grid grid-cols-4 gap-10 bg-gray-200 p-6 rounded-lg shadow-md transition-all duration-300" id="INVENTORY">
+            <div class="grid grid-cols-4 gap-10 bg-gray-200 p-6 rounded-lg shadow-md transition-all duration-300"
+                id="INVENTORY">
                 @foreach($products as $product)
                     <div class="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
                         <div class="absolute top-2 right-2">
                             <span class="text-xs flex items-center gap-1 text-gray-500">
-                            <i class="fas {{ $TYPE_ICONS[$product->product_type] ?? 'fa-box' }}"></i>
+                                <i class="fas {{ $TYPE_ICONS[$product->product_type] ?? 'fa-box' }}"></i>
                             </span>
                         </div>
                         <div class="mt-3">
@@ -76,7 +87,7 @@
     <script>
         const PRODUCTS = @json($products);
 
-        const TYPE_COLORS = 
+        const TYPE_COLORS =
         {
             BEAUTY: 'bg-pink-100',
             HEALTH: 'bg-green-100',
@@ -87,7 +98,7 @@
             HOME: 'bg-indigo-100'
         };
 
-        const TYPE_ICONS = 
+        const TYPE_ICONS =
         {
             BEAUTY: 'fa-spa',
             HEALTH: 'fa-heartbeat',
@@ -98,17 +109,16 @@
             HOME: 'fa-home'
         };
 
-        function GENERATE_CARD_HTML(PRODUCT) 
-        {
+        function GENERATE_CARD_HTML(PRODUCT) {
             // LOWER-CASE TO REFLECT DEFINEIN DB SCHEMA
 
             const { stock_level } = PRODUCT;
 
-            const [STATUS, COLOUR] = stock_level === 0 
-            ? ['Out of Stock', 'text-red-400']  : stock_level < 6 
-            ? ['Extremely Low', 'text-red-500'] : stock_level < 20 
-            ? ['Running Low', 'text-amber-600'] 
-            : ['Sufficient Stock', 'text-green-600'];
+            const [STATUS, COLOUR] = stock_level === 0
+                ? ['Out of Stock', 'text-red-400'] : stock_level < 6
+                    ? ['Extremely Low', 'text-red-500'] : stock_level < 20
+                        ? ['Running Low', 'text-amber-600']
+                        : ['Sufficient Stock', 'text-green-600'];
 
             return `
             <div class="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
@@ -123,19 +133,20 @@
                     <div class="text-sm ${COLOUR}">
                     ${STATUS}
                         </div>
+                    <a href="{{ route('admin.order', $product->id) }}"> 
+                        <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
+                    </a>
                     </div>
                 </div>
             `;
         }
 
 
-        function FILTER_PRODUCTS(FILTER_TYPE) 
-        {
+        function FILTER_PRODUCTS(FILTER_TYPE) {
             const GRID = document.getElementById('INVENTORY');
             let FILTERED_PRODUCTS = PRODUCTS;
 
-            if (FILTER_TYPE !== 'ALL') 
-            {
+            if (FILTER_TYPE !== 'ALL') {
                 FILTERED_PRODUCTS = PRODUCTS.filter(PRODUCT => PRODUCT.product_type.trim().toUpperCase() === FILTER_TYPE);
             }
 
@@ -146,8 +157,7 @@
             GRID.style.gridTemplateRows = `repeat(${ROWS}, minmax(0, 1fr))`;
 
             let GRID_HTML = '';
-            FILTERED_PRODUCTS.forEach(PRODUCT => 
-            {
+            FILTERED_PRODUCTS.forEach(PRODUCT => {
                 GRID_HTML += GENERATE_CARD_HTML(PRODUCT);
             });
 
@@ -158,4 +168,5 @@
         FILTER_PRODUCTS('ALL');
     </script>
 </body>
+
 </html>
