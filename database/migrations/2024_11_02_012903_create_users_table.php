@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('email_address')->unique();;
             $table->string('phone_number');
             $table->string('password');
-            //$table->string('permission_level')->default('user');
+            $table->string('permission_level')->default('user');
             $table->timestamps();
 
             
         });
-        DB::table('users')->insert([['first_name'=> 'test', 'last_name' => 'user', 'email_address' => 'test@user.com', 'phone_number' => '0', 'password' => bcrypt('password')]]);
+        //DB::table('users')->insert([['first_name'=> 'test', 'last_name' => 'user', 'email_address' => 'test@user.com', 'phone_number' => '0', 'password' => bcrypt('password')]]);
     }
 
     /**

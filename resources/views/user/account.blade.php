@@ -12,8 +12,10 @@
                 class="bg-yellow-100 border p-16 rounded-lg shadow-lg w-2/3 max-w-4xl"
             >
                 <!-- want to add customer's name when they log in -->
-                <h1 class="text-6xl font-bold text-orange-950 pt-10 mb-20">
-                    Hi {{ $user->first_name}}
+                <h1
+                    class="text-6xl font-bold text-orange-950 pt-10 mb-20 text-center"
+                >
+                    Hi {{ ucfirst($user->first_name)}}
                 </h1>
 
                 <div class="flex justify-between">
@@ -32,6 +34,18 @@
                             <a href="{{ route('basket.view') }}">View basket</a>
                         </button>
                     </div>
+
+                    @if($user->permission_level == "admin")
+
+                    <div class="flex flex-col space-y-4 mb-8 h-full">
+                        <a
+                            class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 h-full"
+                            href="{{ route('admin.dashboard') }}"
+                            >Go to Admin Portal</a
+                        >
+                    </div>
+
+                    @endif
 
                     <!-- section for user to view orders, account settings etc. // some features not yet implemented -->
                     <div
