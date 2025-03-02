@@ -114,7 +114,7 @@
 
             const { stock_level } = PRODUCT;
 
-            const route = `/admin/order/${PRODUCT.id}`;
+            const route = `/admin/inventory/order/${PRODUCT.id}`;
 
             const [STATUS, COLOUR] = stock_level === 0
                 ? ['Out of Stock', 'text-red-400'] : stock_level < 6
