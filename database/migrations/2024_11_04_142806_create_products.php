@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('product_type');
             $table->text('description');
             $table->decimal('price', 10, 2);
-            $table->text('ingredients');
+            $table->text('ingredients')->default("chungus");
             $table->text('directions')->nullable();
             $table->text('additional_info')->nullable();
             $table->integer('stock_level')->default('100');
