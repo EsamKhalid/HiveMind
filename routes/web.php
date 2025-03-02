@@ -14,6 +14,7 @@ use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\SupplierController;
 
 Route::get('/', function () {
     return view('home');
@@ -107,3 +108,6 @@ Route::get('products',[ProductController::class,'list'])->name('products');
     Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
     Route::get('admin/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
     Route::post('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
+
+    Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
+    Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create'); 
