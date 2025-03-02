@@ -48,6 +48,10 @@
                     <button type="submit">Record Stock Order</button>
                 </form>
 
+                <a href="{{ route('supplier.create') }}">
+                    Click to add new supplier
+                </a>
+
             </div>
         </div>
     </main>
