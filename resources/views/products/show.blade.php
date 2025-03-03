@@ -71,6 +71,7 @@
                 @endauth
                 
                 @if($reviews->isEmpty())
+                @else
                     @foreach($reviews as $review)
                         <div class="border-t pt-3 mb-3">
                             <div class="flex items-center justify-between">
