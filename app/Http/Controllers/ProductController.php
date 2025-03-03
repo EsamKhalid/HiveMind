@@ -67,6 +67,6 @@ class ProductController extends Controller
 
         $reviews = $product->reviews()->with('user')->get();
         
-        return view('products.show', ['product' => $product]); 
+        return view('products.show', ['product' => $product, 'reviews' => $reviews]);
     }
 }
