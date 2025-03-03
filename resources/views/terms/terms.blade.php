@@ -4,7 +4,7 @@
         <title>Frequently Asked Questions</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class='bg-yellow-50'>
+    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         <header>@include('layouts.navbar')</header>
         <div class="faqPage bg-yellow-50">
             <h2 class="text-5xl font-semibold tracking-tight sm:text-7xl text-center py-6"> Terms and Conditions </h2>

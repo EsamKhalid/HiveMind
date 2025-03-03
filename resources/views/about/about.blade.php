@@ -4,11 +4,11 @@
         <title>About Us</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="transition-all ease-in-out duration-1000 transform">
+    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         <header>@include('layouts.navbar')</header>
         <div class="aboutUsPage">
             <h2
-                class="text-5xl font-semibold tracking-tight text-black sm:text-7xl text-center pt-6"
+                class="text-5xl font-semibold tracking-tight sm:text-7xl text-center pt-6"
             >
                 About HiveMind
             </h2>
@@ -129,52 +129,52 @@
                             <!-- https://impactful.ninja/best-charities-that-save-the-bees/#:~:text=These%20Are%20the%209%20Best%20Charities%20That%20Help,7%20The%20Bee%20Conservancy%3A%20Save%20The%20Bees%20 -->
                             <a
                                 href="https://www.projectapism.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Project Apis m.</a
                             ><br />
                             <a
                                 href="https://www.nwf.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >National Wildlife Federation</a
                             ><br />
                             <a
                                 href="https://xerces.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The Xerces Society</a
                             ><br />
                             <a
                                 href="https://www.pollinator.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Pollinator Partnership</a
                             ><br />
                             <a
                                 href="https://www.beesfordevelopment.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Bees for Development</a
                             ><br />
                             <a
                                 href="https://www.planetbee.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Planet Bee Foundation</a
                             ><br />
                             <a
                                 href="https://thebeeconservancy.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The Bee Conservancy</a
                             ><br />
                             <a
                                 href="https://www.beeandbutterflyfund.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The Bee & Butterfly Habitat Fund</a
                             ><br />
                             <a
                                 href="https://karmahoneyproject.com/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Karma Honey Project</a
                             ><br />
                             <a
                                 href="https://britishbeecharity.com/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The British Bee Charity</a
                             ><br />
                         </ul>
