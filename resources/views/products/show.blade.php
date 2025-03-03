@@ -65,14 +65,12 @@
                 @else
                     <div class="bg-gray-100 p-6 rounded-lg shadow-lg mb-8">
                         <p class="text-gray-600">
-                            Please <a href="{{ route('login') }}" class="text-blue-500">log in</a> to leave a review.
+                            No reviews yet? <a href="{{ route('login') }}" class="text-blue-500">B(ee) the first</a> to leave a review.
                         </p>
                     </div>
                 @endauth
                 
                 @if($reviews->isEmpty())
-                    <p class="text-gray-600">No reviews yet? Be(e) the first to review this product!</p>
-                @else
                     @foreach($reviews as $review)
                         <div class="border-t pt-3 mb-3">
                             <div class="flex items-center justify-between">
