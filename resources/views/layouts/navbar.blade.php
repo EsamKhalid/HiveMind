@@ -27,7 +27,7 @@ function toggleTheme(){
 }
 </script>
 </head>
-<body class="transition-transform ease-in-out duration-1000">
+<body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
     <div class="overflow-hidden">
         <!-- navbar -->
         <nav

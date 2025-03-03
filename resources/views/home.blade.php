@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
+    <body class="transition-all ease-in-out duration-10000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         @include('layouts.navbar')
 
         <main>

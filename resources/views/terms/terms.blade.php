@@ -13,7 +13,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Legal Information</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="p-4 rounded-lg shadow-md dark:shadow-stone-800 w-1/3">
                             <div class="mb-4">
                                 <h3 class="text-xl font-semibold">What is HiveMind?</h3>
                                 <p class="text-lg">HiveMind is an organization dedicated to saving bees and promoting sustainable beekeeping practices.</p>
@@ -28,7 +28,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Use of Content</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="p-4 rounded-lg shadow-md dark:shadow-stone-800 w-1/3">
                             <div class="mb-4">
                                 <h3 class="text-xl font-semibold">Intellectual Property Rights</h3>
                                 <p class="text-lg">Unless otherwise stated, HiveMind owns the intellectual property rights for all material on HiveMind.</p>
@@ -41,7 +41,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Restrictions</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="p-4 rounded-lg shadow-md dark:shadow-stone-800 w-1/3">
                             <ul class="list-disc list-inside text-left">
                                 <li>It is not permitted to republish material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
                                 <li>Do not sell, rent or sub-license material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
@@ -54,7 +54,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Buying Goods from HiveMind</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="p-4 rounded-lg shadow-md dark:shadow-stone-800 w-1/3">
                             <div class="mb-4">
                                 <h3 class="text-xl font-semibold">Purchasing Products</h3>
                                 <p class="text-lg">When you purchase products from HiveMind, you are supporting our mission to save bees and promote sustainable beekeeping practices.</p>
@@ -90,7 +90,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Donation Links</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3">
+                        <div class="p-4 rounded-lg shadow-md dark:shadow-stone-800 w-1/3">
                             <ul class="list-disc list-inside text-left">
                                 <li class="mb-2">
                                     <a href="https://www.projectapism.org/" class="text-blue-500 hover:underline">Project Apis m.</a>
