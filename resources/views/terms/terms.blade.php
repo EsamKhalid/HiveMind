@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Frequently Asked Questions</title>
+        <title>Terms and Conditions</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         <header>@include('layouts.navbar')</header>
-        <div class="faqPage bg-yellow-50">
+        <div class="faqPage">
             <h2 class="text-5xl font-semibold tracking-tight sm:text-7xl text-center py-6"> Terms and Conditions </h2>
             <br/>
             <div class="text-center">
-                <div class="p-6 rounded-lg mt-8 text-black">
+                <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Legal Information</h2>
                     <div class="flex justify-center">
                         <div class="p-4 rounded-lg shadow-md w-1/3">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-6 rounded-lg mt-8 text-black">
+                <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Use of Content</h2>
                     <div class="flex justify-center">
                         <div class="p-4 rounded-lg shadow-md w-1/3">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-6 rounded-lg mt-8 text-black">
+                <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Restrictions</h2>
                     <div class="flex justify-center">
                         <div class="p-4 rounded-lg shadow-md w-1/3">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-6 rounded-lg mt-8 text-black">
+                <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Buying Goods from HiveMind</h2>
                     <div class="flex justify-center">
                         <div class="p-4 rounded-lg shadow-md w-1/3">
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-6 rounded-lg mt-8 text-black">
+                <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Donation Links</h2>
                     <div class="flex justify-center">
                         <div class="p-4 rounded-lg shadow-md w-1/3">

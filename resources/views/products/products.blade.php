@@ -66,9 +66,7 @@
                         ><div class="h-auto max-w-3/4 p-5">
                             <img
                                 class="h-[60%]"
-                                src="{{
-                                    asset('../Images/placeholder.avif')
-                                }}"
+                                src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
                              <h1 class="text-center text-xl">
                                 {{strtoupper($product->product_name)}}

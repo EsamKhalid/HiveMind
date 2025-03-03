@@ -60,7 +60,7 @@
                                 >
                             </li>
                             <li>
-                                <a href="{{ route('user.terms') }}"
+                                <a href="{{ route('terms') }}"
                                     >Terms & Conditions</a
                                 >
                             </li>

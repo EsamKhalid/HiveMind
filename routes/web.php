@@ -122,5 +122,5 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 
 
-    Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
+
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');

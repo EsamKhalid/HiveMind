@@ -134,9 +134,9 @@ class CheckoutController extends Controller
         $order = Order::create([
             'user_id' => $user->id,
             'order_date' => now(),
-            'order_status' => 'Pending',
+            'order_status' => 'pending',
             'total_amount' => $basket->total_amount,
-            'payment_method' => 'Card',
+            'payment_method' => 'card',
             'amount_paid' => $basket->$total_amount,
             'payment_date' => now(),
         ]);

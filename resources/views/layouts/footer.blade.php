@@ -1,5 +1,5 @@
 <footer
-    class="bottom:0 w-full border-amber bg-amber dark:bg-stone-800 text-white"
+    class="bottom:0 w-full border border-amber bg-[#FBBF24]  dark:border-stone-800 dark:bg-stone-800 text-white transition-colors duration-1000"
 >
     <div
         class="container mx-auto flex flex-wrap justify-between items-start py-8"
@@ -26,7 +26,7 @@
             </p>
             <p class="text-lg">
                 <a
-                    href="{{ route('user.terms') }}"
+                    href="{{ route('terms') }}"
                     class="text-lg text-blue-500 hover:underline"
                     >Terms and Conditions apply</a
                 >
@@ -38,7 +38,7 @@
             <p class="text-lg">Help us save the bees by donating today!</p>
             <a
                 href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE"
-                class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 dark:bg-stone-700 mt-4 inline-block text-center"
+                class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 dark:bg-stone-700 mt-4 inline-block text-center transition-colors duration-1000"
                 >Donate</a
             >
         </div>
