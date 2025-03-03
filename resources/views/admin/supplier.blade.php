@@ -33,6 +33,10 @@
                     <button type="submit">Add Supplier</button>
                 </form>
 
+                <a href="{{ route('admin.inventory') }}">
+                    Navigate to Inventory
+                </a>
+
 
             </div>
         </div>
