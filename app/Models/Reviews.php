@@ -16,16 +16,18 @@ class Reviews extends Model
         'product_id',
         'user_id',
         'rating',
-        'comment',
+        'review',
     ];
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Products::class, 'product_id');    
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Users::class, 'user_id');
     }
 }
+
+?>
