@@ -49,7 +49,15 @@
     <!--@include('layouts.sidebar')-->
     <div class="mx-auto mb-10 flex-col w-[80%] mt-[4%]">
         <p class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md font-bold">
-            User id: {{$user->id}}
+            @if($user->permission_level == 'user')
+                <i class="fa-regular fa-user mr-5"></i>
+                User
+                @else
+                <i class="fa-solid fa-user mr-5"></i>
+                Admin
+            @endif
+
+             id: {{$user->id}}
         </p>
         <div class="flex justify-between ml-5">
         <p class="mt-5 text-3xl dark:text-white">Field</p>
@@ -60,7 +68,8 @@
         
         
         <hr class="border-black mt-5 dark:border-white">
-        <form action="">
+        <form method="POST" action={{ route( 'admin.view-user.update',['id' =>$user->id]) }}>
+            @csrf
             <div
                 class="mt-5 py-5 text-3xl pl-5 flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                     <p>First name:</p>
@@ -111,15 +120,14 @@
                     onclick="replaceWithInputBox('phone')"></i>
             </div>
 
-        </form>
+        
     </div>
     <div class="flex justify-evenly">
-        <button class="mt-5 p-7 rounded-xl text-3xl bg-red-600 w-25 text-white hover:bg-red-300 font-bold">Delete
-            Account</button>
-        <button class="mt-5 p-7 rounded-xl text-3xl bg-green-600 w-25 text-white hover:bg-green-300 font-bold">Save
-            Changes</button>
+        <button class="mt-5 p-7 rounded-xl text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete User</button>
+        
+        <button class="mt-5 p-7 rounded-xl text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
     </div>
-
+</form>
 </body>
 
 </html>

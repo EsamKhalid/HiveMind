@@ -77,6 +77,8 @@ Route::get('/admin/user-management', [UserManagementController::class, 'view'])-
 
 Route::get('/admin/user-management/user/{id}', [UserManagementController::class, 'show'])->name('admin.view-user');
 
+Route::post('/admin/user-management/user/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
+Route::post('/admin/user-management/user/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
 
 
 
