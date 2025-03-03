@@ -21,7 +21,7 @@ class ReviewSeeder extends Seeder
             Reviews::create([
                 'product_id' => $product->id,
                 'user_id' => Users::first()->id, 
-                'comment' => ' ' . $product->product_name,
+                'comment' => ' ',
                 'rating' => 5, 
             ]);
         }
