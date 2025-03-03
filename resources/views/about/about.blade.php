@@ -4,11 +4,11 @@
         <title>About Us</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
+    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         <header>@include('layouts.navbar')</header>
         <div class="aboutUsPage">
             <h2
-                class="text-5xl font-semibold tracking-tight text-black sm:text-7xl text-center margin-top: 1rem"
+                class="text-5xl font-semibold tracking-tight sm:text-7xl text-center pt-6"
             >
                 About HiveMind
             </h2>
@@ -47,9 +47,9 @@
                         <strong>Bee & Charity Facts:</strong>
                     </p>
                     <br />
-                    <div class="text-2xl">
+                    <div>
                         <ul class="list-inside text-xl list-disc">
-                            <p>Some bee-autiful facts about bees include:</p>
+                        <h1 class="text-2xl">Some bee-autiful facts about bees include:</h1>
                             <li>
                                 Our Honeybees are responsible for pollinating
                                 <strong>
@@ -86,10 +86,10 @@
                                 >is directly dependent on bee polination.
                             </li>
                             <br />
-                            <p>
+                            <h1 class="text-2xl">
                                 What challenges do bees face and how can we
                                 help?
-                            </p>
+                            </h1>
                             <li>
                                 <strong
                                     >Over 700 of the native U.S. bee species </strong
@@ -110,7 +110,7 @@
                             <!-- https://impactful.ninja/best-charities-that-save-the-bees/#:~:text=These%20Are%20the%209%20Best%20Charities%20That%20Help,7%20The%20Bee%20Conservancy%3A%20Save%20The%20Bees%20 -->
                             <!-- https://www.worldwildlife.org/stories/why-bees-are-climate-heroes -->
                             <br />
-                            <p>How can you help?</p>
+                            <h1 class="text-2xl">How can you help?</h1>
                             <li>Plant a bee-friendly garden.</li>
                             <li>
                                 Support <strong> local beekeepers </strong> by
@@ -122,59 +122,59 @@
                             </li>
                             <li>Donate to bee charities. See more below!</li>
                             <br />
-                            <p>
+                            <h1 class="text-2xl">
                                 For more information,
                                 <u>visit the following charities:</u>
-                            </p>
+                            </h1>
                             <!-- https://impactful.ninja/best-charities-that-save-the-bees/#:~:text=These%20Are%20the%209%20Best%20Charities%20That%20Help,7%20The%20Bee%20Conservancy%3A%20Save%20The%20Bees%20 -->
                             <a
                                 href="https://www.projectapism.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Project Apis m.</a
                             ><br />
                             <a
                                 href="https://www.nwf.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >National Wildlife Federation</a
                             ><br />
                             <a
                                 href="https://xerces.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The Xerces Society</a
                             ><br />
                             <a
                                 href="https://www.pollinator.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Pollinator Partnership</a
                             ><br />
                             <a
                                 href="https://www.beesfordevelopment.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Bees for Development</a
                             ><br />
                             <a
                                 href="https://www.planetbee.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Planet Bee Foundation</a
                             ><br />
                             <a
                                 href="https://thebeeconservancy.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The Bee Conservancy</a
                             ><br />
                             <a
                                 href="https://www.beeandbutterflyfund.org/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The Bee & Butterfly Habitat Fund</a
                             ><br />
                             <a
                                 href="https://karmahoneyproject.com/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >Karma Honey Project</a
                             ><br />
                             <a
                                 href="https://britishbeecharity.com/"
-                                class="bg-ghost-white text-black hover:bg-ghost-white hover:text-amber font-bold"
+                                class=" text-blue-500 hover:underline"
                                 >The British Bee Charity</a
                             ><br />
                         </ul>

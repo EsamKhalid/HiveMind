@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <body>
+    <body class="transition-all ease-in-out duration-10000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         @include('layouts.navbar')
 
         <main>
@@ -34,20 +34,20 @@
                 </div>
             </section>
 
-            <section class="bg-yellow-100 py-20 text-center">
+            <section class="border-blue-100 py-20 text-center">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-orange-900 mb-5">
+                    <h2 class="text-3xl font-bold mb-5">
                         Help our mission to save the bees
                     </h2>
-                    <p class="text-orange-800 text-lg mb-3">
+                    <p class="text-lg mb-3">
                         100% natural ingredients, cruelty-free and sweet like
                         honey.
                     </p>
-                    <p class="text-orange-800 text-lg mb-3">
+                    <p class="text-lg mb-3">
                         With your contribution, our bees can continue to keep
                         the world spinning.
                     </p>
-                    <p class="text-orange-800 text-lg mb-6">
+                    <p class="text-lg mb-6">
                         Browse our wide range of products below and be(e) a
                         star.
                     </p>
@@ -56,7 +56,7 @@
 
             <section class="py-12">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-2xl font-bold text-orange-900 mb-6">
+                    <h2 class="text-2xl font-bold mb-6">
                         Shop our products by category
                     </h2>
                     <!-- 5 columns to display 5 categories -->
@@ -73,7 +73,8 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/healthcare.png')
+
                                         }}"
                                         alt="Health"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -96,7 +97,7 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/skincare.png')
                                         }}"
                                         alt="Skincare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -119,7 +120,7 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/beauty.png')
                                         }}"
                                         alt="Beauty"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -142,7 +143,8 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/haircare.png')
+
                                         }}"
                                         alt="Haircare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -158,14 +160,15 @@
                             </button>
 
                             <button
-                                value="Merch"
+                                value="Merchandise"
                                 name="categoryButton"
                                 class="category"
                             >
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/placeholder.avif')
+                                            asset('../Images/categories/hivemind logo.png')
+
                                         }}"
                                         alt="Merchandise"
                                         class="w-full h-64 object-cover rounded-t-lg"
