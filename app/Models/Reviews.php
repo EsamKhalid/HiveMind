@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
+use App\Models\Reviews;
 
-class Reviews extends Model
+class ReviewController extends Controller
 {
-    use HasFactory;
-
-    protected $table = 'reviews';
-
-    protected $fillable = 
-    [
-        'product_id',
-        'user_id',
-        'rating',
-        'comment',
-    ];
-
-    public function product()
+    public function store(Request $REQ)
     {
-        return $this->belongsTo(Products::class, 'product_id');    
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(Users::class, 'user_id');
+        $REQ->validate([
+            'product_id' => 'required|exists:products,id',
+            'rating' => 'required|integer|min:1|max:5',
+            'review' => 'required|string'
+        ]);
+        
+        Reviews::create([
+            'product_id' => $REQ->product_id,
+            'user_id' => Auth::id(),
+            'rating' => $REQ->rating,
+            'review' => $REQ->review,
+            'review_date' => now(),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        
+        return response()->json(['success' => 'Skibidi Chungus!']);    
     }
 }
 
