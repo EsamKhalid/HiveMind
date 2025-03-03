@@ -14,13 +14,13 @@ class ReviewSeeder extends Seeder
 {
     public function run()
     {
-        $products = Product::all();
+        $products = Products::all();
 
         foreach ($products as $product) 
         {
-            Review::create([
+            Reviews::create([
                 'product_id' => $product->id,
-                'user_id' => User::first()->id, 
+                'user_id' => Users::first()->id, 
                 'comment' => ' ' . $product->product_name,
                 'rating' => 5, 
             ]);
