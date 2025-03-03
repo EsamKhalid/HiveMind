@@ -3,7 +3,7 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
+    <body class="bg-yellow-50">
         <header>@include('layouts.navbar')</header>
         <main class="mb-auto h-screen
         "><div class="justify-center py-5">
@@ -49,7 +49,7 @@
         <div class="inline-block mt-5">
             @if($search)
             <div class="flex justify-center">
-                <div class="flex justify-between my-3 w-3/4 border">
+                <div class="flex justify-between my-3 w-3/4  border">
                     <h1 class="text-center text-3xl">
                         Displaying {{ sizeof($products) }} Product(s)
                     </h1>
@@ -58,12 +58,12 @@
 
             @endif
             <div class="flex justify-center">
-                <div class="grid grid-cols-5 gap-0 w-3/4 mb-[10%]">
+                <div class="grid grid-cols-5 gap-0 w-3/4 mb-2">
                     @foreach($products as $product)
                     <a
                         href="{{route('products.show', $product->id)}}"
                         class="w-fit"
-                        ><div class="size-full p-10">
+                        ><div class="h-auto max-w-3/4 p-5">
                             <img
                                 class="h-[60%]"
                                 src="{{
