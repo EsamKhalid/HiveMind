@@ -33,7 +33,7 @@
                                 <h3 class="text-xl font-semibold">Intellectual Property Rights</h3>
                                 <p class="text-lg">Unless otherwise stated, HiveMind owns the intellectual property rights for all material on HiveMind.</p>
                                 <p class="text-lg">All intellectual property rights are reserved.</p>
-                                <p class="text-lg">You may view and/or print pages from <a href="hivemind.test" class="text-lg text-blue-500 hover:underline">HiveMind</a> for your own personal use subject to restrictions set in these terms and conditions.</p>
+                                <p class="text-lg">You may view and/or print pages from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a> for your own personal use subject to restrictions set in these terms and conditions.</p>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="p-6 rounded-lg mt-8 text-black">
                     <h2 class="text-3xl font-bold mb-4">Restrictions</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/4">
+                        <div class="p-4 rounded-lg shadow-md w-1/3">
                             <ul class="list-disc list-inside text-left">
                                 <li>It is not permitted to republish material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
                                 <li>Do not sell, rent or sub-license material from <a href="{{ route('home') }}" class="text-lg text-blue-500 hover:underline">HiveMind</a></li>
@@ -90,37 +90,37 @@
                 <div class="p-6 rounded-lg mt-8 text-black">
                     <h2 class="text-3xl font-bold mb-4">Donation Links</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/5">
+                        <div class="p-4 rounded-lg shadow-md w-1/3">
                             <ul class="list-disc list-inside text-left">
                                 <li class="mb-2">
-                                    <a href="https://www.projectapism.org/" class="text-black hover:text-blue-500">Project Apis m.</a>
+                                    <a href="https://www.projectapism.org/" class="text-blue-500 hover:underline">Project Apis m.</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://www.nwf.org/" class="text-black hover:text-blue-500">National Wildlife Federation</a>
+                                    <a href="https://www.nwf.org/" class="text-blue-500 hover:underline">National Wildlife Federation</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://xerces.org/" class="text-black hover:text-blue-500">The Xerces Society</a>
+                                    <a href="https://xerces.org/" class="text-blue-500 hover:underline">The Xerces Society</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://www.pollinator.org/" class="text-black hover:text-blue-500">Pollinator Partnership</a>
+                                    <a href="https://www.pollinator.org/" class="text-blue-500 hover:underline">Pollinator Partnership</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://www.beesfordevelopment.org/" class="text-black hover:text-blue-500">Bees for Development</a>
+                                    <a href="https://www.beesfordevelopment.org/" class="text-blue-500 hover:underline">Bees for Development</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://www.planetbee.org/" class="text-black hover:text-blue-500">Planet Bee Foundation</a>
+                                    <a href="https://www.planetbee.org/" class="text-blue-500 hover:underline">Planet Bee Foundation</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://thebeeconservancy.org/" class="text-black hover:text-blue-500">The Bee Conservancy</a>
+                                    <a href="https://thebeeconservancy.org/" class="text-blue-500 hover:underline">The Bee Conservancy</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://www.beeandbutterflyfund.org/" class="text-black hover:text-blue-500">The Bee & Butterfly Habitat Fund</a>
+                                    <a href="https://www.beeandbutterflyfund.org/" class="text-blue-500 hover:underline">The Bee & Butterfly Habitat Fund</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://karmahoneyproject.com/" class="text-black hover:text-blue-500">Karma Honey Project</a>
+                                    <a href="https://karmahoneyproject.com/" class="text-blue-500 hover:underline">Karma Honey Project</a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="https://britishbeecharity.com/" class="text-black hover:text-blue-500">The British Bee Charity</a>
+                                    <a href="https://britishbeecharity.com/" class="text-blue-500 hover:underline">The British Bee Charity</a>
                                 </li>
                             </ul>
                         </div>
