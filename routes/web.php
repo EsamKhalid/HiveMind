@@ -13,6 +13,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\SupplierController;
 
 use App\Http\Controllers\AdminController;
 Route::get('/', function () {
@@ -124,3 +126,17 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+    
+    // NOTE FROM HARRY (15/02/25)
+    // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
+    // YOU MIGHT HAVE TO UPDATE THIS ROUTE GET ACCORDINGLY ASSUMING YOU ARE RUNNING FROM "resources/views/admin/inventory.blade.php"
+
+    Route::get('/inventory', [ProductController::class, 'inventory_products']);
+    Route::get('admin', [AdminController::class, 'adm'])->name('adm');
+
+    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
+    Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
+    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
+
+    Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
+    Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create'); 

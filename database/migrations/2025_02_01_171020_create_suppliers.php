@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventory', function (Blueprint $table) {
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade')->primary();
-            $table->integer('quantity');
-            $table->integer('reorder_level');
+        Schema::create('suppliers', function (Blueprint $table) {
+            $table->id();
+            //$table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('supplier_name');
+            $table->string('supplier_email');
+            $table->string('supplier_phone');
             $table->timestamps();
         });
+
+
     }
 
     /**
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('suppliers');
     }
 };
