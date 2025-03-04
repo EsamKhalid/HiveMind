@@ -47,12 +47,12 @@
 <!-- Back Button-->
 <a
             href="{{route('admin.user-management')}}"
-            class="fas fa-arrow-left fa-3x p-5 absolute top-0 left-0 dark:text-amber"
+            class="fas fa-arrow-left md:text-3xl p-5 absolute top-3 left-3 dark:text-amber"
         ></a>
 
 <!-- user name header-->
-    <div class="mx-auto mb-10 flex-col w-[80%] mt-[4%]">
-        <p class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md font-bold">
+    <div class="mx-auto mb-10 flex-col w-[80%] mt-[5%]">
+        <p class="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md font-bold">
             @if($user->permission_level == 'user')
                 <i class="fa-regular fa-user mr-5"></i>
                 User
@@ -65,21 +65,21 @@
         </p>
         <!-- table header -->
         <div class="flex justify-between ml-5">
-            <p class="w-[25%] mt-5 text-3xl dark:text-white">Field</p>
-            <p class="w-[25%] mt-5 text-3xl dark:text-white">Data</p>
-            <p class="w-[25%] mt-5 text-3xl dark:text-white">Changes</p>
-            <p class="w-[25%] text-end mt-5 text-3xl dark:text-white">Edit?</p>
+            <p class="w-[25%] mt-5 lg:text-lg md:text-xl xl:text-2xl 2xl:text-3xl dark:text-white">Field</p>
+            <p class="w-[25%] mt-5 lg:text-lg md:text-xl xl:text-2xl 2xl:text-3xl dark:text-white">Data</p>
+            <p class="w-[25%] mt-5 lg:text-lg md:text-xl xl:text-2xl 2xl:text-3xl dark:text-white">Changes</p>
+            <p class="w-[25%] text-end mt-5 lg:text-lg md:text-xl xl:text-2xl 2xl:text-3xl dark:text-white">Edit?</p>
         </div>
         <hr class="border-black mt-5 dark:border-white">
-        <form method="Post" action={{ route('admin.view-user.update', $user->id)}} class="mt-5 py-5 text-3xl pl-5 flex-col dark:text-yellow-200">
+        <form method="Post" action={{ route('admin.view-user.update', $user->id)}} class="text-2xl pl-5 flex-col dark:text-yellow-200">
             @csrf
             @method('PATCH')
             
-            <div class="mt-5 py-5 text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">First name:</p>
                 <div class="w-[25%]">
                     <span id="firstname" class="text-black dark:text-white mx-auto">{{ $user->first_name }}</span>
-                    <input type="text" name="first_name" id="firstnameform" class="hidden text-2xl text-black"
+                    <input type="text" name="first_name" id="firstnameform" class="hidden text-xl md:text-2xl lg:text-2xl w-[95%] text-black"
                         placeholder={{$user->first_name}} value={{$user->first_name}}
                         oninput="displayChanges('firstname')">
                 </div>
@@ -90,11 +90,10 @@
                 </i>
             </div>
 
-            <div
-                class="mt-5 py-5 text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">Last name: </p>
                 <div class="w-[25%]">
-                    <input type="text" name="last_name" id="lastnameform" class="hidden text-2xl text-black"
+                    <input type="text" name="last_name" id="lastnameform" class="hidden text-xl md:text-2xl lg:text-2xl w-[95%] text-black"
                         placeholder={{ $user->last_name }} value={{ $user->last_name }}
                         oninput="displayChanges('lastname')">
                     <span  id="lastname" class="text-black dark:text-white mx-auto">{{ $user->last_name }}</span>
@@ -104,12 +103,11 @@
                     onclick="replaceWithInputBox('lastname')"></i>
             </div>
 
-            <div
-                class="mt-5 py-5 text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">Email: </p>
                 <div class="w-[25%]">
                     <span id="email" class="text-black dark:text-white mx-auto">{{ $user->email_address }}</span>
-                    <input type="text" name="email_address" id="emailform" class="hidden text-2xl text-black"
+                    <input type="text" name="email_address" id="emailform" class="hidden text-xl md:text-2xl lg:text-2xl w-[95%] text-black"
                         placeholder={{ $user->email_address }} value={{ $user->email_address}}
                         oninput="displayChanges('email')">
                 </div>
@@ -118,13 +116,12 @@
                     onclick="replaceWithInputBox('email')"></i>
             </div>
 
-            <div
-                class="mt-5 py-5 text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
 
                 <p class="w-[25%]">Phone Number: </p>
                 <div class="w-[25%]">
                     <span id="phone" class="text-black dark:text-white mx-auto">{{ $user->phone_number }}</span>
-                    <input type="text" name="phone_number" id="phoneform" class="hidden text-2xl text-black"
+                    <input type="text" name="phone_number" id="phoneform" class="hidden text-xl md:text-2xl lg:text-2xl w-[95%] text-black"
                         placeholder={{ $user->phone_number }} value={{ $user->phone_number }}
                         oninput="displayChanges('phone')">
                 </div>
@@ -135,13 +132,13 @@
     </div>
     
     <div class="flex flex-row-reverse justify-evenly w-[80%] mx-auto">
-            <button class="mt-5 ml-auto p-7 rounded-xl text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
+            <button class="mt-2 xl:mt-5 ml-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
     </form>
     
     <form action="post" action={{ route('admin.view-user.delete', $user->id)}} >
         @csrf
         @method("delete")
-        <button class="mt-5 mr-auto p-7 rounded-xl text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete Account</button>
+        <button class="mt-2 xl:mt-5 mr-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete Account</button>
     </form>
 
     </div>
