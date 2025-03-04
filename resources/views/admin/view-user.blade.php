@@ -81,7 +81,7 @@
                     <span id="firstname" class="text-black dark:text-white mx-auto">{{ $user->first_name }}</span>
                     <input type="text" name="first_name" id="firstnameform" class="hidden text-2xl text-black"
                         placeholder={{$user->first_name}} value={{$user->first_name}}
-                        onchange="displayChanges('firstname')">
+                        oninput="displayChanges('firstname')">
                 </div>
                 <span class="w-[25%]" id="firstnameedit" class=" text-orange-600"></span>
 
@@ -96,7 +96,7 @@
                 <div class="w-[25%]">
                     <input type="text" name="last_name" id="lastnameform" class="hidden text-2xl text-black"
                         placeholder={{ $user->last_name }} value={{ $user->last_name }}
-                        onchange="displayChanges('lastname')">
+                        oninput="displayChanges('lastname')">
                     <span  id="lastname" class="text-black dark:text-white mx-auto">{{ $user->last_name }}</span>
                 </div>
                 <span class="w-[25%]" id="lastnameedit" class=" text-orange-600"></span>
@@ -111,7 +111,7 @@
                     <span id="email" class="text-black dark:text-white mx-auto">{{ $user->email_address }}</span>
                     <input type="text" name="email_address" id="emailform" class="hidden text-2xl text-black"
                         placeholder={{ $user->email_address }} value={{ $user->email_address}}
-                        onchange="displayChanges('email')">
+                        oninput="displayChanges('email')">
                 </div>
                 <span class="w-[25%]" id="emailedit" class=" text-orange-600"></span>
                 <i class="ml-auto mr-5 hover:cursor-pointer fa-solid fa-pen-to-square"
@@ -126,7 +126,7 @@
                     <span id="phone" class="text-black dark:text-white mx-auto">{{ $user->phone_number }}</span>
                     <input type="text" name="phone_number" id="phoneform" class="hidden text-2xl text-black"
                         placeholder={{ $user->phone_number }} value={{ $user->phone_number }}
-                        onchange="displayChanges('phone')">
+                        oninput="displayChanges('phone')">
                 </div>
                 <span class="w-[25%]" id="phoneedit" class=" text-orange-600"></span>
                 <i class="ml-auto justify-self-end mr-5 hover:cursor-pointer fa-solid fa-pen-to-square"
