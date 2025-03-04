@@ -44,7 +44,11 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                @if(session()->has('deletionSuccess'))
+        <div class="mx-auto alert text-red-700 font-bold">
+             {{ session()->get('deletionSuccess') }}
+    </div>
+    @endif
             </div>
         </div>
 

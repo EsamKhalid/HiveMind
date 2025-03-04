@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use Illuminate\Validation\Rule;
 
 class UserManagementController extends Controller
 {
@@ -27,14 +28,19 @@ class UserManagementController extends Controller
     }
 
     public function update(Request $request,$id){
+
         //verify data is correct
-        $request->validate([
+        $validator = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:12',
             'email_address' => 'required|string|email|max:255',
+            Rule::unique('users', 'email_address')->ignore($id),
         ]);
-        
+
+        if($validator){
+
+        }
 
         //find user by id
         $user = Users::findOrFail($id);
@@ -45,9 +51,9 @@ class UserManagementController extends Controller
             'phone_number' => $request->phone_number,
             'email_address' => $request->email_address,   
         ]);
-
+        $user->save();
     //return to user management
-        return redirect()->route('home')->with('success','User Updated');
+        return redirect()->route('admin.view-user',$id)->with('success','THE USER DATA HAS BEEN CHANGED!');
     }
 
     public function delete($id){
@@ -55,7 +61,7 @@ class UserManagementController extends Controller
         $user = Users::findOrFail($id);
         if($admin->id != $user->id && $user->permission_level != 'admin'){
             $user->delete();
-            return redirect()->route('admin.user-management')->with('success','User Deleted');
+            return redirect()->route('admin.user-management')->with('deletionSuccess','User Deleted');
         }
 
         //return to user management
