@@ -68,7 +68,7 @@
             <p class="w-[25%] mt-5 text-3xl dark:text-white">Field</p>
             <p class="w-[25%] mt-5 text-3xl dark:text-white">Data</p>
             <p class="w-[25%] mt-5 text-3xl dark:text-white">Changes</p>
-            <p class="w-[25%] mt-5 text-3xl dark:text-white">Edit?</p>
+            <p class="w-[25%] text-end mt-5 text-3xl dark:text-white">Edit?</p>
         </div>
         <hr class="border-black mt-5 dark:border-white">
         <form method="Post" action={{ route('admin.view-user.update', $user->id)}} class="mt-5 py-5 text-3xl pl-5 flex-col dark:text-yellow-200">
