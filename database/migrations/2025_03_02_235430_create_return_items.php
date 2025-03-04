@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('return_id')->constrained('returns')->onDelete('cascade');
             $table->foreignId('order_item_id')->constrained('order_items')->onDelete('cascade');
             $table->integer('quantity');
-            $table->string('reason');
-            $table->decimal('refund_amount');
+            //$table->string('reason');
+            //$table->decimal('refund_amount');
             $table->timestamps();
 
         });

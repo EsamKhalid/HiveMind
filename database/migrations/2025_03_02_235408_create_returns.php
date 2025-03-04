@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('returns', function (Blueprint $table) {
             $table->id('id');
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
-            $table->string('return_status');
+            //$table->string('return_status');
             $table->date('return_date');
+            $table->string('reason');
             $table->string('comments');
             $table->timestamps();
         });
