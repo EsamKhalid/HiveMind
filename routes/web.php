@@ -15,6 +15,11 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\BasketController;
 
 use App\Http\Controllers\AdminController;
+
+
+use App\Http\Controllers\ReviewController;
+
+
 Route::get('/', function () {
     return view('home');
 });
@@ -124,3 +129,5 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+
+    Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
