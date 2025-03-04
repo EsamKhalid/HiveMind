@@ -54,6 +54,10 @@
                         </div>
                         <div class="text-gray-700">
                             <p class="mb-2">
+                                <strong>Order ID: </strong>
+                                {{ $order->id }}
+                            </p>
+                            <p class="mb-2">
                                 <strong>Order Date:</strong>
                                 {{ $order->order_date }}
                             </p>
