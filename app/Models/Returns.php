@@ -10,8 +10,9 @@ class Returns extends Model
 
     protected $fillable = [
         'order_id',
-        'return_status',
+        //'return_status',
         'return_date',
+        'reason',
         'comments',
     ];
 }

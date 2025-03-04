@@ -12,7 +12,15 @@ class ReturnItem extends Model
         'return_id',
         'order_item_id',
         'quantity',
-        'reason',
-        'refund_amount',
     ];
+
+    public function return()
+    {
+        return $this->belongsTo(Returns::class, 'return_id');
+    }
+
+    public function orderItem()
+    {
+        return $this->belongsTo(OrderItem::class, 'order_item_id');
+    }
 }
