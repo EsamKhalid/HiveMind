@@ -79,6 +79,7 @@
                     </div>
                     <input type="text" name="review" />
                     <input type="submit" />
+                    <a href="{{ route('orders') }}">Skip</a>
                 </form>
             </div>
         </main>
