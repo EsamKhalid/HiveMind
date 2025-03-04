@@ -131,3 +131,4 @@ Route::middleware(['admin'])->group(function () {
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
 
     Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
+    Route::post('review/storeSiteReview', [ReviewController::class, 'storeSiteReview'])->name('review.storeSiteReview');
