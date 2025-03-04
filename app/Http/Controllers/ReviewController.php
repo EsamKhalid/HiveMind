@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\SiteReviews;
 
 class ReviewController extends Controller
 {
@@ -12,8 +15,16 @@ class ReviewController extends Controller
         return view('review.siteReview');
     }
 
-    public function storeSiteReview(){
-        echo "chungus";
+    public function storeSiteReview(Request $request){
+
+        $user = Auth::user();
+
+        $rating = $request->rating;
+
+
+        SiteReviews::create(['user_id' => $user->id,'rating' => $rating, 'review' => "lol"]);
+
+
         return view('review.siteReview');
     }
 }

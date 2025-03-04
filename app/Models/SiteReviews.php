@@ -7,4 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class SiteReviews extends Model
 {
     //
+
+      protected $table = 'site_reviews';
+
+    protected $fillable = [
+        'user_id',
+        'rating',
+        'review',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(Users::class, 'user_id');
+    }
 }
