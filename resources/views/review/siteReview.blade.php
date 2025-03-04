@@ -77,6 +77,7 @@
                             aria-hidden="true"
                         ></label>
                     </div>
+                    <input type="text" name="review" />
                     <input type="submit" />
                 </form>
             </div>
