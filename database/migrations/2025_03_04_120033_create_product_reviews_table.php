@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) { 
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade'); 
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');   
-            $table->primary(['user_id', 'product_id']); 
+        Schema::create('product_reviews', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->unsignedTinyInteger('rating'); 
-            $table->text('review')->nullable();    
+            $table->text('review')->nullable();   
             $table->timestamp('review_date')->useCurrent(); 
             $table->timestamps(); 
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('product_reviews');
     }
 };
