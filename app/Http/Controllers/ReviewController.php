@@ -21,8 +21,12 @@ class ReviewController extends Controller
 
         $rating = $request->rating;
 
-
-        SiteReviews::create(['user_id' => $user->id,'rating' => $request->rating, 'review' => $request->review]);
+        if($user == null){
+            SiteReviews::create(['user_id' => null,'rating' => $request->rating, 'review' => $request->review]);
+        }
+        else{
+            SiteReviews::create(['user_id' => $user->id,'rating' => $request->rating, 'review' => $request->review]);
+        }
 
 
         return view('review.siteReview');
