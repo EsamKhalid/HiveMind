@@ -8,7 +8,7 @@
         @include('layouts.navbar')
 
         <main class="flex justify-center items-center min-h-screen">
-            <div class="flex justify-center">
+            <div class="flex justify-center text-black">
                 <form
                     action="{{ route('review.storeSiteReview') }}"
                     method="post"

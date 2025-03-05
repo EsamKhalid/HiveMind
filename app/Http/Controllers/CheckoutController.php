@@ -155,7 +155,7 @@ class CheckoutController extends Controller
 
         $basket->delete();
 
-        return redirect()->route('orders');
+        return redirect()->route('review.siteReview');
     }
 
 

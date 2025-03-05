@@ -29,6 +29,6 @@ class ReviewController extends Controller
         }
 
 
-        return view('review.siteReview');
+        return redirect()->route('orders');
     }
 }
