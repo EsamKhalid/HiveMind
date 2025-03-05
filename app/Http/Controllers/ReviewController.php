@@ -31,4 +31,8 @@ class ReviewController extends Controller
 
         return redirect()->route('orders');
     }
+
+    public function productReview(Request $request){
+        
+    }
 }
