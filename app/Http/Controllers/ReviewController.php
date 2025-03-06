@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\SiteReviews;
+use App\Models\ProductReviews;
 
 class ReviewController extends Controller
 {
@@ -32,7 +33,19 @@ class ReviewController extends Controller
         return redirect()->route('orders');
     }
 
-    public function productReview(Request $request){
+    public function productReview(){
         return view('review.productReview');
+    }
+
+    public function storeProductReview(Request $request){
+        $user = Auth::user();
+        $rating = $request->rating;
+
+        if($user == null){
+            ProductReviews::create(['product_id'=> 1, 'user_id'=> null, 'rating' => $request->rating]);
+        }
+        else{
+            ProductReviews::create(['product_id'=> 1, 'user_id'=> $user->id, 'rating' => $request->rating]);
+        }
     }
 }

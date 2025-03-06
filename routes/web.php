@@ -133,4 +133,4 @@ Route::middleware(['admin'])->group(function () {
     Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
     Route::post('review/storeSiteReview', [ReviewController::class, 'storeSiteReview'])->name('review.storeSiteReview');
     Route::get('review/productReview', [ReviewController::class, 'productReview'])->name('review.productReview');
-    
+    Route::post('review/storeProductReview', [ReviewController::class, 'storeProductReview'])->name('review.storeProductReview');

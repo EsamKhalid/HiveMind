@@ -9,7 +9,11 @@
 
         <main class="flex justify-center items-center min-h-screen">
             <div class="flex justify-center text-black">
-                <form method="post" class="space-y-10 h-full">
+                <form
+                    action="{{ route('review.storeProductReview') }}"
+                    method="post"
+                    class="space-y-10 h-full"
+                >
                     @csrf
                     <div class="rating">
                         <input
