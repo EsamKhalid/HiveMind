@@ -15,6 +15,9 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\BasketController;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminOrderController;
+
+
 Route::get('/', function () {
     return view('home');
 });
@@ -110,7 +113,13 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('adm
     // Routes for return order functionality - Aryan
     Route::get('/orders/{id}/return', [OrderController::class, 'showReturnForm'])->name('orders.return');
     Route::post('/orders/{id}/return', [OrderController::class, 'submitReturnRequest'])->name('orders.return.submit');
-
-
+    
+    // Routes for admin process order status/ approve return functionality - Aryan
+    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
+    Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
+        ->name('admin.orders.update');
+    
+    Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
+ 
     Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
