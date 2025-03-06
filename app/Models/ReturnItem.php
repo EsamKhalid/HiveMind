@@ -14,9 +14,9 @@ class ReturnItem extends Model
         'quantity',
     ];
 
-    public function return()
+    public function returnRequest()
     {
-        return $this->belongsTo(Returns::class, 'return_id');
+        return $this->belongsTo(ReturnRequest::class, 'return_id');
     }
 
     public function orderItem()

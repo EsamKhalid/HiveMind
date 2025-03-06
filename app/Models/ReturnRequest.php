@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Returns extends Model
+class ReturnRequest extends Model
 {
     protected $table = 'returns';
 
@@ -15,4 +15,14 @@ class Returns extends Model
         'reason',
         'comments',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'order_id');
+    }
+
+    public function returnItems()
+    {
+        return $this->hasMany(ReturnItem::class, 'return_id');
+    }
 }
