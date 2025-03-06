@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Products;
+use App\Models\ReturnRequest;
+use App\Models\ReturnItem;
 
 class OrderController extends Controller
 {
@@ -24,42 +26,68 @@ class OrderController extends Controller
             return redirect()->route('login');
         }
     }
+    
 
-    public function showReturnForm($id) {
+    public function showReturnForm($id)
+    {
         $order = Order::with('orderItems.products')->findOrFail($id);
+        if ($order->order_status !== 'Delivered') {
+            return redirect()->route('orders')->with('error', 'You can only return delivered orders.');
+        }
         return view('orders.return', compact('order'));
     }
-    
-    // Need table first, not yet connected to the return table
-    public function returnRequest(Request $request, $id)
-    {  
-        /*
-        $validated = $request->validate([
-          'items' => 'required|array',
-          'reason' => 'required|string',
-          'comments' => 'nullable|string|max:500',
-        ]); */
 
+
+    public function returnRequest(Request $request, $id)
+    {
+        
         $order = Order::findOrFail($id);
-        $order->order_status = 'Return Requested';
-        /*$order->return_reason = $validated['reason'];
-        $order->return_comments = $validated['comments'] ?? null;*/
-        $order->save();
+
+        $request->merge([
+            'items' => array_map('intval', $request->input('items', []))
+        ]);
+        
+        $validated = $request->validate([
+            'return_date' => 'required|date',
+            'reason' => 'required|string|max:255',
+            'comments' => 'nullable|string|max:500',
+            'items' => 'required|array|min:1',
+            'items.*' => 'exists:order_items,id',
+        ]);
+
+        $returnRequest = ReturnRequest::create([
+            'order_id' => $order->id,
+            'return_date' => $validated['return_date'],
+            'reason' => $validated['reason'],
+            'comments' => $validated['comments'] ?? '',
+        ]);
+ 
+        foreach ($validated['items'] as $itemId) {
+            ReturnItem::create([
+                'return_id' => $returnRequest->id,
+                'order_item_id' => $itemId,
+                'quantity' => 1, // Default to 1 if no quantity is provided
+            ]);
+        }
+        
+        $order->update(['order_status' => 'Return Requested']);
 
         return redirect()->route('orders')->with('success', 'Return request submitted successfully.');
     }
 
-    // not yet connected to backend table
-    public function cancelReturn($id) {
+
+    public function cancelReturn($id)
+    {
         $order = Order::findOrFail($id);
-        
+    
         if ($order->order_status === 'Return Requested') {
-            $order->order_status = 'Delivered';
-            $order->save();
+            ReturnRequest::where('order_id', $order->id)->delete();
+            $order->update(['order_status' => 'Delivered']);
         }
     
         return redirect()->route('orders')->with('success', 'Return request cancelled successfully.');
     }
+
 
     public function cancelOrder($id) {
         $order = Order::findOrFail($id);
