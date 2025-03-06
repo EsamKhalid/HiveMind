@@ -16,7 +16,8 @@ class AdminOrderController extends Controller
     public function processOrder(Request $request, Order $order)
     {
         $nextStatus = [
-            'pending' => 'Shipped',
+            'pending' => 'Processing',
+            'Processing' => 'Shipped',
             'Shipped' => 'Delivered'
         ];
 

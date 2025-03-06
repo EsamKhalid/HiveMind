@@ -67,6 +67,13 @@
 
                         @if ($order->user->id !== auth()->user()->id)
                             @if ($order->order_status === 'pending')
+                                <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" onsubmit="return confirm('Mark this order as Processing?');">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="Processing">
+                                    <button type="submit" class="bg-cyan-500 text-white px-4 py-2 mt-4 rounded hover:bg-cyan-600">Mark as Processing</button>
+                                </form>
+                            @elseif ($order->order_status === 'Processing')
                                 <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" onsubmit="return confirm('Mark this order as Shipped?');">
                                     @csrf
                                     @method('PATCH')
@@ -85,7 +92,7 @@
                                     View Return Request
                                 </button>
                             @elseif ($order->order_status === 'Return Requested')
-                                <a href="{{ route('admin.returnRequest', $order->id) }}" class="bg-purple-400 text-white px-4 py-2 mt-4 rounded hover:bg-purple-600 block text-center">
+                                <a href="{{ route('admin.returnRequest', $order->id) }}" class="bg-orange-400 text-white px-4 py-2 mt-4 hover:bg-orange-600 rounded block text-center">
                                     View Return Request
                                 </a>
                             @endif
