@@ -99,7 +99,6 @@
                                 <form action="{{ route('orders.cancelReturn', $order->id) }}" method="POST" class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to cancel the return request?');">
                                     @csrf
-                                    @method('PATCH')
                                     <button type="submit" 
                                         class="bg-red-500 text-white px-4 py-2 mt-4 rounded hover:bg-red-600 transition-colors">
                                         Cancel Return
