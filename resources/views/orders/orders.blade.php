@@ -101,7 +101,7 @@
                                     @csrf
                                     @method('PATCH')
                                     <button type="submit" 
-                                        class="bg-red-400 text-white px-4 py-2 mt-4 rounded hover:bg-red-500 transition-colors">
+                                        class="bg-red-500 text-white px-4 py-2 mt-4 rounded hover:bg-red-600 transition-colors">
                                         Cancel Return
                                     </button>
                                 </form>
@@ -112,7 +112,7 @@
                                     Return Items
                                 </button>
                             @endif
-                            @if (in_array($order->order_status, ['Pending', 'Processing']))
+                            @if (in_array($order->order_status, ['pending', 'Processing', 'Shipped']))
                                 <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');">
                                     @csrf

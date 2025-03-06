@@ -64,7 +64,7 @@ class OrderController extends Controller
     public function cancelOrder($id) {
         $order = Order::findOrFail($id);
     
-        if (in_array($order->order_status, ['Pending', 'Processing'])) {
+        if (in_array($order->order_status, ['pending', 'Processing', 'Shipped'])) {
             $order->delete();
             return redirect()->route('orders')->with('success', 'Order cancelled successfully.');
         }
