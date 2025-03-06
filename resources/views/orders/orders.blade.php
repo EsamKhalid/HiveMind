@@ -29,13 +29,9 @@
                     <p class="text-gray-600 text-lg">You have no orders yet.</p>
                 </div>
                 @else
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ($orders as $index => $order)
-                    <div
-                        class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg"
-                    >
+                    <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
                         <div class="mb-4">
                             <h3 class="text-2xl font-bold text-grey-800">
                                 Order #{{ $index + 1 }}
@@ -50,8 +46,7 @@
                                 <strong>Status:</strong>
                                 <span
                                     class="px-2 py-1 rounded-full
-                                    {{ $order->order_status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}"
-                                >
+                                    {{ $order->order_status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
                                     {{ $order->order_status }}
                                 </span>
                             </p>
