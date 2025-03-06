@@ -33,6 +33,6 @@ class ReviewController extends Controller
     }
 
     public function productReview(Request $request){
-        
+        return view('review.productReview');
     }
 }
