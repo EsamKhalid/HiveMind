@@ -41,14 +41,30 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ($orders as $order)
                     <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
-                        <h3 class="mb-4 text-2xl font-bold text-grey-800">Order #{{ $order->id }}</h3>
+                        <h3 class="mb-4 text-2xl font-bold text-grey-800">Order ID #{{ $order->id }}</h3>
                         <p class="mb-2"><strong>User:</strong> {{ $order->user->email_address }}</p>
                         <p class="mb-2"><strong>Order Date:</strong> {{ $order->order_date }}</p>
                         <p class="mb-2"><strong>Status:</strong> 
-                            <span class="px-2 py-1 rounded-full 
-                                {{ $order->order_status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
-                                {{ $order->order_status }}
-                            </span>
+                            <!--<span
+                                    class="px-2 py-1 rounded-full
+                                    {{ $order->order_status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}"
+                                >
+                                    {{ $order->order_status }}
+                                </span> -->
+                                <span class="px-2 py-1 rounded-full 
+                                    @if ($order->order_status === 'Delivered' || $order->order_status === 'Return Approved') 
+                                        bg-green-100 text-green-700 
+                                    @elseif ($order->order_status === 'Shipped') 
+                                        bg-blue-100 text-blue-700 
+                                    @elseif ($order->order_status === 'Return Requested') 
+                                        bg-orange-100 text-orange-700 
+                                    @elseif ($order->order_status === 'Return Denied') 
+                                        bg-red-100 text-red-700 
+                                    @else 
+                                        bg-yellow-100 text-yellow-700
+                                    @endif">
+                                        {{ $order->order_status }}
+                                </span>
                         </p>
                         <p class="mb-2"><strong>Total Amount:</strong> £{{ number_format($order->total_amount, 2) }}</p>
 
