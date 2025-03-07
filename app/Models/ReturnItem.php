@@ -11,7 +11,6 @@ class ReturnItem extends Model
     protected $fillable = [
         'return_id',
         'order_item_id',
-        'quantity',
     ];
 
     public function returnRequest()

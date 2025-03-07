@@ -66,7 +66,6 @@ class OrderController extends Controller
             ReturnItem::create([
                 'return_id' => $returnRequest->id,
                 'order_item_id' => $itemId,
-                'quantity' => 1, // Default to 1 if no quantity is provided
             ]);
         }
         

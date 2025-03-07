@@ -11,20 +11,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('return_items', function (Blueprint $table) {
-            //$table->unsignedBigInteger('return_id');
-            //$table->unsignedBigInteger('order_id');
-            //$table->unsignedBigInteger('product_id');
 
             $table->primary(['return_id', 'order_item_id']);
 
             $table->foreignId('return_id')->constrained('returns')->onDelete('cascade');
             $table->foreignId('order_item_id')->constrained('order_items')->onDelete('cascade');
-
-            //$table->foreign('return_id')->references('id')->on('returns')->onDelete('cascade');
-            //$table->foreign(['order_id', 'product_id'])->references(['order_id', 'product_id'])->on('order_items')->onDelete('cascade');
             
-            $table->integer('quantity');
-            //$table->string('reason');
+            //$table->integer('quantity');
             //$table->decimal('refund_amount');
             $table->timestamps();
 
