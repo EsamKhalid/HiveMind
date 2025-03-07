@@ -42,6 +42,13 @@
                     </form>
                 </div>
             </div>
+            <p>hello</p>
+        </div>
+        <div class="flex justify-center mt-10 h-fit">
+            <div class="bg-amber size-full w-1/2 text-center">
+                <h1>Reviews</h1>
+                @foreach($reviews as $review) {{ $review }} @endforeach
+            </div>
         </div>
     </body>
 </html>

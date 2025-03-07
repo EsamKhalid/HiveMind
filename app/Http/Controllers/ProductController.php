@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\ProductReviews;
 
 class ProductController extends Controller
 {
@@ -38,6 +39,17 @@ class ProductController extends Controller
    public function show($id)
     {
         $product = Products::findOrFail($id);
-        return view('products.show', ['product' => $product]); 
+        
+        $reviews = ProductReviews::query();
+
+        $reviews = $reviews->where('product_id', '=', $product->id);
+
+        $reviews = $reviews->get();
+
+        //echo $reviews;
+
+        //$reviews = ProductReviews::all();
+
+        return view('products.show', ['product' => $product], ['reviews' => $reviews]); 
     }
 }
