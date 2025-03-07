@@ -63,6 +63,8 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 // for admin page
 Route::get('/admin-dashboard', [AdminDashboardController::class, 'show'])->name('admin-dashboard');
+Route::get('notifications', [AdminDashboardController::class, 'showNotifs'])->name('notifications');
+
 
 /**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
  * before or after the request is processed by your controller. Ultimately, it acts as a bridge between request and a response. */

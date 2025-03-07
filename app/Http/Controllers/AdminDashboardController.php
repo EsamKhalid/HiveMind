@@ -9,4 +9,8 @@ class AdminDashboardController extends Controller
     public function show(){
     return view('admin-dashboard.admin-dashboard');
     }
+    
+    public function showNotifs(){
+        return view('notifications');
+        }
 }
