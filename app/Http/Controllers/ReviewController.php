@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\SiteReviews;
 use App\Models\ProductReviews;
 
+use App\Models\Products;
+
 class ReviewController extends Controller
 {
     //
@@ -34,12 +36,15 @@ class ReviewController extends Controller
     }
 
     public function productReview($id){
-        return view('review.productReview', ['id' => $id]);
+         $product = Products::findOrFail($id);   
+        return view('review.productReview', ['id' => $id], ['product' => $product]);
     }
 
     public function storeProductReview(Request $request, $id){
         $user = Auth::user();
         $rating = $request->rating;
+
+       
 
         if($user == null){
             ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review]);
@@ -50,7 +55,7 @@ class ReviewController extends Controller
              return redirect()->route('orders');
         }
 
-
+        
        
     }
 }

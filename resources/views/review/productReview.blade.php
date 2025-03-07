@@ -9,6 +9,11 @@
 
         <main class="flex justify-center items-center min-h-screen">
             <div class="flex justify-center text-black">
+                <p>Review: {{$product->product_name}}</p>
+                <img
+                    class="size-[20%]"
+                    src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
+                />
                 <form
                     action="{{ route('review.storeProductReview', $id) }}"
                     method="POST"
