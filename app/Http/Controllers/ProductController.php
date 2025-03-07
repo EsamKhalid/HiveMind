@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\ProductReviews;
+use App\Models\Users;
 
 class ProductController extends Controller
 {
@@ -46,10 +47,12 @@ class ProductController extends Controller
 
         $reviews = $reviews->get();
 
+        $users = Users::all();
+
         //echo $reviews;
 
         //$reviews = ProductReviews::all();
 
-        return view('products.show', ['product' => $product], ['reviews' => $reviews]); 
+        return view('products.show', ['product' => $product], ['reviews' => $reviews], ['users' => $users]); 
     }
 }

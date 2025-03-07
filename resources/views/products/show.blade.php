@@ -7,7 +7,7 @@
     <body class="bg-yellow-50">
         @include('layouts.navbar')
         <a
-            href="{{ url()->previous() }}"
+            href="{{ route('products') }}"
             class="fas fa-arrow-left fa-3x p-5"
         ></a>
         <div class="flex justify-center">
@@ -42,12 +42,18 @@
                     </form>
                 </div>
             </div>
-            <p>hello</p>
         </div>
         <div class="flex justify-center mt-10 h-fit">
             <div class="bg-amber size-full w-1/2 text-center">
                 <h1>Reviews</h1>
-                @foreach($reviews as $review) {{ $review }} @endforeach
+                @foreach($reviews as $review) @if($review->user)
+                <p>Name:{{$review->user->first_name}}</p>
+                @else
+                <p>Guest</p>
+                @endif
+
+                <p>{{ $review->review }}</p>
+                @endforeach
             </div>
         </div>
     </body>

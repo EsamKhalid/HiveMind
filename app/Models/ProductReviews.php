@@ -20,7 +20,7 @@ class ProductReviews extends Model
 
     public function user()
     {
-        return $this->belongsTo(Users::class, 'user_id');
+        return $this->belongsTo(Users::class);
     }
 
     public function products()
