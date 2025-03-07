@@ -90,7 +90,7 @@
                                     <a
                                         class="rounded bg-amber p-1"
                                         href="{{
-                                            route('review.productReview', 1)
+                                            route('review.productReview', $item->products->id)
                                         }}"
                                         >Review</a
                                     >
