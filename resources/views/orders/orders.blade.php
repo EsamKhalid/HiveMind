@@ -54,17 +54,36 @@
                         </div>
                         <div class="text-gray-700">
                             <p class="mb-2">
+                                <strong>Order ID: </strong>
+                                {{ $order->id }}
+                            </p>
+                            <p class="mb-2">
                                 <strong>Order Date:</strong>
                                 {{ $order->order_date }}
                             </p>
                             <p class="mb-2">
                                 <strong>Status:</strong>
-                                <span
+                                <!-- <span
                                     class="px-2 py-1 rounded-full
                                     {{ $order->order_status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}"
                                 >
                                     {{ $order->order_status }}
+                                </span> -->
+                                <span class="px-2 py-1 rounded-full 
+                                    @if ($order->order_status === 'Delivered' || $order->order_status === 'Return Approved') 
+                                        bg-green-100 text-green-700 
+                                    @elseif ($order->order_status === 'Shipped') 
+                                        bg-blue-100 text-blue-700 
+                                    @elseif ($order->order_status === 'Return Requested') 
+                                        bg-orange-100 text-orange-700 
+                                    @elseif ($order->order_status === 'Return Denied') 
+                                        bg-red-100 text-red-700 
+                                    @else 
+                                        bg-yellow-100 text-yellow-700
+                                    @endif">
+                                        {{ $order->order_status }}
                                 </span>
+
                             </p>
                             <p class="mb-2">
                                 <strong>Total Amount:</strong>
@@ -95,9 +114,8 @@
                                 <form action="{{ route('orders.cancelReturn', $order->id) }}" method="POST" class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to cancel the return request?');">
                                     @csrf
-                                    @method('PATCH')
                                     <button type="submit" 
-                                        class="bg-red-400 text-white px-4 py-2 mt-4 rounded hover:bg-red-500 transition-colors">
+                                        class="bg-red-500 text-white px-4 py-2 mt-4 rounded hover:bg-red-600 transition-colors">
                                         Cancel Return
                                     </button>
                                 </form>
@@ -108,7 +126,7 @@
                                     Return Items
                                 </button>
                             @endif
-                            @if (in_array($order->order_status, ['Pending', 'Processing']))
+                            @if (in_array($order->order_status, ['pending', 'Processing', 'Shipped']))
                                 <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');">
                                     @csrf
