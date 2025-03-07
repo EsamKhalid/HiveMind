@@ -38,7 +38,7 @@
 
                 <!-- live reports -->
                 <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-chart-simple mr-4 my-auto"></i>Live reports</p>
-                <div class="bg-yellow-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-green-100 dark:bg-green-100 border-t-4 border-green-800 dark:border-green-700 rounded-b text-green-900 dark:text-green-900 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
