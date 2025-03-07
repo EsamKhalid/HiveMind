@@ -63,12 +63,27 @@
                             </p>
                             <p class="mb-2">
                                 <strong>Status:</strong>
-                                <span
+                                <!-- <span
                                     class="px-2 py-1 rounded-full
                                     {{ $order->order_status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}"
                                 >
                                     {{ $order->order_status }}
+                                </span> -->
+                                <span class="px-2 py-1 rounded-full 
+                                    @if ($order->order_status === 'Delivered' || $order->order_status === 'Return Approved') 
+                                        bg-green-100 text-green-700 
+                                    @elseif ($order->order_status === 'Shipped') 
+                                        bg-blue-100 text-blue-700 
+                                    @elseif ($order->order_status === 'Return Requested') 
+                                        bg-orange-100 text-orange-700 
+                                    @elseif ($order->order_status === 'Return Denied') 
+                                        bg-red-100 text-red-700 
+                                    @else 
+                                        bg-yellow-100 text-yellow-700
+                                    @endif">
+                                        {{ $order->order_status }}
                                 </span>
+
                             </p>
                             <p class="mb-2">
                                 <strong>Total Amount:</strong>
