@@ -33,20 +33,20 @@ class ReviewController extends Controller
         return redirect()->route('orders');
     }
 
-    public function productReview(){
-        return view('review.productReview');
+    public function productReview($id){
+        return view('review.productReview', ['id' => $id]);
     }
 
-    public function storeProductReview(Request $request){
+    public function storeProductReview(Request $request, $id){
         $user = Auth::user();
         $rating = $request->rating;
 
         if($user == null){
-            ProductReviews::create(['product_id'=> 1, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review]);
+            ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review]);
              return redirect()->route('home');
         }
         else{
-            ProductReviews::create(['product_id'=> 1, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review]);
+            ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review]);
              return redirect()->route('orders');
         }
 

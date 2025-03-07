@@ -87,7 +87,13 @@
                                     Quantity: {{ $item->quantity }}<br />
                                     Price: £{{ number_format($item->products->price, 2) }}
                                     <br />
-                                    <a class="rounded bg-amber p-1">Review</a>
+                                    <a
+                                        class="rounded bg-amber p-1"
+                                        href="{{
+                                            route('review.productReview', 1)
+                                        }}"
+                                        >Review</a
+                                    >
                                 </li>
                                 @endforeach
                             </ul>
