@@ -135,9 +135,9 @@
             <button class="mt-2 xl:mt-5 ml-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
     </form>
     
-    <form action="post" action={{ route('admin.view-user.delete', $user->id)}} >
+    <form method="post" action={{ route('admin.view-user.delete', $user->id)}} >
         @csrf
-        @method("delete")
+        @method("DELETE")
         <button class="mt-2 xl:mt-5 mr-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete Account</button>
     </form>
 

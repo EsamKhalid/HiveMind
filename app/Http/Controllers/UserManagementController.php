@@ -39,12 +39,10 @@ class UserManagementController extends Controller
             Rule::unique('users', 'email_address')->ignore($id),
         ]);
 
-        if($validator){
-
-        }
-
+       
         //find user by id
         $user = Users::findOrFail($id);
+
         //replace their data with new data
         $user->update([
             'first_name' => $request->first_name,
@@ -60,13 +58,13 @@ class UserManagementController extends Controller
     public function delete($id){
         $admin = Auth::user();
         $user = Users::findOrFail($id);
-        if($admin->id != $user->id && $user->permission_level != 'admin'){
+        if($admin->id != $user->id && $user->permission_level != 'admin' && $admin->permission_level == 'admin'){
             $user->delete();
-            return redirect()->route('admin.user-management')->with('deletionSuccess','User Deleted');
+            return redirect()->route('admin.user-management')->with('deletionSuccess','User id:' . $user->id .' "' .$user->email_address . '" has been deleted' );
         }
 
         //return to user management
-        return redirect()->route('admin.user-management')->with('error','cannot delete admin accounts');
+        return redirect()->route('admin.user-management')->with('error','There was an error');
     }
 
 }
