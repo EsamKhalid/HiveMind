@@ -42,10 +42,15 @@ class ReviewController extends Controller
         $rating = $request->rating;
 
         if($user == null){
-            ProductReviews::create(['product_id'=> 1, 'user_id'=> null, 'rating' => $request->rating]);
+            ProductReviews::create(['product_id'=> 1, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review]);
+             return redirect()->route('home');
         }
         else{
-            ProductReviews::create(['product_id'=> 1, 'user_id'=> $user->id, 'rating' => $request->rating]);
+            ProductReviews::create(['product_id'=> 1, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review]);
+             return redirect()->route('orders');
         }
+
+
+       
     }
 }
