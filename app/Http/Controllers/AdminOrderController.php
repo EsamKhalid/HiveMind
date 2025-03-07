@@ -25,7 +25,7 @@ class AdminOrderController extends Controller
             $order->order_status = $nextStatus[$order->order_status];
             $order->save();
 
-            return redirect()->route('admin.adminOrder')->with('success', 'Order status updated successfully.');
+            return redirect()->route('admin.adminOrder')->with('success', "Status of Order #{$order->id} updated successfully.");
         }
 
         return redirect()->route('admin.adminOrder')->with('error', 'Invalid status update.');
