@@ -17,6 +17,11 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\SupplierController;
 
 use App\Http\Controllers\AdminController;
+
+
+use App\Http\Controllers\UserManagementController;
+
+
 Route::get('/', function () {
     return view('home');
 });
@@ -74,13 +79,20 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
+Route::get('/admin/user-management', [UserManagementController::class, 'view'])->name('admin.user-management');
 
+Route::get('/admin/user-management/user/{id}', [UserManagementController::class, 'show'])->name('admin.view-user');
+
+
+Route::patch('/admin/user-management/user/update/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
+Route::delete('/admin/user-management/user/delete/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
     Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
     Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
+
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');

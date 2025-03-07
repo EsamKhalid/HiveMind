@@ -8,7 +8,7 @@
         @include('layouts.navbar')
         <a
             href="{{ url()->previous() }}"
-            class="fas fa-arrow-left fa-3x p-5"
+            class="fas fa-arrow-left fa-3x p-5 absolute top-0 left-0 dark:text-amber"
         ></a>
         <div class="flex justify-center">
             <div class="w-[50] h-[50vh] flex justify-center">
