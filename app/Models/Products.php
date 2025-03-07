@@ -14,6 +14,12 @@ class Products extends Model
         'product_type',
         'description',
         'price',
+        'ingredients',
+        'direction',
+        'additional_info',
+        'stock_level',
+        'reorder_level',
+
     ];
 
     public function orderItems()

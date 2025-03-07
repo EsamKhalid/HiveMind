@@ -13,6 +13,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\SupplierController;
 
 use App\Http\Controllers\AdminController;
 
@@ -37,6 +39,10 @@ Route::get('account', [TestController::class, 'account'])->name('account');
 
 
 Route::get('about', [TestController::class, 'about'])->name('about');
+
+Route::get('terms', [TestController::class, 'terms'])->name('terms');
+
+Route::get('faq', [TestController::class, 'faq'])->name('faq'); 
 
 // routes for login page
 // Route::view('/login', 'login.login')->name('login');
@@ -71,15 +77,26 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+//Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
 Route::get('/admin/user-management', [UserManagementController::class, 'view'])->name('admin.user-management');
 
 Route::get('/admin/user-management/user/{id}', [UserManagementController::class, 'show'])->name('admin.view-user');
 
+
 Route::patch('/admin/user-management/user/update/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
 Route::delete('/admin/user-management/user/delete/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
 
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
+    Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
+    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
+
+
+    Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
+    Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
+});
 
 
 
@@ -112,14 +129,27 @@ Route::delete('/admin/user-management/user/delete/{id}', [UserManagementControll
     Route::get('contact', [ContactController::class, 'view'])->name('contact');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
-    // Routes for details page - Aryan
+    // Routes for Details page - Aryan
     Route::get('details', [DetailsController::class, 'view'])->name('user.details');
     Route::post('details/update', [DetailsController::class, 'update'])->name('user.details.update');
     
-    // Routes for return order functionality - Aryan
+    // Routes for Return Order Functionality - Aryan
     Route::get('/orders/{id}/return', [OrderController::class, 'showReturnForm'])->name('orders.return');
-    Route::post('/orders/{id}/return', [OrderController::class, 'submitReturnRequest'])->name('orders.return.submit');
+    Route::post('/orders/{id}/return', [OrderController::class, 'returnRequest'])->name('orders.return.submit');
+    Route::post('/orders/{id}/cancel-return', [OrderController::class, 'cancelReturn'])->name('orders.cancelReturn');
+     
+    // Route for Cancel Order Functionality - Aryan
+    Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 
 
-    Route::get('terms', [UserController::class, 'terms'])->name('user.terms');
+
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+    
+    // NOTE FROM HARRY (15/02/25)
+    // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
+    // YOU MIGHT HAVE TO UPDATE THIS ROUTE GET ACCORDINGLY ASSUMING YOU ARE RUNNING FROM "resources/views/admin/inventory.blade.php"
+
+    Route::get('/inventory', [ProductController::class, 'inventory_products']);
+    Route::get('admin', [AdminController::class, 'adm'])->name('adm');
+
+     

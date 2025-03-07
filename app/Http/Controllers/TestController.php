@@ -28,7 +28,15 @@ class TestController extends Controller
         return view('user.account');
     }
 
+    public function terms(){
+        return view('terms.terms');
+    }
+
     // public function products(){
     //     return view('products.products');
     // }
+
+    public function faq() { 
+        return view('faq.faq'); 
+    }
 }
