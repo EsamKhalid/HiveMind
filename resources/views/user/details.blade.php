@@ -8,7 +8,7 @@
 </head>
 <body>
     @include('layouts.navbar')
-
+    <main>
     <a  href="{{ route('account') }}"
         class="fas fa-arrow-left fa-3x pl-4 pt-2"></a>
 
@@ -82,7 +82,7 @@
             </button>
         </form>
     </div>
-
+    </main>
     @include('layouts.footer')
     
     <!-- script to make the confirm password field 'required' if the new password field has a value -->
