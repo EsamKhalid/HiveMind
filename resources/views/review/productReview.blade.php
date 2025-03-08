@@ -6,6 +6,11 @@
     </head>
     <body>
         @include('layouts.navbar')
+        <div class="flex justify-center">
+            @if($errors->any())
+            <h4 class="text-3xl">{{$errors->first()}}</h4>
+            @endif
+        </div>
 
         <main class="flex justify-center items-center min-h-screen">
             <div class="flex justify-center text-black">

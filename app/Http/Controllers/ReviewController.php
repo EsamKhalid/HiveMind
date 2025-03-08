@@ -24,6 +24,10 @@ class ReviewController extends Controller
 
         $rating = $request->rating;
 
+        if($rating == null){
+             return redirect()->route('review.siteReview')->withErrors(['msg' => ' Please Enter a Rating']);
+        }
+
         if($user == null){
             SiteReviews::create(['user_id' => null,'rating' => $request->rating, 'review' => $request->review]);
         }
@@ -43,6 +47,12 @@ class ReviewController extends Controller
     public function storeProductReview(Request $request, $id){
         $user = Auth::user();
         $rating = $request->rating;
+
+        $product = Products::findOrFail($id); 
+
+         if($rating == null){
+              return redirect()->route('review.productReview', ['id' => $id])->withErrors(['msg' => 'Please Enter a Rating']);
+        }
 
        
 
