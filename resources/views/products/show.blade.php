@@ -3,6 +3,10 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>{{ $product->product_name }}</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
     </head>
     <body class="bg-yellow-50">
         @include('layouts.navbar')
@@ -48,8 +52,12 @@
                 <h1>Reviews</h1>
                 <div class="inline-block justify-center">
                     @foreach($reviews as $review) @if($review->user)
-                    <div class="bg-ghost-white rounded m-2">
-                        <p>Name:{{$review->user->first_name}}</p>
+                    <div class="bg-ghost-white rounded m-2 text-lg [&_p]:p-1.5">
+                        @for ($i = 0; $i < $review->rating; $i++)
+                        <div class="fa fa-star white"></div>
+                        @endfor
+                        <p>Name: {{$review->user->first_name}}</p>
+
                         @else
                         <p>Guest</p>
                         @endif
