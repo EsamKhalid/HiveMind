@@ -44,28 +44,28 @@ class ReviewController extends Controller
         return view('review.productReview', ['id' => $id], ['product' => $product]);
     }
 
-    public function storeProductReview(Request $request, $id){
+    public function storeProductReview(Request $request, $id)
+    {
         $user = Auth::user();
         $rating = $request->rating;
 
-        $product = Products::findOrFail($id); 
+        $product = Products::findOrFail($id);
 
-         if($rating == null){
-              return redirect()->route('review.productReview', ['id' => $id])->withErrors(['msg' => 'Please Enter a Rating']);
+        if ($user == null) { return redirect()->route('home'); }
+
+        // VALIDATE WHETHER THE USER HAS ALREADY SUBMITTED A REVIEW
+
+        $existingReview = ProductReviews::where('product_id', $id)
+                                    ->where('user_id', $user->id)
+                                    ->first();
+
+        if ($existingReview) 
+        {
+            return redirect()->route('products.show', ['id' => $id])
+                         ->withErrors(['msg' => 'You have already submitted a review for this product.']);
         }
 
-       
-
-        if($user == null){
-            ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review]);
-             return redirect()->route('home');
-        }
-        else{
-            ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review]);
-             return redirect()->route('orders');
-        }
-
-        
-       
+        return redirect()->route('products.show', ['id' => $id])
+                     ->with('success', 'Your review has been submitted successfully.');
     }
 }
