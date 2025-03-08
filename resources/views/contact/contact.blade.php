@@ -7,7 +7,7 @@
         <link rel="icon" href="/favicon.ico">
     </head>
 
-    <body class="dark:bg-stone-900">
+    <body class="dark:bg-stone-900 duration-1000">
     
         @include('layouts.navbar')
         

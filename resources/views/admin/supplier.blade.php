@@ -7,7 +7,7 @@
 
 <body>
     <header></header>
-    @include('layouts.navbar')
+    @include('layouts.sidebar')
 
     <main>
         <div class="flex justify-center m-4">
