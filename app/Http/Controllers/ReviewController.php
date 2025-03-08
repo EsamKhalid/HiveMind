@@ -51,14 +51,21 @@ class ReviewController extends Controller
 
         $product = Products::findOrFail($id);
 
-        if ($user == null) { return redirect()->route('home'); }
+        
 
         // VALIDATE WHETHER THE USER HAS ALREADY SUBMITTED A REVIEW
 
-        $existingReview = ProductReviews::where('product_id', $id)
+        if($user){
+            $existingReview = ProductReviews::where('product_id', $id)
                                     ->where('user_id', $user->id)
                                     ->first();
 
+        }
+        else{
+            $existingReview = null;
+        }
+
+        
         // NOTE FROM HARRY (08/03/25)
         // VALIDATOR *DOES* WORK THOUGH, WITHOUT A VALID AJAX HANDLER, THE MESSAGES DONT EXACTLY APPEAR
 
@@ -68,7 +75,16 @@ class ReviewController extends Controller
                          ->withErrors(['msg' => 'You have already submitted a review for this product.']);
         }
 
-        return redirect()->route('products.show', ['id' => $id])
-                     ->with('success', 'Your review has been submitted successfully.');
+
+       if($user == null){
+            ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review]);
+             return redirect()->route('home');
+        }
+        else{
+            ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review]);
+             return redirect()->route('orders');
+        }
+
+        ;
     }
 }

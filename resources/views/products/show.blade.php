@@ -52,18 +52,43 @@
             </div>
         </div>
 
-        <div id="REVIEW_MODAL" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[1000] hidden">
+        <div
+            id="REVIEW_MODAL"
+            class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[1000] hidden"
+        >
             <div class="bg-white p-5 rounded-lg w-[400px] shadow-md">
                 <h2 class="text-2xl font-bold mb-4">Submit Your Review</h2>
-                <form action="{{ route('review.submit', ['id' => $product->id]) }}" method="post">
+                <form
+                    action="{{ route('review.storeProductReview', $product->id) }}"
+                    method="POST"
+                >
                     @csrf
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" name="name" id="name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        <label
+                            for="name"
+                            class="block text-sm font-medium text-gray-700"
+                            >Name</label
+                        >
+                        <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                            required
+                        />
                     </div>
                     <div class="mb-4">
-                        <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-                        <select name="rating" id="rating" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        <label
+                            for="rating"
+                            class="block text-sm font-medium text-gray-700"
+                            >Rating</label
+                        >
+                        <select
+                            name="rating"
+                            id="rating"
+                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                            required
+                        >
                             <option value="1">1 Star</option>
                             <option value="2">2 Stars</option>
                             <option value="3">3 Stars</option>
@@ -72,18 +97,45 @@
                         </select>
                     </div>
                     <div class="mb-4">
-                        <label for="review_title" class="block text-sm font-medium text-gray-700">Review Title</label>
-                        <input type="text" name="review_title" id="review_title" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                        <label
+                            for="review_title"
+                            class="block text-sm font-medium text-gray-700"
+                            >Review Title</label
+                        >
+                        <input
+                            type="text"
+                            name="review_title"
+                            id="review_title"
+                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                            required
+                        />
                     </div>
                     <div class="mb-4">
-                        <label for="review" class="block text-sm font-medium text-gray-700">Review</label>
-                        <textarea name="review" id="review" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required></textarea>
+                        <label
+                            for="review"
+                            class="block text-sm font-medium text-gray-700"
+                            >Review</label
+                        >
+                        <textarea
+                            name="review"
+                            id="review"
+                            rows="4"
+                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+                            required
+                        ></textarea>
                     </div>
                     <div class="flex justify-end">
-                        <button type="button" onclick="CLOSE()" class="bg-gray-500 text-white px-4 py-2 rounded-md mr-2">
+                        <button
+                            type="button"
+                            onclick="CLOSE()"
+                            class="bg-gray-500 text-white px-4 py-2 rounded-md mr-2"
+                        >
                             Cancel
                         </button>
-                        <button type="submit" class="bg-amber px-4 py-2 rounded-md">
+                        <button
+                            type="submit"
+                            class="bg-amber px-4 py-2 rounded-md"
+                        >
                             Submit Review
                         </button>
                     </div>
@@ -91,69 +143,66 @@
             </div>
         </div>
         <div class="flex justify-center mt-24 h-fit">
-        <div class="bg-amber size-10 w-1/2 text-center">
-            <div class="relative flex items-center justify-center py-2">
-                <h1 class="text-2xl font-bold">Reviews</h1>
-                <button onclick="TOGGLE_REVIEW()" class="absolute right-0 top-[0px] bg-gray-500 text-white px-4 py-2 rounded-md">
-                    <i id="COLLAPSE_ICON" class="fa fa-chevron-down"></i>
-                </button>
-        </div>
-        <div id="REVIEWS_CONTAINER" class="space-y-4">
-            @foreach($review as $rev)
-                <div class="bg-white rounded-lg shadow-md p-4 text-center">
-                    <div class="flex justify-center">
-                        @for ($i = 0; $i < $rev->rating; $i++)
-                            <div class="fa fa-star text-yellow-400"></div>
-                        @endfor
-                    </div>
-                    <p class="text-lg font-semibold mt-2">
-                        @if($rev->user)
-                            Name: {{ $rev->user->first_name }}
-                        @endif
-                    </p>
-                    <p class="text-gray-700">{{ $rev->review_title }}</p>
-                    <p class="text-gray-700">{{ $rev->review }}</p>
+            <div class="bg-amber size-10 w-1/2 text-center">
+                <div class="relative flex items-center justify-center py-2">
+                    <h1 class="text-2xl font-bold">Reviews</h1>
+                    <button
+                        onclick="TOGGLE_REVIEW()"
+                        class="absolute right-0 top-[0px] bg-gray-500 text-white px-4 py-2 rounded-md"
+                    >
+                        <i id="COLLAPSE_ICON" class="fa fa-chevron-down"></i>
+                    </button>
                 </div>
-            @endforeach
-            </div>
+                <div id="REVIEWS_CONTAINER" class="space-y-4">
+                    @foreach($reviews as $rev)
+                    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                        <div class="flex justify-center">
+                            @for ($i = 0; $i < $rev->rating; $i++)
+                            <div class="fa fa-star text-yellow-400"></div>
+                            @endfor
+                        </div>
+                        <p class="text-lg font-semibold mt-2">
+                            @if($rev->user) Name: {{ $rev->user->first_name }}
+                            @endif
+                        </p>
+                        <p class="text-gray-700">{{ $rev->review_title }}</p>
+                        <p class="text-gray-700">{{ $rev->review }}</p>
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
         <script>
-            function OPEN() 
-            {
-                document.getElementById('REVIEW_MODAL').classList.remove('hidden');
+            function OPEN() {
+                document
+                    .getElementById("REVIEW_MODAL")
+                    .classList.remove("hidden");
             }
 
-            function CLOSE() 
-            {
-                document.getElementById('REVIEW_MODAL').classList.add('hidden');
+            function CLOSE() {
+                document.getElementById("REVIEW_MODAL").classList.add("hidden");
             }
 
-            window.onclick = function (event) 
-            {
-                const MODAL = document.getElementById('REVIEW_MODAL');
-                if (event.target === MODAL) 
-                {
+            window.onclick = function (event) {
+                const MODAL = document.getElementById("REVIEW_MODAL");
+                if (event.target === MODAL) {
                     CLOSE();
                 }
             };
 
-            function TOGGLE_REVIEW() 
-            {
-                const reviewsContainer = document.getElementById('REVIEWS_CONTAINER');
-                const collapseIcon = document.getElementById('COLLAPSE_ICON');
+            function TOGGLE_REVIEW() {
+                const reviewsContainer =
+                    document.getElementById("REVIEWS_CONTAINER");
+                const collapseIcon = document.getElementById("COLLAPSE_ICON");
 
-                if (reviewsContainer.classList.contains('hidden')) 
-                {
-                    reviewsContainer.classList.remove('hidden');
-                    collapseIcon.classList.remove('fa-chevron-up');
-                    collapseIcon.classList.add('fa-chevron-down');
-                } 
-                else 
-                {
-                    reviewsContainer.classList.add('hidden');
-                    collapseIcon.classList.remove('fa-chevron-down');
-                    collapseIcon.classList.add('fa-chevron-up');
+                if (reviewsContainer.classList.contains("hidden")) {
+                    reviewsContainer.classList.remove("hidden");
+                    collapseIcon.classList.remove("fa-chevron-up");
+                    collapseIcon.classList.add("fa-chevron-down");
+                } else {
+                    reviewsContainer.classList.add("hidden");
+                    collapseIcon.classList.remove("fa-chevron-down");
+                    collapseIcon.classList.add("fa-chevron-up");
                 }
             }
         </script>
