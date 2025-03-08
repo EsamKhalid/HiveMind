@@ -3,7 +3,7 @@
 
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>🐝 Viewing user 🐝</title>
+    <title>Viewing user 🐝</title>
 </head>
 <script>
 

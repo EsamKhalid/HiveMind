@@ -3,6 +3,8 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>HiveMind 🐝</title>
     </head>
 
     <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">

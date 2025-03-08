@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Frequently Asked Questions</title>
+        <title>Frequently Asked Questions 🐝</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">

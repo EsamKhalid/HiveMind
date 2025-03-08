@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <title>{{ $product->product_name }}</title>
+        <title>{{ $product->product_name }} 🐝</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
     </head>
     <body class="bg-yellow-50">
         @include('layouts.navbar')

@@ -3,7 +3,8 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact Us</title>
+        <title>Contact Us 🐝</title>
+        <link rel="icon" href="/favicon.ico">
     </head>
 
     <body class="dark:bg-stone-900">

@@ -4,57 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
+    <title>Inventory 🐝</title>
+    <link rel="icon" href="/favicon.ico">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 </head>
 
-<body>
+<body class="bg-white dark:bg-stone-900 w-full">
+@include('layouts.sidebar')
     @include('layouts.inventory')
     <div class="relative text-center mt-24 h-48">
-        <h2 class="absolute inset-0 w-full text-9xl font-bold text-gray-300 opacity-70 pointer-events-none">
+        <h2 class="absolute inset-0 w-full text-7xl lg:text-9xl font-bold text-gray-300 dark:text-yellow-400 dark:opacity-80 opacity-90 pointer-events-none">
             INVENTORY
         </h2>
+        
     </div>
-
+    <div class="h-fit mb-6 ml-[18%]">
+                @include('layouts.searchbar')
+            </div>
     <!-- THE FOLLOWING SERVES TO ACT AS A SEPERATE BAR FOR FILTERING BASED ON PRODUCT TYPE -->
-
-    <div class="sticky top-0 bg-white z-10 py-4">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-center overflow-x-auto gap-4 mb-6 py-2">
-                <button onclick="FILTER_PRODUCTS('ALL')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700">
+    
+    <div class="flex flex-row-reverse flex-grow lg:flex-col top-0 bg-stone-200 dark:bg-stone-950 z-8 py-4">
+   
+        <div class="containern max-w-[20%] mr-20 lg:mr-10 lg:max-w-none 2xl:mx-auto px-3 dark:rounded-lg">
+        
+            <div class="flex flex-col justify-end lg:flex-row lg:justify-center overflow gap-4 mb-6 py-2">
+            
+                <form class="w-fit"method="get" action="">
+                <button
+                {{ request('filter') == 'none' ? 'selected' : '' }}
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
                     <i class="fas fa-th-large"></i> All
                 </button>
+                </form>
                 <button onclick="FILTER_PRODUCTS('BEAUTY')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
                     <i class="fas fa-spa"></i> Beauty
                 </button>
                 <button onclick="FILTER_PRODUCTS('HEALTH')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
                     <i class="fas fa-heartbeat"></i> Health
                 </button>
                 <button onclick="FILTER_PRODUCTS('HAIRCARE')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
                     <i class="fas fa-air-freshener"></i> Hair
                 </button>
                 <button onclick="FILTER_PRODUCTS('SKINCARE')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
                     <i class="fas fa-pump-soap"></i> Skin
                 </button>
                 <button onclick="FILTER_PRODUCTS('BODYCARE')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
                     <i class="fas fa-shower"></i> Body
                 </button>
                 <button onclick="FILTER_PRODUCTS('MERCHANDISE')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
                     <i class="fas fa-tshirt"></i> Merchandise
                 </button>
                 <button onclick="FILTER_PRODUCTS('HOME')"
-                    class="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
+                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
                     <i class="fas fa-home"></i> Home
                 </button>
             </div>
+            
+            
         </div>
 
         <!-- CONTAINER USED FOR BEING ABLE TO DEFINE PRODUCTS TO THE INVENTORY BASED ON AN ID -->
@@ -62,29 +75,34 @@
 
         <!-- THANK YOU, BASANTA AND MUNEEB FOR THE IMPL. OF FOREACH -->
 
-        <div class="container mx-auto px-4 pb-12">
-            <div class="grid grid-cols-4 gap-10 bg-gray-200 p-6 rounded-lg shadow-md transition-all duration-300"
+        <div class="container mx-auto px-4 pb-12 ">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300"
                 id="INVENTORY">
                 @foreach($products as $product)
-                    <div class="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
+                    <div class="bg-white dark:bg-stone-300 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
                         <div class="absolute top-2 right-2">
                             <span class="text-xs flex items-center gap-1 text-gray-500">
                                 <i class="fas {{ $TYPE_ICONS[$product->product_type] ?? 'fa-box' }}"></i>
                             </span>
                         </div>
-                        <div class="mt-3">
+                        <div class="my-3">
                             <div class="text-lg font-bold">{{ strtoupper($product->product_name) }}</div>
                             <div class="text-gray-700">£{{ $product->price }}</div>
                             <div class="text-sm {{ $product->stock_level > 0 ? 'text-green-600' : 'text-red-600' }}">
                                 {{ $product->stock_level > 0 ? 'In Stock' : 'Out of Stock' }}
                             </div>
                         </div>
+
+                        <a
+                         href={{ route("admin.show",$product->id)  }}>
+                            <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
+                        </a>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
-    <script>
+    <!--<script> 
         const PRODUCTS = @json($products);
 
         const TYPE_COLORS =
@@ -123,15 +141,15 @@
                         : ['Sufficient Stock', 'text-green-600'];
 
             return `
-            <div class="bg-white rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
+            <div class="bg-white dark:bg-stone-900 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
                 <div class="absolute top-2 right-2">
-                    <span class="text-xs flex items-center gap-1 text-gray-500">
+                    <span class="text-xs flex items-center gap-1 text-gray-500 dark:text-white">
                         <i class="fas ${TYPE_ICONS[PRODUCT.product_type]}"></i>
                     </span>
                 </div>
                     <div class="mt-3">
-                    <div class="text-lg font-bold">${PRODUCT.product_name.toUpperCase()}</div>
-                    <div class="text-gray-700">£${PRODUCT.price}</div>
+                    <div class="text-lg dark:text-white font-bold">${PRODUCT.product_name.toUpperCase()}</div>
+                    <div class="text-gray-700 dark:text-white">£${PRODUCT.price}</div>
                     <div class="text-sm ${COLOUR}">
                     ${STATUS}
                         </div>
@@ -168,7 +186,7 @@
         }
 
         FILTER_PRODUCTS('ALL');
-    </script>
+    </script> -->
 </body>
 
 </html>
