@@ -51,7 +51,9 @@
             <div class="bg-amber size-full w-1/2 text-center">
                 <h1>Reviews</h1>
                 <div class="inline-block justify-center">
-                    @foreach($reviews as $review) @if($review->user)
+                    @foreach($reviews as $review) @if($review->review &&
+                    review->review_title) @if($review->user)
+
                     <div class="bg-ghost-white rounded m-2 text-lg [&_p]:p-1.5">
                         @for ($i = 0; $i < $review->rating; $i++)
                         <div class="fa fa-star white"></div>
@@ -63,8 +65,7 @@
                         @endif
                         <p>{{ $review->review }}</p>
                     </div>
-
-                    @endforeach
+                    @endif @endforeach
                 </div>
             </div>
         </div>
