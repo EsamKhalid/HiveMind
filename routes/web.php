@@ -115,7 +115,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('adm
     Route::post('/orders/{id}/return', [OrderController::class, 'submitReturnRequest'])->name('orders.return.submit');
     
     // Routes for admin process order status/ approve return functionality - Aryan
-    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
+    //Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
     Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
         ->name('admin.orders.update');
     
