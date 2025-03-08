@@ -56,6 +56,8 @@
                                         bg-green-100 text-green-700 
                                     @elseif ($order->order_status === 'Shipped') 
                                         bg-blue-100 text-blue-700 
+                                    @elseif ($order->order_status === 'Processing') 
+                                        bg-cyan-100 text-cyan-700
                                     @elseif ($order->order_status === 'Return Requested') 
                                         bg-orange-100 text-orange-700 
                                     @elseif ($order->order_status === 'Return Denied') 
