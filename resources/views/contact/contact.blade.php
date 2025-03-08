@@ -57,7 +57,7 @@
                         <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
                         <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
                         <textarea name="enquiry" placeholder="Your Message (max 500 characters)" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" rows="4" required></textarea>
-                        <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-50 dark:dark:bg-stone-900 dark:hover:text-amber">Submit</button>
+                        <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:underline dark:dark:bg-stone-900 dark:hover:text-amber">Submit</button>
                     </form>
                 </div>
 
