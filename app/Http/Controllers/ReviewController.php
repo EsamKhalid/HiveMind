@@ -59,6 +59,9 @@ class ReviewController extends Controller
                                     ->where('user_id', $user->id)
                                     ->first();
 
+        // NOTE FROM HARRY (08/03/25)
+        // VALIDATOR *DOES* WORK THOUGH, WITHOUT A VALID AJAX HANDLER, THE MESSAGES DONT EXACTLY APPEAR
+
         if ($existingReview) 
         {
             return redirect()->route('products.show', ['id' => $id])
