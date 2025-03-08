@@ -125,7 +125,7 @@
                             @endif
                             @if (in_array($order->order_status, ['pending', 'Processing', 'Shipped']))
                                 <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="inline-block"
-                                    onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');">
+                                    onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone and a small fee may still be charged.');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" 

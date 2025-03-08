@@ -15,13 +15,7 @@ class AdminController extends Controller
 
     public function dashboard(){
 
-        $user = Auth::User();
-
-        if($user->permission_level != "admin"){
-            echo "not an admin";
-            return redirect()->route('account');
-        }
-        else{ return view('admin.dashboard');}
+       return view('admin.dashboard');
 
         
     }
