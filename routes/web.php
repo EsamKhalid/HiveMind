@@ -17,13 +17,10 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\SupplierController;
 
 use App\Http\Controllers\AdminController;
-<<<<<<< HEAD
 use App\Http\Controllers\AdminOrderController;
-=======
 
 
 use App\Http\Controllers\UserManagementController;
->>>>>>> main
 
 
 Route::get('/', function () {
@@ -100,6 +97,12 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
+
+    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
+    Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
+        ->name('admin.orders.update');
+    
+    Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
 });
 
 
@@ -141,11 +144,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/orders/{id}/return', [OrderController::class, 'showReturnForm'])->name('orders.return');
     
     // Routes for admin process order status/ approve return functionality - Aryan
-    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
-    Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
-        ->name('admin.orders.update');
-    
-    Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
+   
  
     Route::post('/orders/{id}/return', [OrderController::class, 'returnRequest'])->name('orders.return.submit');
     Route::post('/orders/{id}/cancel-return', [OrderController::class, 'cancelReturn'])->name('orders.cancelReturn');
