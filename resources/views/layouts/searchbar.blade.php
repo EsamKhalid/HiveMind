@@ -36,7 +36,7 @@
         const SEARCH_IO = document.getElementById('SEARCH-IO');
         const LENGTH = SEARCH_IO.value.length;
         const BASE_WIDTH = 150;
-        const MAX = 550;
+        const MAX = 0.4 * window.visualViewport.width;
 
         let NEW_WIDTH = BASE_WIDTH + LENGTH * 8;
         NEW_WIDTH = Math.min(NEW_WIDTH, MAX);

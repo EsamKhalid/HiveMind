@@ -12,7 +12,6 @@
 
 <body class="bg-white dark:bg-stone-900 w-full">
 @include('layouts.sidebar')
-    @include('layouts.inventory')
     <div class="relative text-center mt-24 h-48">
         <h2 class="absolute inset-0 w-full text-7xl lg:text-9xl font-bold text-gray-300 dark:text-yellow-400 dark:opacity-80 opacity-90 pointer-events-none">
             INVENTORY
@@ -20,7 +19,7 @@
         
     </div>
     <div class="h-fit mb-6 ml-[18%]">
-                @include('layouts.searchbar')
+                
             </div>
     <!-- THE FOLLOWING SERVES TO ACT AS A SEPERATE BAR FOR FILTERING BASED ON PRODUCT TYPE -->
     
@@ -76,7 +75,11 @@
         <!-- THANK YOU, BASANTA AND MUNEEB FOR THE IMPL. OF FOREACH -->
 
         <div class="container mx-auto px-4 pb-12 ">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300"
+            
+            <div class=" bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300"
+                id="INVENTORYBG">
+                @include('layouts.searchbar')
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300"
                 id="INVENTORY">
                 @foreach($products as $product)
                     <div class="bg-white dark:bg-stone-300 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
@@ -99,6 +102,7 @@
                         </a>
                     </div>
                 @endforeach
+            </div>
             </div>
         </div>
     </div>
