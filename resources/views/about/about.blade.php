@@ -4,7 +4,7 @@
         <title>About Us</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="transition-all ease-in-out duration-1000 transform">
+    <body>
         <header>@include('layouts.navbar')</header>
         <div class="aboutUsPage">
             <h2
