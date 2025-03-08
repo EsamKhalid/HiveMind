@@ -8,18 +8,18 @@
     <body class="bg-yellow-50">
         @include('layouts.navbar')
         <a
-            href="{{ url()->previous() }}"
-            class="fas fa-arrow-left fa-3x p-5 absolute top-0 left-0 dark:text-amber"
+            href="{{ route('products')  }}"
+            class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"
         ></a>
         <div class="flex justify-center">
-            <div class="w-[50] h-[50vh] flex justify-center">
+            <div class=" flex justify-center mt-[10%] flex-col lg:flex-row">
                 <div class="flex justify-center pr-5">
                     <img
-                        class="size-full"
+                        class="w-[500px] h-[500px] lg:w-[500px] lg:h-[500px] size-full"
                         src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                     />
                 </div>
-                <div class="inline-block justify-center size-[35vh]">
+                <div class="inline-block justify-center size-[35vh] mt-10">
                     <div class="flex justify-left">
                         <h1 class="text-5xl text-left pb-4">
                             {{ $product->product_name }}

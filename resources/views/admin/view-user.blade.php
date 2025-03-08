@@ -151,11 +151,15 @@
     </div>
     @endif
     
-    @if(session()->has('error'))
-    <div class="mx-auto alert alert-error text-red-700 font-bold">
-        {{ session()->get('error') }}
-    </div>
-    @endif
+    @if ($errors->any())
+            <div class="mx-auto alert alert-error text-red-700 font-bold">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 </body>
 
 </html>

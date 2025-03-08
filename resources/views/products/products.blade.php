@@ -48,7 +48,7 @@
 
         @else
 
-        <div class="inline-block mt-5">
+        <div class=" mt-5">
             @if($search)
             <div class="flex justify-center">
                 <div class="flex justify-between my-3 w-3/4  border">
@@ -60,14 +60,14 @@
 
             @endif
             <div class="flex justify-center">
-                <div class="grid grid-cols-5 gap-0 w-3/4 mb-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0  mb-2">
                     @foreach($products as $product)
                     <a
                         href="{{route('products.show', $product->id)}}"
                         class="w-fit"
                         ><div class="h-auto max-w-3/4 p-5">
                             <img
-                                class="h-[60%]"
+                                class="w-[300px]"
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
                              <h1 class="text-center text-xl">
