@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->unsignedTinyInteger('rating'); 
             $table->text('review')->nullable();   
+            $table->text('review_title')->nullable();
             $table->timestamp('review_date')->useCurrent(); 
             $table->timestamps(); 
         });

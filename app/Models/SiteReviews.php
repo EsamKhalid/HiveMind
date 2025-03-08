@@ -13,6 +13,7 @@ class SiteReviews extends Model
     protected $fillable = [
         'user_id',
         'rating',
+        'title',
         'review',
     ];
 
