@@ -46,14 +46,18 @@
         <div class="flex justify-center mt-10 h-fit">
             <div class="bg-amber size-full w-1/2 text-center">
                 <h1>Reviews</h1>
-                @foreach($reviews as $review) @if($review->user)
-                <p>Name:{{$review->user->first_name}}</p>
-                @else
-                <p>Guest</p>
-                @endif
+                <div class="inline-block justify-center">
+                    @foreach($reviews as $review) @if($review->user)
+                    <div class="bg-ghost-white rounded m-2">
+                        <p>Name:{{$review->user->first_name}}</p>
+                        @else
+                        <p>Guest</p>
+                        @endif
+                        <p>{{ $review->review }}</p>
+                    </div>
 
-                <p>{{ $review->review }}</p>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </body>
