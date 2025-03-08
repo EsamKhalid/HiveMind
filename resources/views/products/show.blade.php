@@ -90,8 +90,8 @@
                 </form>
             </div>
         </div>
-        <div class="flex justify-center mt-10 h-fit">
-            <div class="bg-amber size-full w-1/2 text-center">
+        <div class="flex justify-center mt-24 h-fit">
+            <div class="bg-amber size-10 w-1/2 text-center">
                 <div class="relative flex items-center justify-center py-2">
                 <h1 class="text-2xl font-bold">Reviews</h1>
                 <button onclick="TOGGLE_REVIEW()" class="absolute right-0 bg-gray-500 text-white px-4 py-2 rounded-md">
@@ -106,16 +106,16 @@
                                 <div class="fa fa-star text-yellow-400"></div>
                             @endfor
                         </div>
-                    <p class="text-lg font-semibold mt-2">
-                        @if($rev->user)
+                        <p class="text-lg font-semibold mt-2">
+                            @if($rev->user)
                             Name: {{ $rev->user->first_name }}
-                        @endif
-                    </p>
-                    <p class="text-gray-700">{{ $rev->review_title }}</p>
-                    <p class="text-gray-700">{{ $rev->review }}</p>
-                </div>
-            @endforeach
-                </div>
+                            @endif
+                        </p>
+                        <p class="text-gray-700">{{ $rev->review_title }}</p>
+                        <p class="text-gray-700">{{ $rev->review }}</p>
+                        </div>
+                @endforeach
+            </div>
             </div>
         </div>
         <script>
