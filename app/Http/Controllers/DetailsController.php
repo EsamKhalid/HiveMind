@@ -32,7 +32,7 @@ class DetailsController extends Controller
     ]);
 
     if (!Hash::check($request->current_password, $user->password)) {
-        return back()->withErrors(['current_password' => 'Incorrect password.']);
+        return back()->withErrors(['current_password' => 'The current password is incorrect.']);
     }
 
     $user->first_name = $request->first_name;

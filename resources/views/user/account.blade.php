@@ -33,11 +33,24 @@
                         </button>
                     </div>
 
+                    @if($user->permission_level == "admin")
+
+                    <div class="flex flex-col space-y-4 mb-8 h-full">
+                        <a
+                            class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 h-full"
+                            href="{{ route('admin.dashboard') }}"
+                            >Go to Admin Portal</a
+                        >
+                    </div>
+
+                    @endif
+
                     <!-- section for user to view orders, account settings etc. // some features not yet implemented -->
                     <div
                         class="border bg-yellow-50 p-6 rounded-lg shadow-md text-center"
                     >
                         <ul class="space-y-4 text-orange-950 text-lg">
+                            <li><a href="{{ route('admin.adminOrder') }}">User Orders</a></li>
                             <li><a href="{{ route('orders') }}">Orders</a></li>
                             <!-- these pages aren't implemented yet, redirects to products page for now -->
                             <li>

@@ -67,13 +67,13 @@
 
             <div>
                 <label class="block text-sm font-semibold">New Password (Optional)</label>
-                <input type="password" name="password" id="password" autocomplete="new-password"
+                <input type="password" name="password" id="password"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>
 
             <div>
                 <label class="block text-sm font-semibold">Confirm New Password</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" autocomplete="new-password"
+                <input type="password" name="password_confirmation" id="password_confirmation"
                     class="w-full px-4 py-2 mb-6 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>
 
@@ -85,7 +85,7 @@
 
     @include('layouts.footer')
     
-    <!-- script to make the confirm password field 'required' if the new password field has a value -->
+    <!-- script to make the confirm password field 'required' if the password field has a value -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const password = document.getElementById("password");
