@@ -90,32 +90,31 @@
                 </form>
             </div>
         </div>
-
         <div class="flex justify-center mt-10 h-fit">
             <div class="bg-amber size-full w-1/2 text-center">
-                <div class="flex justify-between items-center">
-                    <h1 class="text-2xl font-bold mb-4">Reviews</h1>
-                    <button onclick="TOGGLE_REVIEW()" class="bg-gray-500 text-white px-4 py-2 rounded-md">
-                        <i id="COLLAPSE_ICON" class="fa fa-chevron-down"></i>
-                    </button>
-                </div>
-                <div id="REVIEWS_CONTAINER" class="space-y-4">
-                    @foreach($review as $rev)
-                        <div class="bg-white rounded-lg shadow-md p-4 text-center">
-                            <div class="flex justify-center">
-                                @for ($i = 0; $i < $rev->rating; $i++)
-                                    <div class="fa fa-star text-yellow-400"></div>
-                                @endfor
-                            </div>
-                            <p class="text-lg font-semibold mt-2">
-                                @if($rev->user)
-                                    Name: {{ $rev->user->first_name }}
-                                @endif
-                            </p>
-                            <p class="text-gray-700">{{ $rev->review_title }}</p>
-                            <p class="text-gray-700">{{ $rev->review }}</p>
+                <div class="relative flex items-center justify-center py-2">
+                <h1 class="text-2xl font-bold">Reviews</h1>
+                <button onclick="TOGGLE_REVIEW()" class="absolute right-0 bg-gray-500 text-white px-4 py-2 rounded-md">
+                    <i id="COLLAPSE_ICON" class="fa fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="REVIEWS_CONTAINER" class="space-y-4">
+                @foreach($review as $rev)
+                    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                        <div class="flex justify-center">
+                            @for ($i = 0; $i < $rev->rating; $i++)
+                                <div class="fa fa-star text-yellow-400"></div>
+                            @endfor
                         </div>
-                    @endforeach
+                    <p class="text-lg font-semibold mt-2">
+                        @if($rev->user)
+                            Name: {{ $rev->user->first_name }}
+                        @endif
+                    </p>
+                    <p class="text-gray-700">{{ $rev->review_title }}</p>
+                    <p class="text-gray-700">{{ $rev->review }}</p>
+                </div>
+            @endforeach
                 </div>
             </div>
         </div>
