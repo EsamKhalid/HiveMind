@@ -1,37 +1,9 @@
 <!DOCTYPE html>
-<head>
-    <script >
-    (function() {
-            // Check for saved theme or system preference and apply it
-            const currentTheme = localStorage.getItem("theme");
-            const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            if (currentTheme === "dark" || (!currentTheme && deviceTheme)) {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.remove("dark");
-            }
-        })();
-
-function toggleTheme(){
-    var currentTheme = localStorage.getItem("theme");
-
-    if(!currentTheme){
-        localStorage.setItem("theme","dark");
-    }else if(currentTheme == "dark"){
-        localStorage.setItem("theme","light");
-    }else{
-        localStorage.setItem("theme","dark");
-    }
-    document.documentElement.classList.toggle("dark")
-
-}
-</script>
-</head>
-<body class="transition-transform ease-in-out duration-1000">
+<body>
     <div class="overflow-hidden">
         <!-- navbar -->
         <nav
-            class="navbar flex justify-between items-center bg-amber dark:bg-stone-800 text-white px-6 py-4"
+            class="navbar flex justify-between items-center bg-amber text-white px-6 py-4"
         >
             <!-- logo section -->
 
@@ -53,26 +25,23 @@ function toggleTheme(){
                 <!-- links are next to icons -->
                 <ul class="hidden md:flex space-x-8 text-lg">
                     <li>
-                    <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber" onclick="toggleTheme()"></a>
-                    </li>
-                    <li>
                         <a
                             href="{{ route('products') }}"
-                            class="hover:text-gray-200 dark:hover:text-amber"
+                            class="hover:text-gray-200"
                             >Shop Us</a
                         >
                     </li>
                     <li>
                         <a
                             href="{{ route('about') }}"
-                            class="hover:text-gray-200 dark:hover:text-amber"
+                            class="hover:text-gray-200"
                             >About Us</a
                         >
                     </li>
                     <li>
                         <a
                             href="{{ route('contact') }}"
-                            class="hover:text-gray-200 dark:hover:text-amber"
+                            class="hover:text-gray-200"
                             >Contact Us</a
                         >
                     </li>
@@ -92,31 +61,31 @@ function toggleTheme(){
                         <!-- search icon -->
                         <button
                             type="submit"
-                            class="text-white hover:text-gray-200 dark:hover:text-amber"
+                            class="text-white hover:text-gray-200"
                         >
-                            <i class="fas fa-search fa-xl dark:hover:text-amber"></i>
+                            <i class="fas fa-search fa-xl"></i>
                         </button>
                     </div>
                 </form>
                 @auth
                 <a
                     href="{{ route('basket.view') }}"
-                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-gray-200 "
+                    class="fas fa-shopping-basket fa-xl hover:text-gray-200"
                 ></a>
                 @else
                 <a
                     href="{{ route('login') }}"
-                    class="fas fa-shopping-basket fa-xl hover:text-gray-200 dark:hover:text-amber"
+                    class="fas fa-shopping-basket fa-xl hover:text-gray-200"
                 ></a>
                 @endauth @auth
                 <a
                     href="{{ route('account') }}"
-                    class="fas fa-user fa-xl hover:text-gray-200 transition dark:hover:text-amber"
+                    class="fas fa-user fa-xl hover:text-gray-200 transition"
                 ></a>
                 @else
                 <a
                     href="{{ route('login') }}"
-                    class="fas fa-user fa-xl hover:text-gray-200 transition dark:hover:text-amber"
+                    class="fas fa-user fa-xl hover:text-gray-200 transition"
                 ></a>
                 @endauth
             </div>
