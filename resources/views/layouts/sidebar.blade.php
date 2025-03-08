@@ -25,7 +25,7 @@
         document.documentElement.classList.toggle("dark");
     }
 </script>
-<div id="sidebar" class="flex w-[0%] h-[100%]">
+<div id="sidebar" class="flex w-[0%] h-[100%] z-10">
     <div class="flex">
         <input
             type="checkbox"
@@ -40,7 +40,7 @@
             <i id="cross" class="fa-solid fa-x hidden"></i>
         </label>
         <div
-            class="fixed top-0 left-0 z-1 w-[80%] lg:w-[400px] m:w-[35%] h-full transition-all ease-in-out duration-200 transform -translate-x-full bg-white dark:bg-stone-950 shadow-lg dark:shadow-md dark:shadow-gray-300 peer-checked:translate-x-0"
+            class="fixed top-0 left-0 z-1 w-[80%] lg:w-[400px] md:w-[35%] h-full transition-all ease-in-out duration-200 transform -translate-x-full bg-white dark:bg-stone-950 shadow-lg dark:shadow-md dark:shadow-gray-300 peer-checked:translate-x-0"
         >
             <div class="px-6 py-4 h-full">
                 <div class="flex justify-start align-middle mb-10">
