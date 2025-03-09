@@ -11,14 +11,14 @@
     @include('layouts.navbar')
     <a href="{{ route('admin.adminOrder') }}" class="fas fa-arrow-left fa-2x pl-4 pt-2"></a>
 
-    <div class="max-w-5xl mx-auto p-6 bg-white shadow-md rounded-lg mt-2 mb-12">
+    <div class="xl:w-[50%] lg:w-[70%] max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-2 mb-12">
         <h1 class="text-3xl font-bold mb-4">Return Request for Order #{{ $order->id }}</h1>
         <p class="text-gray-600">Review and process this return request.</p>
 
         <div class="mt-4 p-4 border rounded bg-gray-50">
             <h2 class="text-xl font-semibold mb-2">Order Details</h2>
             <p><strong>Order ID:</strong> {{ $order->id }}</p>
-            <p><strong>Customer Email:</strong> {{ $order->user->email_address }}</p>
+            <p><strong>User Email:</strong> {{ $order->user->email_address }}</p>
             <p><strong>Order Status:</strong> {{ $order->order_status }}</p>
             <p><strong>Order Date:</strong> {{ $order->created_at->format('d M Y') }}</p>
         </div>
