@@ -98,17 +98,11 @@ function toggleTheme(){
                         </button>
                     </div>
                 </form>
-                @auth
                 <a
                     href="{{ route('basket.view') }}"
                     class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-gray-200 "
                 ></a>
-                @else
-                <a
-                    href="{{ route('login') }}"
-                    class="fas fa-shopping-basket fa-xl hover:text-gray-200 dark:hover:text-amber"
-                ></a>
-                @endauth @auth
+                @auth
                 <a
                     href="{{ route('account') }}"
                     class="fas fa-user fa-xl hover:text-gray-200 transition dark:hover:text-amber"
