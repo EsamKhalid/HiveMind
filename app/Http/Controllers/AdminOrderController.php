@@ -75,4 +75,31 @@ class AdminOrderController extends Controller
         return redirect()->route('admin.adminOrder', $returnRequest->order_id)->with('success', "Return request for Order #{$order->id} denied successfully.");
     }
 
+    public function processAllOrders()
+    {
+        $adminId = auth()->user()->id;
+    
+        $orders = Order::whereNotIn('order_status', ['Delivered', 'Return Requested', 'Return Approved', 'Return Denied'])
+                    ->where('user_id', '!=', $adminId)
+                    ->get();
+
+        foreach ($orders as $order) {
+            switch ($order->order_status) {
+                case 'pending':
+                    $order->order_status = 'Processing';
+                    break;
+                case 'Processing':
+                    $order->order_status = 'Shipped';
+                    break;
+                case 'Shipped':
+                    $order->order_status = 'Delivered';
+                    break;
+            }
+            $order->save();
+        }
+
+        return redirect()->back()->with('success', 'All orders have been processed to the next stage.');
+    }
+
+
 }

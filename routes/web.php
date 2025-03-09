@@ -102,6 +102,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
     Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
         ->name('admin.orders.update');
+    Route::patch('/admin/orders/processAll', [AdminOrderController::class, 'processAllOrders'])->name('admin.orders.processAll');
     
     // View, aprrove or deny return requests - Aryan
     Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');

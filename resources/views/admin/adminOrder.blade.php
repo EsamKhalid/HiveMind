@@ -38,6 +38,17 @@
                     <p class="text-gray-600 text-lg">No orders found.</p>
                 </div>
                 @else
+
+                <div class="flex justify-center">
+                    <form action="{{ route('admin.orders.processAll') }}" method="POST" onsubmit="return confirm('Are you sure you want to process all orders (excluding returns and your own orders) to the next stage?');">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit" class="bg-purple-500 text-white px-8 py-3 mb-8 rounded-lg hover:bg-purple-700 transition">
+                            Process All Orders
+                        </button>
+                    </form>
+                </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ($orders as $order)
                     <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
@@ -78,7 +89,11 @@
                             <li class="mb-2">
                                 <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold">
                                         {{ $item->products->product_name }}
-                                </a><br/>
+                                </a>
+                                @if ($item->returnItem && $item->order->order_status === 'Return Approved')
+                                        <span class="bg-gray-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
+                                @endif
+                                <br/>
                                 Quantity: {{ $item->quantity }}<br/>
                                 Price: £{{ number_format($item->products->price, 2) }}
                             </li>
