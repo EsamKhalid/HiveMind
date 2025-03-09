@@ -318,7 +318,7 @@ class BasketController extends Controller
         }
 
         return $totalPrice;
-        
+
     }
 
 
@@ -333,5 +333,26 @@ class BasketController extends Controller
     //    $redirect = Auth::user();
     //    return redirect()->route('checkout.view');
     //}
+
+    public function transferBasket()
+    {
+        $user = Auth::user();
+        $guestID = session()->get('guest_id');
+
+        if ($guestID) {
+            $guestBasket = Basket::where('guest_id', $guestID)->first();
+            $userBasket = Basket::where('user_id', $user->id)->first();
+
+            if ($guestBasket && $userBasket) {
+                return redirect()->route('basket.view');
+            } else
+                $guestBasket->update([
+                    'user_id' => $user->id,
+                    'guest_id' => null,
+                ]);
+            session()->forget('guest_id');
+            return redirect()->route('basket.view');
+        }
+    }
 
 }
