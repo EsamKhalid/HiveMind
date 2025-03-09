@@ -123,6 +123,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('checkout', [CheckoutController::class, 'view'])->name('checkout.view');  
 
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
+    Route::post('checkout/save-guest', [CheckoutController::class, 'storeGuest'])->name('checkout.storeGuest');
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
