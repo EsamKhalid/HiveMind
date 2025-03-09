@@ -52,12 +52,27 @@ class CheckoutController extends Controller
         return $basket;
     }
 
+    public function getAddress()
+    {
+
+        $user = Auth::user();
+
+        if ($user) {
+            $address = Addresses::where('user_id', $user->id)->first();
+        } else {
+            $guestID = session()->get('guest_id');
+            $address = Addresses::where('guest_id', $guestID)->first();
+        }
+
+        return $address;
+    }
+
     public function storeAddress(Request $request)
     {
 
         $user = Auth::user();
-        $basket = Basket::where('user_id', $user->id)->first();
-        $total_amount = 0;
+        //$basket = Basket::where('user_id', $user->id)->first();
+        //$total_amount = 0;
 
         $request->validate([
             'street_address' => 'required',
@@ -70,21 +85,42 @@ class CheckoutController extends Controller
 
 
         //get the address of the user, returns null if they dont have an address
-        $address = Addresses::where('user_id', $user->id)->first();
+        //if ($user) {
+        //    $address = Addresses::where('user_id', $user->id)->first();
+        //} else {
+        //    $guestID = session()->get('guest_id');
+        //    $address = Addresses::where('guest_id', $guestID)->first();
+        //}
+
+        $address = $this->getAddress();
 
 
         if ($address == null) {
-            Addresses::create([
-                'user_id' => $user->id,
-                'guest_id' => null,
-                'street_address' => $request->street_address,
-                'city' => $request->city,
-                'county' => $request->county,
-                'country' => $request->country,
-                'post_code' => $request->post_code,
-                'type' => "shipping",
-            ]);
+            if ($user) {
+                Addresses::create([
+                    'user_id' => $user->id,
+                    'guest_id' => null,
+                    'street_address' => $request->street_address,
+                    'city' => $request->city,
+                    'county' => $request->county,
+                    'country' => $request->country,
+                    'post_code' => $request->post_code,
+                    'type' => "shipping",
+                ]);
+            } else {
+                $guestID = session()->get('guest_id');
 
+                Addresses::create([
+                    'user_id' => null,
+                    'guest_id' => $guestID,
+                    'street_address' => $request->street_address,
+                    'city' => $request->city,
+                    'county' => $request->county,
+                    'country' => $request->country,
+                    'post_code' => $request->post_code,
+                    'type' => "shipping",
+                ]);
+            }
             // Addresses::create([
             //     'user_id' => $user->id,
             //     'street_address' => $request->street_address,
