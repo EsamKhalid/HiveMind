@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\ReturnRequest;
 
 class AdminOrderController extends Controller
 {
@@ -33,7 +34,45 @@ class AdminOrderController extends Controller
 
     public function returnRequest(Order $order)
     {
-    return view('admin.returnRequest', compact('order'));
+        $returnRequest = ReturnRequest::with('returnItems.orderItem.products')->where('order_id', $order->id)->first();
+
+        if (!$returnRequest) {
+            return redirect()->route('admin.adminOrder')->with('error', "No return request found for Order #{$order->id}.");
+        }
+
+        return view('admin.returnRequest', compact('order', 'returnRequest'));
+    }
+
+    public function approveReturn(Request $request, ReturnRequest $returnRequest)
+    {
+        if (!$returnRequest) {
+            return redirect()->route('admin.adminOrder')->with('error', "Return request for Order #{$order->id} not found.");
+        }
+
+        //$returnRequest->status = 'Approved';
+        //$returnRequest->save();
+
+        $order = $returnRequest->order;
+        $order->order_status = 'Return Approved';
+        $order->save();
+
+        return redirect()->route('admin.adminOrder', $order->id)->with('success', "Return request for Order #{$order->id} approved successfully.");
+    }
+
+    public function denyReturn(Request $request, ReturnRequest $returnRequest)
+    {
+        if (!$returnRequest) {
+            return redirect()->route('admin.adminOrder')->with('error', "Return request for Order #{$order->id} not found.");
+        }
+
+        //$returnRequest->status = 'Denied';
+        //$returnRequest->save();
+
+        $order = $returnRequest->order;
+        $order->order_status = 'Return Denied';
+        $order->save();
+
+        return redirect()->route('admin.adminOrder', $returnRequest->order_id)->with('success', "Return request for Order #{$order->id} denied successfully.");
     }
 
 }

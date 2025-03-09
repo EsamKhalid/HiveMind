@@ -97,12 +97,17 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
-
+    
+    // View and process user orders - Aryan
     Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
     Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
         ->name('admin.orders.update');
     
+    // View, aprrove or deny return requests - Aryan
     Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
+    Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
+    Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
+
 });
 
 
@@ -142,10 +147,6 @@ Route::middleware(['admin'])->group(function () {
     
     // Routes for Return Order Functionality - Aryan
     Route::get('/orders/{id}/return', [OrderController::class, 'showReturnForm'])->name('orders.return');
-    
-    // Routes for admin process order status/ approve return functionality - Aryan
-   
- 
     Route::post('/orders/{id}/return', [OrderController::class, 'returnRequest'])->name('orders.return.submit');
     Route::post('/orders/{id}/cancel-return', [OrderController::class, 'cancelReturn'])->name('orders.cancelReturn');
      
