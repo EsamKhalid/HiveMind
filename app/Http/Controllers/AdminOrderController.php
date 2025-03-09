@@ -49,8 +49,8 @@ class AdminOrderController extends Controller
             return redirect()->route('admin.adminOrder')->with('error', "Return request for Order #{$order->id} not found.");
         }
 
-        //$returnRequest->status = 'Approved';
-        //$returnRequest->save();
+        $returnRequest->return_status = 'Approved';
+        $returnRequest->save();
 
         $order = $returnRequest->order;
         $order->order_status = 'Return Approved';
@@ -65,8 +65,8 @@ class AdminOrderController extends Controller
             return redirect()->route('admin.adminOrder')->with('error', "Return request for Order #{$order->id} not found.");
         }
 
-        //$returnRequest->status = 'Denied';
-        //$returnRequest->save();
+        $returnRequest->return_status = 'Denied';
+        $returnRequest->save();
 
         $order = $returnRequest->order;
         $order->order_status = 'Return Denied';

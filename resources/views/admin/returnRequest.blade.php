@@ -26,6 +26,7 @@
         <div class="mt-6 p-4 border rounded bg-gray-50">
             <h2 class="text-xl font-semibold mb-2">Return Request Details</h2>
             <p><strong>Requested On:</strong> {{ $returnRequest->created_at->format('d M Y') }}</p>
+            <p><strong>Return Status:</strong> {{ $returnRequest->return_status }}</p>
             <p><strong>Return Reason:</strong> {{ $returnRequest->reason }}</p>
             <p><strong>Comments:</strong> {{ $returnRequest->comments ?? 'No comments provided' }}</p>
         </div>
