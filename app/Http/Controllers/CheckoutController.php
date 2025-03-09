@@ -177,6 +177,29 @@ class CheckoutController extends Controller
         return redirect()->route('basket.view');
     }
 
+    public function storeGuest(Request $request)
+    {
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email_address' => 'required',
+            'phone_number' => 'required',
+        ]);
+
+        $guestID = session()->get('guest_id');
+        $guest = Guest::where('id', $guestID)->first();
+
+        $guest->update([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email_address' => $request->input('email_address'),
+            'phone_number' => $request->input('phone_number'),
+        ]);
+
+        return redirect()->route('basket.view');
+    }
+
     public function checkout()
     {
         $user = Auth::user();
