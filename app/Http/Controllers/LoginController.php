@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Users;
+use App\Models\Basket;
 
 class LoginController extends Controller
 {
@@ -33,11 +34,20 @@ class LoginController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
-            return redirect()->route('products')->with('success', 'Login successful!');
+            $guestID = session()->get('guest_id');
+
+            if ($guestID) {
+                return redirect()->route('basket.transfer');
+            } else {
+                return redirect()->route('products')->with('success', 'Login successful!');
+            }
+            
+            
         }
 
         return back()->withErrors(['login' => 'Invalid email or password.'])->withInput();
     }
+
 
     public function logout()
     {
