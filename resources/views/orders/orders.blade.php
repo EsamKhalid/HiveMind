@@ -95,7 +95,11 @@
                                 <li class="mb-2">
                                     <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold">
                                         {{ $item->products->product_name }}
-                                    </a><br/>
+                                    </a>
+                                    @if ($item->returnItem && $item->order->order_status === 'Return Approved')
+                                        <span class="bg-gray-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
+                                    @endif
+                                    <br/>
                                     <!--Description: {{ $item->products->description }}<br/>-->
                                     Quantity: {{ $item->quantity }}<br/>
                                     Price: £{{ number_format($item->products->price, 2) }}
@@ -116,6 +120,9 @@
                                         Cancel Return
                                     </button>
                                 </form>
+                            @elseif ($order->order_status === 'Return Approved')
+                            @elseif ($order->order_status === 'Return Denied')
+                                <p class="bg-gray-100 text-red-400 mt-4 p-2 rounded font-semibold">Please contact customer support if unsatisfied with the return request outcome (+353-123-4567, admin@hivemind.com).</p>
                             @else
                                 <button class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" 
                                         title="Cannot request return until order is delivered" 
