@@ -177,14 +177,16 @@ class CheckoutController extends Controller
         return redirect()->route('basket.view');
     }
 
-
     public function checkout()
     {
         $user = Auth::user();
-        $basket = Basket::where('user_id', $user->id)->first();
+        //$basket = Basket::where('user_id', $user->id)->first();
         $total_amount = 0;
 
-        $address = Addresses::where('user_id', $user->id)->first();
+        $basket = $this->getBasket();
+
+        //$address = Addresses::where('user_id', $user->id)->first();
+        $address = $this->getAddress();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
@@ -201,7 +203,7 @@ class CheckoutController extends Controller
             return redirect()->route('basket.view')->withErrors(['msg' => ' PLEASE FILL IN ADDRESS']);
         }
 
-        foreach ($basketItems as $order_item) { 
+        foreach ($basketItems as $order_item) {
 
             if ($order_item->stock_level < $order_item->quantity) { //Checks if the selected product in basket is higher than the available product stock level.
                 return redirect()->route('basket.view')->withErrors(['msg' => ' PROUCT OUT OF STOCK']); //Returns error, does not place order.
@@ -209,37 +211,73 @@ class CheckoutController extends Controller
 
         }
 
-        $order = Order::create([
-            'user_id' => $user->id,
-            'guest_id' => null,
-            'order_date' => now(),
-            'order_status' => 'pending',
-            'total_amount' => $basket->total_amount,
-            'payment_method' => 'card',
-            'amount_paid' => $basket->$total_amount,
-            'payment_date' => now(),
-        ]);
-
-        foreach ($basketItems as $order_item) {
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $order_item->product_id,
-                'quantity' => $order_item->quantity,
-
+        if ($user) {
+            $order = Order::create([
+                'user_id' => $user->id,
+                'guest_id' => null,
+                'order_date' => now(),
+                'order_status' => 'pending',
+                'total_amount' => $basket->total_amount,
+                'payment_method' => 'card',
+                'amount_paid' => $basket->$total_amount,
+                'payment_date' => now(),
             ]);
 
-            $product = Products::find($order_item->product_id); //Retrieves the product id of the basket item.
-            $product->stock_level = $product->stock_level - $order_item->quantity; //Reduces the stock level of the product by the quantity of item in basket.
-            $product->save();
+            foreach ($basketItems as $order_item) {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $order_item->product_id,
+                    'quantity' => $order_item->quantity,
+
+                ]);
+
+                $product = Products::find($order_item->product_id); //Retrieves the product id of the basket item.
+                $product->stock_level = $product->stock_level - $order_item->quantity; //Reduces the stock level of the product by the quantity of item in basket.
+                $product->save();
+            }
+
+            $basket = Basket::where('user_id', $user->id)->first();
+
+            BasketItems::where('basket_id', $basket->id)->delete();
+            $basket->delete();
+
+            return redirect()->route('orders');
+
+        } else {
+            $guestID = session()->get('guest_id');
+
+            $order = Order::create([
+                'user_id' => null,
+                'guest_id' => $guestID,
+                'order_date' => now(),
+                'order_status' => 'pending',
+                'total_amount' => $basket->total_amount,
+                'payment_method' => 'card',
+                'amount_paid' => $basket->$total_amount,
+                'payment_date' => now(),
+            ]);
+
+            foreach ($basketItems as $order_item) {
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $order_item->product_id,
+                    'quantity' => $order_item->quantity,
+
+                ]);
+
+                $product = Products::find($order_item->product_id); //Retrieves the product id of the basket item.
+                $product->stock_level = $product->stock_level - $order_item->quantity; //Reduces the stock level of the product by the quantity of item in basket.
+                $product->save();
+            }
+
+            $basket = Basket::where('guest_id', $guestID)->first();
+
+            BasketItems::where('basket_id', $basket->id)->delete();
+            $basket->delete();
+
+            return view('checkout.confirmation');
         }
 
-        $basket = Basket::where('user_id', $user->id)->first();
-
-        BasketItems::where('basket_id', $basket->id)->delete();
-        $basket->delete();
-
-        return redirect()->route('orders');
-        
     }
 
     public function confirmation()
