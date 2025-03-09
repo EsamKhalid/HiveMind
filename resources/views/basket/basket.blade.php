@@ -1,3 +1,15 @@
+@php
+    $user = Auth::user();
+
+    if ($user) { 
+        $address = \App\Models\Addresses::where('user_id', $user->id)->first();
+    } else {
+        $guestID = session()->get('guest_id');
+        $guest = \App\Models\Guest::where('id', $guestID)->first();
+        $address = \App\Models\Addresses::where('guest_id', $guestID)->first();
+        }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
