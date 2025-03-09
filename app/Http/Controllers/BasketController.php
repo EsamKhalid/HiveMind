@@ -19,32 +19,10 @@ class BasketController extends Controller
     //
     public function view()
     {
-        //check if user is logged in
-        //$user = Auth::user();
 
-        //if not logged in, redirect to login page
-        //if (!$user) {
-        //    return redirect()->route('login');
-        //}
-
-        //creates basket object from the database using the user id
-        //$basket = Basket::where('user_id', $user->id)->first();
         $basket = $this->getBasket();
 
-        //if there is no basket, it creates it and adds to the database
-        //if (!$basket) {
-        //    $basket = Basket::Create([
-        //        'user_id' => $user->id,
-        //        'guest_id' => null,
-        //        'total_amount' => 0
-        //    ]);
-        //}
-
-
-
         //$basketItems = BasketItems::where('basket_id',$basket->id)->select('basket_items.*')->get();
-
-
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
@@ -146,11 +124,8 @@ class BasketController extends Controller
 
     public function increaseQuantity(Request $request)
     {
-        //$user = Auth::user();
 
         $productId = $request->input('product_id');
-
-        //$basket = Basket::where('user_id', $user->id)->first();
         $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
@@ -173,11 +148,8 @@ class BasketController extends Controller
 
     public function decreaseQuantity(Request $request)
     {
-        //$user = Auth::user();
 
         $productId = $request->input('product_id');
-
-        //$basket = Basket::where('user_id', $user->id)->first();
         $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
@@ -206,12 +178,9 @@ class BasketController extends Controller
 
     public function updateQuantity(Request $request)
     {
-        //$user = Auth::user();
 
         $newQuantity = $request->input('quantity');
         $productId = $request->input('product_id');
-
-        //$basket = Basket::where('user_id', $user->id)->first();
         $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
@@ -234,9 +203,6 @@ class BasketController extends Controller
             $basketItem->save();
         }
 
-
-
-
         echo $productId;
 
         $basket->update([
@@ -251,12 +217,9 @@ class BasketController extends Controller
 
     public function removeFromBasket(Request $request)
     {
-        //$user = Auth::user();
 
         $newQuantity = $request->input('quantity');
         $productId = $request->input('product_id');
-
-        //$basket = Basket::where('user_id', $user->id)->first();
         $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
@@ -270,11 +233,8 @@ class BasketController extends Controller
 
         $basketItem = $basketItems->where('product_id', $productId)->first();
 
-
-
         //$basketItem->quantity = $request->input('quantity');
         //$basketItem->save();
-
 
         $basketItem->delete();
 
@@ -282,30 +242,15 @@ class BasketController extends Controller
             'total_amount' => $this->basketTotal()
         ]);
 
-
-
         //return view('basket.basket', ['basketItems' => $basketItems]); 
-
         return redirect()->route('basket.view');
     }
 
     public function addToBasket(Request $request)
     {
-        //if (Auth::check()) {
-        //    $user = Auth::user();
-        //$basket = Basket::where('user_id', $user->id)->first();
+
         $basket = $this->getBasket();
         $productId = $request->input('product_id');
-        //
-//
-        //    if (!$basket) {
-        //        $basket = Basket::Create([
-        //            'user_id' => $user->id,
-        //            'guest_id' => null,
-        //            'total_amount' => 0
-        //        ]);
-        //    }
-
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
@@ -344,9 +289,7 @@ class BasketController extends Controller
         //    'total_amount' => $totalPrice
         //]);
 
-
         // echo $request->input('product_id');
-
 
         return redirect()->route('basket.view');
 
@@ -354,13 +297,10 @@ class BasketController extends Controller
         //    return redirect()->route('login')->with('success', 'Signup successful!');
         //}
 
-
     }
 
     public function basketTotal()
     {
-        //$user = Auth::user();
-        //$basket = Basket::where('user_id', $user->id)->first();
 
         $basket = $this->getBasket();
 
@@ -377,13 +317,8 @@ class BasketController extends Controller
             $totalPrice += $item->price * $item->quantity;
         }
 
-
         return $totalPrice;
-
-
-
-
-
+        
     }
 
 
