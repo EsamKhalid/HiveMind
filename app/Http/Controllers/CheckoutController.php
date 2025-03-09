@@ -12,6 +12,7 @@ use App\Models\Basket;
 use App\Models\BasketItems;
 use App\Models\Addresses;
 use App\Models\Products;
+use App\Models\Guest;
 
 class CheckoutController extends Controller
 {
@@ -19,6 +20,36 @@ class CheckoutController extends Controller
     public function view()
     {
         return view('checkout.checkout');
+    }
+
+    public function getBasket()
+    {
+        //Retrieve Basket
+
+        //Check if user is logged in
+        $user = Auth::user();
+
+        //If the user is logged in, fetch users' basket from database.
+        if ($user) {
+            $basket = Basket::where('user_id', $user->id)->first();
+        }
+
+        //If user is not logged in, fetch guests' basket from database.
+        else {
+            //Fetch guest id from session
+            $guestID = session()->get('guest_id');
+
+            //If guest id not found, create new guest and store id in session
+            if (!$guestID) {
+                $guest = Guest::create();
+                $guestID = $guest->id;
+                session()->put('guest_id', $guestID);
+            }
+
+            $basket = Basket::where('guest_id', $guestID)->first();
+        }
+
+        return $basket;
     }
 
     public function storeAddress(Request $request)
