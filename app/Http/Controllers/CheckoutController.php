@@ -207,6 +207,15 @@ class CheckoutController extends Controller
             )->get();
 
 
+        if (!$user) {
+            $guestID = session()->get('guest_id');
+            $guest = Guest::where('id', $guestID)->first();
+
+            if (($guest->first_name == null) || ($guest->last_name == null) || ($guest->email_address == null) || ($guest->phone_number == null)) {
+                return redirect()->route('basket.view')->withErrors(['msg' => ' PLEASE FILL IN DETAILS']);
+            }
+        }
+
         if ($address == null) {
             return redirect()->route('basket.view')->withErrors(['msg' => ' PLEASE FILL IN ADDRESS']);
         }
