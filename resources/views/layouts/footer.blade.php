@@ -38,7 +38,7 @@
             <p class="text-lg">Help us save the bees by donating today!</p>
             <a
                 href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE"
-                class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 dark:bg-stone-700 mt-4 inline-block text-center transition-colors duration-1000"
+                class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 dark:bg-stone-600 mt-4 inline-block text-center transition-colors duration-1000 dark:hover:bg-stone-700"
                 >Donate</a
             >
         </div>

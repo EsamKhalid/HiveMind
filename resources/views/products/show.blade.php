@@ -15,7 +15,7 @@
             <div class=" flex justify-center mt-[10%] flex-col lg:flex-row">
                 <div class="flex justify-center pr-5">
                     <img
-                        class="w-[500px] h-[500px] lg:w-[500px] lg:h-[500px] size-full"
+                        class="w-[500px] h-[500px] lg:w-[500px] lg:h-[500px] size-full hover:scale-105 transition-all duration-500" 
                         src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                     />
                 </div>
@@ -37,7 +37,7 @@
                             name="product_id"
                             value="{{ $product->id }}"
                         />
-                        <button type="submit" class="bg-amber w-1/2 p-2">
+                        <button type="submit" class="bg-yellow-400 text-white py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-900 dark:hover:text-amber transition-all duration-500">
                             Add to Basket
                         </button>
                     </form>

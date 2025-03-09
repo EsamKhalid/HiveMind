@@ -30,7 +30,7 @@
         </section>
 
             <!-- contact details -->
-                <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 p-8 bg-white dark:bg-stone-900 transition-all duration-1000">
+                <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 p-8 dark:bg-stone-900 transition-all duration-1000">
                     <!-- card 1: contact options -->
                     <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center transition-all duration-1000">
                         <div class="icon text-3xl text-blue-600 mb-4 dark:text-white">📞</div>
@@ -58,7 +58,7 @@
                         <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
                         <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
                         <textarea name="enquiry" placeholder="Your Message (max 500 characters)" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" rows="4" required></textarea>
-                        <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-50 dark:dark:bg-stone-900 dark:hover:text-amber">Submit</button>
+                        <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-900 dark:hover:text-amber transition-all duration-500">Submit</button>
                     </form>
                 </div>
 

@@ -65,7 +65,7 @@
                     <a
                         href="{{route('products.show', $product->id)}}"
                         class="w-fit"
-                        ><div class="h-auto max-w-3/4 p-5">
+                        ><div class="h-auto hover:scale-110 transition-all duration-500 max-w-3/4 p-5">
                             <img
                                 class="w-[300px]"
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
