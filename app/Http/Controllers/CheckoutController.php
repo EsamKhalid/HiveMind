@@ -45,6 +45,7 @@ class CheckoutController extends Controller
         if ($address == null) {
             Addresses::create([
                 'user_id' => $user->id,
+                'guest_id' => null,
                 'street_address' => $request->street_address,
                 'city' => $request->city,
                 'county' => $request->county,
@@ -143,6 +144,7 @@ class CheckoutController extends Controller
 
         $order = Order::create([
             'user_id' => $user->id,
+            'guest_id' => null,
             'order_date' => now(),
             'order_status' => 'pending',
             'total_amount' => $basket->total_amount,
