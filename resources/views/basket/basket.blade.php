@@ -20,6 +20,261 @@
                         <div
                             class="flex justify-center bg-amber px-5 py-12 w-fit"
                         >
+
+                        <div class="bg-white min-w-[450px] p-5 rounded">
+                                <form
+                                    action="{{
+                                        route('checkout.storeGuest')
+                                    }}"
+                                    method="post"
+                                    class="space-y-10 h-full"
+                                >
+                                    @csrf 
+                                    @auth
+                                    <div>
+                                        <label
+                                            for="first_name"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >First Name</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="first_name"
+                                            id="first_name"
+                                            value="{{$user->first_name}}"
+                                            readonly
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="last_name"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Last Name</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="last_name"
+                                            id="last_name"
+                                            value="{{$user->last_name}}"
+                                            readonly
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="email_address"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Email Address</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="email_address"
+                                            id="email_address"
+                                            value="{{$user->email_address}}"
+                                            readonly
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="phone_number"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Phone Number</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="phone_number"
+                                            id="phone_number"
+                                            value="{{$user->phone_number}}"
+                                            readonly
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <input
+                                        type="hidden"
+                                        name="type"
+                                        value="shipping"
+                                    />
+                                    <!-- <div>
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                        >
+                                            Save Address
+                                        </button>
+                                    </div> -->
+                                    <!-- <div>
+                                    <button
+                                        type="submit"
+                                        class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                    >
+                                        Go To Confirmation
+                                    </button>
+                                </div> -->
+                                </form>
+                                @else
+                                @if(!$guest)
+                                <div>
+                                        <label
+                                            for="first_name"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >First Name</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="first_name"
+                                            id="first_name"
+                                            value=""
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="last_name"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Last Name</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="last_name"
+                                            id="last_name"
+                                            value=""
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="email_address"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Email Address</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="email_address"
+                                            id="email_address"
+                                            value=""
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="phone_number"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Phone Number</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="phone_number"
+                                            id="phone_number"
+                                            value=""
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <input
+                                        type="hidden"
+                                        name="type"
+                                        value="shipping"
+                                    />
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                        >
+                                            Save Details
+                                        </button>
+                                    </div>
+                                    @else
+                                    <div>
+                                        <label
+                                            for="first_name"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >First Name</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="first_name"
+                                            id="first_name"
+                                            value="{{$guest->first_name}}"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="last_name"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Last Name</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="last_name"
+                                            id="last_name"
+                                            value="{{$guest->last_name}}"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="email_address"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Email Address</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="email_address"
+                                            id="email_address"
+                                            value="{{$guest->email_address}}"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            for="phone_number"
+                                            class="block text-sm font-medium text-gray-700"
+                                            >Phone Number</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="phone_number"
+                                            id="phone_number"
+                                            value="{{$guest->phone_number}}"
+                                            required
+                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
+                                        />
+                                    </div>
+                                    <input
+                                        type="hidden"
+                                        name="type"
+                                        value="shipping"
+                                    />
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                        >
+                                            Save Detail
+                                        </button>
+                                    </div>
+                                    @endif
+                                    <!-- <div>
+                                    <button
+                                        type="submit"
+                                        class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
+                                    >
+                                        Go To Confirmation
+                                    </button>
+                                </div> -->
+                                </form>
+                                @endauth
+                            </div>
+
                             <div class="bg-white min-w-[450px] p-5 rounded">
                                 <form
                                     action="{{
