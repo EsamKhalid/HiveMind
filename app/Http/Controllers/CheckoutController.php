@@ -71,8 +71,6 @@ class CheckoutController extends Controller
     {
 
         $user = Auth::user();
-        //$basket = Basket::where('user_id', $user->id)->first();
-        //$total_amount = 0;
 
         $request->validate([
             'street_address' => 'required',
@@ -83,17 +81,7 @@ class CheckoutController extends Controller
             'type' => 'required',
         ]);
 
-
-        //get the address of the user, returns null if they dont have an address
-        //if ($user) {
-        //    $address = Addresses::where('user_id', $user->id)->first();
-        //} else {
-        //    $guestID = session()->get('guest_id');
-        //    $address = Addresses::where('guest_id', $guestID)->first();
-        //}
-
         $address = $this->getAddress();
-
 
         if ($address == null) {
             if ($user) {
@@ -203,12 +191,9 @@ class CheckoutController extends Controller
     public function checkout()
     {
         $user = Auth::user();
-        //$basket = Basket::where('user_id', $user->id)->first();
+        $basket = $this->getBasket();
         $total_amount = 0;
 
-        $basket = $this->getBasket();
-
-        //$address = Addresses::where('user_id', $user->id)->first();
         $address = $this->getAddress();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
