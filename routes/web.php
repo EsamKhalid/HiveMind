@@ -17,6 +17,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\SupplierController;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminOrderController;
 
 
 use App\Http\Controllers\UserManagementController;
@@ -96,6 +97,18 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
+    
+    // View and process user orders - Aryan
+    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
+    Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
+        ->name('admin.orders.update');
+    Route::patch('/admin/orders/processAll', [AdminOrderController::class, 'processAllOrders'])->name('admin.orders.processAll');
+    
+    // View, aprrove or deny return requests - Aryan
+    Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
+    Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
+    Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
+
 });
 
 
