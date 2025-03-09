@@ -146,11 +146,12 @@ class BasketController extends Controller
 
     public function increaseQuantity(Request $request)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
 
         $productId = $request->input('product_id');
 
-        $basket = Basket::where('user_id', $user->id)->first();
+        //$basket = Basket::where('user_id', $user->id)->first();
+        $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
@@ -166,18 +167,18 @@ class BasketController extends Controller
         $basketItem->quantity += 1;
         $basketItem->save();
 
-
         //redirect back to basket page
         return redirect()->route('basket.view');
     }
 
     public function decreaseQuantity(Request $request)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
 
         $productId = $request->input('product_id');
 
-        $basket = Basket::where('user_id', $user->id)->first();
+        //$basket = Basket::where('user_id', $user->id)->first();
+        $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
@@ -198,22 +199,20 @@ class BasketController extends Controller
             $basketItem->save();
         }
 
-
         //redirect back to basket page
         return redirect()->route('basket.view');
     }
 
 
-
-
     public function updateQuantity(Request $request)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
 
         $newQuantity = $request->input('quantity');
         $productId = $request->input('product_id');
 
-        $basket = Basket::where('user_id', $user->id)->first();
+        //$basket = Basket::where('user_id', $user->id)->first();
+        $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
@@ -252,12 +251,13 @@ class BasketController extends Controller
 
     public function removeFromBasket(Request $request)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
 
         $newQuantity = $request->input('quantity');
         $productId = $request->input('product_id');
 
-        $basket = Basket::where('user_id', $user->id)->first();
+        //$basket = Basket::where('user_id', $user->id)->first();
+        $basket = $this->getBasket();
 
         $basketItems = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', '=', 'products.id')
@@ -291,74 +291,78 @@ class BasketController extends Controller
 
     public function addToBasket(Request $request)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            $basket = Basket::where('user_id', $user->id)->first();
-            $productId = $request->input('product_id');
+        //if (Auth::check()) {
+        //    $user = Auth::user();
+        //$basket = Basket::where('user_id', $user->id)->first();
+        $basket = $this->getBasket();
+        $productId = $request->input('product_id');
+        //
+//
+        //    if (!$basket) {
+        //        $basket = Basket::Create([
+        //            'user_id' => $user->id,
+        //            'guest_id' => null,
+        //            'total_amount' => 0
+        //        ]);
+        //    }
 
 
-            if (!$basket) {
-                $basket = Basket::Create([
-                    'user_id' => $user->id,
-                    'guest_id' => null,
-                    'total_amount' => 0
-                ]);
-            }
-
-            $basketItems = BasketItems::where('basket_id', $basket->id)
-                ->join('products', 'basket_items.product_id', '=', 'products.id')
-                ->select(
-                    'basket_items.*', // Select all basket item fields
-                    'products.product_name',
-                    'products.description',
-                    'products.price'
-                )->get();
+        $basketItems = BasketItems::where('basket_id', $basket->id)
+            ->join('products', 'basket_items.product_id', '=', 'products.id')
+            ->select(
+                'basket_items.*', // Select all basket item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
 
 
-            $basketItem = $basketItems->where('product_id', $productId)->first();
+        $basketItem = $basketItems->where('product_id', $productId)->first();
 
-            if (is_null($basketItem)) {
-                BasketItems::Create([
-                    'basket_id' => $basket->id,
-                    'product_id' => $productId,
-                    'quantity' => 1
-                ]);
-            } else {
-                $basketItem->quantity = $basketItem->quantity + 1;
-                $basketItem->save();
-            }
-
-            $basket->update([
-                'total_amount' => $this->basketTotal()
+        if (is_null($basketItem)) {
+            BasketItems::Create([
+                'basket_id' => $basket->id,
+                'product_id' => $productId,
+                'quantity' => 1
             ]);
-
-            //$totalPrice = 0;
-//
-            //foreach ($basketItems as $item) {
-            //    $totalPrice += $item->price * $item->quantity;
-            //}
-//
-            //$basket->update([
-            //    'total_amount' => $totalPrice
-            //]);
-
-
-            // echo $request->input('product_id');
-
-
-            return redirect()->route('basket.view');
-
         } else {
-            return redirect()->route('login')->with('success', 'Signup successful!');
+            $basketItem->quantity = $basketItem->quantity + 1;
+            $basketItem->save();
         }
+
+        $basket->update([
+            'total_amount' => $this->basketTotal()
+        ]);
+
+        //$totalPrice = 0;
+//
+        //foreach ($basketItems as $item) {
+        //    $totalPrice += $item->price * $item->quantity;
+        //}
+//
+        //$basket->update([
+        //    'total_amount' => $totalPrice
+        //]);
+
+
+        // echo $request->input('product_id');
+
+
+        return redirect()->route('basket.view');
+
+        //} else {
+        //    return redirect()->route('login')->with('success', 'Signup successful!');
+        //}
 
 
     }
 
     public function basketTotal()
     {
-        $user = Auth::user();
-        $basket = Basket::where('user_id', $user->id)->first();
+        //$user = Auth::user();
+        //$basket = Basket::where('user_id', $user->id)->first();
+
+        $basket = $this->getBasket();
 
         $basketItem = BasketItems::where('basket_id', $basket->id)
             ->join('products', 'basket_items.product_id', "=", 'products.id')
