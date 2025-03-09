@@ -404,7 +404,7 @@
                                             type="text"
                                             name="street_address"
                                             id="street_address"
-                                            value="Street Address"
+                                            value=""
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -419,7 +419,7 @@
                                             type="text"
                                             name="city"
                                             id="city"
-                                            value="City"
+                                            value=""
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -434,7 +434,7 @@
                                             type="text"
                                             name="county"
                                             id="county"
-                                            value="County"
+                                            value=""
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -449,7 +449,7 @@
                                             type="text"
                                             name="country"
                                             id="country"
-                                            value="Country"
+                                            value=""
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -464,7 +464,7 @@
                                             type="text"
                                             name="post_code"
                                             id="post_code"
-                                            value="Post Code"
+                                            value=""
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
