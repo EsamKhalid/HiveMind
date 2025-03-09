@@ -126,81 +126,6 @@
                                 </div> -->
                                 </form>
                                 @else
-                                @if(!$guest)
-                                <div>
-                                        <label
-                                            for="first_name"
-                                            class="block text-sm font-medium text-gray-700"
-                                            >First Name</label
-                                        >
-                                        <input
-                                            type="text"
-                                            name="first_name"
-                                            id="first_name"
-                                            value=""
-                                            required
-                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            for="last_name"
-                                            class="block text-sm font-medium text-gray-700"
-                                            >Last Name</label
-                                        >
-                                        <input
-                                            type="text"
-                                            name="last_name"
-                                            id="last_name"
-                                            value=""
-                                            required
-                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            for="email_address"
-                                            class="block text-sm font-medium text-gray-700"
-                                            >Email Address</label
-                                        >
-                                        <input
-                                            type="text"
-                                            name="email_address"
-                                            id="email_address"
-                                            value=""
-                                            required
-                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            for="phone_number"
-                                            class="block text-sm font-medium text-gray-700"
-                                            >Phone Number</label
-                                        >
-                                        <input
-                                            type="text"
-                                            name="phone_number"
-                                            id="phone_number"
-                                            value=""
-                                            required
-                                            class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
-                                        />
-                                    </div>
-                                    <input
-                                        type="hidden"
-                                        name="type"
-                                        value="shipping"
-                                    />
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
-                                        >
-                                            Save Details
-                                        </button>
-                                    </div>
-                                    @else
                                     <div>
                                         <label
                                             for="first_name"
@@ -271,10 +196,9 @@
                                             type="submit"
                                             class="w-full bg-amber text-white py-2 px-4 rounded-md hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber"
                                         >
-                                            Save Detail
+                                            Save Details
                                         </button>
                                     </div>
-                                    @endif
                                     <!-- <div>
                                     <button
                                         type="submit"
