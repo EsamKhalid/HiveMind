@@ -16,7 +16,7 @@
             ></a>
             <div class="max-w-7xl mx-auto text-center">
                 <h1 class="text-4xl font-extrabold">User Orders</h1>
-                <p class="text-lg mt-2 text-gray-600">Manage all user orders.</p>
+                <p class="text-lg mt-2 text-gray-600">Manage all user orders and returns.</p>
             </div>
         </header>
 
