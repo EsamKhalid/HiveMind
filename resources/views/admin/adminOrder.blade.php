@@ -42,6 +42,8 @@
                     @foreach ($orders as $order)
                     <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
                         <h3 class="mb-4 text-2xl font-bold text-grey-800">Order ID #{{ $order->id }}</h3>
+                        <!--<a href="{{ route('admin.view-user', $order->user->id) }}" class="underline font-semibold">
+                                User: </a>-->
                         <p class="mb-2"><strong>User:</strong> {{ $order->user->email_address }}</p>
                         <p class="mb-2"><strong>Order Date:</strong> {{ $order->order_date }}</p>
                         <p class="mb-2"><strong>Status:</strong> 
