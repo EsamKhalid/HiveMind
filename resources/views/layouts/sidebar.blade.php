@@ -86,13 +86,6 @@
                             ></i
                         ></a>
                         <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            ><p>Suppliers</p>
-                            <i
-                                class="fa-solid fa-boxes-packing text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
-                            ></i
-                        ></a>
-                        <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.user-management') }}"
                             ><p>Manage users</p>
@@ -117,7 +110,7 @@
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('home') }}"
-                            ><p>Customer View</p>
+                            ><p>Customer view</p>
                             <i
                                 class="fa-solid fa-right-left text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
                             ></i
