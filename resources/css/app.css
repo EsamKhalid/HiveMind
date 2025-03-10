@@ -347,9 +347,8 @@ main {
         @apply bg-black;
     }
 
-    #REVIEW_MODAL 
-    {
-        backdrop-filter: blur(5px); 
+    #REVIEW_MODAL {
+        backdrop-filter: blur(5px);
         background-color: rgba(0, 0, 0, 0.7);
     }
 
@@ -405,5 +404,41 @@ main {
         to {
             transform: translateX(calc(-150px * 5));
         }
+    }
+
+    .rating {
+        margin-top: 40px;
+        border: none;
+        float: left;
+    }
+
+    .rating > label {
+        color: #90a0a3;
+        float: right;
+    }
+
+    .rating > label:before {
+        margin: 5px;
+        font-size: 2em;
+        font-family: FontAwesome;
+        content: "\f005";
+        display: inline-block;
+    }
+
+    .rating > input {
+        display: none;
+    }
+
+    .rating > input:checked ~ label,
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+        color: #f79426;
+    }
+
+    .rating > input:checked + label:hover,
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label,
+    .rating > input:checked ~ label:hover ~ label {
+        color: #fece31;
     }
 }
