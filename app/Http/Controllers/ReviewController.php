@@ -29,10 +29,10 @@ class ReviewController extends Controller
         }
 
         if($user == null){
-            SiteReviews::create(['user_id' => null,'rating' => $request->rating, 'review' => $request->review]);
+            SiteReviews::create(['user_id' => null,'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
         }
         else{
-            SiteReviews::create(['user_id' => $user->id,'rating' => $request->rating, 'review' => $request->review]);
+            SiteReviews::create(['user_id' => $user->id,'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
         }
 
 
@@ -77,11 +77,11 @@ class ReviewController extends Controller
 
 
        if($user == null){
-            ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review]);
+            ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
              return redirect()->route('home');
         }
         else{
-            ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review]);
+            ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
              return redirect()->route('orders');
         }
 
