@@ -80,6 +80,20 @@
                         </div>
                     </div>
                 </div>
+                @else
+                <div class="bg-green-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                                No Notifications
+                            </p>
+                            <p class="text-sm">
+                                There are no notifications at this time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 @endif
                 @endforeach
                 </div>
@@ -112,6 +126,20 @@
                             </p>
                             <p class="text-sm">
                                 {{ $live_report->product_name }} is low of stock. {{ $live_report->stock_level }} left.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @else
+                <div class="bg-green-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                                No Live Reports
+                            </p>
+                            <p class="text-sm">
+                                There are no live reports available at this time.
                             </p>
                         </div>
                     </div>
