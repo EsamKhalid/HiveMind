@@ -5,7 +5,7 @@
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <title>Products 🐝</title>
     </head>
-    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
+    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-white">
         <header>@include('layouts.navbar')</header>
         <main class="mb-auto h-screen
         "><div class="justify-center py-5">
@@ -48,7 +48,7 @@
 
         @else
 
-        <div class=" mt-5">
+        <div class="mt-5">
             @if($search)
             <div class="flex justify-center">
                 <div class="flex justify-between my-3 w-3/4  border">
@@ -60,14 +60,14 @@
 
             @endif
             <div class="flex justify-center">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0  mb-2">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0 mb-2 mx-auto">
                     @foreach($products as $product)
                     <a
                         href="{{route('products.show', $product->id)}}"
                         class="w-fit"
                         ><div class="h-auto hover:scale-110 transition-all duration-500 max-w-3/4 p-5">
                             <img
-                                class="w-[300px]"
+                                class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100"
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
                              <h1 class="text-center text-xl">

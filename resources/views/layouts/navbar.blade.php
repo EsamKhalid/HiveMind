@@ -31,13 +31,13 @@ function toggleTheme(){
     <div class="overflow-hidden">
         <!-- navbar -->
         <nav
-            class="navbar flex justify-between items-center bg-amber dark:bg-stone-800 text-white px-6 py-4 transition-colors duration-1000"
+            class="navbar flex justify-between items-center bg-amber dark:bg-stone-800 text-stone-800 dark:text-yellow-100 font-bold px-6 py-4 transition-colors duration-1000"
         >
             <!-- logo section -->
 
             <a
                 href="{{ route('home') }}"
-                class="flex items-center hover:text-gray-200 duration-200"
+                class="flex items-center hover:text-yellow-100 duration-200"
             >
                 <img
                     src="{{ asset('../Images/HiveMind Logo.png') }}"
@@ -58,21 +58,21 @@ function toggleTheme(){
                     <li>
                         <a
                             href="{{ route('products') }}"
-                            class="hover:text-gray-200 dark:hover:text-amber"
+                            class="hover:text-yellow-100 dark:hover:text-amber"
                             >Shop Us</a
                         >
                     </li>
                     <li>
                         <a
                             href="{{ route('about') }}"
-                            class="hover:text-gray-200 dark:hover:text-amber"
+                            class="hover:text-yellow-100 dark:hover:text-amber"
                             >About Us</a
                         >
                     </li>
                     <li>
                         <a
                             href="{{ route('contact') }}"
-                            class="hover:text-gray-200 dark:hover:text-amber"
+                            class="hover:text-yellow-100 dark:hover:text-amber"
                             >Contact Us</a
                         >
                     </li>
@@ -86,13 +86,13 @@ function toggleTheme(){
                             type="text"
                             name="search"
                             placeholder="Search"
-                            class="hidden md:block w-48 bg-white text-gray-800 placeholder-gray-500 rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-700"
+                            class="hidden md:block w-48 bg-white text-yellow-100 placeholder-stone-500 border-black rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
                         />
 
                         <!-- search icon -->
                         <button
                             type="submit"
-                            class="text-white hover:text-gray-200 dark:hover:text-amber"
+                            class="text-stone-800 dark:text-yellow-100 dark:hover:text-amber"
                         >
                             <i class="fas fa-search fa-xl dark:hover:text-amber"></i>
                         </button>
@@ -101,22 +101,22 @@ function toggleTheme(){
                 @auth
                 <a
                     href="{{ route('basket.view') }}"
-                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-gray-200 "
+                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-yellow-100 "
                 ></a>
                 @else
                 <a
                     href="{{ route('login') }}"
-                    class="fas fa-shopping-basket fa-xl hover:text-gray-200 dark:hover:text-amber"
+                    class="fas fa-shopping-basket fa-xl hover:text-yellow-100 dark:hover:text-amber"
                 ></a>
                 @endauth @auth
                 <a
                     href="{{ route('account') }}"
-                    class="fas fa-user fa-xl hover:text-gray-200 transition dark:hover:text-amber"
+                    class="fas fa-user fa-xl hover:text-yellow-100 transition dark:hover:text-amber"
                 ></a>
                 @else
                 <a
                     href="{{ route('login') }}"
-                    class="fas fa-user fa-xl hover:text-gray-200 transition dark:hover:text-amber"
+                    class="fas fa-user fa-xl hover:text-yellow-100 transition dark:hover:text-amber"
                 ></a>
                 @endauth
             </div>

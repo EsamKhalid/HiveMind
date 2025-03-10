@@ -11,7 +11,7 @@
                 Have an enquiry? Fill in a
                 <a
                     href="{{ route('contact') }}"
-                    class="text-lg text-blue-500 hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber  hover:underline"
                     >Contact Form</a
                 >
             </p>
@@ -19,7 +19,7 @@
                 Check out our
                 <a
                     href="{{ route('faq') }}"
-                    class="text-lg text-blue-500 hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber  hover:underline"
                     >FAQs</a
                 >
                 for more information.
@@ -27,7 +27,7 @@
             <p class="text-lg">
                 <a
                     href="{{ route('terms') }}"
-                    class="text-lg text-blue-500 hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber  hover:underline"
                     >Terms and Conditions apply</a
                 >
             </p>
