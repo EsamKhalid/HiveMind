@@ -39,6 +39,9 @@
                 <a href="{{ route('admin.inventory') }}" class="text-lg font-bold text-blue-500 hover:underline dark:text-orange-300 mt-4 block">
                     Navigate to Inventory
                 </a>
+                <a href="{{ route('admin.order') }}" class="text-lg font-bold text-blue-500 hover:underline dark:text-orange-300 mt-4 block">
+                    Back to Stock Order
+                </a>
             </div>
         </div>
     </main>

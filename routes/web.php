@@ -91,7 +91,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
     Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
-    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
+    Route::patch('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
 
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');

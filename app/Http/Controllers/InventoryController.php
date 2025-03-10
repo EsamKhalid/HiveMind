@@ -40,8 +40,8 @@ class InventoryController extends Controller
         $request->validate([
             'product_id' => 'required',
             'supplier_id' => 'required',
-            'stock_quantity' => 'required',
-            'lead_time' => 'required',
+            'stock_quantity' => 'required|integer',
+            'lead_time' => 'required|integer',
         ]);
 
         StockOrder::create([
@@ -56,7 +56,7 @@ class InventoryController extends Controller
         $stock->stock_level = $stock->stock_level + $request->stock_quantity;
         $stock->save();
 
-        return redirect()->route('admin.inventory');
+        return redirect()->route('admin.inventory')->with('success', 'Order placed successfully');
 
     }
 
