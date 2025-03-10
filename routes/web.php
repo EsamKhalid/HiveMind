@@ -21,6 +21,9 @@ use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\UserManagementController;
 
+// Jo'Ardie Richardson's work
+use App\Http\Controllers\ReportController;
+// end
 
 Route::get('/', function () {
     return view('home');
@@ -87,18 +90,21 @@ Route::get('/admin/user-management/user/{id}', [UserManagementController::class,
 Route::patch('/admin/user-management/user/update/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
 Route::delete('/admin/user-management/user/delete/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
 
+// Jo'Ardie Richardson's work
+Route::get('/admin/reports',[ReportController::class,'list'])->name('admin.reports');
+// end
+
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
     Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
     Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order');
-    Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications'); 
+    Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
 
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
 });
-
 
 
 /**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
