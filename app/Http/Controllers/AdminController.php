@@ -16,12 +16,12 @@ class AdminController extends Controller
    public function dashboard()
    {
 
-      $userCreated = Users::select('id', 'first_name', 'last_name', 'created_at')
+      $userCreated = Users::select('id', 'first_name', 'last_name', 'created_at AS time')
          ->selectRaw('"userCreated" AS type')
          ->where('created_at', '>=', now()->subDay())
          ->get();
 
-      $userOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
+      $userOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at AS time', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
          ->selectRaw('"userOrder" AS type')
          ->join('users', 'orders.user_id', '=', 'users.id')
          ->join('order_items', 'orders.id', '=', 'order_items.order_id')
@@ -29,7 +29,15 @@ class AdminController extends Controller
          ->where('orders.created_at', '>=', now()->subDay())
          ->get();
 
-      $stockOrders = StockOrder::select('stock_orders.id', 'stock_orders.product_id', 'stock_orders.stock_quantity', 'stock_orders.created_at', 'products.product_name')
+      $orderUpdates = Order::select('orders.id', 'orders.order_status', 'orders.updated_at AS time', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
+         ->selectRaw('"orderUpdate" AS type')
+         ->join('users', 'orders.user_id', '=', 'users.id')
+         ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+         ->join('products', 'order_items.product_id', '=', 'products.id')
+         ->where('orders.updated_at', '>=', now()->subDay())
+         ->get();
+
+      $stockOrders = StockOrder::select('stock_orders.id', 'stock_orders.product_id', 'stock_orders.stock_quantity', 'stock_orders.created_at AS time', 'products.product_name')
          ->selectRaw('"stockOrder" AS type')
          ->join('products', 'stock_orders.product_id', '=', 'products.id')
          ->where('stock_orders.created_at', '>=', now()->subDay())
@@ -46,7 +54,7 @@ class AdminController extends Controller
          ->where('stock_level', '<', 20)
          ->get();
 
-      $notifications = $userCreated->concat($stockOrders)->concat($userOrders)->values()->sortByDesc('created_at');
+      $notifications = $userCreated->concat($stockOrders)->concat($userOrders)->concat($orderUpdates)->sortByDesc('time');
       $live_reports = $noStock->merge($lowStock)->sortByDesc('stock_level')->sortBy('stock_level');
 
       return view('admin.dashboard', [

@@ -33,13 +33,13 @@
                                 New User Created
                             </p>
                             <p class="text-sm">
-                                {{ $notification->first_name }} {{ $notification->last_name }} has signed up to HiveMind. ({{ $notification->created_at }}).
+                                {{ $notification->first_name }} {{ $notification->last_name }} has signed up to HiveMind. ({{ $notification->time }}).
                             </p>
                         </div>
                     </div>
                 </div>
                 @elseif($notification->type == 'userOrder')
-                <div class="bg-yellow-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-green-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -47,7 +47,7 @@
                                 New Order Placed 
                             </p>
                             <p class="text-sm">
-                                New Order for @foreach ($notification->orderItems as $order_item) {{ $order_item->quantity }}x {{ $order_item->products->product_name }}, @endforeach for {{ $notification->first_name }} {{ $notification->last_name }} worth £{{ $notification->total_amount }} has been placed. ({{ $notification->created_at }}).
+                                New Order for @foreach ($notification->orderItems as $order_item) {{ $order_item->quantity }}x {{ $order_item->products->product_name }}, @endforeach for {{ $notification->first_name }} {{ $notification->last_name }} worth £{{ $notification->total_amount }} has been placed. ({{ $notification->time }}).
                             </p>
                         </div>
                     </div>
@@ -61,7 +61,21 @@
                                 New Stock Order
                             </p>
                             <p class="text-sm">
-                                New Stock Order for {{ $notification->stock_quantity }}x {{ $notification->product_name }} has been placed. ({{ $notification->created_at }}).
+                                New Stock Order for {{ $notification->stock_quantity }}x {{ $notification->product_name }} has been placed. ({{ $notification->time }}).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @elseif($notification->type == 'orderUpdate')
+                <div class="bg-green-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                                Order Status Updated
+                            </p>
+                            <p class="text-sm">
+                                Order Status for @foreach ($notification->orderItems as $order_item) {{ $order_item->quantity }}x {{ $order_item->products->product_name }}, @endforeach for {{ $notification->first_name }} {{ $notification->last_name }} has been updated to {{ $notification->order_status }}. ({{ $notification->time }}).
                             </p>
                         </div>
                     </div>
