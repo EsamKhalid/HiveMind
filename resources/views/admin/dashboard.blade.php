@@ -18,22 +18,56 @@
                 >Dashboard
             </p>
 
-            <div class="columns-2">
+            <!-- <div class="columns-2"> -->
 
                 <!-- notifications -->
+                <div>
                 <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-inbox mr-4 my-auto"></i>Notifications</p>
+                @foreach ( $notifications as $notification )
+                @if($notification->type == 'userCreated')
+                <div class="bg-purple-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                                New User Created
+                            </p>
+                            <p class="text-sm">
+                                {{ $notification->first_name }} {{ $notification->last_name }} has signed up to HiveMind. ({{ $notification->created_at }}).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @elseif($notification->type == 'userOrder')
                 <div class="bg-yellow-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
                             <p class="font-bold">
-                                An Update has been made to the inventory
+                                New Order Placed
                             </p>
                             <p class="text-sm">
-                                New shipment for product x has been made
+                                New Order worth £{{ $notification->total_amount }} has been placed. ({{ $notification->created_at }}).
                             </p>
                         </div>
                     </div>
+                </div>
+                @elseif($notification->type == 'stockOrder')
+                <div class="bg-yellow-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                                New Stock Order
+                            </p>
+                            <p class="text-sm">
+                                New Stock Order for {{ $notification->product_id }} has been placed. ({{ $notification->created_at }}).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @endforeach
                 </div>
 
                 <!-- live reports -->
@@ -52,7 +86,7 @@
                     </div>
                 </div>
 
-            </div>
+            <!--</div> -->
         </div>
     </body>
 </html>
