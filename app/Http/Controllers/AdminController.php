@@ -21,11 +21,12 @@ class AdminController extends Controller
          ->where('created_at', '>=', now()->subDay())
          ->get();
 
-      $userOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at AS time', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
+      //$userOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at AS time', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
+      $userOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at AS time', 'users.id', 'users.first_name', 'users.last_name')
          ->selectRaw('"userOrder" AS type')
          ->join('users', 'orders.user_id', '=', 'users.id')
-         ->join('order_items', 'orders.id', '=', 'order_items.order_id')
-         ->join('products', 'order_items.product_id', '=', 'products.id')
+         //->join('order_items', 'orders.id', '=', 'order_items.order_id')
+         //->join('products', 'order_items.product_id', '=', 'products.id')
          ->where('orders.created_at', '>=', now()->subDay())
          ->get();
 
@@ -35,6 +36,7 @@ class AdminController extends Controller
          ->join('order_items', 'orders.id', '=', 'order_items.order_id')
          ->join('products', 'order_items.product_id', '=', 'products.id')
          ->where('orders.updated_at', '>=', now()->subDay())
+         ->whereColumn('orders.updated_at', '!=', 'orders.created_at')
          ->get();
 
       $stockOrders = StockOrder::select('stock_orders.id', 'stock_orders.product_id', 'stock_orders.stock_quantity', 'stock_orders.created_at AS time', 'products.product_name')
