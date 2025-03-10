@@ -57,14 +57,12 @@ class AdminController extends Controller
          ->get();
 
       $notifications = $userCreated->concat($stockOrders)->concat($userOrders)->concat($orderUpdates)->sortByDesc('time');
-      $live_reports = $noStock->merge($lowStock)->sortByDesc('stock_level')->sortBy('stock_level');
+      $live_reports = $noStock->merge($lowStock)->sortBy('stock_level');
 
       return view('admin.dashboard', [
          'notifications' => $notifications,
          'live_reports' => $live_reports,
       ]);
-
-      //return view('admin.dashboard');
 
    }
 
