@@ -13,11 +13,20 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\SupplierController;
 
 use App\Http\Controllers\AdminController;
 
 
+
 use App\Http\Controllers\ReviewController;
+
+use App\Http\Controllers\AdminOrderController;
+
+
+use App\Http\Controllers\UserManagementController;
+
 
 
 Route::get('/', function () {
@@ -77,10 +86,35 @@ Route::get('products',[ProductController::class,'list'])->name('products');
 
 //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
+Route::get('/admin/user-management', [UserManagementController::class, 'view'])->name('admin.user-management');
 
+Route::get('/admin/user-management/user/{id}', [UserManagementController::class, 'show'])->name('admin.view-user');
+
+
+Route::patch('/admin/user-management/user/update/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
+Route::delete('/admin/user-management/user/delete/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
+    Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
+    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order'); 
+
+
+    Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
+    Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
+    
+    // View and process user orders - Aryan
+    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
+    Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
+        ->name('admin.orders.update');
+    Route::patch('/admin/orders/processAll', [AdminOrderController::class, 'processAllOrders'])->name('admin.orders.processAll');
+    
+    // View, aprrove or deny return requests - Aryan
+    Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
+    Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
+    Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
+
 });
 
 
@@ -121,7 +155,7 @@ Route::middleware(['admin'])->group(function () {
     // Routes for Return Order Functionality - Aryan
     Route::get('/orders/{id}/return', [OrderController::class, 'showReturnForm'])->name('orders.return');
     Route::post('/orders/{id}/return', [OrderController::class, 'returnRequest'])->name('orders.return.submit');
-    Route::patch('/orders/{id}/cancel-return', [OrderController::class, 'cancelReturn'])->name('orders.cancelReturn');
+    Route::post('/orders/{id}/cancel-return', [OrderController::class, 'cancelReturn'])->name('orders.cancelReturn');
      
     // Route for Cancel Order Functionality - Aryan
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
@@ -130,7 +164,19 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
 
+
     Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
     Route::post('review/storeSiteReview', [ReviewController::class, 'storeSiteReview'])->name('review.storeSiteReview');
     Route::get('review/productReview/{id}', [ReviewController::class, 'productReview'])->name('review.productReview');
     Route::post('/review/storeProductReview/{id}', [ReviewController::class, 'storeProductReview'])->name('review.storeProductReview');
+
+    
+    // NOTE FROM HARRY (15/02/25)
+    // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
+    // YOU MIGHT HAVE TO UPDATE THIS ROUTE GET ACCORDINGLY ASSUMING YOU ARE RUNNING FROM "resources/views/admin/inventory.blade.php"
+
+    Route::get('/inventory', [ProductController::class, 'inventory_products']);
+    Route::get('admin', [AdminController::class, 'adm'])->name('adm');
+
+     
+

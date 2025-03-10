@@ -13,6 +13,7 @@
         <a
             href="{{ route('products') }}"
             class="fas fa-arrow-left fa-3x p-5"
+
         ></a>
         <div class="flex justify-center">
             <div class="w-[50] h-[50vh] flex justify-center">

@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_items', function (Blueprint $table) {
-            $table->id('id');
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+        Schema::create('stock_orders', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->integer('quantity');
+            $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade');
+            $table->integer('stock_quantity');
+            $table->integer('lead_time');
+            $table->date('order_date');
             $table->timestamps();
-            //$table->primary(['order_id', 'product_id']); // Composite primary key
         });
-
-        
     }
 
     /**
@@ -28,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('stock_orders');
     }
 };
+
+

@@ -5,16 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <body class="transition-all ease-in-out duration-10000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
+    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         @include('layouts.navbar')
 
         <main>
             <!-- added a backdrop -->
             <section
                 class="bg-white py-40 bg-cover bg-center"
-                style="background-image: url('{{
-                    asset('../Images/hd bee backdrop lols.jpeg')
-                }}');"
+                style="background-image: url('{{asset('../Images/hd bee backdrop lols.jpeg')}}');"
             >
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 class="text-4xl font-bold text-white mb-4">
@@ -36,7 +34,7 @@
                 </div>
             </section>
 
-            <section class="border-blue-100 py-20 text-center">
+            <section class="border-blue-100 py-8 text-center">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-bold mb-5">
                         Help our mission to save the bees
@@ -49,7 +47,7 @@
                         With your contribution, our bees can continue to keep
                         the world spinning.
                     </p>
-                    <p class="text-lg mb-6">
+                    <p class="text-lg mb-3">
                         Browse our wide range of products below and be(e) a
                         star.
                     </p>
@@ -62,7 +60,6 @@
                         Shop our products by category
                     </h2>
                     <!-- 5 columns to display 5 categories -->
-                    <!-- when user clicks on category, it leads to a filtered products page for respective category // yet to be implemented -->
                     <form action="{{ route('products') }}" method="get">
                         <div
                             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3"

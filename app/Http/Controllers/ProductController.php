@@ -35,7 +35,33 @@ class ProductController extends Controller
         return view('products.products', compact('products', 'search', 'filter'));  
     }
 
-   
+    public function inventory_products()
+    {
+        $inv_products = Products::all();
+
+        // FILTER ICONS ARE BEING PASSED THROUGH HERE
+        // TO REDUCE COMPLEXIITY IN THE BLADE
+
+        // PLUS, THIS ELMINATES THE NEED FOR USING JS
+        // WHICH IN THIS CASE, IT NEEDS TO LIASSE WITH THE DB PROPERLY
+
+        $TYPE_ICONS = 
+        [
+            'BEAUTY' => 'fa-spa',
+            'HEALTH' => 'fa-heartbeat',
+            'HAIRCARE' => 'fa-air-freshener',
+            'SKINCARE' => 'fa-pump-soap',
+            'BODYCARE' => 'fa-shower',
+            'MERCH' => 'fa-tshirt',
+            'HOME' => 'fa-home'
+        ];  
+
+        return view('inventory.inventory', 
+        [
+            'products' => $inv_products,
+            'TYPE_ICONS' => $TYPE_ICONS
+        ]);
+    }
 
    public function show($id)
     {

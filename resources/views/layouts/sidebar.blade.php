@@ -64,6 +64,7 @@
                     >
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('admin.dashboard') }}"
                             ><p>Notifications</p>
                             <i
                                 class="fa-solid fa-inbox text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
@@ -71,6 +72,7 @@
                         ></a>
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('admin.inventory') }}"
                             ><p>Inventory</p>
                             <i
                                 class="fa-solid fa-warehouse text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
@@ -78,6 +80,7 @@
                         ></a>
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('admin.user-management') }}"
                             ><p>Manage users</p>
                             <i
                                 class="fa-solid fa-sitemap text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
@@ -94,6 +97,14 @@
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('home') }}"
                             ><p>Customer View</p>
+                            <i
+                                class="fa-solid fa-right-left text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
+                            ></i
+                        ></a>
+                        <a
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('admin.adminOrder') }}"
+                            ><p>Orders and Returns</p>
                             <i
                                 class="fa-solid fa-right-left text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
                             ></i
@@ -128,6 +139,7 @@
                         ></a>
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('faq') }}"
                             ><p>Help</p>
                             <i
                                 class="fa-solid fa-circle-question ml-5 mr-1 text-yellow-500"
