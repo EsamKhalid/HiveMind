@@ -92,7 +92,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
     Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
     Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order');
-    Route::get('/admin/notifications', [AdminController::class, 'notifs'])->name('admin.notifications'); 
+    Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications'); 
 
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
