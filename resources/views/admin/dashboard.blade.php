@@ -71,19 +71,39 @@
                 </div>
 
                 <!-- live reports -->
+                <div>
                 <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-chart-simple mr-4 my-auto"></i>Live reports</p>
-                <div class="bg-green-100 dark:bg-green-100 border-t-4 border-green-800 dark:border-green-700 rounded-b text-green-900 dark:text-green-900 px-4 py-3 shadow-md my-5 mx-5">
+                @foreach ( $live_reports as $live_report )
+                @if($live_report->type == 'noStock')
+                <div class="bg-red-100 dark:bg-green-100 border-t-4 border-green-800 dark:border-green-700 rounded-b text-green-900 dark:text-green-900 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
                             <p class="font-bold">
-                                Inventory: Top Selling
+                               Out of Stock: {{ $live_report->product_name }}
                             </p>
                             <p class="text-sm">
-                                HiveMind Lip Gloss
+                                {{ $live_report->product_name }} is out of stock. Please restock.
                             </p>
                         </div>
                     </div>
+                </div>
+                @elseif($live_report->type == 'lowStock')
+                <div class="bg-yellow-100 dark:bg-green-100 border-t-4 border-green-800 dark:border-green-700 rounded-b text-green-900 dark:text-green-900 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                               Stock Low: {{ $live_report->product_name }}
+                            </p>
+                            <p class="text-sm">
+                                {{ $live_report->product_name }} is low of stock. {{ $live_report->stock_level }} left.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @endforeach
                 </div>
 
             <!--</div> -->
