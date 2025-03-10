@@ -1,8 +1,8 @@
 <footer
-    class="bottom:0 w-full border border-amber bg-[#FBBF24]  dark:border-stone-800 dark:bg-stone-800 text-stone-950 dark:text-white transition-colors duration-1000"
+    class="bottom:0 w-full bg-amber dark:bg-stone-800 text-stone-800 dark:text-yellow-100 transition-colors duration-1000"
 >
     <div
-        class="container mx-auto flex flex-wrap justify-between items-start py-8"
+        class="container mx-auto flex flex-wrap justify-between items-start mt-4"
     >
         <!-- adding first third of footer (left side), includes contact information / link to contact page -->
         <div class="w-full md:w-1/3 flex flex-col mb-4 md:mb-0 px-8">

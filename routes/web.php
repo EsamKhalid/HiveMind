@@ -95,6 +95,7 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
+    Route::get('admin/supplier', [SupplierController::class, 'list'])->name('supplier.list');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
 });
 

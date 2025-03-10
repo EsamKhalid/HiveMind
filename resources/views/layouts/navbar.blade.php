@@ -90,7 +90,7 @@ function toggleTheme(){
                             type="text"
                             name="search"
                             placeholder="Search"
-                            class="hidden lg:block w-48 bg-white text-yellow-100 placeholder-stone-500 border-black rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+                            class="hidden lg:block w-48 bg-white text-stone-800 placeholder-stone-500 border-black rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-white dark:text-stone-800"
                         />
 
                         <!-- search icon -->

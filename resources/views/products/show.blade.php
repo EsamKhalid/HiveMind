@@ -15,6 +15,7 @@
             <div class=" flex justify-center mt-[10%] flex-col lg:flex-row px-5 pb-7 pt-5 dark:bg-stone-800 rounded-lg">
                 <div class="flex justify-center pr-5">
                     <img
+                        id="product-image"
                         class="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] size-full hover:scale-105 transition-all duration-500 dark:brightness-[80%] dark:hover:brightness-90 rounded-lg" 
                         src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                     />
