@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Order;
 use App\Models\StockOrder;
+use App\Models\Products;
 
 class AdminController extends Controller
 {
@@ -30,10 +31,23 @@ class AdminController extends Controller
          ->where('created_at', '>=', now()->subDay())
          ->get();
 
+      $noStock = Products::select('id', 'product_name', 'stock_level', 'created_at')
+         ->selectRaw('"noStock" AS type')
+         ->where('stock_level', '==', 0)
+         ->get();
+
+      $lowStock = Products::select('id', 'product_name', 'stock_level', 'created_at')
+         ->selectRaw('"lowStock" AS type')
+         ->where('stock_level', '>', 0)
+         ->where('stock_level', '<', 20)
+         ->get();
+
       $notifications = $userCreated->concat($stockOrders)->concat($userOrders)->values()->sortByDesc('created_at');
+      $live_reports = $noStock->merge($lowStock)->sortByDesc('stock_level')->sortBy('stock_level');
 
       return view('admin.dashboard', [
          'notifications' => $notifications,
+         'live_reports' => $live_reports,
       ]);
 
       //return view('admin.dashboard');
