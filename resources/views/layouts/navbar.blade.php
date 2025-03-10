@@ -48,33 +48,37 @@ function toggleTheme(){
             </a>
 
             <!-- icons section -->
-            <div class="flex space-x-4 items-center">
+            <div class="flex space-x-4 items-center justify-end">
                 <!-- navigation links -->
                 <!-- links are next to icons -->
-                <ul class="hidden md:flex space-x-8 text-lg">
-                    <li>
-                    <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber" onclick="toggleTheme()"></a>
+                
+                <ul class="hidden lg:flex-row-reverse space-x-8 text-lg">
+                <li>
+                        <a
+                            href="{{ route('contact') }}"
+                            class="hidden lg:flex hover:text-yellow-100 dark:hover:text-amber"
+                            >Contact Us</a
+                        >
                     </li>
+                    
+                    
+                    <li>
+                        <a
+                            href="{{ route('about') }}"
+                            class="hidden lg:flex hover:text-yellow-100 dark:hover:text-amber mr-5"
+                            >About Us</a
+                        >
+                    </li>
+                    
                     <li>
                         <a
                             href="{{ route('products') }}"
-                            class="hover:text-yellow-100 dark:hover:text-amber"
+                            class="hidden lg:flex hover:text-yellow-100 dark:hover:text-amber"
                             >Shop Us</a
                         >
                     </li>
                     <li>
-                        <a
-                            href="{{ route('about') }}"
-                            class="hover:text-yellow-100 dark:hover:text-amber"
-                            >About Us</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href="{{ route('contact') }}"
-                            class="hover:text-yellow-100 dark:hover:text-amber"
-                            >Contact Us</a
-                        >
+                    <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber" onclick="toggleTheme()"></a>
                     </li>
                 </ul>
 
@@ -86,13 +90,14 @@ function toggleTheme(){
                             type="text"
                             name="search"
                             placeholder="Search"
-                            class="hidden md:block w-48 bg-white text-yellow-100 placeholder-stone-500 border-black rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
+                            class="hidden lg:block w-48 bg-white text-yellow-100 placeholder-stone-500 border-black rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-white"
                         />
 
                         <!-- search icon -->
                         <button
                             type="submit"
-                            class="text-stone-800 dark:text-yellow-100 dark:hover:text-amber"
+                            class="text-stone-800 dark:text-yellow-100 dark:hover:text-amber transition-colors duration-1000"
+                            name="productSearchIcon"
                         >
                             <i class="fas fa-search fa-xl dark:hover:text-amber"></i>
                         </button>

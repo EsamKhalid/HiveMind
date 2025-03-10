@@ -71,11 +71,11 @@
             <p class="w-[25%] text-end mt-5 lg:text-lg md:text-xl xl:text-2xl 2xl:text-3xl dark:text-white">Edit?</p>
         </div>
         <hr class="border-black mt-5 dark:border-white">
-        <form method="Post" action={{ route('admin.view-user.update', $user->id)}} class="text-2xl pl-5 flex-col dark:text-yellow-200">
+        <form method="Post" action={{ route('admin.view-user.update', $user->id)}} class="text-2xl pl-5 flex-col dark:text-yellow-200" >
             @csrf
             @method('PATCH')
             
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">First name:</p>
                 <div class="w-[25%]">
                     <span id="firstname" class="text-black dark:text-white mx-auto">{{ $user->first_name }}</span>
@@ -90,7 +90,7 @@
                 </i>
             </div>
 
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">Last name: </p>
                 <div class="w-[25%]">
                     <input type="text" name="last_name" id="lastnameform" class="hidden text-xl md:text-2xl lg:text-2xl w-[95%] text-black"
@@ -103,7 +103,7 @@
                     onclick="replaceWithInputBox('lastname')"></i>
             </div>
 
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">Email: </p>
                 <div class="w-[25%]">
                     <span id="email" class="text-black dark:text-white mx-auto">{{ $user->email_address }}</span>
@@ -116,7 +116,7 @@
                     onclick="replaceWithInputBox('email')"></i>
             </div>
 
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
 
                 <p class="w-[25%]">Phone Number: </p>
                 <div class="w-[25%]">
@@ -132,13 +132,13 @@
     </div>
     
     <div class="flex flex-row-reverse justify-evenly w-[80%] mx-auto">
-            <button class="mt-2 xl:mt-5 ml-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
+            <button class="mt-0 xl:mt-5 ml-auto p-3 lg:p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
     </form>
     
-    <form method="post" action={{ route('admin.view-user.delete', $user->id)}} >
+    <form method="post" action={{ route('admin.view-user.delete', $user->id)}} onsubmit="return confirm('Are you sure you want to delete user {{ 'ID: '.$user->id . ' Email: ' .$user->email_address }}? ');" >
         @csrf
         @method("DELETE")
-        <button class="mt-2 xl:mt-5 mr-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete Account</button>
+        <button class="mt-0 xl:mt-5 mr-auto p-3 lg:p-7 ml-3 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete Account</button>
     </form>
 
     </div>

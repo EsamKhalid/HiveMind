@@ -1,5 +1,5 @@
 <footer
-    class="bottom:0 w-full border border-amber bg-[#FBBF24]  dark:border-stone-800 dark:bg-stone-800 text-white transition-colors duration-1000"
+    class="bottom:0 w-full border border-amber bg-[#FBBF24]  dark:border-stone-800 dark:bg-stone-800 text-stone-950 dark:text-white transition-colors duration-1000"
 >
     <div
         class="container mx-auto flex flex-wrap justify-between items-start py-8"
@@ -11,7 +11,7 @@
                 Have an enquiry? Fill in a
                 <a
                     href="{{ route('contact') }}"
-                    class="text-lg text-blue-500 dark:text-amber  hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber  underline"
                     >Contact Form</a
                 >
             </p>
@@ -19,7 +19,7 @@
                 Check out our
                 <a
                     href="{{ route('faq') }}"
-                    class="text-lg text-blue-500 dark:text-amber  hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber  underline"
                     >FAQs</a
                 >
                 for more information.
@@ -27,7 +27,7 @@
             <p class="text-lg">
                 <a
                     href="{{ route('terms') }}"
-                    class="text-lg text-blue-500 dark:text-amber  hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber  underline"
                     >Terms and Conditions apply</a
                 >
             </p>

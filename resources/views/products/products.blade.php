@@ -5,7 +5,7 @@
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <title>Products 🐝</title>
     </head>
-    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-white">
+    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-yellow-200">
         <header>@include('layouts.navbar')</header>
         <main class="mb-auto h-screen
         "><div class="justify-center py-5">
@@ -23,7 +23,8 @@
                         type="text"
                         name="search"
                         value="{{ request('product_name') }}"
-                        class="rounded w-full"
+                        class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
+                        placeholder="search for a product"
                     />
                     <br />
                 </form>
@@ -70,7 +71,7 @@
                                 class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100"
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
-                             <h1 class="text-center text-xl">
+                             <h1 class="text-center text-xl mt-5">
                                 {{strtoupper($product->product_name)}}
                             </h1>
                             <p class="text-center">£{{$product->price}}</p>

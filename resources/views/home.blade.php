@@ -7,13 +7,13 @@
         <title>HiveMind 🐝</title>
     </head>
 
-    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
+    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-white">
         @include('layouts.navbar')
 
         <main>
             <!-- added a backdrop -->
             <section
-                class="bg-white py-40 bg-cover bg-center"
+                class="bg-white dark:bg-stone-800 py-40 bg-cover bg-center dark:bg-image:brightness-[200%]"
                 style="background-image: url('{{asset('../Images/hd bee backdrop lols.jpeg')}}');"
             >
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,7 +38,7 @@
 
             <section class="border-blue-100 py-8 text-center">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold mb-5">
+                    <h2 class="text-3xl font-bold mb-5 text-yellow-800 dark:text-amber">
                         Help our mission to save the bees
                     </h2>
                     <p class="text-lg mb-3">
@@ -58,7 +58,7 @@
 
             <section class="py-12">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-2xl font-bold mb-6">
+                    <h2 class="text-2xl font-bold mb-6 text-black dark:text-amber">
                         Shop our products by category
                     </h2>
                     <!-- 5 columns to display 5 categories -->
@@ -71,7 +71,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
                                             asset('../Images/categories/healthcare.png')
@@ -82,7 +82,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-medium text-stone-900 dark:text-yellow-400"
                                         >
                                             Health
                                         </h3>
@@ -95,7 +95,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
                                             asset('../Images/categories/skincare.png')
@@ -105,7 +105,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-medium text-stone-900 dark:text-yellow-400"
                                         >
                                             Skincare
                                         </h3>
@@ -118,17 +118,17 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/categories/beauty.png')
+                                            asset('../Images/categories/beauty.png')    
                                         }}"
                                         alt="Beauty"
                                         class="w-full h-64 object-cover rounded-t-lg"
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-medium text-stone-900 dark:text-yellow-400"
                                         >
                                             Beauty
                                         </h3>
@@ -141,7 +141,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
                                             asset('../Images/categories/haircare.png')
@@ -152,7 +152,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-medium text-stone-900 dark:text-yellow-400"
                                         >
                                             Haircare
                                         </h3>
@@ -165,7 +165,7 @@
                                 name="categoryButton"
                                 class="category"
                             >
-                                <div class="bg-white rounded-lg shadow-md">
+                                <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
                                             asset('../Images/categories/hivemind logo.png')
@@ -176,7 +176,7 @@
                                     />
                                     <div class="p-4">
                                         <h3
-                                            class="text-lg font-medium text-gray-900"
+                                            class="text-lg font-medium text-stone-900 dark:text-yellow-400"
                                         >
                                             Merchandise
                                         </h3>

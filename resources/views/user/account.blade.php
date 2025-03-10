@@ -7,51 +7,50 @@
     <body>
         @include('layouts.navbar')
 
-        <main class="flex justify-center items-center min-h-screen">
+        <main class="flex justify-center min-h-screen bg-white dark:bg-stone-950 transition-colors duration-1000">
             <div
-                class="bg-yellow-100 border p-16 rounded-lg shadow-lg w-2/3 max-w-4xl"
+                class="bg-yellow-100 dark:bg-stone-600 border dark:border-none p-16 rounded-lg shadow-lg w-2/3 max-w-4xl mt-[10%] max-h-fit"
             >
                 <!-- want to add customer's name when they log in -->
                 <h1
-                    class="text-6xl font-bold text-orange-950 pt-10 mb-20 text-center"
+                    class="text-6xl font-bold text-orange-950 dark:text-amber pt-10 mb-20 "
                 >
                     Hi {{ ucfirst($user->first_name)}}
                 </h1>
 
-                <div class="flex justify-between">
+                <div class="flex justify-between flex-col lg:flex-row">
                     <!-- buttons for customer to easily access once logged in -->
-                    <div class="flex flex-col space-y-4 mb-8">
+                    <div class="flex flex-col space-y-4 mb-5 lg:mr-5">
                         <button
-                            class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700"
+                            class="bg-yellow-600 dark:bg-stone-500 text-white px-6 py-3 rounded-md hover:bg-yellow-700"
                         >
                             <a href="{{ route('products') }}"
                                 >Continue shopping</a
                             >
                         </button>
                         <button
-                            class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700"
+                            class="bg-yellow-600 dark:bg-stone-500 text-white px-6 py-3 rounded-md hover:bg-yellow-700"
                         >
                             <a href="{{ route('basket.view') }}">View basket</a>
                         </button>
-                    </div>
+                    
 
                     @if($user->permission_level == "admin")
 
                     <div class="flex flex-col space-y-4 mb-8 h-full">
                         <a
-                            class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 h-full"
+                            class="bg-yellow-600 dark:bg-stone-500 text-white px-6 py-3 rounded-md hover:bg-yellow-700 h-fit mt-auto text-center"
                             href="{{ route('admin.dashboard') }}"
                             >Go to Admin Portal</a
                         >
                     </div>
-
                     @endif
-
+                    </div>
                     <!-- section for user to view orders, account settings etc. // some features not yet implemented -->
                     <div
                         class="border bg-yellow-50 p-6 rounded-lg shadow-md text-center"
                     >
-                        <ul class="space-y-4 text-orange-950 text-lg">
+                        <ul class="space-y-4 text-orange-950 text-base md:text-lg">
                             <li><a href="{{ route('orders') }}">Orders</a></li>
                             <!-- these pages aren't implemented yet, redirects to products page for now -->
                             <li>

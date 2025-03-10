@@ -12,16 +12,16 @@
 
     <main>
         <div class="flex justify-center m-4">
-            <div class="card bg-yellow-50 dark:bg-stone-700 p-6 rounded-lg shadow-md text-center w-3/4">
+            <div class="card bg-yellow-50 dark:bg-stone-700 p-8 rounded-lg shadow-md text-center w-[80%]">
                 <h1 class="text-6xl mb-6 dark:text-amber">Basket</h1>
 
                 @if($errors->any())
                 <h4 class="text-3xl text-red-600">{{$errors->first()}}</h4>
                 @endif
 
-                <div class="flex justify-between transition-all duration-1000">
-                    <div class="bg-white min-w-[450px] p-5 rounded w-1/2 flex flex-col justify-between">
-                        <form action="{{ route('checkout.storeAddress') }}" method="post" class="space-y-10 h-full flex flex-col justify-between">
+                <div class="flex justify-between transition-all duration-1000 flex-col xl:flex-row">
+                    <div class="bg-white p-5 rounded-lg w-full xl:w-1/2 flex flex-col justify-between">
+                        <form action="{{ route('checkout.storeAddress') }}" method="post" class="space-y-5 h-full flex flex-col justify-between">
                             @csrf
                             @if($address != null)
                             <div class="flex flex-col items-start mb-4">
@@ -77,29 +77,29 @@
                         </form>
                     </div>
 
-                    <div class="min-w-fit justify-between h-[90%] w-1/2 transition-all duration-1000 flex flex-col justify-between">
+                    <div class="justify-between h-[90%] w-full mt-5 xl:w-1/2 xl:mt-0 transition-all duration-1000 flex flex-col ">
                         @if(count($basketItems) === 0)
-                        <div class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md h-fit text-center w-[400px] m-5">
+                        <div class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md h-fit text-center w-full xl:w-[98%] ml-0 xl:ml-4">
                             No items in basket
                         </div>
                         @else
-                        <div class="overflow-y-auto h-[630px] mb-4 rounded transition-all duration-1000">
+                        <div class="overflow-y-auto overflow-x-hidden h-[630px] mb-4 rounded-lg transition-all duration-1000">
                             <ul class="h-full">
                                 @foreach($basketItems as $basketItem)
-                                <div class="bg-white mx-2 rounded flex justify-between text-center items-center p-2 [&_*]:pr-3 mb-2">
-                                    <img class="size-[125px] rounded" src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}"/>
-                                    <p class="text-2xl text-center h-fit">{{$basketItem->product_name}}</p>
-                                    <div class="flex items-center">
+                                <div class="bg-white mx-2 rounded-lg flex justify-between text-center items-center p-2 mb-2 w-full">
+                                    <img class="size-[125px] min-w-[125px] rounded" src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}"/>
+                                    <p class="text-base xl:text-lg text-center h-fit">{{$basketItem->product_name}}</p>
+                                    <div class="flex justify-center items-center p-2">
                                         <form action="{{ route('basket.decreaseQuantity') }}" method="post" class="flex">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $basketItem->product_id }}" />
-                                            <button class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit" type="submit">-</button>
+                                            <button class="py-2 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit" type="submit">-</button>
                                         </form>
                                         <p class="m-4 h-fit mt-3">{{$basketItem->quantity}}</p>
                                         <form action="{{ route('basket.increaseQuantity') }}" method="post" class="flex">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $basketItem->product_id }}" />
-                                            <button class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit" type="submit">+</button>
+                                            <button class="py-2 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit" type="submit">+</button>
                                         </form>
                                         <form action="{{ route('basket.remove') }}" method="post" class="ml-4">
                                             @csrf

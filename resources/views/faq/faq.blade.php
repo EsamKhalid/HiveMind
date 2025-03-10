@@ -13,7 +13,7 @@
                 <div class="p-6 rounded-lg mt-8">
                     <h2 class="text-3xl font-bold mb-4">General Questions</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3 dark:bg-stone-800">
+                        <div class="p-4 rounded-lg shadow-md w-[80%] md:w-1/3 dark:bg-stone-800">
                             <div class="mb-4">
                                 <h3 class="text-xl font-semibold">What is HiveMind?</h3>
                                 <p class="text-lg">HiveMind is an organization dedicated to saving bees and promoting sustainable beekeeping practices.</p>
@@ -28,7 +28,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Donation Questions</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3 dark:bg-stone-800">
+                        <div class="p-4 rounded-lg shadow-md w-[80%] md:w-1/3 dark:bg-stone-800">
                             <div class="mb-4">
                                 <h3 class="text-xl font-semibold">How do I make a donation?</h3>
                                 <p class="text-lg">You can make a donation through The British Bee Charity <a href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE" class="text-blue-500 hover:underline">donation page</a>.</p>
@@ -43,7 +43,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Donation Links</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3 dark:bg-stone-800">
+                        <div class="p-4 rounded-lg shadow-md w-[80%] md:w-1/3 dark:bg-stone-800">
                             <ul class="list-disc list-inside text-left">
                                 <li class="mb-2">
                                     <a href="https://www.projectapism.org/" class="hover:text-blue-500">Project Apis m.</a>
@@ -82,7 +82,7 @@
                 <div class="p-6 rounded-lg mt-8 ">
                     <h2 class="text-3xl font-bold mb-4">Cancellation Policy</h2>
                     <div class="flex justify-center">
-                        <div class="p-4 rounded-lg shadow-md w-1/3 dark:bg-stone-800">
+                        <div class="p-4 rounded-lg shadow-md w-[80%] md:w-1/3 dark:bg-stone-800">
                             <div class="mb-4">
                                 <h3 class="text-xl font-semibold">How can I cancel my order?</h3>
                                 <p class="text-lg">You may cancel your order within 24 hours of purchase. </p>
