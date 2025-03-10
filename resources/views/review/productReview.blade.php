@@ -20,7 +20,7 @@
                     <p class="text-3xl">Review: {{$product->product_name}}</p>
                 </div>
 
-                <div class="mb-4 flex justify-center">
+                <div class="flex justify-center">
                     <img
                         class="w-1/2"
                         src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
@@ -33,70 +33,70 @@
                     class="w-full space-y-4 text-center"
                 >
                     @csrf
-                    <div
-                        class="rating flex justify-center space-x-2 text-center"
-                    >
-                        <input
-                            type="radio"
-                            id="star5"
-                            name="rating"
-                            value="5"
-                            required
-                        />
-                        <label
-                            class="star"
-                            for="star5"
-                            title="Awesome"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star4"
-                            name="rating"
-                            value="4"
-                        />
-                        <label
-                            class="star"
-                            for="star4"
-                            title="Great"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star3"
-                            name="rating"
-                            value="3"
-                        />
-                        <label
-                            class="star"
-                            for="star3"
-                            title="Very good"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star2"
-                            name="rating"
-                            value="2"
-                        />
-                        <label
-                            class="star"
-                            for="star2"
-                            title="Good"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star1"
-                            name="rating"
-                            value="1"
-                        />
-                        <label
-                            class="star"
-                            for="star1"
-                            title="Bad"
-                            aria-hidden="true"
-                        ></label>
+                    <div class="flex justify-center">
+                        <div class="rating space-x-2">
+                            <input
+                                type="radio"
+                                id="star5"
+                                name="rating"
+                                value="5"
+                                required
+                            />
+                            <label
+                                class="star"
+                                for="star5"
+                                title="Awesome"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star4"
+                                name="rating"
+                                value="4"
+                            />
+                            <label
+                                class="star"
+                                for="star4"
+                                title="Great"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star3"
+                                name="rating"
+                                value="3"
+                            />
+                            <label
+                                class="star"
+                                for="star3"
+                                title="Very good"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star2"
+                                name="rating"
+                                value="2"
+                            />
+                            <label
+                                class="star"
+                                for="star2"
+                                title="Good"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star1"
+                                name="rating"
+                                value="1"
+                            />
+                            <label
+                                class="star"
+                                for="star1"
+                                title="Bad"
+                                aria-hidden="true"
+                            ></label>
+                        </div>
                     </div>
 
                     <label for="title" class="block text-center w-full"
