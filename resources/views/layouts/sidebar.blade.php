@@ -31,7 +31,6 @@
             type="checkbox"
             id="drawer-toggle"
             class="relative sr-only peer opacity-0"
-            checked
         />
         <label
             for="drawer-toggle"
