@@ -11,7 +11,7 @@
     
         @include('layouts.navbar')
         
-        <main>
+        <main class="mb-3">
             @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -22,7 +22,7 @@
         </div>
         @endif
         <!-- title -->
-        <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000">
+        <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000 w-[69%] lg:w-[50%] mx-auto rounded-lg mt-5 mb-3">
             <h1 class="text-4xl font-bold text-orange-950 dark:text-amber">Get in Touch</h1>
             <p class="text-lg text-gray-600 dark:text-white mt-4"> 
                 Want to get in touch? We'd be buzzing (get it?) to hear from you. Here's how you can reach us...
@@ -30,19 +30,19 @@
         </section>
 
             <!-- contact details -->
-                <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 p-8 dark:bg-stone-900 transition-all duration-1000">
+                <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 py-4 dark:bg-stone-900 transition-all duration-1000 w-[70%] mx-auto">
                     <!-- card 1: contact options -->
                     <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center transition-all duration-1000">
                         <div class="icon text-3xl text-blue-600 mb-4 dark:text-white">📞</div>
                         <h2 class="text-xl font-bold mb-2 dark:text-amber">Contact Us</h2>
                         <p class="text-gray-600 mb-4 dark:text-white">Contact us either via phone or email address.</p>
-                        <a href="+353-123-4567" class="text-orange-900 dark:text-orange-300 ">+353-123-4567</a><br>
-                        <a href="mailto:hivemind.business@outlook.com" class="text-orange-900 dark:text-orange-300 ">admin@hivemind.com</a><br><br>
+                        <a href="+353-123-4567" class="text-orange-900 dark:text-orange-200 ">+353-123-4567</a><br>
+                        <a href="mailto:hivemind.business@outlook.com" class="text-orange-900 dark:text-orange-200">admin@hivemind.com</a><br><br>
                         <p class="text-gray-600 mb-4 dark:text-white">Find us at our bee-quarters at:</p>
-                        <p class="text-gray-950 dark:text-orange-300">HiveMind</p>
-                        <p class="text-gray-950 dark:text-orange-300">123 Beehive Lane</p>
-                        <p class="text-gray-950 dark:text-orange-300">Dublin, Ireland</p>
-                        <p class="text-gray-950 dark:text-orange-300">Check out our <a href="{{ route('faq') }}" class="text-lg font-bold text-blue-500 hover:underline dark:text-orange-300">FAQs</a> for more information.</p>
+                        <p class="text-gray-950 dark:text-orange-200">HiveMind</p>
+                        <p class="text-gray-950 dark:text-orange-200">123 Beehive Lane</p>
+                        <p class="text-gray-950 dark:text-orange-200">Dublin, Ireland</p>
+                        <p class="text-gray-950 dark:text-orange-200">Check out our <a href="{{ route('faq') }}" class="text-lg  font-bold text-blue-500 hover:underline dark:text-amber">FAQs</a> for more information.</p>
                     </div>
 
 

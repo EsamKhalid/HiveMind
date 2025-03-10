@@ -56,8 +56,9 @@
             @elseif(session()->has('error'))
         <!-- unsuccessful deletion-->
              {{ session()->get('error') }}
+              @endif
     </div>
-    @endif
+    
 
   
 
