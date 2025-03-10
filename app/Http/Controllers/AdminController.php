@@ -26,9 +26,10 @@ class AdminController extends Controller
          ->where('created_at', '>=', now()->subDay())
          ->get();
 
-      $stockOrders = StockOrder::select('id', 'product_id', 'stock_quantity', 'created_at')
+      $stockOrders = StockOrder::select('stock_orders.id', 'stock_orders.product_id', 'stock_orders.stock_quantity', 'stock_orders.created_at', 'products.product_name')
          ->selectRaw('"stockOrder" AS type')
-         ->where('created_at', '>=', now()->subDay())
+         ->join('products', 'stock_orders.product_id', '=', 'products.id')
+         ->where('stock_orders.created_at', '>=', now()->subDay())
          ->get();
 
       $noStock = Products::select('id', 'product_name', 'stock_level', 'created_at')

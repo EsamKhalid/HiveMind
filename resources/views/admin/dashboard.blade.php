@@ -61,7 +61,7 @@
                                 New Stock Order
                             </p>
                             <p class="text-sm">
-                                New Stock Order for {{ $notification->product_id }} has been placed. ({{ $notification->created_at }}).
+                                New Stock Order for {{ $notification->stock_quantity }}x {{ $notification->product_name }}  (ID: {{$notification->product_id }}) has been placed. ({{ $notification->created_at }}).
                             </p>
                         </div>
                     </div>
