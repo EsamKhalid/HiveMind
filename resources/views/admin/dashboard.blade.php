@@ -47,7 +47,7 @@
                                 New Order Placed
                             </p>
                             <p class="text-sm">
-                                New Order worth £{{ $notification->total_amount }} has been placed. ({{ $notification->created_at }}).
+                                New Order for {{ $notification->first_name }} {{ $notification->last_name }} worth £{{ $notification->total_amount }} has been placed. ({{ $notification->created_at }}).
                             </p>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                                 New Stock Order
                             </p>
                             <p class="text-sm">
-                                New Stock Order for {{ $notification->stock_quantity }}x {{ $notification->product_name }}  (ID: {{$notification->product_id }}) has been placed. ({{ $notification->created_at }}).
+                                New Stock Order for {{ $notification->stock_quantity }}x {{ $notification->product_name }} has been placed. ({{ $notification->created_at }}).
                             </p>
                         </div>
                     </div>
