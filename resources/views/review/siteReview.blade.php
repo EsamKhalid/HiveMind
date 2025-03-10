@@ -13,78 +13,111 @@
         </div>
 
         <main class="flex justify-center items-center min-h-screen">
-            <div class="flex justify-center text-black">
+            <div
+                class="flex flex-col justify-center items-center text-center w-full max-w-lg p-4"
+            >
+                <p class="text-3xl">Tell us how we did!</p>
+
                 <form
                     action="{{ route('review.storeSiteReview') }}"
-                    method="post"
-                    class="space-y-10 h-full"
+                    method="POST"
+                    class="w-full space-y-4 text-center"
                 >
                     @csrf
-                    <div class="rating">
-                        <input
-                            type="radio"
-                            id="star5"
-                            name="rating"
-                            value="5"
-                        />
-                        <label
-                            class="star"
-                            for="star5"
-                            title="Awesome"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star4"
-                            name="rating"
-                            value="4"
-                        />
-                        <label
-                            class="star"
-                            for="star4"
-                            title="Great"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star3"
-                            name="rating"
-                            value="3"
-                        />
-                        <label
-                            class="star"
-                            for="star3"
-                            title="Very good"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star2"
-                            name="rating"
-                            value="2"
-                        />
-                        <label
-                            class="star"
-                            for="star2"
-                            title="Good"
-                            aria-hidden="true"
-                        ></label>
-                        <input
-                            type="radio"
-                            id="star1"
-                            name="rating"
-                            value="1"
-                        />
-                        <label
-                            class="star"
-                            for="star1"
-                            title="Bad"
-                            aria-hidden="true"
-                        ></label>
+                    <div class="flex justify-center">
+                        <div class="rating space-x-2">
+                            <input
+                                type="radio"
+                                id="star5"
+                                name="rating"
+                                value="5"
+                                required
+                            />
+                            <label
+                                class="star"
+                                for="star5"
+                                title="Awesome"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star4"
+                                name="rating"
+                                value="4"
+                            />
+                            <label
+                                class="star"
+                                for="star4"
+                                title="Great"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star3"
+                                name="rating"
+                                value="3"
+                            />
+                            <label
+                                class="star"
+                                for="star3"
+                                title="Very good"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star2"
+                                name="rating"
+                                value="2"
+                            />
+                            <label
+                                class="star"
+                                for="star2"
+                                title="Good"
+                                aria-hidden="true"
+                            ></label>
+                            <input
+                                type="radio"
+                                id="star1"
+                                name="rating"
+                                value="1"
+                            />
+                            <label
+                                class="star"
+                                for="star1"
+                                title="Bad"
+                                aria-hidden="true"
+                            ></label>
+                        </div>
                     </div>
-                    <input type="text" name="review" />
-                    <input type="submit" />
-                    <a href="{{ route('orders') }}">Skip</a>
+
+                    <label for="title" class="block text-center w-full"
+                        >Review Title (Optional)</label
+                    >
+                    <input
+                        type="text"
+                        name="title"
+                        class="w-full p-2 border rounded"
+                    />
+                    <label for="review" class="block text-center w-full"
+                        >Review (Optional)</label
+                    >
+                    <textarea
+                        name="review"
+                        placeholder="Review Text (max 500 characters)"
+                        class="w-full p-3 border border-gray-300 rounded"
+                        rows="4"
+                    ></textarea>
+                    <button
+                        type="submit"
+                        class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-500 w-full"
+                    >
+                        Submit
+                    </button>
+                    <a
+                        href="{{ route('orders') }}"
+                        class="text-blue-500 underline mt-2 block"
+                        >Skip</a
+                    >
                 </form>
             </div>
         </main>

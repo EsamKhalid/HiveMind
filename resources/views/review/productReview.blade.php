@@ -14,7 +14,7 @@
 
         <main class="flex justify-center items-center min-h-screen">
             <div
-                class="flex flex-col justify-center items-center text-center w-full max-w-lg p-4 border"
+                class="flex flex-col justify-center items-center text-center w-full max-w-lg p-4"
             >
                 <div class="mb-4">
                     <p class="text-3xl">Review: {{$product->product_name}}</p>
@@ -100,7 +100,7 @@
                     </div>
 
                     <label for="title" class="block text-center w-full"
-                        >Review Title</label
+                        >Review Title (Optional)</label
                     >
                     <input
                         type="text"
@@ -108,7 +108,7 @@
                         class="w-full p-2 border rounded"
                     />
                     <label for="review" class="block text-center w-full"
-                        >Review</label
+                        >Review (Optional)</label
                     >
                     <textarea
                         name="review"
