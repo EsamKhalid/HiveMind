@@ -44,10 +44,10 @@
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
                             <p class="font-bold">
-                                New Order Placed
+                                New Order Placed 
                             </p>
                             <p class="text-sm">
-                                New Order for {{ $notification->first_name }} {{ $notification->last_name }} worth £{{ $notification->total_amount }} has been placed. ({{ $notification->created_at }}).
+                                New Order for @foreach ($notification->orderItems as $order_item) {{ $order_item->quantity }}x {{ $order_item->products->product_name }}, @endforeach for {{ $notification->first_name }} {{ $notification->last_name }} worth £{{ $notification->total_amount }} has been placed. ({{ $notification->created_at }}).
                             </p>
                         </div>
                     </div>

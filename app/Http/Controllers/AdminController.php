@@ -21,9 +21,11 @@ class AdminController extends Controller
          ->where('created_at', '>=', now()->subDay())
          ->get();
 
-      $userOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at', 'users.id', 'users.first_name', 'users.last_name')
+      $userOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
          ->selectRaw('"userOrder" AS type')
          ->join('users', 'orders.user_id', '=', 'users.id')
+         ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+         ->join('products', 'order_items.product_id', '=', 'products.id')
          ->where('orders.created_at', '>=', now()->subDay())
          ->get();
 
