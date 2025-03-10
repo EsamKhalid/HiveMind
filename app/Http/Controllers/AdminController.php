@@ -13,7 +13,47 @@ use App\Models\Products;
 
 class AdminController extends Controller
 {
-   public function dashboard()
+
+   public function dashboard() {
+
+      $notifications = $this->notifs();
+      $live_reports = $this->livereports();
+
+      return view('admin.dashboard', [
+         'notifications' => $notifications,
+         'live_reports' => $live_reports,
+      ]);
+   }
+
+   public function notifications() {
+
+      $notifications = $this->notifs();
+
+      return view('admin.notifications', [
+         'notifications' => $notifications,
+      ]);
+   }
+
+   public function livereports()
+   {
+
+      $noStock = Products::select('id', 'product_name', 'stock_level', 'created_at')
+         ->selectRaw('"noStock" AS type')
+         ->where('stock_level', '==', 0)
+         ->get();
+
+      $lowStock = Products::select('id', 'product_name', 'stock_level', 'created_at')
+         ->selectRaw('"lowStock" AS type')
+         ->where('stock_level', '>', 0)
+         ->where('stock_level', '<', 20)
+         ->get();
+
+      $live_reports = $noStock->merge($lowStock)->sortBy('stock_level');
+
+      return $live_reports;
+   }
+
+   public function notifs()
    {
 
       $userCreated = Users::select('id', 'first_name', 'last_name', 'created_at AS time')
@@ -45,31 +85,9 @@ class AdminController extends Controller
          ->where('stock_orders.created_at', '>=', now()->subDay())
          ->get();
 
-      $noStock = Products::select('id', 'product_name', 'stock_level', 'created_at')
-         ->selectRaw('"noStock" AS type')
-         ->where('stock_level', '==', 0)
-         ->get();
-
-      $lowStock = Products::select('id', 'product_name', 'stock_level', 'created_at')
-         ->selectRaw('"lowStock" AS type')
-         ->where('stock_level', '>', 0)
-         ->where('stock_level', '<', 20)
-         ->get();
-
       $notifications = $userCreated->concat($stockOrders)->concat($userOrders)->concat($orderUpdates)->sortByDesc('time');
-      $live_reports = $noStock->merge($lowStock)->sortBy('stock_level');
 
-      return view('admin.dashboard', [
-         'notifications' => $notifications,
-         'live_reports' => $live_reports,
-      ]);
-
-   }
-
-   public function notifs()
-   {
-
-      return view('admin.notifications');
+      return $notifications;
 
    }
 }
