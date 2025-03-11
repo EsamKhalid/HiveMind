@@ -27,7 +27,7 @@ use App\Http\Controllers\AdminOrderController;
 
 use App\Http\Controllers\UserManagementController;
 
-
+use App\Http\Controllers\EnquiriesController;
 
 Route::get('/', function () {
     return view('home');
@@ -115,6 +115,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
     Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
 
+    Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
 });
 
 
