@@ -139,7 +139,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
-    Route::get('contact', [ContactController::class, 'view'])->name('contact');
+    Route::get('contact', [ContactController::class, 'view'])->name('contact.view');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
     // Routes for Details page - Aryan

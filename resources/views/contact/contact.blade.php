@@ -18,8 +18,15 @@
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            
         </div>
         @endif
+
+         @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4 text-center">
+                {{ session('success') }}
+            </div>
+            @endif
         <!-- title -->
         <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000">
             <h1 class="text-4xl font-bold text-orange-950 dark:text-amber">Get in Touch</h1>
