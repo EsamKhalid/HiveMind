@@ -11,6 +11,9 @@ class EnquiriesController extends Controller
     //
 
     public function view(){
-        return view('admin.userEnquiries');
+
+        $enquiries = Enquiries::query();
+        $enquiries = $enquiries->get();
+        return view('admin.userEnquiries', ['enquiries' => $enquiries]);
     }
 }
