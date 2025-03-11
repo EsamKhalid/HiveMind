@@ -61,8 +61,13 @@
                     <!-- contact form -->
                     <form action="{{ route('contact.store') }}" method="POST" id="contact-us-form">
                         @csrf
+                        @if($user != null)
+                        <input type="text" name="name" value="{{$user->first_name}}" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        <input type="email" name="email_address" value="{{$user->email_address}}" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        @else
                         <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
                         <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        @endif
                         <textarea name="enquiry" placeholder="Your Message (max 500 characters)" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" rows="4" required></textarea>
                         <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:underline dark:dark:bg-stone-900 dark:hover:text-amber">Submit</button>
                     </form>

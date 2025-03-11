@@ -11,7 +11,10 @@ class ContactController extends Controller
     //
 
     public function view(){
-        return view('contact.contact');
+
+        $user = Auth::user();
+
+        return view('contact.contact', ['user' => $user]);
     }
 
     public function store(Request $request){
