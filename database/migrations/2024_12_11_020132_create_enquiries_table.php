@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email_address');
             $table->string('enquiry');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
