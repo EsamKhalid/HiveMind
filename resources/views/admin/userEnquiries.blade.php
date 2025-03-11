@@ -28,6 +28,7 @@
                             <th class="py-2 px-4 border-b">Name</th>
                             <th class="py-2 px-4 border-b">Email</th>
                             <th class="py-2 px-4 border-b">Enquiry</th>
+                            <th class="py-2 px-4 border-b">User Type</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,11 @@
                                 <td class="py-2 px-4 border-b">{{ $enq->name }}</td>
                                 <td class="py-2 px-4 border-b">{{ $enq->email_address }}</td>
                                 <td class="py-2 px-4 border-b">{{ $enq->enquiry }}</td>
+                                @if($enq->user_id != null)
+                                <td class="py-2 px-4 border-b">Registered</td>
+                                @else
+                                <td class="py-2 px-4 border-b">Guest</td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
