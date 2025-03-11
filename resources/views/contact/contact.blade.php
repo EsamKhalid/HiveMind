@@ -12,7 +12,7 @@
         
         <main>
             @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="bg-red-500 text-white p-4 rounded mb-4 text-center">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
