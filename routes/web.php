@@ -27,7 +27,7 @@ use App\Http\Controllers\AdminOrderController;
 
 use App\Http\Controllers\UserManagementController;
 
-
+use App\Http\Controllers\EnquiriesController;
 
 Route::get('/', function () {
     return view('home');
@@ -115,6 +115,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
     Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
 
+    Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
 });
 
 
@@ -145,7 +146,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
-    Route::get('contact', [ContactController::class, 'view'])->name('contact');
+    Route::get('contact', [ContactController::class, 'view'])->name('contact.view');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
     // Routes for Details page - Aryan

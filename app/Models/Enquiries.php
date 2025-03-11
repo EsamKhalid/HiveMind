@@ -13,10 +13,11 @@ class Enquiries extends Model
         'name',
         'email_address',
         'enquiry',
+        'user_id',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Users::class, 'user_id');
     }
 }

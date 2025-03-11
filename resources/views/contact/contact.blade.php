@@ -12,14 +12,21 @@
         
         <main>
             @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="bg-red-500 text-white p-4 rounded mb-4 text-center">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            
         </div>
         @endif
+
+         @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4 text-center">
+                {{ session('success') }}
+            </div>
+            @endif
         <!-- title -->
         <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000">
             <h1 class="text-4xl font-bold text-orange-950 dark:text-amber">Get in Touch</h1>
@@ -54,8 +61,13 @@
                     <!-- contact form -->
                     <form action="{{ route('contact.store') }}" method="POST" id="contact-us-form">
                         @csrf
+                        @if($user != null)
+                        <input type="text" name="name" value="{{$user->first_name}}" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        <input type="email" name="email_address" value="{{$user->email_address}}" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        @else
                         <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
                         <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        @endif
                         <textarea name="enquiry" placeholder="Your Message (max 500 characters)" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" rows="4" required></textarea>
                         <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:underline dark:dark:bg-stone-900 dark:hover:text-amber">Submit</button>
                     </form>
