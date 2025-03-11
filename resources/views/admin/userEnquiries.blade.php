@@ -15,6 +15,20 @@
         <main class="flex justify-center items-center text-center min-h-screen">
             <div class="w-full max-w-4xl p-4">
                 <h2 class="text-2xl mb-4">User Enquiries</h2>
+                <form
+                    action="{{ route('admin.userEnquiries') }}"
+                    method="GET"
+                    class="w-full mr-3 mb-3"
+                >
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="search by email"
+                        value="{{ request('email_address') }}"
+                        class="rounded w-full"
+                    />
+                    <br />
+                </form>
                 <form action="{{ route('admin.userEnquiries') }}" method="GET" class="text-black w-full">
                     <select name="filter" onchange="this.form.submit()" class="w-full mb-2 rounded">
                         <option value="none" {{ request('filter') == 'none' ? 'selected' : '' }}>None</option>

@@ -12,7 +12,8 @@ class EnquiriesController extends Controller
 
     public function view(Request $request){
         
-        $filter = $request->input('filter');
+        $filter = $request->filter;
+        $search = $request->search;
 
         $enquiries = Enquiries::query();
 
@@ -23,6 +24,10 @@ class EnquiriesController extends Controller
             $enquiries->where('user_id', '=', null);
         }
 
+
+        if($search){
+            $enquiries->where('email_address', 'like', '%' . $search . '%');
+        }
         $enquiries = $enquiries->get();
         return view('admin.userEnquiries', ['enquiries' => $enquiries]);
     }
