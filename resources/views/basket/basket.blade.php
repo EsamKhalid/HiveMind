@@ -137,7 +137,7 @@
                                             type="text"
                                             name="street_address"
                                             id="street_address"
-                                            value="Street Address"
+                                            placeholder="Street Address"
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -152,7 +152,7 @@
                                             type="text"
                                             name="city"
                                             id="city"
-                                            value="City"
+                                            placeholder="City"
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -167,7 +167,7 @@
                                             type="text"
                                             name="county"
                                             id="county"
-                                            value="County"
+                                            placeholder="County"
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -182,7 +182,7 @@
                                             type="text"
                                             name="country"
                                             id="country"
-                                            value="Country"
+                                            placeholder="Country"
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />
@@ -197,7 +197,7 @@
                                             type="text"
                                             name="post_code"
                                             id="post_code"
-                                            value="Post Code"
+                                            placeholder="Post Code"
                                             required
                                             class="mt-1 block w-full p-3 border border-black rounded-md shadow-sm focus:ring-amber focus:border-amber sm:text-sm"
                                         />

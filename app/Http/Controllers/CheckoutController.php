@@ -169,8 +169,10 @@ class CheckoutController extends Controller
         BasketItems::where('basket_id', $basket->id)->delete();
         $basket->delete();
 
-        return redirect()->route('orders');
-        
+
+        return redirect()->route('review.siteReview');
+
+
     }
 
     public function confirmation()

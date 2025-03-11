@@ -17,10 +17,16 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\SupplierController;
 
 use App\Http\Controllers\AdminController;
+
+
+
+use App\Http\Controllers\ReviewController;
+
 use App\Http\Controllers\AdminOrderController;
 
 
 use App\Http\Controllers\UserManagementController;
+
 
 
 Route::get('/', function () {
@@ -157,6 +163,13 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+
+
+    Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
+    Route::post('review/storeSiteReview', [ReviewController::class, 'storeSiteReview'])->name('review.storeSiteReview');
+    Route::get('review/productReview/{id}', [ReviewController::class, 'productReview'])->name('review.productReview');
+    Route::post('/review/storeProductReview/{id}', [ReviewController::class, 'storeProductReview'])->name('review.storeProductReview');
+
     
     // NOTE FROM HARRY (15/02/25)
     // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
@@ -166,3 +179,4 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin', [AdminController::class, 'adm'])->name('adm');
 
      
+
