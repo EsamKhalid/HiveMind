@@ -107,23 +107,23 @@
                             @else
                             <div class="flex flex-col items-start mb-4">
                                 <label for="street_address" class="block text-gray-600 dark:text-black mb-2">Street Address</label>
-                                <input type="text" name="street_address" id="street_address" value="Street Address" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
+                                <input type="text" name="street_address" id="street_address" value="" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
                             </div>
                             <div class="flex flex-col items-start mb-4">
                                 <label for="city" class="block text-gray-600 dark:text-black mb-2">City</label>
-                                <input type="text" name="city" id="city" value="City" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
+                                <input type="text" name="city" id="city" value="" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
                             </div>
                             <div class="flex flex-col items-start mb-4">
                                 <label for="county" class="block text-gray-600 dark:text-black mb-2">County</label>
-                                <input type="text" name="county" id="county" value="County" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
+                                <input type="text" name="county" id="county" value="" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
                             </div>
                             <div class="flex flex-col items-start mb-4">
                                 <label for="country" class="block text-gray-600 dark:text-black mb-2">Country</label>
-                                <input type="text" name="country" id="country" value="Country" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
+                                <input type="text" name="country" id="country" value="" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
                             </div>
                             <div class="flex flex-col items-start mb-4">
                                 <label for="post_code" class="block text-gray-600 dark:text-black mb-2">Post Code</label>
-                                <input type="text" name="post_code" id="post_code" value="Post Code" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
+                                <input type="text" name="post_code" id="post_code" value="" required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
                             </div>
                             <input type="hidden" name="type" value="shipping" />
                             <div class="flex justify-center mt-auto">
