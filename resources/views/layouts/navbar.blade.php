@@ -77,11 +77,9 @@ function toggleTheme(){
                             >Shop Us</a
                         >
                     </li>
-                    <li>
-                    <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber" onclick="toggleTheme()"></a>
-                    </li>
-                </ul>
 
+                </ul>
+                <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber" onclick="toggleTheme()"></a>
                 <!-- search icon // trying to make it so that search bar appears when user clicks on icon (still a wip) -->
                 <form action="{{ route('products') }}" method="get">
                     <div class="flex items-center space-x-4">
