@@ -31,4 +31,8 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class, 'order_id');
     }
+
+    public function guest(){
+        return $this->belongsTo(Guest::class);
+    }
 }
