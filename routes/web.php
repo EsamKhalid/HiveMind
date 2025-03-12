@@ -29,6 +29,8 @@ use App\Http\Controllers\UserManagementController;
 
 use App\Http\Controllers\EnquiriesController;
 
+use App\Http\Controllers\GuestOrderController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -120,9 +122,7 @@ Route::middleware(['admin'])->group(function () {
 
 
 
-/**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
- * before or after the request is processed by your controller. Ultimately, it acts as a bridge between request and a response. */
-
+    Route::get('orders/guest/validate', [GuestOrderController::class, 'view'])->name('orders.guest.validate');
 
 
     Route::get('basket',[BasketController::class, 'view'])->name('basket.view');
