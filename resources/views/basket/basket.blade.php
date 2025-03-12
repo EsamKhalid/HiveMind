@@ -59,19 +59,19 @@
                     <input type="checkbox" id="drawer-toggle" class="relative sr-only peer opacity-0"
                             onclick="hideCheckoutButton()" />
                         <label for="drawer-toggle"
-                            class="z-10 flex flex-col absolute top-0 right-0 left-0 p-4 transition-all ease-in-out duration-300 bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[80%]">
+                            class="z-10 flex flex-col absolute top-0 right-0 left-0 p-4 transition-[transform_300ms, colors_1s] ease-in-out bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[80%]">
                             <i class="fa-solid fa-chevron-up"></i>
                         </label>
 
                     <div id="checkoutbuttonbox"
-                        class="pt-6 flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%]  transition-transform ease-in-out duration-300 ">
+                        class="pt-6 max-h-[80%] flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%] transition-[transform_300ms, color_1s] ease-in-out">
                         
                         <div
-                            class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-transform ease-in-out duration-300">
+                            class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-[transform_300ms, colors_1s] ease-in-out ">
                         </div>
                        
                         <h3 class=" text-black dark:text-white ">Delivery Address:
-                            <p class="text-black dark:text-white justify-center flex">{{$address->street_address}}</p>
+                            <p class="text-black dark:text-white justify-center flex transition-colors duration-1000">{{$address->street_address}}</p>
                         </h3>
                         <div class=" mobileViewAddressLine hidden flex-col xl:hidden">
 
@@ -80,10 +80,7 @@
                         </div>
                         <div class="flex justify-center">
                             <a onclick="toggleMobileAddressBox()" id="show-hide"
-                                class="text-black bg-amber select-none dark:bg-stone-500 hover:text-white cursor-pointer p-1 rounded-md m-2">Show
-                                Details</a>
-                            <a href=""
-                                class="mobileViewAddressLine hidden text-black bg-amber hover:text-white cursor-pointer p-1 rounded-md m-2 select-none">Edit
+                                class="text-black bg-stone-500 hover:text-white cursor-pointer p-1 rounded-md m-2 transition-colors duration-1000">Show
                                 Details</a>
                         </div>
 
@@ -93,7 +90,7 @@
                         </h2>
                         <div class="flex justify-center mt-auto w-full">
                             <button type="Checkout"
-                                class="bg-amber text-black my-3 py-2 px-8 rounded-lg shadow-lg hover:underlinehover:text-white w-[80%] font-bold">
+                                class="bg-amber text-black hover:text-white my-3 py-2 px-8 rounded-lg shadow-lg hover:underlinehover:text-white w-[80%] font-bold transition-colors duration-1000">
                                 @csrf
                                 <a href="{{ route('checkout.checkout') }}">Checkout</a>
                             </button>
@@ -120,8 +117,9 @@
                                             <img class="size-[125px] min-w-[125px] rounded mr-6"
                                                 src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}" />
                                            
-                                            <div class="flex flex-col">
-                                            <p class="text-base xl:text-lg text-center h-fit my-auto">{{$basketItem->product_name}}</p>
+                                            <div class="flex flex-col flex-shrink">
+                                            <p class="text-base xl:text-lg text-center h-fit my-auto text-nowrap">{{$basketItem->product_name}}</p>
+                                            <!--Quantity Controllers -->
                                             <div class="flex">
                                             <form action="{{ route('basket.decreaseQuantity') }}" method="post"
                                                     >
@@ -129,10 +127,10 @@
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $basketItem->product_id }}" />
                                                     <button
-                                                        class="py-3 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                                        type="submit"><i class="fa-solid fa-minus"></i></button>
+                                                        class="py-1 px-3 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                        type="submit"><i class="fa-solid fa-minus text-sm"></i></button>
                                                 </form>
-                                                <p class="m-4 h-fit mt-3 text-xl">{{$basketItem->quantity}}</p>
+                                                <p class="m-3 h-fit mt-1 text-sm">{{$basketItem->quantity}}</p>
                                                 <!-- increase button -->
                                                 <form action="{{ route('basket.increaseQuantity') }}" method="post"
                                                     class="flex">
@@ -140,8 +138,8 @@
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $basketItem->product_id }}" />
                                                     <button
-                                                        class="py-3 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                                        type="submit"><i class="fa-solid fa-plus"></i></button>
+                                                        class="py-1 px-3 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                        type="submit"><i class="fa-solid fa-plus text-sm"></i></button>
                                                 </form>
                                             </div>
                                             
@@ -157,8 +155,8 @@
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $basketItem->product_id }}" />
                                                     <button
-                                                        class="py-2 a px-4 bg-white text-stone-800 rounded-lg shadow-md hover:text-amber"
-                                                        type="submit"><i class="fa-solid fa-trash-can text-xl"></i></button>
+                                                        class="py-1 a px-3 mr-5 bg-white text-red-500 rounded-lg shadow-md hover:text-red-800"
+                                                        type="submit"><i class="fa-solid fa-trash-can text-base"></i></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -173,7 +171,7 @@
                                 </h2>
                                 <div class="flex justify-center mt-auto w-full">
                                     <button type="Checkout"
-                                        class="bg-yellow-400 text-white mt-5 py-4 px-8 rounded-lg shadow-lg hover:underline dark:bg-stone-900 dark:hover:text-amber w-1/3 font-bold">
+                                        class="bg-yellow-400 text-white mt-5 py-4 px-8 rounded-lg shadow-lg hover:underline dark:bg-stone-900 dark:hover:text-amber w-1/3 font-bold transition-colors duration-1000">
                                         @csrf
                                         <a href="{{ route('checkout.checkout') }}">Checkout</a>
                                     </button>
