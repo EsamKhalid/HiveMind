@@ -12,7 +12,9 @@
             @endif
         </div>
 
-        <main class="flex justify-center items-center min-h-screen">Hello</main>
+        <main class="flex justify-center items-center min-h-screen">
+            {{$order->confirmation_number}}
+        </main>
 
         @include('layouts.footer')
     </body>

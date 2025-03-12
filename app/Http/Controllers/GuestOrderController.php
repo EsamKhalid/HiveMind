@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class GuestOrderController extends Controller
 {
@@ -13,11 +14,11 @@ class GuestOrderController extends Controller
     
     public function displayOrder($confNum){
 
+        $order = Order::findOrFail($confNum);
 
 
 
-
-        return view('order.guest.displayOrder');
+        return view('orders.guest.displayOrder', ['order' => $order]);
     }
 
     public function getOrder(Request $request){
