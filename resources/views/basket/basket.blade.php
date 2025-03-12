@@ -116,36 +116,49 @@
                                     @foreach($basketItems as $basketItem)
                                         <div
                                             class="bg-white mx-2 rounded-lg flex justify-between text-center items-center p-2 mb-2 w-full">
-                                            <img class="size-[125px] min-w-[125px] rounded"
+                                            <div class="flex">
+                                            <img class="size-[125px] min-w-[125px] rounded mr-6"
                                                 src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}" />
-                                            <p class="text-base xl:text-lg text-center h-fit">{{$basketItem->product_name}}</p>
-                                            <div class="flex justify-center items-center p-2">
-                                                <form action="{{ route('basket.decreaseQuantity') }}" method="post"
-                                                    class="flex">
+                                           
+                                            <div class="flex flex-col">
+                                            <p class="text-base xl:text-lg text-center h-fit my-auto">{{$basketItem->product_name}}</p>
+                                            <div class="flex">
+                                            <form action="{{ route('basket.decreaseQuantity') }}" method="post"
+                                                    >
                                                     @csrf
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $basketItem->product_id }}" />
                                                     <button
-                                                        class="py-2 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                                        type="submit">-</button>
+                                                        class="py-3 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                        type="submit"><i class="fa-solid fa-minus"></i></button>
                                                 </form>
-                                                <p class="m-4 h-fit mt-3">{{$basketItem->quantity}}</p>
+                                                <p class="m-4 h-fit mt-3 text-xl">{{$basketItem->quantity}}</p>
+                                                <!-- increase button -->
                                                 <form action="{{ route('basket.increaseQuantity') }}" method="post"
                                                     class="flex">
                                                     @csrf
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $basketItem->product_id }}" />
                                                     <button
-                                                        class="py-2 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                                        type="submit">+</button>
+                                                        class="py-3 px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
+                                                        type="submit"><i class="fa-solid fa-plus"></i></button>
                                                 </form>
+                                            </div>
+                                            
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="flex justify-center items-center p-2">
+                                                <!-- decrease button -->
+                                                
+                                                <!-- delete button -->
                                                 <form action="{{ route('basket.remove') }}" method="post" class="ml-4">
                                                     @csrf
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $basketItem->product_id }}" />
                                                     <button
-                                                        class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber"
-                                                        type="submit">remove</button>
+                                                        class="py-2 a px-4 bg-white text-stone-800 rounded-lg shadow-md hover:text-amber"
+                                                        type="submit"><i class="fa-solid fa-trash-can text-xl"></i></button>
                                                 </form>
                                             </div>
                                         </div>
