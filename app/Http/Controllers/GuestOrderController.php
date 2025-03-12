@@ -11,8 +11,13 @@ class GuestOrderController extends Controller
         return view('orders.guest.validate');
     }
     
-    public function displayOrder(){
+    public function displayOrder($confNum){
 
+
+
+
+
+        return view('order.guest.displayOrder');
     }
 
     public function getOrder(Request $request){
