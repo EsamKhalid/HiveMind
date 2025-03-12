@@ -20,6 +20,7 @@ class Addresses extends Model
     // Define the fillable fields
     protected $fillable = [
         'user_id',
+        'guest_id',
         'street_address',
         'city',
         'county',

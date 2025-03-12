@@ -135,7 +135,8 @@ Route::middleware(['admin'])->group(function () {
    Route::post('basket/decreaseQuantity',[BasketController::class,'decreaseQuantity'])->name('basket.decreaseQuantity');
 
    Route::post('basket/add',[BasketController::class, 'addToBasket'])->name('basket.add');
-
+   Route::post('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
+   Route::get('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
 
     //Route::post('/basket/add/{productID}',[BasketController::class, 'addToBasket'])->name('basket.add');
 
@@ -143,6 +144,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('checkout', [CheckoutController::class, 'view'])->name('checkout.view');  
 
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
+    Route::post('checkout/save-guest', [CheckoutController::class, 'storeGuest'])->name('checkout.storeGuest');
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
