@@ -21,11 +21,6 @@
             }
 
         }
-        function hideCheckoutButton() {
-
-            box.classList.toggle('peer-checked:top-[80%]')
-        }
-
     </script>
 </head>
 
@@ -122,24 +117,23 @@
                         <!--Address Form Total+Checkout Button-->
 
                     </div>
-                    <div class="justify-center w-[80%] rounded-lg mx-auto fixed left-0 right-0 bottom-0 bg-transparent z-10 h-fit mt-[10%]">
+                    <div class="xl:hidden justify-center w-[80%] rounded-lg mx-auto fixed left-0 right-0 bottom-0 bg-transparent z-10 h-fit mt-[10%] -mb-3">
 
                     <input type="checkbox" id="drawer-toggle" class="relative sr-only peer opacity-0"
                             onclick="hideCheckoutButton()" />
                         <label for="drawer-toggle"
-                            class="z-10 flex flex-col absolute -top-0 right-0 left-0 p-4 transition-all ease-in-out duration-1000 bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[80%] ">
-                            <i class="fa-solid fa-chevron-up block peer-checked:hidden"></i>
-                            <i class="fa-solid fa-chevron-down hidden peer-checked:block "></i>
+                            class="z-10 flex flex-col absolute top-0 right-0 left-0 p-4 transition-all ease-in-out duration-300 bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[80%]">
+                            <i class="fa-solid fa-chevron-up"></i>
                         </label>
 
                     <div id="checkoutbuttonbox"
-                        class="flex-col xl:hidden items-center bg-yellow-200 peer-checked:peer-checked:translate-y-[100%]  transition-transform ease-in-out duration-1000">
+                        class="pt-6 flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%]  transition-transform ease-in-out duration-300">
                         
                         <div
-                            class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-transform ease-in-out duration-1000">
+                            class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-transform ease-in-out duration-300">
                         </div>
                        
-                        <h3 class="mt-6 text-black dark:text-white">Delivery Address:
+                        <h3 class=" text-black dark:text-white">Delivery Address:
                             <p class="text-black dark:text-white justify-center flex">{{$address->street_address}}</p>
                         </h3>
                         <div class=" mobileViewAddressLine hidden flex-col xl:hidden ">
