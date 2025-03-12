@@ -238,6 +238,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'card',
                 'amount_paid' => $basket->$total_amount,
                 'payment_date' => now(),
+                'confirmation_number' => mt_rand(100000,999999),
             ]);
 
             foreach ($basketItems as $order_item) {
@@ -272,6 +273,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'card',
                 'amount_paid' => $basket->$total_amount,
                 'payment_date' => now(),
+                'confirmation_number' => mt_rand(100000,999999),
             ]);
 
             foreach ($basketItems as $order_item) {

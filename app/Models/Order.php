@@ -20,6 +20,7 @@ class Order extends Model
         'payment_method',
         'payment_date',
         'amount_paid',
+        'confirmation_number',
     ];
 
     public function user()
