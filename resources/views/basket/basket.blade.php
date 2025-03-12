@@ -49,7 +49,7 @@
                 <!--Main content container-->
                 <div class="flex justify-between transition-all duration-1000 flex-col-reverse xl:flex-row">
                     <!--Address Form-->
-                    <div class="bg-white p-5 rounded-lg w-full xl:w-1/4 hidden xl:flex xl:flex-col justify-between">
+                    <div class="bg-yellow-300 dark:bg-amber p-5 rounded-lg w-full xl:w-1/4 hidden xl:flex xl:flex-col justify-between">
                         @include('layouts.addressForm')
                         <!--Address Form Total+Checkout Button-->
 
@@ -59,15 +59,15 @@
                     <input type="checkbox" id="drawer-toggle" class="relative sr-only peer opacity-0"
                             onclick="hideCheckoutButton()" />
                         <label for="drawer-toggle"
-                            class="z-10 flex flex-col absolute top-0 right-0 left-0 p-4 transition-[transform_300ms, colors_1s] ease-in-out bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[80%]">
+                            class="z-10 flex flex-col absolute top-0 right-0 left-0 p-4 transition-all ease-in-out bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[80%]">
                             <i class="fa-solid fa-chevron-up"></i>
                         </label>
 
                     <div id="checkoutbuttonbox"
-                        class="pt-6 max-h-[80%] flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%] transition-[transform_300ms, color_1s] ease-in-out">
+                        class="pt-6 max-h-[80%] flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%] transition-all ease-in-out">
                         
                         <div
-                            class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-[transform_300ms, colors_1s] ease-in-out ">
+                            class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-all ease-in-out ">
                         </div>
                        
                         <h3 class=" text-black dark:text-white ">Delivery Address:
