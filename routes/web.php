@@ -123,6 +123,7 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('orders/guest/validate', [GuestOrderController::class, 'view'])->name('orders.guest.validate');
+    Route::get('orders/guest/getOrder', [GuestOrderController::class, 'getOrder'])->name('orders.guest.getOrder');
 
 
     Route::get('basket',[BasketController::class, 'view'])->name('basket.view');

@@ -25,7 +25,55 @@
                     @endforeach
                 </ul>
             </div>
-            @endif Guest Order
+            @endif
+            <form action="{{ route('orders.guest.getOrder') }}" method="GET">
+                @csrf
+
+                <div class="mb-4">
+                    <label
+                        for="surname"
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        >Surname:</label
+                    >
+                    <input
+                        type="text"
+                        name="surname"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        maxlength="50"
+                        placeholder="Enter your Surname"
+                        autofocus
+                    />
+                </div>
+
+                <div class="mb-6">
+                    <label
+                        for="confirmation"
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                        >Confirmation Number (6-digits):</label
+                    >
+                    <input
+                        type="text"
+                        name="confirmation"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="123456"
+                    />
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button
+                        type="submit"
+                        class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                        Continue
+                    </button>
+                    <button
+                        type="reset"
+                        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                        Clear
+                    </button>
+                </div>
+            </form>
         </main>
         @include('layouts.footer')
     </body>

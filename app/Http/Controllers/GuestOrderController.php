@@ -15,7 +15,9 @@ class GuestOrderController extends Controller
 
     }
 
-    public function getOrder(){
-        
+    public function getOrder(Request $request){
+        $request->validate(['surname' => 'required|string|max:255','confirmation' => 'required|integer|digits:6']);
+
+        echo $request->confirmation;
     }
 }
