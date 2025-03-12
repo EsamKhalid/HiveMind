@@ -345,12 +345,16 @@ class BasketController extends Controller
 
             if ($guestBasket && $userBasket) {
                 return redirect()->route('basket.view');
-            } else
+
+            } elseif ($guestBasket) {
                 $guestBasket->update([
                     'user_id' => $user->id,
                     'guest_id' => null,
                 ]);
             session()->forget('guest_id');
+            return redirect()->route('basket.view');
+            
+        } else
             return redirect()->route('basket.view');
         }
     }
