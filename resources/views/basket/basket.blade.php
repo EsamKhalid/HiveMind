@@ -19,18 +19,28 @@
                     document.getElementById('show-hide').innerText = 'Show Details'
                 }
             }
-
         }
+        function hideCheckoutButton(){
+            var elements = document.getElementsByClassName('mobileViewAddressLine');
+            for (let element of elements) {
+                if (!element.classList.contains('hidden')) {
+                    element.classList.add('hidden');
+                    element.classList.remove('flex');
+                    document.getElementById('show-hide').innerText = 'Show Details'
+                }
+            }
+        }
+        
     </script>
 </head>
 
-<body class="dark:bg-stone-950 transition-all duration-1000 flex flex-col min-h-screen">
+<body class="dark:bg-stone-950 transition-colors duration-1000 flex flex-col min-h-screen">
     @include('layouts.navbar')
 
     <main>
         <div class="flex justify-center m-4">
-            <div class="card bg-yellow-50 dark:bg-stone-700 p-8 rounded-lg shadow-md text-center w-[80%]">
-                <h1 class="text-6xl mb-6 dark:text-amber">Basket</h1>
+            <div class="card bg-yellow-50 dark:bg-stone-700 p-8 rounded-lg shadow-md text-center w-[80%] transition-colors duration-1000">
+                <h1 class="text-6xl mb-6 dark:text-amber transition-colors duration-1000">Basket</h1>
 
                 @if($errors->any())
                     <h4 class="text-3xl text-red-600">{{$errors->first()}}</h4>
@@ -39,86 +49,13 @@
                 <!--Main content container-->
                 <div class="flex justify-between transition-all duration-1000 flex-col-reverse xl:flex-row">
                     <!--Address Form-->
-                    <div class="bg-white p-5 rounded-lg w-full xl:w-1/4 flex flex-col justify-between">
-                        <form action="{{ route('checkout.storeAddress') }}" method="post"
-                            class="space-y-5 h-full flex flex-col justify-between">
-                            @csrf
-                            @if($address != null)
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="street_address" class="block text-gray-600 dark:text-black mb-2">Street
-                                        Address</label>
-                                    <input type="text" name="street_address" id="street_address"
-                                        value="{{$address->street_address}}" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="city" class="block text-gray-600 dark:text-black mb-2">City</label>
-                                    <input type="text" name="city" id="city" value="{{$address->city}}" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="county" class="block text-gray-600 dark:text-black mb-2">County</label>
-                                    <input type="text" name="county" id="county" value="{{$address->county}}" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="country" class="block text-gray-600 dark:text-black mb-2">Country</label>
-                                    <input type="text" name="country" id="country" value="{{$address->country}}" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="post_code" class="block text-gray-600 dark:text-black mb-2">Post
-                                        Code</label>
-                                    <input type="text" name="post_code" id="post_code" value="{{$address->post_code}}"
-                                        required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <input type="hidden" name="type" value="shipping" />
-                                <div class="hidden xl:flex justify-center mt-auto">
-                                    <button type="submit"
-                                        class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:underline dark:bg-stone-900 dark:hover:text-amber">Save
-                                        Address</button>
-                                </div>
-                            @else
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="street_address" class="block text-gray-600 dark:text-black mb-2">Street
-                                        Address</label>
-                                    <input type="text" name="street_address" id="street_address" value="Street Address"
-                                        required class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="city" class="block text-gray-600 dark:text-black mb-2">City</label>
-                                    <input type="text" name="city" id="city" value="City" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="county" class="block text-gray-600 dark:text-black mb-2">County</label>
-                                    <input type="text" name="county" id="county" value="County" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="country" class="block text-gray-600 dark:text-black mb-2">Country</label>
-                                    <input type="text" name="country" id="country" value="Country" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <div class="hidden xl:flex flex-col items-start mb-4">
-                                    <label for="post_code" class="block text-gray-600 dark:text-black mb-2">Post
-                                        Code</label>
-                                    <input type="text" name="post_code" id="post_code" value="Post Code" required
-                                        class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" />
-                                </div>
-                                <input type="hidden" name="type" value="shipping" />
-                                <div class="hidden xl:flex justify-center mt-auto">
-                                    <button type="submit"
-                                        class="bg-yellow-400 text-white text-xl py-4 px-8 rounded-lg shadow-lg hover:underline dark:bg-stone-900 dark:hover:text-amber w-1/3 font-bold">Save
-                                        Address</button>
-                                </div>
-                            @endif
-                        </form>
+                    <div class="bg-white p-5 rounded-lg w-full xl:w-1/4 hidden xl:flex xl:flex-col justify-between">
+                        @include('layouts.addressForm')
                         <!--Address Form Total+Checkout Button-->
 
                     </div>
+                    @if(count($basketItems) > 0)
                     <div class="xl:hidden justify-center w-[80%] rounded-lg mx-auto fixed left-0 right-0 bottom-0 bg-transparent z-10 h-fit mt-[10%] -mb-3">
-
                     <input type="checkbox" id="drawer-toggle" class="relative sr-only peer opacity-0"
                             onclick="hideCheckoutButton()" />
                         <label for="drawer-toggle"
@@ -127,21 +64,18 @@
                         </label>
 
                     <div id="checkoutbuttonbox"
-                        class="pt-6 flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%]  transition-transform ease-in-out duration-300">
+                        class="pt-6 flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%]  transition-transform ease-in-out duration-300 ">
                         
                         <div
                             class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-transform ease-in-out duration-300">
                         </div>
                        
-                        <h3 class=" text-black dark:text-white">Delivery Address:
+                        <h3 class=" text-black dark:text-white ">Delivery Address:
                             <p class="text-black dark:text-white justify-center flex">{{$address->street_address}}</p>
                         </h3>
-                        <div class=" mobileViewAddressLine hidden flex-col xl:hidden ">
+                        <div class=" mobileViewAddressLine hidden flex-col xl:hidden">
 
-                            <p class="text-black dark:text-white justify-start">{{$address->city}}</p>
-                            <p class="text-black dark:text-white justify-start">{{$address->county}}</p>
-                            <p class="text-black dark:text-white justify-start">{{$address->country}}</p>
-                            <p class="text-black dark:text-white justify-start">{{$address->post_code}}</p>
+                        @include('layouts.addressForm')
 
                         </div>
                         <div class="flex justify-center">
@@ -166,6 +100,7 @@
                         </div>
                     </div>
                     </div>
+                    @endif
                     <!--BASKET ITEMS-->
                     <div
                         class="justify-between h-[90%] w-full mt-5 xl:w-3/4 xl:mt-0 transition-all duration-1000 flex flex-col ">
@@ -177,7 +112,7 @@
                         @else
                             <div
                                 class="overflow-y-auto overflow-x-hidden h-[630px] mb-4 rounded-lg transition-all duration-1000">
-                                <ul class="h-full">
+                                <ul class="h-full mb-6">
                                     @foreach($basketItems as $basketItem)
                                         <div
                                             class="bg-white mx-2 rounded-lg flex justify-between text-center items-center p-2 mb-2 w-full">
