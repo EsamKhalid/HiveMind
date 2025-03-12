@@ -58,6 +58,7 @@ class OrderController extends Controller
         $returnRequest = ReturnRequest::create([
             'order_id' => $order->id,
             'return_date' => $validated['return_date'],
+            'return_status' => 'Pending',
             'reason' => $validated['reason'],
             'comments' => $validated['comments'] ?? '',
         ]);

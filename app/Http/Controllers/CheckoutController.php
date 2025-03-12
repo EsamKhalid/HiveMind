@@ -295,6 +295,12 @@ class CheckoutController extends Controller
             return view('checkout.confirmation');
         }
 
+
+
+        return redirect()->route('review.siteReview');
+
+
+
     }
 
     public function confirmation()

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <head>
-    <script >
-    (function() {
+    <script>
+        (function () {
             // Check for saved theme or system preference and apply it
             const currentTheme = localStorage.getItem("theme");
-            const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const deviceTheme = window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches;
             if (currentTheme === "dark" || (!currentTheme && deviceTheme)) {
                 document.documentElement.classList.add("dark");
             } else {
@@ -12,20 +14,19 @@
             }
         })();
 
-function toggleTheme(){
-    var currentTheme = localStorage.getItem("theme");
+        function toggleTheme() {
+            var currentTheme = localStorage.getItem("theme");
 
-    if(!currentTheme){
-        localStorage.setItem("theme","dark");
-    }else if(currentTheme == "dark"){
-        localStorage.setItem("theme","light");
-    }else{
-        localStorage.setItem("theme","dark");
-    }
-    document.documentElement.classList.toggle("dark")
-
-}
-</script>
+            if (!currentTheme) {
+                localStorage.setItem("theme", "dark");
+            } else if (currentTheme == "dark") {
+                localStorage.setItem("theme", "light");
+            } else {
+                localStorage.setItem("theme", "dark");
+            }
+            document.documentElement.classList.toggle("dark");
+        }
+    </script>
 </head>
 <body class="transition-all ease-in-out duration-1000">
     <div class="overflow-hidden">
@@ -53,7 +54,10 @@ function toggleTheme(){
                 <!-- links are next to icons -->
                 <ul class="hidden md:flex space-x-8 text-lg">
                     <li>
-                    <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber" onclick="toggleTheme()"></a>
+                        <a
+                            class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber"
+                            onclick="toggleTheme()"
+                        ></a>
                     </li>
                     <li>
                         <a
@@ -71,7 +75,7 @@ function toggleTheme(){
                     </li>
                     <li>
                         <a
-                            href="{{ route('contact') }}"
+                            href="{{ route('contact.view') }}"
                             class="hover:text-gray-200 dark:hover:text-amber"
                             >Contact Us</a
                         >
@@ -94,13 +98,15 @@ function toggleTheme(){
                             type="submit"
                             class="text-white hover:text-gray-200 dark:hover:text-amber"
                         >
-                            <i class="fas fa-search fa-xl dark:hover:text-amber"></i>
+                            <i
+                                class="fas fa-search fa-xl dark:hover:text-amber"
+                            ></i>
                         </button>
                     </div>
                 </form>
                 <a
                     href="{{ route('basket.view') }}"
-                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-gray-200 "
+                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-gray-200"
                 ></a>
                 @auth
                 <a
