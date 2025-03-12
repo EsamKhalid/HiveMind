@@ -294,7 +294,7 @@ class CheckoutController extends Controller
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
-            return view('checkout.confirmation');
+            return redirect()->route('checkout.confirmation', $order->confirmation_number);
         }
 
 
@@ -305,9 +305,9 @@ class CheckoutController extends Controller
 
     }
 
-    public function confirmation()
+    public function confirmation($confNum)
     {
-        return view('checkout.confirmation');
+        return view('checkout.confirmation', ['confirmation_number' => $confNum]);
     }
 
 }
