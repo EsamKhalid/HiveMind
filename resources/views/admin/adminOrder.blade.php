@@ -53,17 +53,14 @@
                     @foreach ($orders as $order)
                     <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
                         <h3 class="mb-4 text-2xl font-bold text-grey-800">Order ID #{{ $order->id }}</h3>
-                        <!--<a href="{{ route('admin.view-user', $order->user->id) }}" class="underline font-semibold">
-                                User: </a>-->
+                        @if ($order->user == null)
+                        <p class="mb-2"><strong>Guest:</strong> {{ $order->guest->email_address }}</p>
+                        @else
                         <p class="mb-2"><strong>User:</strong> {{ $order->user->email_address }}</p>
+                        @endif
+                        
                         <p class="mb-2"><strong>Order Date:</strong> {{ $order->order_date }}</p>
                         <p class="mb-2"><strong>Status:</strong> 
-                            <!--<span
-                                    class="px-2 py-1 rounded-full
-                                    {{ $order->order_status === 'Delivered' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}"
-                                >
-                                    {{ $order->order_status }}
-                                </span> -->
                                 <span class="px-2 py-1 rounded-full 
                                     @if ($order->order_status === 'Delivered' || $order->order_status === 'Return Approved') 
                                         bg-green-100 text-green-700 
@@ -100,6 +97,7 @@
                             @endforeach
                         </ul>
 
+                        @if($order->user != null)
                         @if ($order->user->id !== auth()->user()->id)
                             @if ($order->order_status === 'pending')
                                 <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" onsubmit="return confirm('Mark this order as Processing?');">
@@ -133,6 +131,38 @@
                             @endif
                         @else
                             <p class="bg-red-100 text-red-500 mt-4 p-2 rounded font-semibold">You cannot process your own order.</p>
+                        @endif
+                        @else
+                         @if ($order->order_status === 'pending')
+                                <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" onsubmit="return confirm('Mark this order as Processing?');">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="Processing">
+                                    <button type="submit" class="bg-cyan-500 text-white px-4 py-2 mt-4 rounded hover:bg-cyan-600">Mark as Processing</button>
+                                </form>
+                            @elseif ($order->order_status === 'Processing')
+                                <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" onsubmit="return confirm('Mark this order as Shipped?');">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="Shipped">
+                                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600">Mark as Shipped</button>
+                                </form>
+                            @elseif ($order->order_status === 'Shipped')
+                                <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" onsubmit="return confirm('Mark this order as Delivered?');">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="Delivered">
+                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 mt-4 rounded hover:bg-green-600">Mark as Delivered</button>
+                                </form>
+                            @elseif ($order->order_status === 'Delivered')
+                                <button title="No return request available." class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" disabled>
+                                    View Return Request
+                                </button>
+                            @elseif ($order->order_status === 'Return Requested')
+                                <a href="{{ route('admin.returnRequest', $order->id) }}" class="bg-orange-400 text-white px-4 py-2 mt-4 hover:bg-orange-600 rounded block text-center">
+                                    View Return Request
+                                </a>
+                            @endif
                         @endif
                     </div>
                     @endforeach
