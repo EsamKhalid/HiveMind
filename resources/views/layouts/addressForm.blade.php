@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <form action="{{ route('checkout.storeAddress') }}" method="post"
-                            class="flex flex-col justify-between max-h-[80%] h-fit text-xs">
+                            class="flex flex-col justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg">
                             @csrf
                             @if($address != null)
                                 <div class="flex flex-col items-start mb-1 xl:mb-4">
