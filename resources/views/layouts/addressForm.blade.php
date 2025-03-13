@@ -34,7 +34,7 @@
                                 <input type="hidden" name="type" value="shipping" />
                                 <div class="flex justify-center mt-auto">
                                     <button type="submit"
-                                        class="bg-green-400 text-black py-2 px-6 rounded-md hover:text-white transition-colors duration-1000">Save
+                                        class="bg-green-400 dark:bg-orange-600 text-black py-3 px-7 rounded-md hover:text-white transition-colors duration-1000">Save
                                         Address</button>
                                 </div>
                             @else
@@ -68,7 +68,7 @@
                                 <input type="hidden" name="type" value="shipping" />
                                 <div class="flex justify-center mt-auto">
                                     <button type="submit"
-                                        class="bg-green-400 text-black py-2 px-6 rounded-md hover:text-white transition-colors duration-1000">Save
+                                        class="bg-green-400 dark:bg-green-700 text-black py-2 px-6 rounded-md hover:text-white transition-colors duration-1000">Save
                                         Address</button>
                                 </div>
                             @endif
