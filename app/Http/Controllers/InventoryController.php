@@ -10,11 +10,16 @@ use App\Models\Supplier;
 class InventoryController extends Controller
 {
     //
-    public function view(){
+    public function list(Request $request){
         // $basket = Basket::where('user_id', $user->id)->first();
        // $product = Products::where('product_id', $product->id)->first();
         // Return the basket view with basket items
         //return view('basket.basket', ['basketItems' => $basketItems]);
+
+        $search = $request->search;
+        $filter = $request->filter;
+
+        echo $search;
 
         $products = Products::query();
         $products = $products->get();

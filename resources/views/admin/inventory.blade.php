@@ -34,7 +34,7 @@
                 {{ request('filter') == 'none' ? 'selected' : '' }}
                     class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
                     <i class="fas fa-th-large"></i> All
-                </button>
+                </button>   
                 </form>
                 <button onclick="FILTER_PRODUCTS('BEAUTY')"
                     class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
@@ -76,11 +76,22 @@
 
         <div class="container mx-auto px-4 pb-12 ">
             
-            <div class=" bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300"
-                id="INVENTORYBG">
-                @include('layouts.searchbar')
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300"
-                id="INVENTORY">
+            <div class=" bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
+                <form
+                    action="{{ route('admin.inventory')}}"
+                    method="GET"
+                    class="w-full mr-3"
+                >
+                    <input
+                        type="text"
+                        name="search"
+                        class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
+                        placeholder="search for a product"
+                    />
+                    <br />
+                </form>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
                 @foreach($products as $product)
                     <div class="bg-white dark:bg-stone-300 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
                         <div class="absolute top-2 right-2">

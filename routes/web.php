@@ -89,7 +89,7 @@ Route::delete('/admin/user-management/user/delete/{id}', [UserManagementControll
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('admin/inventory', [InventoryController::class, 'view'])->name('admin.inventory');
+    Route::get('admin/inventory', [InventoryController::class, 'list'])->name('admin.inventory');
     Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
     Route::patch('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
 
