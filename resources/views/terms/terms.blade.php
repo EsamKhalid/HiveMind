@@ -11,7 +11,7 @@
             <h2 class="text-5xl font-semibold text-yellow-950 dark:text-yellow-200 tracking-tight sm:text-7xl text-center py-6"> Terms and Conditions </h2>
             <br/>
             <div class="text-center">
-                <div class="p-6 rounded-lg mt-8 ">
+                <div class="p-6 rounded-lg mt-2">
                     <h2 class="text-3xl font-bold text-yellow-800 dark:text-yellow-400 mb-4">Legal Information</h2>
                     <div class="flex justify-center">
                         <div class="p-4 rounded-lg shadow-md bg-stone-100 dark:bg-stone-800 dark:shadow-stone-900 w-[80%] sm:w-1/2 md:w-1/3">

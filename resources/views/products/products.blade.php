@@ -68,14 +68,14 @@
                         class="w-fit"
                         ><div class="h-auto hover:scale-110 transition-all duration-500 max-w-3/4 p-5">
                             <img
-                                class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100"
+                                class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100 rounded-lg dark:border-yellow-100 dark:border-2"
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
-                            {{ $product->stock_level == 0 ? 'This product is out of stock' : $product->stock_level . ' available' }}
                              <h1 class="text-center text-xl mt-5">
                                 {{strtoupper($product->product_name)}}
                             </h1>
-                            <p class="text-center">£{{$product->price}}</p>
+                            <p class="text-center">{{ $product->stock_level == 0 ? 'This product is out of stock' : ' In Stock' }}</p>
+                            <p class="text-center font-bold">£{{$product->price}}</p>
                         </div></a
                     >
 
