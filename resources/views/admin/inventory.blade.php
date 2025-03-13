@@ -24,7 +24,7 @@
         <div class="containern max-w-[20%] mr-20 lg:mr-10 lg:max-w-none 2xl:mx-auto px-3 dark:rounded-lg">
             <div class="flex flex-col justify-end lg:flex-row lg:justify-center overflow gap-4 mb-6 py-2">
                 <form class="w-fit"method="get" action="{{route('admin.inventory')}}">
-                    <div>
+                    <div class="space-y-2">
                         <button
                             name="filter"
                             value="none"
@@ -75,23 +75,23 @@
                             <i class="fas fa-home"></i> Home
                         </button>    
                     </div>
-                    <div class="flex mt-5">
+                    <div class="flex flex-col lg:flex-row mt-3 space-y-2 lg:space-y-0">
                         <button 
                             name="stockLevel"
                             value="out_of_stock"
-                            class=" items-center gap-2 mr-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                            class=" items-center gap-2 lg:mr-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
                             <i class="fas fa-x"></i> Out of Stock
                         </button>
                         <button 
                             name="stockLevel"
                             value="low_stock"
-                            class=" items-center gap-2 mx-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-orange-400 hover:bg-orange-300">
+                            class=" items-center gap-2 lg:mx-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-orange-400 hover:bg-orange-300">
                             <i class="fas fa-long-arrow-alt-down"></i> Low Stock
                         </button>
                         <button 
                             name="stockLevel"
                             value="in_stock"
-                            class=" items-center gap-2 ml-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-green-500 hover:bg-green-400">
+                            class=" items-center gap-2 lg:ml-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-green-500 hover:bg-green-400">
                             <i class="fas fa-check"></i> In Stock
                         </button>    
                     </div>
@@ -114,9 +114,10 @@
                     />
                     <br />
                 </form>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
                 @foreach($products as $product)
-                    <div class="bg-white dark:bg-stone-300 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
+              
+                    <div class="bg-white dark:bg-stone-300 {{ ($product->stock_level == 0 ? 'border-t-red-500' : ($product->stock_level < 35 ? 'border-t-amber' : 'border-t-green-500')) }} border-t-8 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
                         <div class="absolute top-2 right-2">
                             <span class="text-xs flex items-center gap-1 text-gray-500">
                                 <i class="fas {{ $TYPE_ICONS[$product->product_type] ?? 'fa-box' }}"></i>
@@ -125,8 +126,8 @@
                         <div class="my-3">
                             <div class="text-lg font-bold">{{ strtoupper($product->product_name) }}</div>
                             <div class="text-gray-700">£{{ $product->price }}</div>
-                            <div class="text-sm {{ $product->stock_level > 0 ? 'text-green-600' : 'text-red-600' }}">
-                                {{ $product->stock_level > 0 ? 'In Stock' : 'Out of Stock'}}
+                            <div class="text-sm {{ ($product->stock_level == 0 ? 'text-red-700' : ($product->stock_level < 35 ? 'text-yellow-700' : 'text-green-700')) }}">
+                            {{ ($product->stock_level == 0 ? 'OUT OF STOCK' : ($product->stock_level < 35 ? 'LOW STOCK' : 'IN STOCK')) }}
                                 ({{$product->stock_level}})
                             </div>
                         </div>
