@@ -19,10 +19,14 @@ class InventoryController extends Controller
         $search = $request->search;
         $filter = $request->filter;
 
-        echo $search;
-
         $products = Products::query();
+
+        if($search){
+            $products->where('product_name', 'like', '%' . $search . '%');
+        }
+
         $products = $products->get();
+
 
         return view('admin.inventory', ['products' => $products]);
 
