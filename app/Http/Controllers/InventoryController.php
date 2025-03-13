@@ -24,8 +24,12 @@ class InventoryController extends Controller
         if($search){
             $products->where('product_name', 'like', '%' . $search . '%');
         }
+        if ($filter && $filter != 'none') {
+            $products->where('product_type', '=', $filter);
+        }
 
         $products = $products->get();
+
 
 
         return view('admin.inventory', ['products' => $products]);

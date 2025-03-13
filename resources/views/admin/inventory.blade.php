@@ -29,41 +29,58 @@
         
             <div class="flex flex-col justify-end lg:flex-row lg:justify-center overflow gap-4 mb-6 py-2">
             
-                <form class="w-fit"method="get" action="">
-                <button
-                {{ request('filter') == 'none' ? 'selected' : '' }}
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
-                    <i class="fas fa-th-large"></i> All
-                </button>   
+                <form class="w-fit"method="get" action="{{route('admin.inventory')}}">
+                    <button
+                        name="filter"
+                        value="none"
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
+                        <i class="fas fa-th-large"></i> All
+                    </button>   
+                    
+                    <button
+                        name="filter"
+                        value="beauty" 
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
+                        <i class="fas fa-spa"></i> Beauty
+                    </button>
+                    <button
+                        name="filter"
+                        value="health"
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
+                        <i class="fas fa-heartbeat"></i> Health
+                    </button>
+                    <button 
+                        name="filter"
+                        value="haircare"
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
+                        <i class="fas fa-air-freshener"></i> Haircare
+                    </button>
+                    <button 
+                        name="filter"
+                        value="skincare"
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
+                        <i class="fas fa-pump-soap"></i> Skincare
+                    </button>
+                    <button 
+                        name="filter"
+                        value="body"
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                        <i class="fas fa-shower"></i> Body
+                    </button>
+                    <button 
+                        name="filter"
+                        value="merchandise"
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
+                        <i class="fas fa-tshirt"></i> Merchandise
+                    </button>
+                    <button 
+                        name="filter"
+                        value="home"
+                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
+                        <i class="fas fa-home"></i> Home
+                    </button>
                 </form>
-                <button onclick="FILTER_PRODUCTS('BEAUTY')"
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
-                    <i class="fas fa-spa"></i> Beauty
-                </button>
-                <button onclick="FILTER_PRODUCTS('HEALTH')"
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
-                    <i class="fas fa-heartbeat"></i> Health
-                </button>
-                <button onclick="FILTER_PRODUCTS('HAIRCARE')"
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
-                    <i class="fas fa-air-freshener"></i> Hair
-                </button>
-                <button onclick="FILTER_PRODUCTS('SKINCARE')"
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
-                    <i class="fas fa-pump-soap"></i> Skin
-                </button>
-                <button onclick="FILTER_PRODUCTS('BODYCARE')"
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
-                    <i class="fas fa-shower"></i> Body
-                </button>
-                <button onclick="FILTER_PRODUCTS('MERCHANDISE')"
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
-                    <i class="fas fa-tshirt"></i> Merchandise
-                </button>
-                <button onclick="FILTER_PRODUCTS('HOME')"
-                    class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
-                    <i class="fas fa-home"></i> Home
-                </button>
+                
             </div>
             
             
@@ -75,6 +92,7 @@
         <!-- THANK YOU, BASANTA AND MUNEEB FOR THE IMPL. OF FOREACH -->
 
         <div class="container mx-auto px-4 pb-12 ">
+            
             
             <div class=" bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
                 <form
