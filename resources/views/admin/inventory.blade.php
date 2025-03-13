@@ -30,55 +30,78 @@
             <div class="flex flex-col justify-end lg:flex-row lg:justify-center overflow gap-4 mb-6 py-2">
             
                 <form class="w-fit"method="get" action="{{route('admin.inventory')}}">
-                    <button
-                        name="filter"
-                        value="none"
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
-                        <i class="fas fa-th-large"></i> All
-                    </button>   
+                    <div>
+                        <button
+                            name="filter"
+                            value="none"
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
+                            <i class="fas fa-th-large"></i> All
+                        </button>   
+                        
+                        <button
+                            name="filter"
+                            value="beauty" 
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
+                            <i class="fas fa-spa"></i> Beauty
+                        </button>
+                        <button
+                            name="filter"
+                            value="health"
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
+                            <i class="fas fa-heartbeat"></i> Health
+                        </button>
+                        <button 
+                            name="filter"
+                            value="haircare"
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
+                            <i class="fas fa-air-freshener"></i> Haircare
+                        </button>
+                        <button 
+                            name="filter"
+                            value="skincare"
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
+                            <i class="fas fa-pump-soap"></i> Skincare
+                        </button>
+                        <button 
+                            name="filter"
+                            value="body"
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                            <i class="fas fa-shower"></i> Body
+                        </button>
+                        <button 
+                            name="filter"
+                            value="merchandise"
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
+                            <i class="fas fa-tshirt"></i> Merchandise
+                        </button>
+                        <button 
+                            name="filter"
+                            value="home"
+                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
+                            <i class="fas fa-home"></i> Home
+                        </button>    
+                    </div>
+                    <div class="flex mt-5">
+                        <button 
+                            name="stockLevel"
+                            value="out_of_stock"
+                            class=" items-center gap-2 mr-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                            <i class="fas fa-x"></i> Out of Stock
+                        </button>
+                        <button 
+                            name="stockLevel"
+                            value="low_stock"
+                            class=" items-center gap-2 mx-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-orange-400 hover:bg-orange-300">
+                            <i class="fas fa-long-arrow-alt-down"></i> Low Stock
+                        </button>
+                        <button 
+                            name="stockLevel"
+                            value="in_stock"
+                            class=" items-center gap-2 ml-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-green-500 hover:bg-green-400">
+                            <i class="fas fa-check"></i> In Stock
+                        </button>    
+                    </div>
                     
-                    <button
-                        name="filter"
-                        value="beauty" 
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
-                        <i class="fas fa-spa"></i> Beauty
-                    </button>
-                    <button
-                        name="filter"
-                        value="health"
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
-                        <i class="fas fa-heartbeat"></i> Health
-                    </button>
-                    <button 
-                        name="filter"
-                        value="haircare"
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
-                        <i class="fas fa-air-freshener"></i> Haircare
-                    </button>
-                    <button 
-                        name="filter"
-                        value="skincare"
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
-                        <i class="fas fa-pump-soap"></i> Skincare
-                    </button>
-                    <button 
-                        name="filter"
-                        value="body"
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
-                        <i class="fas fa-shower"></i> Body
-                    </button>
-                    <button 
-                        name="filter"
-                        value="merchandise"
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
-                        <i class="fas fa-tshirt"></i> Merchandise
-                    </button>
-                    <button 
-                        name="filter"
-                        value="home"
-                        class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
-                        <i class="fas fa-home"></i> Home
-                    </button>
                 </form>
                 
             </div>
@@ -121,7 +144,8 @@
                             <div class="text-lg font-bold">{{ strtoupper($product->product_name) }}</div>
                             <div class="text-gray-700">£{{ $product->price }}</div>
                             <div class="text-sm {{ $product->stock_level > 0 ? 'text-green-600' : 'text-red-600' }}">
-                                {{ $product->stock_level > 0 ? 'In Stock' : 'Out of Stock' }}
+                                {{ $product->stock_level > 0 ? 'In Stock' : 'Out of Stock'}}
+                                ({{$product->stock_level}})
                             </div>
                         </div>
 

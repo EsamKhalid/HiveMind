@@ -18,6 +18,7 @@ class InventoryController extends Controller
 
         $search = $request->search;
         $filter = $request->filter;
+        $stockLevel = $request->stockLevel;
 
         $products = Products::query();
 
@@ -26,6 +27,17 @@ class InventoryController extends Controller
         }
         if ($filter && $filter != 'none') {
             $products->where('product_type', '=', $filter);
+        }
+
+
+        if ($stockLevel) {
+            if ($stockLevel == 'out_of_stock') {
+                $products->where('stock_level', '=', 0);
+            } elseif ($stockLevel == 'low_stock') {
+                $products->where('stock_level', '>', 0)->where('stock_level', '<', 35);
+            } elseif ($stockLevel == 'in_stock') {
+                $products->where('stock_level', '>=', 35);
+            }
         }
 
         $products = $products->get();
