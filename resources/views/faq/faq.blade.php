@@ -6,6 +6,7 @@
     </head>
     <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
         <header>@include('layouts.navbar')</header>
+        <main>
         <div class="faqPage">
             <h2 class="text-5xl font-semibold tracking-tight sm:text-7xl text-center py-6"> Frequently Asked Questions </h2>
             <br/>
@@ -128,10 +129,7 @@
                 </div>
             </div>
         </div>
-        <div>
-            <br/>
-            <br/>
+    </main>
             @include('layouts.footer')
-        </div>
     </body>
 </html>
