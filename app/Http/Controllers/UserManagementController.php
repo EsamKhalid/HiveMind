@@ -75,13 +75,20 @@ class UserManagementController extends Controller
     {
         $admin = Auth::user();
         $user = Users::findOrFail($id);
-        if ($admin->id != $user->id && $user->permission_level != 'admin' && $admin->permission_level == 'admin') {
-            $user->delete();
+        if ($admin->id != $user->id &&  $admin->permission_level == 'admin') {
+            if($user->permission_level != 'admin'){
+                $user->delete();
+            }else{
+                return redirect()->route('admin.user-management')->with('error', 'Error: Cannot Delete Admin Accounts'); 
+            }
+            
             return redirect()->route('admin.user-management')->with('deletionSuccess', 'User id:' . $user->id . ' "' . $user->email_address . '" has been deleted');
+        }else{
+            //return to user management
+        return redirect()->route('admin.user-management')->with('error', 'Error: Cannot Delete Self');
         }
 
-        //return to user management
-        return redirect()->route('admin.user-management')->with('error', 'There was an error');
+        
     }
 
 }

@@ -12,7 +12,7 @@
 
         <div class="flex justify-center overflow-x-auto w-full">
             <div class="w-full">
-                <p class="text-3xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md my-10 w-full text-nowrap">
+                <p class="text-3xl lg:text-6xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md my-10 w-full text-nowrap">
                     <i class="fa-solid fa-sitemap  mr-4 my-auto"></i>
                     Manage Users
                 </p>  

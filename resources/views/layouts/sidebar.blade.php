@@ -111,7 +111,7 @@
                             onclick="toggleTheme()"
                             ><p>Theme</p>
                             <i
-                                class="fa-solid fa-lightbulb ml-5 mr-1 text-xl text-yellow-500"
+                                class="fa-solid fa-lightbulb ml-5 mr-1 text-xl md:text-2xl 2xl:text-4xl text-yellow-500 "
                             ></i
                         ></a>
                         <a
@@ -119,14 +119,14 @@
                             href="{{ route('account') }}"
                             ><p>Account</p>
                             <i
-                                class="fa-solid fa-user ml-5 mr-1 text-xl text-yellow-500"
+                                class="fa-solid fa-user ml-5 mr-1 text-xl md:text-2xl 2xl:text-4xl text-yellow-500"
                             ></i
                         ></a>
                         <a
                             class="text-xl md:text-xl 2xl:text-3xl my-2 2xl:my-4 p-2 w-full dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             ><p>Settings</p>
                             <i
-                                class="fa-solid fa-gear ml-5 mr-1 text-xl text-yellow-500"
+                                class="fa-solid fa-gear ml-5 mr-1 text-xl md:text-2xl 2xl:text-4xl text-yellow-500"
                             ></i
                         ></a>
                         <a
@@ -134,7 +134,7 @@
                             href="{{ route('faq') }}"
                             ><p>Help</p>
                             <i
-                                class="fa-solid fa-circle-question ml-5 mr-1 text-xl text-yellow-500"
+                                class="fa-solid fa-circle-question ml-5 mr-1 text-xl md:text-2xl 2xl:text-4xl text-yellow-500"
                             ></i
                         ></a>
                     </div>
