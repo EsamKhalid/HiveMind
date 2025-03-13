@@ -123,7 +123,7 @@
                                                     src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}" />
 
                                                 <div class="flex flex-col flex-shrink">
-                                                    <a href={{route('products.show', $basketItem->id)}} class=" text-sm xl:text-lg underline hover:text-white text-center h-fit my-auto ">
+                                                    <a href={{route('products.show', $basketItem->id)}} class=" text-sm xl:text-lg underline hover:text-amber dark:hover:text-white text-center h-fit my-auto ">
                                                         {{$basketItem->product_name}}</a>
                                                     <!--Quantity Controllers -->
                                                     <div class="flex">

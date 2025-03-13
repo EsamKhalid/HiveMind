@@ -15,7 +15,7 @@
         <div class="flex justify-center">
             <div class="flex justify-center w-[75vw]">
                 <form
-                    action="{{ url()->previous() }}"
+                    action="{{ route('products') }}"
                     method="GET"
                     class="w-full mr-3"
                 >
@@ -23,13 +23,13 @@
                         type="text"
                         name="search"
                         value="{{ request('product_name') }}"
-                        class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
+                        class="w-full placeholder:text-yellow-500 dark:placeholder:text-stone-500 dark:text-yellow-900 rounded-lg dark:bg-amber border-2 dark:border-yellow-900 h-14 text-xl transition-colors duration-1000"
                         placeholder="search for a product"
                     />
                     <br />
                 </form>
-                <form action="{{ route('products') }}" method="GET" class="text-black">
-                    <select name="filter" onchange="this.form.submit()">
+                <form action="{{ route('products') }}" method="GET" class="text-black ">
+                    <select name="filter" onchange="this.form.submit()" class=" dark:text-yellow-900 rounded-lg dark:bg-amber border-2 dark:border-yellow-900 h-14 text-xl text-yellow-900 transition-colors duration-1000">
                         <option value="none"{{ request('filter') == 'none' ? 'selected' : '' }}>All Products</option>
                         <option value="Skincare" {{ request('filter') == 'Skincare' ? 'selected' : '' }}>Skincare</option>
                         <option value="Health" {{ request('filter') == 'Health' ? 'selected' : '' }}>Health</option>
@@ -44,7 +44,7 @@
         
 
         @if(count($products) === 0)
-        <div class="flex justify-center mt-5"><h1 class="text-3xl">No Products Found</h1></div>
+        <div class="flex justify-center mt-5 border-none"><h1 class="text-3xl">No Products Found</h1></div>
         
 
         @else
@@ -52,7 +52,7 @@
         <div class="mt-5">
             @if($search)
             <div class="flex justify-center">
-                <div class="flex justify-between my-3 w-3/4  border">
+                <div class="flex justify-between my-3 w-3/4">
                     <h1 class="text-center text-3xl">
                         Displaying {{ sizeof($products) }} Product(s)
                     </h1>
