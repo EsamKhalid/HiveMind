@@ -40,7 +40,7 @@
     <main>
         <div class="flex justify-center m-4">
             <div
-                class="card bg-yellow-50 dark:bg-stone-700 p-8 rounded-lg text-center w-[80%] transition-colors duration-1000">
+                class="card bg-yellow-50 dark:bg-stone-700 rounded-lg text-center w-[80%] transition-colors duration-1000">
                 <h1 class="text-6xl mb-6 dark:text-amber transition-colors duration-1000">Basket</h1>
 
                 @if($errors->any())
@@ -67,7 +67,7 @@
                             </label>
 
                             <div id="checkoutbuttonbox"
-                                class="pt-6 max-h-[80%] flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%] transition-all ease-in-out">
+                                class="pt-6 max-h-[80%] flex-col xl:hidden items-center bg-yellow-200 dark:bg-stone-800 peer-checked:peer-checked:translate-y-[100%] transition-all ease-in-out border-amber border-2">
 
                                 <div
                                     class="mobileViewAddressLine hidden xl:hidden justify-center mt-3 transition-all ease-in-out ">
@@ -117,25 +117,25 @@
                                 <ul class="h-full mb-6">
                                     @foreach($basketItems as $basketItem)
                                         <div
-                                            class="bg-white dark:bg-yellow-500 mx-2 rounded-lg flex justify-start sm:justify-between text-center items-center p-2 mb-2 w-[96%] xl:w-full shadow-md z-10">
+                                            class="bg-white dark:bg-yellow-500 mx-auto rounded-lg flex justify-evenly sm:justify-between text-center items-center p-2 xl:ml-3 mb-2 w-[96%] xl:w-full shadow-md z-10">
                                             <div class="flex">
-                                                <img class="size-[125px] min-w-[125px] rounded mr-6"
+                                                <img class="size-16 min-w-[50px] rounded flex-grow flex-shrink-0 "
                                                     src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}" />
 
                                                 <div class="flex flex-col flex-shrink">
-                                                    <a href={{route('products.show', $basketItem->id)}} class=" text-sm xl:text-lg underline hover:text-amber dark:hover:text-white text-center h-fit my-auto ">
+                                                    <a href={{route('products.show', $basketItem->id)}} class="text-xs xl:text-lg underline hover:text-amber dark:hover:text-white text-center h-fit my-auto ">
                                                         {{$basketItem->product_name}}</a>
                                                     <!--Quantity Controllers -->
-                                                    <div class="flex">
+                                                    <div class="flex mt-1 mx-auto lg:ml-5 lg:mr-5">
                                                         <form action="{{ route('basket.decreaseQuantity') }}" method="post">
                                                             @csrf
                                                             <input type="hidden" name="product_id"
                                                                 value="{{ $basketItem->product_id }}" />
                                                             <button
-                                                                class="py-1 px-3 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                                                type="submit"><i class="fa-solid fa-minus text-sm"></i></button>
+                                                                class="px-2 bg-white text-grey-800 rounded-md shadow-md hover:text-amber h-fit"
+                                                                type="submit"><i class="fa-solid fa-minus text-xs"></i></button>
                                                         </form>
-                                                        <p class="m-3 h-fit mt-1 text-sm">{{$basketItem->quantity}}</p>
+                                                        <p class="m-3 h-fit mt-1 text-xs">{{$basketItem->quantity}}</p>
                                                         <!-- increase button -->
                                                         <form action="{{ route('basket.increaseQuantity') }}" method="post"
                                                             class="flex">
@@ -143,8 +143,8 @@
                                                             <input type="hidden" name="product_id"
                                                                 value="{{ $basketItem->product_id }}" />
                                                             <button
-                                                                class="py-1 px-3 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber h-fit"
-                                                                type="submit"><i class="fa-solid fa-plus text-sm"></i></button>
+                                                                class="px-2 bg-white text-grey-800 rounded-md shadow-md hover:text-amber h-fit"
+                                                                type="submit"><i class="fa-solid fa-plus text-xs"></i></button>
                                                         </form>
                                                     </div>
 
@@ -160,8 +160,8 @@
                                                     <input type="hidden" name="product_id"
                                                         value="{{ $basketItem->product_id }}" />
                                                     <button
-                                                        class="py-1 a px-3 mr-5 bg-white text-red-500 rounded-lg shadow-md hover:text-red-800"
-                                                        type="submit"><i class="fa-solid fa-trash-can text-base"></i></button>
+                                                        class="px-2 mr-5 bg-white text-red-500 rounded-lg shadow-md hover:text-red-800"
+                                                        type="submit"><i class="fa-solid fa-trash-can text-xs"></i></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -169,7 +169,7 @@
                                 </ul>
                             </div>
                             <!--BASKET Total + Checkout Button-->
-                            <div class="hidden xl:flex xl:flex-col justify-center items-center w-full">
+                            <div class="hidden xl:flex xl:flex-col justify-center items-center w-full border-2 lg:border-none">
                                 <h2
                                     class="text-2xl text-center mb-2 p-2 mt-5 mx-3 xl:mx-auto bg-white text-grey-800 rounded shadow-md w-1/2">
                                     Subtotal: £{{$basket->total_amount}}
