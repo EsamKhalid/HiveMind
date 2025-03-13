@@ -16,19 +16,13 @@
         <h2 class="absolute inset-0 w-full text-7xl lg:text-9xl font-bold text-gray-300 dark:text-yellow-400 dark:opacity-80 opacity-90 pointer-events-none">
             INVENTORY
         </h2>
-        
     </div>
     <div class="h-fit mb-6 ml-[18%]">
-                
-            </div>
-    <!-- THE FOLLOWING SERVES TO ACT AS A SEPERATE BAR FOR FILTERING BASED ON PRODUCT TYPE -->
+    </div>
     
     <div class="flex flex-row-reverse flex-grow lg:flex-col top-0 bg-stone-200 dark:bg-stone-950 z-8 py-4">
-   
         <div class="containern max-w-[20%] mr-20 lg:mr-10 lg:max-w-none 2xl:mx-auto px-3 dark:rounded-lg">
-        
             <div class="flex flex-col justify-end lg:flex-row lg:justify-center overflow gap-4 mb-6 py-2">
-            
                 <form class="w-fit"method="get" action="{{route('admin.inventory')}}">
                     <div>
                         <button
@@ -101,22 +95,11 @@
                             <i class="fas fa-check"></i> In Stock
                         </button>    
                     </div>
-                    
                 </form>
-                
             </div>
-            
-            
         </div>
 
-        <!-- CONTAINER USED FOR BEING ABLE TO DEFINE PRODUCTS TO THE INVENTORY BASED ON AN ID -->
-        <!-- USES THE DEFINITION CITED FROM THE CONTROLLER TO BE ABLE TO FILTER ACCORDINGLY WITH THE CHAR DEFINED IN THE DB -->
-
-        <!-- THANK YOU, BASANTA AND MUNEEB FOR THE IMPL. OF FOREACH -->
-
         <div class="container mx-auto px-4 pb-12 ">
-            
-            
             <div class=" bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
                 <form
                     action="{{ route('admin.inventory')}}"
@@ -131,7 +114,6 @@
                     />
                     <br />
                 </form>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
                 @foreach($products as $product)
                     <div class="bg-white dark:bg-stone-300 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
@@ -148,7 +130,6 @@
                                 ({{$product->stock_level}})
                             </div>
                         </div>
-
                         <a
                          href={{ route("admin.show",$product->id)  }}>
                             <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
@@ -156,94 +137,8 @@
                     </div>
                 @endforeach
             </div>
-            </div>
         </div>
     </div>
-    <!--<script> 
-        const PRODUCTS = @json($products);
-
-        const TYPE_COLORS =
-        {
-            BEAUTY: 'bg-pink-100',
-            HEALTH: 'bg-green-100',
-            HAIRCARE: 'bg-purple-100',
-            SKINCARE: 'bg-yellow-100',
-            BODYCARE: 'bg-red-100',
-            MERCH: 'bg-blue-100',
-            HOME: 'bg-indigo-100'
-        };
-
-        const TYPE_ICONS =
-        {
-            BEAUTY: 'fa-spa',
-            HEALTH: 'fa-heartbeat',
-            HAIRCARE: 'fa-air-freshener',
-            SKINCARE: 'fa-pump-soap',
-            BODYCARE: 'fa-shower',
-            MERCH: 'fa-tshirt',
-            HOME: 'fa-home'
-        };
-
-        function GENERATE_CARD_HTML(PRODUCT) {
-            // LOWER-CASE TO REFLECT DEFINEIN DB SCHEMA
-
-            const { stock_level } = PRODUCT;
-
-            const route = `/admin/inventory/order/${PRODUCT.id}`;
-
-            const [STATUS, COLOUR] = stock_level === 0
-                ? ['Out of Stock', 'text-red-400'] : stock_level < 6
-                    ? ['Extremely Low', 'text-red-500'] : stock_level < 20
-                        ? ['Running Low', 'text-amber-600']
-                        : ['Sufficient Stock', 'text-green-600'];
-
-            return `
-            <div class="bg-white dark:bg-stone-900 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
-                <div class="absolute top-2 right-2">
-                    <span class="text-xs flex items-center gap-1 text-gray-500 dark:text-white">
-                        <i class="fas ${TYPE_ICONS[PRODUCT.product_type]}"></i>
-                    </span>
-                </div>
-                    <div class="mt-3">
-                    <div class="text-lg dark:text-white font-bold">${PRODUCT.product_name.toUpperCase()}</div>
-                    <div class="text-gray-700 dark:text-white">£${PRODUCT.price}</div>
-                    <div class="text-sm ${COLOUR}">
-                    ${STATUS}
-                        </div>
-                        <a href="${route}">
-                            <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
-                        </a>
-                    </div>
-                </div>
-            `;
-        }
-
-
-        function FILTER_PRODUCTS(FILTER_TYPE) {
-            const GRID = document.getElementById('INVENTORY');
-            let FILTERED_PRODUCTS = PRODUCTS;
-
-            if (FILTER_TYPE !== 'ALL') {
-                FILTERED_PRODUCTS = PRODUCTS.filter(PRODUCT => PRODUCT.product_type.trim().toUpperCase() === FILTER_TYPE);
-            }
-
-
-            const ITEMS_COUNT = FILTERED_PRODUCTS.length;
-            const ROWS = Math.ceil(ITEMS_COUNT / 4);
-
-            GRID.style.gridTemplateRows = `repeat(${ROWS}, minmax(0, 1fr))`;
-
-            let GRID_HTML = '';
-            FILTERED_PRODUCTS.forEach(PRODUCT => {
-                GRID_HTML += GENERATE_CARD_HTML(PRODUCT);
-            });
-
-            GRID.style.transition = 'all 0.3s ease-in-out';
-            GRID.innerHTML = GRID_HTML;
-        }
-
-        FILTER_PRODUCTS('ALL');
-    </script> -->
 </body>
 
 </html>
