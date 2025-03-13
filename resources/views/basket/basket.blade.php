@@ -105,7 +105,7 @@
                     @endif
                     <!--BASKET ITEMS-->
                     <div
-                        class="justify-between h-[90%] w-full mt-5 xl:w-3/4 xl:mt-0 transition-all duration-1000 flex flex-col shadow-md">
+                        class="justify-between h-[90%] w-full mt-5 xl:w-3/4 xl:mt-0 transition-all duration-1000 flex flex-col">
                         @if(count($basketItems) === 0)
                             <div
                                 class="py-2 a px-4 bg-white dark:bg-yellow-500 text-grey-800 rounded-lg shadow-md h-fit text-center w-full xl:w-[98%] ml-0 xl:ml-4">
@@ -123,8 +123,8 @@
                                                     src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}" />
 
                                                 <div class="flex flex-col flex-shrink">
-                                                    <p class="text-sm xl:text-lg text-center h-fit my-auto ">
-                                                        {{$basketItem->product_name}}</p>
+                                                    <a href={{route('products.show', $basketItem->id)}} class=" text-sm xl:text-lg underline hover:text-white text-center h-fit my-auto ">
+                                                        {{$basketItem->product_name}}</a>
                                                     <!--Quantity Controllers -->
                                                     <div class="flex">
                                                         <form action="{{ route('basket.decreaseQuantity') }}" method="post">
@@ -176,7 +176,7 @@
                                 </h2>
                                 <div class="flex justify-center mt-auto w-full">
                                     <button type="Checkout"
-                                        class="bg-yellow-400 text-white mt-5 py-4 px-8 rounded-lg  hover:underline dark:bg-stone-900 dark:hover:text-amber w-1/3 font-bold transition-colors duration-1000">
+                                        class="bg-yellow-400 text-white mt-5 py-4 px-8 rounded-lg text-xl hover:underline dark:bg-amber-900 dark:text-stone-950 dark:hover:text-white w-1/3 font-bold transition-colors duration-1000">
                                         @csrf
                                         <a href="{{ route('checkout.checkout') }}">Checkout</a>
                                     </button>

@@ -33,7 +33,7 @@
 
 <body class="bg-yellow-50 dark:bg-stone-950">
     @include('layouts.navbar')
-    <a href="{{ route('products') }}" class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"></a>
+    <a href="{{ url()->previous() }}" class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"></a>
     <div class="flex justify-center">
         <div class="flex justify-center mt-[10%] flex-col lg:flex-row px-5 pb-7 pt-5 dark:bg-stone-800 rounded-lg">
             <div class="mr-5">

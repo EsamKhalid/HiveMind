@@ -15,7 +15,7 @@
         <div class="flex justify-center">
             <div class="flex justify-center w-[75vw]">
                 <form
-                    action="{{ route('products') }}"
+                    action="{{ url()->previous() }}"
                     method="GET"
                     class="w-full mr-3"
                 >
