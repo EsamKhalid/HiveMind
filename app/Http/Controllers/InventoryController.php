@@ -36,7 +36,7 @@ class InventoryController extends Controller
 
         $products = $products->get();
 
-        return view('admin.inventory', ['products' => $products]);
+        return view('admin.inventory', ['products' => $products,'category'=> $filter]);
     }
 
     public function show($id){

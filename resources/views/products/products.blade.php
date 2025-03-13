@@ -71,6 +71,7 @@
                                 class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100"
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
+                            {{ $product->stock_level == 0 ? 'This product is out of stock' : $product->stock_level . ' available' }}
                              <h1 class="text-center text-xl mt-5">
                                 {{strtoupper($product->product_name)}}
                             </h1>

@@ -11,135 +11,124 @@
 </head>
 
 <body class="bg-white dark:bg-stone-900 w-full">
-@include('layouts.sidebar')
+    @include('layouts.sidebar')
     <div class="relative text-center mt-24 h-48">
-        <h2 class="absolute inset-0 w-full text-7xl lg:text-9xl font-bold text-gray-300 dark:text-yellow-400 dark:opacity-80 opacity-90 pointer-events-none">
+        <h2
+            class="absolute inset-0 w-full text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gray-300 dark:text-yellow-400 dark:opacity-80 opacity-90 pointer-events-none">
             INVENTORY
         </h2>
+
     </div>
-    <div class="h-fit mb-6 ml-[18%]">
-    </div>
-    
-    <div class="flex flex-row-reverse flex-grow lg:flex-col top-0 bg-stone-200 dark:bg-stone-950 z-8 py-4">
-        <div class="containern max-w-[20%] mr-20 lg:mr-10 lg:max-w-none 2xl:mx-auto px-3 dark:rounded-lg">
+    <p class="text-white dark:text-amber mx-auto text-4xl mb-3">{{ $category != 'none' ? ucfirst($category) : '' }}</p>
+    <div
+        class="flex flex-row-reverse justify-start align-middle lg:flex-col top-0 bg-stone-200 dark:bg-stone-950 z-8 py-4">
+        
+        <div class="container w-1/5 mr-0 lg:max-w-none lg:mx-auto pr-3 dark:rounded-lg">
             <div class="flex flex-col justify-end lg:flex-row lg:justify-center overflow gap-4 mb-6 py-2">
-                <form class="w-fit"method="get" action="{{route('admin.inventory')}}">
-                    <div class="space-y-2">
-                        <button
-                            name="filter"
-                            value="none"
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
+                <form class="w-fit" method="get" action="{{route('admin.inventory')}}">
+                    <div class="block lg:hidden">
+                        <select name="filter"
+                        onchange="this.form.submit()"
+                            class="px-4 py-2 w-full lg:w-auto text-white dark:text-black rounded-lg bg-stone-700 hover:bg-stone-800 dark:bg-yellow-400 dark:hover:bg-yellow-300">
+                            <option value="none">All</option>
+                            <option value="beauty">Beauty</option>
+                            <option value="health"> Health</option>
+                            <option value="haircare">Haircare</option>
+                            <option value="skincare">Skincare</option>
+                            <option value="body"> Body</option>
+                            <option value="merchandise"> Merchandise</option>
+                            <option value="home">Home</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2 lg:space-y-0 space-x-2 hidden justify-evenly lg:flex-row lg:flex w-4/5">
+                        <button name="filter" value="none"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
                             <i class="fas fa-th-large"></i> All
-                        </button>   
-                        
-                        <button
-                            name="filter"
-                            value="beauty" 
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
+                        </button>
+
+                        <button name="filter" value="beauty"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-pink-600 hover:bg-pink-500">
                             <i class="fas fa-spa"></i> Beauty
                         </button>
-                        <button
-                            name="filter"
-                            value="health"
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
+                        <button name="filter" value="health"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-green-600 hover:bg-green-500">
                             <i class="fas fa-heartbeat"></i> Health
                         </button>
-                        <button 
-                            name="filter"
-                            value="haircare"
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
+                        <button name="filter" value="haircare"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-purple-600 hover:bg-purple-500">
                             <i class="fas fa-air-freshener"></i> Haircare
                         </button>
-                        <button 
-                            name="filter"
-                            value="skincare"
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
+                        <button name="filter" value="skincare"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
                             <i class="fas fa-pump-soap"></i> Skincare
                         </button>
-                        <button 
-                            name="filter"
-                            value="body"
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                        <button name="filter" value="body"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
                             <i class="fas fa-shower"></i> Body
                         </button>
-                        <button 
-                            name="filter"
-                            value="merchandise"
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
+                        <button name="filter" value="merchandise"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
                             <i class="fas fa-tshirt"></i> Merchandise
                         </button>
-                        <button 
-                            name="filter"
-                            value="home"
-                            class=" items-center gap-2 px-4 py-2 w-48 text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
+                        <button name="filter" value="home"
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
                             <i class="fas fa-home"></i> Home
-                        </button>    
+                        </button>
                     </div>
-                    <div class="flex flex-col lg:flex-row mt-3 space-y-2 lg:space-y-0">
-                        <button 
-                            name="stockLevel"
-                            value="out_of_stock"
-                            class=" items-center gap-2 lg:mr-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
-                            <i class="fas fa-x"></i> Out of Stock
+                    <div class="flex flex-col-reverse lg:flex-row mt-3 space-y-2 lg:space-y-0">
+                        <button name="stockLevel" value="out_of_stock"
+                            class="flex items-center gap-2 lg:mr-2 py-2 w-10 lg:w-full mt-2 lg:mt-0 text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
+                            <i class="fas fa-x mx-auto lg:ml-5 lg:mr-0"></i> <p class="hidden lg:flex">Out of Stock</p>
                         </button>
-                        <button 
-                            name="stockLevel"
-                            value="low_stock"
-                            class=" items-center gap-2 lg:mx-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-orange-400 hover:bg-orange-300">
-                            <i class="fas fa-long-arrow-alt-down"></i> Low Stock
+                        <button name="stockLevel" value="low_stock"
+                            class="flex items-center gap-2 lg:mx-2 py-2 w-10 lg:w-full text-white rounded-lg transition-colors whitespace-nowrap bg-orange-400 hover:bg-orange-300">
+                            <i class="fas fa-long-arrow-alt-down mx-auto lg:ml-5 lg:mr-0"></i> <p class="hidden lg:flex">Low Stock</p>
                         </button>
-                        <button 
-                            name="stockLevel"
-                            value="in_stock"
-                            class=" items-center gap-2 lg:ml-2 py-2 w-full text-white rounded-lg transition-colors whitespace-nowrap bg-green-500 hover:bg-green-400">
-                            <i class="fas fa-check"></i> In Stock
-                        </button>    
+                        <button name="stockLevel" value="in_stock"
+                            class="flex items-center  gap-2 lg:ml-2 py-2 w-10 lg:w-full text-white rounded-lg transition-colors whitespace-nowrap bg-green-500 hover:bg-green-400">
+                            <i class="fas fa-check mx-auto lg:ml-5 lg:mr-0"></i> <p class="hidden lg:flex">In Stock</p>
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class="container mx-auto px-4 pb-12 ">
-            <div class=" bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
-                <form
-                    action="{{ route('admin.inventory')}}"
-                    method="GET"
-                    class="w-full mr-3"
-                >
-                    <input
-                        type="text"
-                        name="search"
+        <div class="container mx-auto pb-12 w-fit flex-grow">
+            <div class=" bg-gray-200 dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300 w-[90%] lg:w-full mx-5">
+                <form action="{{ route('admin.inventory')}}" method="GET" class="w-full mr-3">
+                    <input type="text" name="search"
                         class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
-                        placeholder="search for a product"
-                    />
+                        placeholder="search for a product" />
                     <br />
                 </form>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300">
-                @foreach($products as $product)
-              
-                    <div class="bg-white dark:bg-stone-300 {{ ($product->stock_level == 0 ? 'border-t-red-500' : ($product->stock_level < 35 ? 'border-t-amber' : 'border-t-green-500')) }} border-t-8 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
-                        <div class="absolute top-2 right-2">
-                            <span class="text-xs flex items-center gap-1 text-gray-500">
-                                <i class="fas {{ $TYPE_ICONS[$product->product_type] ?? 'fa-box' }}"></i>
-                            </span>
-                        </div>
-                        <div class="my-3">
-                            <div class="text-lg font-bold">{{ strtoupper($product->product_name) }}</div>
-                            <div class="text-gray-700">£{{ $product->price }}</div>
-                            <div class="text-sm {{ ($product->stock_level == 0 ? 'text-red-700' : ($product->stock_level < 35 ? 'text-yellow-700' : 'text-green-700')) }}">
-                            {{ ($product->stock_level == 0 ? 'OUT OF STOCK' : ($product->stock_level < 35 ? 'LOW STOCK' : 'IN STOCK')) }}
-                                ({{$product->stock_level}})
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300 w-full">
+                    @foreach($products as $product)
+
+                        <div
+                            class="bg-white dark:bg-stone-300 max-w-60 min-w-40 {{ ($product->stock_level == 0 ? 'border-t-red-500' : ($product->stock_level < 35 ? 'border-t-amber' : 'border-t-green-500')) }} border-t-8 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
+                            <div class="absolute top-2 right-2">
+                                <span class="text-xs flex items-center gap-1 text-gray-500">
+                                    <i class="fas {{ $TYPE_ICONS[$product->product_type] ?? 'fa-box' }}"></i>
+                                </span>
                             </div>
+                            <div class="my-3">
+                                <div class="text-lg font-bold">{{ strtoupper($product->product_name) }}</div>
+                                <div class="text-gray-700">£{{ $product->price }}</div>
+                                <div
+                                    class="text-sm {{ ($product->stock_level == 0 ? 'text-red-700' : ($product->stock_level < 35 ? 'text-yellow-700' : 'text-green-700')) }}">
+                                    {{ ($product->stock_level == 0 ? 'OUT OF STOCK' : ($product->stock_level < 35 ? 'LOW STOCK' : 'IN STOCK')) }}
+                                    ({{$product->stock_level}})
+                                </div>
+                            </div>
+                            <a href={{ route("admin.show", $product->id)  }}>
+                                <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
+                            </a>
                         </div>
-                        <a
-                         href={{ route("admin.show",$product->id)  }}>
-                            <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
-                        </a>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
