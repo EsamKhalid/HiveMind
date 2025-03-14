@@ -18,8 +18,8 @@
             position: absolute;
             border: 3px solid #fbbf24;
             cursor: none;
-            width: 125px;
-            height: 125px;
+            width: 40%;
+            height: 40%;
             pointer-events: none;
             border-radius: 8px;
         }

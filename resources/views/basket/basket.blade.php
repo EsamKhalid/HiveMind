@@ -86,8 +86,9 @@
                                 </div>
                                 <div class="flex justify-center">
                                     <a onclick="toggleMobileAddressBox()" id="show-hide"
-                                        class="text-black bg-stone-500 hover:text-white cursor-pointer p-1 rounded-md m-2 transition-colors duration-1000">Show
+                                        class="text-black bg-yellow-500 hover:text-white cursor-pointer p-1 rounded-md m-2 transition-colors duration-1000 select-none">Show
                                         Details</a>
+                                        
                                 </div>
 
                                 <h2
@@ -177,7 +178,7 @@
                                 </h2>
                                 <div class="flex justify-center mt-auto w-full">
                                     <button type="Checkout"
-                                        class="bg-yellow-400 text-white mt-5 py-4 px-8 rounded-lg text-xl hover:underline dark:bg-amber-900 dark:text-stone-950 dark:hover:text-white w-1/3 font-bold transition-colors duration-1000">
+                                        class="bg-amber text-black mt-5 py-4 px-8 rounded-lg text-xl hover:underline dark:bg-amber-900 dark:text-stone-950 dark:hover:text-white w-1/3 font-bold transition-colors duration-1000">
                                         @csrf
                                         <a href="{{ route('checkout.checkout') }}">Checkout</a>
                                     </button>
