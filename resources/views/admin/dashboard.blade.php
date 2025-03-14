@@ -23,7 +23,7 @@
                 <!-- notifications -->
                 <div>
                 <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-inbox mr-4 my-auto"></i>Notifications</p>
-                @foreach ( $notifications as $notification )
+                @forelse ( $notifications as $notification )
                 @if($notification->type == 'userCreated')
                 <div class="bg-purple-100 dark:bg-purple-100 border-t-4 border-indigo-400 dark:border-indigo-400 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
@@ -80,7 +80,8 @@
                         </div>
                     </div>
                 </div>
-                @else
+                @endif
+                @empty
                 <div class="bg-pink-100 dark:bg-pink-100 border-t-4 border-pink-800 dark:border-pink-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
@@ -94,14 +95,40 @@
                         </div>
                     </div>
                 </div>
-                @endif
-                @endforeach
+                
+                @endforelse
                 </div>
 
                 <!-- live reports -->
                 <div>
                 <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-chart-simple mr-4 my-auto"></i>Live reports</p>
-                @foreach ( $live_reports as $live_report )
+                <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                               Recent Signups: {{ $statistics['usersToday'] }}
+                            </p>
+                            <p class="text-sm">
+                                There has been {{ $statistics['usersToday'] }} signups in the last 24 hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                               Recent Orders: {{ $statistics['ordersToday'] }}
+                            </p>
+                            <p class="text-sm">
+                                There has been {{ $statistics['ordersToday'] }} orders placed in the last 24 hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @forelse ( $live_reports as $live_report )
                 @if($live_report->type == 'noStock')
                 <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
@@ -130,22 +157,22 @@
                         </div>
                     </div>
                 </div>
-                @else
+                @endif
+                @empty
                 <div class="bg-pink-100 dark:bg-pink-100 border-t-4 border-pink-800 dark:border-pink-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
                             <p class="font-bold">
-                                No Live Reports
+                                No Products low on stock!
                             </p>
                             <p class="text-sm">
-                                There are no live reports available at this time.
+                                There are no products low on stock at this time.
                             </p>
                         </div>
                     </div>
                 </div>
-                @endif
-                @endforeach
+                @endforelse
                 </div>
 
             <!--</div> -->
