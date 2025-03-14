@@ -16,7 +16,7 @@
         @include('layouts.navbar')
         <a
 
-            href="{{ route('products')  }}"
+            href="{{ url()->previous() }}"
             class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"
 
         ></a>
