@@ -25,7 +25,7 @@
                     name="search"
                     value="{{ request('search') }}"
                     class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
-                    placeholder="Search for a product"
+                    placeholder="Search for a Product"
                     oninput="this.form.submit()"
                 />
                 <br />
