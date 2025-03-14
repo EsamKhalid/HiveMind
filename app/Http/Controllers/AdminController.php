@@ -14,18 +14,22 @@ use App\Models\Products;
 class AdminController extends Controller
 {
 
-   public function dashboard() {
+   public function dashboard()
+   {
 
       $notifications = $this->notifs();
       $live_reports = $this->livereports();
+      $statistics = $this->statistics();
 
       return view('admin.dashboard', [
          'notifications' => $notifications,
          'live_reports' => $live_reports,
+         'statistics' => $statistics,
       ]);
    }
 
-   public function notifications() {
+   public function notifications()
+   {
 
       $notifications = $this->notifs();
 
@@ -51,6 +55,31 @@ class AdminController extends Controller
       $live_reports = $noStock->merge($lowStock)->sortBy('stock_level');
 
       return $live_reports;
+   }
+
+   public function statistics()
+   {
+      $ordersToday = Order::
+         //select('id', 'created_at')
+         selectRaw('COUNT(*) as count, "ordersToday" AS type')
+         ->where('created_at', '>=', now()->subDay())
+         //->count();
+         ->first();
+
+      $usersToday = Users::
+         //select('id', 'created_at')
+         selectRaw('COUNT(*) as count, "usersToday" AS type')
+         ->where('created_at', '>=', now()->subDay())
+         //->count();
+         ->first();
+
+      $statistics = [
+         'ordersToday' => $ordersToday->count(),
+         'usersToday' => $usersToday->count(),
+      ];
+
+      return $statistics;
+
    }
 
    public function notifs()

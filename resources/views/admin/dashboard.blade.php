@@ -102,6 +102,32 @@
                 <!-- live reports -->
                 <div>
                 <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-chart-simple mr-4 my-auto"></i>Live reports</p>
+                <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                               Recent Signups: {{ $statistics['usersToday'] }}
+                            </p>
+                            <p class="text-sm">
+                                There has been {{ $statistics['usersToday'] }} signups in the last 24 hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                               Recent Orders: {{ $statistics['ordersToday'] }}
+                            </p>
+                            <p class="text-sm">
+                                There has been {{ $statistics['ordersToday'] }} orders placed in the last 24 hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 @forelse ( $live_reports as $live_report )
                 @if($live_report->type == 'noStock')
                 <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
