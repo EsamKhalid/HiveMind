@@ -164,10 +164,10 @@
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
                             <p class="font-bold">
-                                No Live Reports
+                                No Products low on stock!
                             </p>
                             <p class="text-sm">
-                                There are no live reports available at this time.
+                                There are no products low on stock at this time.
                             </p>
                         </div>
                     </div>
