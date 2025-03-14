@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('memorable-information');
             $table->string('memorable_information_question');
-            $table->string('memorable-information');
             $table->string('permission_level')->default('user');
             $table->timestamps();
 
