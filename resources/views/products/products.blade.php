@@ -18,30 +18,31 @@
                     action="{{ route('products') }}"
                     method="GET"
                     class="w-full mr-3"
+                    id="searchForm"
                 >
-                    <input
-                        type="text"
-                        name="search"
-                        value="{{ request('product_name') }}"
-                        class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
-                        placeholder="search for a product"
-                    />
-                    <br />
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ request('search') }}"
+                    class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
+                    placeholder="Search for a product"
+                    oninput="this.form.submit()"
+                />
+                <br />
                 </form>
+                
                 <form action="{{ route('products') }}" method="GET" class="text-black">
                     <select name="filter" onchange="this.form.submit()">
-                        <option value="none"{{ request('filter') == 'none' ? 'selected' : '' }}>All Products</option>
-                        <option value="Skincare" {{ request('filter') == 'Skincare' ? 'selected' : '' }}>Skincare</option>
-                        <option value="Health" {{ request('filter') == 'Health' ? 'selected' : '' }}>Health</option>
-                        <option value="Beauty" {{ request('filter') == 'Beauty' ? 'selected' : '' }}>Beauty</option>
-                        <option value="Haircare" {{ request('filter') == 'Haircare' ? 'selected' : '' }}>Haircare</option>
-                        <option value="Merchandise" {{ request('filter') == 'Merchandise' ? 'selected' : '' }}>Merchandise</option>
+                    <option value="none"{{ request('filter') == 'none' ? 'selected' : '' }}>All Products</option>
+                    <option value="Skincare" {{ request('filter') == 'Skincare' ? 'selected' : '' }}>Skincare</option>
+                    <option value="Health" {{ request('filter') == 'Health' ? 'selected' : '' }}>Health</option>
+                    <option value="Beauty" {{ request('filter') == 'Beauty' ? 'selected' : '' }}>Beauty</option>
+                    <option value="Haircare" {{ request('filter') == 'Haircare' ? 'selected' : '' }}>Haircare</option>
+                    <option value="Merchandise" {{ request('filter') == 'Merchandise' ? 'selected' : '' }}>Merchandise</option>
                     </select>
                 </form>
             </div>
-        </div>
-
-        
+        </div>        
 
         @if(count($products) === 0)
         <div class="flex justify-center mt-5"><h1 class="text-3xl">No Products Found</h1></div>
