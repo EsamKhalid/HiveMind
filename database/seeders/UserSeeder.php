@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
                 'email_address' => "test@user.com",
                 'phone_number' => 0,
                 'password' => bcrypt("password"),
+                'memorable_information_question' => "What's your mother's maiden name?",
+                'memorable_information' => "test",
                 'permission_level' => "user", // Add this line
                 'created_at' => now(),
                 'updated_at' => now()
@@ -31,6 +33,8 @@ class UserSeeder extends Seeder
                 'email_address' => "admin@user.com",
                 'phone_number' => 0,
                 'password' => bcrypt("password"),
+                'memorable_information_question' => "What's your mother's maiden name?",
+                'memorable_information' => "admin",
                 'permission_level' => "admin",
                 'created_at' => now(),
                 'updated_at' => now()

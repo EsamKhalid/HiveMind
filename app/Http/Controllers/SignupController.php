@@ -20,6 +20,8 @@ class SignupController extends Controller{
             'phone_number' => 'required|string|max:12',
             'email_address' => 'required|string|email|max:255',
             'password' => 'required|string|min:8|confirmed',
+            'memorable_information_question' => 'required|string|max:255',
+            'memorable_information' => 'required|string|max:255',
         ]);
 
 
@@ -30,6 +32,8 @@ class SignupController extends Controller{
             'phone_number' => $request->phone_number,
             'email_address' => $request->email_address,   
             'password' => bcrypt($request->password),
+            'memorable_information_question' => $request->memorable_information_question,
+            'memorable-information' => $request->memorable_information,
         ]);
 
         return redirect()->route('login')->with('success', 'Signup successful!');

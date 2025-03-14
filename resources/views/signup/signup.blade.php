@@ -117,6 +117,26 @@
                             placeholder="Enter your password"
                         />
                     </div>
+                    <div class="mb-6">
+                        <label
+                            for="memorable_information"
+                            class="block text-stone-700 dark:text-yellow-200 text-sm font-bold mb-2 transition-colors duration-1000"
+                            >Memorable Question:</label
+                        >
+                        <select type="memborable_information_question" name="memorable_information_question" class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000">
+                            <option value="Childhood bestfriend's name?">Childhood bestfriend's name?</option>
+                            <option value="First pets name?">First pets name?</option>
+                            <option value="Favourite Movie?">Favourite Movie?</option>
+                            <option value="What's your mother's maiden name?">What's your mother's maiden name?</option>
+                          </select>
+                        <input
+                            type="memorable_information"
+                            name="memorable_information"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
+                            placeholder="Enter your memorable information"
+                            required
+                        />
+                    </div>
 
                     <div class="flex items-center justify-between">
                         <button
