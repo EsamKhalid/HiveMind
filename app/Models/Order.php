@@ -13,6 +13,7 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
+        'guest_id',
         'order_date',
         'order_status',
         'total_amount',
@@ -29,5 +30,9 @@ class Order extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class, 'order_id');
+    }
+
+    public function guest(){
+        return $this->belongsTo(Guest::class);
     }
 }

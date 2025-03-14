@@ -19,11 +19,18 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AdminController;
 
 
+
+use App\Http\Controllers\ReviewController;
+
+use App\Http\Controllers\AdminOrderController;
+
+
 use App\Http\Controllers\UserManagementController;
 
 // Jo'Ardie Richardson's work
 use App\Http\Controllers\ReportController;
 // end
+use App\Http\Controllers\EnquiriesController;
 
 Route::get('/', function () {
     return view('home');
@@ -104,6 +111,19 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
+    
+    // View and process user orders - Aryan
+    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
+    Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
+        ->name('admin.orders.update');
+    Route::patch('/admin/orders/processAll', [AdminOrderController::class, 'processAllOrders'])->name('admin.orders.processAll');
+    
+    // View, aprrove or deny return requests - Aryan
+    Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
+    Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
+    Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
+
+    Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
 });
 
 
@@ -122,7 +142,8 @@ Route::middleware(['admin'])->group(function () {
    Route::post('basket/decreaseQuantity',[BasketController::class,'decreaseQuantity'])->name('basket.decreaseQuantity');
 
    Route::post('basket/add',[BasketController::class, 'addToBasket'])->name('basket.add');
-
+   Route::post('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
+   Route::get('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
 
     //Route::post('/basket/add/{productID}',[BasketController::class, 'addToBasket'])->name('basket.add');
 
@@ -130,10 +151,11 @@ Route::middleware(['admin'])->group(function () {
     Route::get('checkout', [CheckoutController::class, 'view'])->name('checkout.view');  
 
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
+    Route::post('checkout/save-guest', [CheckoutController::class, 'storeGuest'])->name('checkout.storeGuest');
     Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
-    Route::get('contact', [ContactController::class, 'view'])->name('contact');
+    Route::get('contact', [ContactController::class, 'view'])->name('contact.view');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
     // Routes for Details page - Aryan
@@ -151,6 +173,13 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+
+
+    Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
+    Route::post('review/storeSiteReview', [ReviewController::class, 'storeSiteReview'])->name('review.storeSiteReview');
+    Route::get('review/productReview/{id}', [ReviewController::class, 'productReview'])->name('review.productReview');
+    Route::post('/review/storeProductReview/{id}', [ReviewController::class, 'storeProductReview'])->name('review.storeProductReview');
+
     
     // NOTE FROM HARRY (15/02/25)
     // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
@@ -160,3 +189,4 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin', [AdminController::class, 'adm'])->name('adm');
 
      
+

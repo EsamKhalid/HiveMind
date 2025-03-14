@@ -10,8 +10,8 @@ class ReturnRequest extends Model
 
     protected $fillable = [
         'order_id',
-        //'return_status',
         'return_date',
+        'return_status',
         'reason',
         'comments',
     ];

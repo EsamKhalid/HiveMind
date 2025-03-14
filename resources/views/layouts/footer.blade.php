@@ -1,5 +1,5 @@
 <footer
-    class="bottom:0 w-full border border-amber bg-[#FBBF24]  dark:border-stone-800 dark:bg-stone-800 text-white transition-colors duration-1000"
+    class="bottom:0 w-full border border-amber bg-[#FBBF24] dark:border-stone-800 dark:bg-stone-800 text-white transition-colors duration-1000"
 >
     <div
         class="container mx-auto flex flex-wrap justify-between items-start py-8"
@@ -10,7 +10,7 @@
             <p class="text-lg">
                 Have an enquiry? Fill in a
                 <a
-                    href="{{ route('contact') }}"
+                    href="{{ route('contact.view') }}"
                     class="text-lg text-blue-500 hover:underline"
                     >Contact Form</a
                 >
