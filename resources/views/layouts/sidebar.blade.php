@@ -63,7 +63,7 @@
                         class="flex flex-col dark:text-white"
                     >
                         <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.dashboard') }}"
                             ><p>Dashboard</p>
                             <i
@@ -71,7 +71,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.notifications') }}"
                             ><p>Notifications</p>
                             <i
@@ -94,7 +94,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             ><p>Refunds & returns</p>
                             <i
                                 class="fa-solid fa-store text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
