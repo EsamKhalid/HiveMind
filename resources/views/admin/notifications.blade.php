@@ -14,7 +14,7 @@
    
         <!-- notifications -->
         <div>
-            @foreach ( $notifications as $notification )
+            @forelse ( $notifications as $notification )
             @if($notification->type == 'userCreated')
             <div class="bg-purple-100 dark:bg-purple-100 border-t-4 border-indigo-400 dark:border-indigo-400 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                 <div class="flex">
@@ -71,7 +71,8 @@
                     </div>
                 </div>
             </div>
-            @else
+            @endif
+            @empty
             <div class="bg-pink-100 dark:bg-pink-100 border-t-4 border-pink-800 dark:border-pink-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                 <div class="flex">
                     <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
@@ -85,8 +86,7 @@
                     </div>
                 </div>
             </div>
-            @endif
-            @endforeach
+            @endforelse
         </div>
     </div>
 </body>
