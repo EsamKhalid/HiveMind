@@ -33,7 +33,7 @@ class SignupController extends Controller{
             'email_address' => $request->email_address,   
             'password' => bcrypt($request->password),
             'memorable_information_question' => $request->memorable_information_question,
-            'memorable-information' => $request->memorable_information,
+            'memorable_information' => $request->memorable_information,
         ]);
 
         return redirect()->route('login')->with('success', 'Signup successful!');
