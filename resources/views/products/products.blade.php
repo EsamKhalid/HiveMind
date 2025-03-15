@@ -13,7 +13,7 @@
         </div>
 
         <div class="flex justify-center">
-            <div class="flex justify-center w-[75vw]">
+            <div class="flex justify-center w-[80%]">
                 <form
                     action="{{ route('products') }}"
                     method="GET"
@@ -23,13 +23,13 @@
                         type="text"
                         name="search"
                         value="{{ request('product_name') }}"
-                        class="w-full placeholder:text-yellow-500 dark:placeholder:text-stone-500 dark:text-yellow-900 rounded-lg dark:bg-amber border-2 dark:border-yellow-900 h-14 text-xl transition-colors duration-1000"
+                        class="w-full placeholder:text-yellow-500 dark:placeholder:text-stone-500 dark:text-yellow-900 rounded-lg dark:bg-amber border-2 dark:border-yellow-900 h-fit lg:h-14 text-sm transition-colors duration-1000"
                         placeholder="search for a product"
                     />
                     <br />
                 </form>
                 <form action="{{ route('products') }}" method="GET" class="text-black ">
-                    <select name="filter" onchange="this.form.submit()" class=" dark:text-yellow-900 rounded-lg dark:bg-amber border-2 dark:border-yellow-900 h-14 text-xl text-yellow-900 transition-colors duration-1000">
+                    <select name="filter" onchange="this.form.submit()" class=" dark:text-yellow-900 rounded-lg dark:bg-amber border-2 dark:border-yellow-900 w-fit h-fit lg:h-14 text-sm lg:text-xl text-yellow-900 transition-colors duration-1000">
                         <option value="none"{{ request('filter') == 'none' ? 'selected' : '' }}>All Products</option>
                         <option value="Skincare" {{ request('filter') == 'Skincare' ? 'selected' : '' }}>Skincare</option>
                         <option value="Health" {{ request('filter') == 'Health' ? 'selected' : '' }}>Health</option>
@@ -61,7 +61,7 @@
 
             @endif
             <div class="flex justify-center">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0 mb-2 mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0 mb-2 mx-auto w-[80%]">
                     @foreach($products as $product)
                     <a
                         href="{{route('products.show', $product->id)}}"
