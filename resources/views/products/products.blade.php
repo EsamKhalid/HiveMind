@@ -46,8 +46,7 @@
 
         @if(count($products) === 0)
         <div class="flex justify-center mt-5"><h1 class="text-3xl">No Products Found</h1></div>
-        
-
+            
         @else
 
         <div class="mt-5">
@@ -78,7 +77,6 @@
                             <p class="text-center">£{{$product->price}}</p>
                         </div></a
                     >
-
                     @endforeach
                 </div>
             </div>
@@ -86,6 +84,5 @@
         @endif 
         </main>
     </body>
-   
     @include('layouts.footer')
 </html>
