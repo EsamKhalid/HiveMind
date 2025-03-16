@@ -27,7 +27,7 @@ function toggleTheme(){
     document.documentElement.classList.toggle("dark");
 }
 document.addEventListener('DOMContentLoaded',(e)=>{
-   for(let E of document){
+   for(let E of document.getElementsByClassName('transition-none')){
     E.classList.remove('transition-none')
    } 
 });
