@@ -126,7 +126,8 @@
                             <option value="What is your favourite movie?">What is your favourite movie?</option>
                             <option value="What was the name of your first pet?">What was the name of your first pet?</option>
                             <option value="Who is your favourite fictional character?">Who is your favourite fictional character?</option>
-                            <option value="In what city did you grow up?">In what city did you grow up?</option>
+                            <option value="What was the name of your first school?">What was the name of your first school?</option>
+                            <option value="What city were you born in?">What city were you born in?</option>
                             <option value="Who was your favourite teacher?">Who was your favourite teacher?</option>
                         </select>
                     </div>
