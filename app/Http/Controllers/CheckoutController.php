@@ -238,6 +238,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'card',
                 'amount_paid' => $basket->$total_amount,
                 'payment_date' => now(),
+                'confirmation_number' => mt_rand(100000,999999),
             ]);
 
             foreach ($basketItems as $order_item) {
@@ -258,7 +259,7 @@ class CheckoutController extends Controller
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
-            return redirect()->route('orders');
+            return redirect()->route('checkout.confirmation', $order->confirmation_number);
 
         } else {
             $guestID = session()->get('guest_id');
@@ -272,6 +273,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'card',
                 'amount_paid' => $basket->$total_amount,
                 'payment_date' => now(),
+                'confirmation_number' => mt_rand(100000,999999),
             ]);
 
             foreach ($basketItems as $order_item) {
@@ -292,7 +294,7 @@ class CheckoutController extends Controller
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
-            return view('checkout.confirmation');
+            return redirect()->route('checkout.confirmation', $order->confirmation_number);
         }
 
 
@@ -303,9 +305,9 @@ class CheckoutController extends Controller
 
     }
 
-    public function confirmation()
+    public function confirmation($confNum)
     {
-        return view('checkout.confirmation');
+        return view('checkout.confirmation', ['confirmation_number' => $confNum]);
     }
 
 }

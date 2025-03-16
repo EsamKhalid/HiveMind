@@ -29,6 +29,8 @@ use App\Http\Controllers\UserManagementController;
 
 use App\Http\Controllers\EnquiriesController;
 
+use App\Http\Controllers\GuestOrderController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -120,9 +122,9 @@ Route::middleware(['admin'])->group(function () {
 
 
 
-/**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
- * before or after the request is processed by your controller. Ultimately, it acts as a bridge between request and a response. */
-
+    Route::get('orders/guest/validate', [GuestOrderController::class, 'view'])->name('orders.guest.validate');
+    Route::get('orders/guest/getOrder', [GuestOrderController::class, 'getOrder'])->name('orders.guest.getOrder');
+    Route::get('orders/guest/displayOrder/{confnum}/{surname}', [GuestOrderController::class, 'displayOrder'])->name('orders.guest.displayOrder');
 
 
     Route::get('basket',[BasketController::class, 'view'])->name('basket.view');
@@ -145,7 +147,7 @@ Route::middleware(['admin'])->group(function () {
 
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
     Route::post('checkout/save-guest', [CheckoutController::class, 'storeGuest'])->name('checkout.storeGuest');
-    Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
+    Route::get('checkout/confirmation/{confNum}', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact.view');

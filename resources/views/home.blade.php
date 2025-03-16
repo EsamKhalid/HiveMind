@@ -2,17 +2,21 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
 
-    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white">
+    <body
+        class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-700 dark:text-white"
+    >
         @include('layouts.navbar')
 
         <main>
             <!-- added a backdrop -->
             <section
                 class="bg-white py-40 bg-cover bg-center"
-                style="background-image: url('{{asset('../Images/hd bee backdrop lols.jpeg')}}');"
+                style="background-image: url('{{
+                    asset('../Images/hd bee backdrop lols.jpeg')
+                }}');"
             >
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 class="text-4xl font-bold text-white mb-4">
@@ -72,8 +76,9 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/categories/healthcare.png')
-
+                                            asset(
+                                                '../Images/categories/healthcare.png'
+                                            )
                                         }}"
                                         alt="Health"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -96,7 +101,9 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/categories/skincare.png')
+                                            asset(
+                                                '../Images/categories/skincare.png'
+                                            )
                                         }}"
                                         alt="Skincare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -119,7 +126,9 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/categories/beauty.png')
+                                            asset(
+                                                '../Images/categories/beauty.png'
+                                            )
                                         }}"
                                         alt="Beauty"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -142,8 +151,9 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/categories/haircare.png')
-
+                                            asset(
+                                                '../Images/categories/haircare.png'
+                                            )
                                         }}"
                                         alt="Haircare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -166,8 +176,9 @@
                                 <div class="bg-white rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset('../Images/categories/hivemind logo.png')
-
+                                            asset(
+                                                '../Images/categories/hivemind logo.png'
+                                            )
                                         }}"
                                         alt="Merchandise"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -181,9 +192,19 @@
                                     </div>
                                 </div>
                             </button>
-                            
                         </div>
                     </form>
+                    <div class="flex justify-center mt-5">
+                        <div class="text-2xl">
+                            Made an Order? Click
+                            <a
+                                href="{{ route('orders.guest.validate') }}"
+                                class="text-amber"
+                                >Here</a
+                            >
+                            to track your order
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
