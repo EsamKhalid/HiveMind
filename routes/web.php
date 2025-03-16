@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
@@ -162,6 +163,12 @@ Route::middleware(['admin'])->group(function () {
      
     // Route for Cancel Order Functionality - Aryan
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
+
+    // Route for Password Revocery Functionality - Aryan
+    Route::get('/password/recover', [PasswordResetController::class, 'showRecoveryForm'])->name('password.recover');
+    Route::post('/password/recover', [PasswordResetController::class, 'processRecovery']);
+    Route::post('/password/verify', [PasswordResetController::class, 'verifyAnswer'])->name('password.verifyAnswer');
+    Route::post('/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
 
 
 
