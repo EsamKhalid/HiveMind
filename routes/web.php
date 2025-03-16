@@ -8,9 +8,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\SettingsController;
+
 
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\InventoryController;
@@ -165,6 +168,16 @@ Route::middleware(['admin'])->group(function () {
     // Route for Cancel Order Functionality - Aryan
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 
+    // Route for Password Revocery Functionality - Aryan
+    Route::get('/password/recover', [PasswordResetController::class, 'showRecoveryForm'])->name('password.recover');
+    Route::post('/password/recover', [PasswordResetController::class, 'processRecovery']);
+    Route::post('/password/verify', [PasswordResetController::class, 'verifyAnswer'])->name('password.verifyAnswer');
+    Route::get('/password/resetForm', [PasswordResetController::class, 'resetForm'])->name('password.resetForm');
+    Route::post('/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
+    
+    // Routes to update Memorable information
+    Route::get('/settings/security', [SettingsController::class, 'securityView'])->name('settings.security');
+    Route::post('/settings/security', [SettingsController::class, 'securityUpdate'])->name('settings.security.update');
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');

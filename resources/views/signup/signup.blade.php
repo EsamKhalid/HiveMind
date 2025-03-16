@@ -87,7 +87,7 @@
                         />
                     </div>
 
-                    <div class="mb-6">
+                    <div class="mb-4">
                         <label
                             for="password"
                             class="block text-gray-700 text-sm font-bold mb-2"
@@ -104,7 +104,7 @@
                         <div class="text-red-500">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-6">
+                    <div class="mb-4">
                         <label
                             for="confirm_password"
                             class="block text-gray-700 text-sm font-bold mb-2"
@@ -116,6 +116,24 @@
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Enter your password"
                         />
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="memorable_question" class="block text-gray-700 text-sm font-bold mb-2">Memorable Question:</label>
+                        <select name="memorable_question" id="memorable_question" class="shadow appearance-none border rounded w-full py-2 px-3" required>
+                            <option value="" disabled selected hidden>Select a question</option>
+                            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                            <option value="What is your favourite movie?">What is your favourite movie?</option>
+                            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                            <option value="Who is your favourite fictional character?">Who is your favourite fictional character?</option>
+                            <option value="What was the name of your first school?">What was the name of your first school?</option>
+                            <option value="What city were you born in?">What city were you born in?</option>
+                            <option value="Who was your favourite teacher?">Who was your favourite teacher?</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="memorable_answer" class="block text-gray-700 text-sm font-bold mb-2">Memorable Answer:</label>
+                        <input type="text" name="memorable_answer" class="shadow appearance-none border rounded w-full py-2 px-3" placeholder="Enter your answer" required>
                     </div>
 
                     <div class="flex items-center justify-between">

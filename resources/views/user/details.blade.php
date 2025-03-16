@@ -12,7 +12,7 @@
     <a  href="{{ route('account') }}"
         class="fas fa-arrow-left fa-3x pl-4 pt-2"></a>
 
-    <div class="xl:w-[50%] lg:w-[70%] max-w-full mx-auto mt-2 mb-20 p-8 bg-white rounded-lg shadow-md">
+    <div class="xl:w-[40%] lg:w-[50%] md:w-[60%] max-w-full mx-auto mt-2 mb-20 p-8 bg-white rounded-lg shadow-md">
         <h1 class="text-3xl font-bold mb-6">Update Your Details</h1>
 
         @if(session('success'))
