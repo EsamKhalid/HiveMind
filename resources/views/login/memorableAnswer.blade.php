@@ -24,7 +24,8 @@
 
         <form action="{{ route('password.verifyAnswer') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96 max-w-sm">
             @csrf
-            <h1 class="text-3xl font-bold text-gray-800 mb-6">Password Recovery</h1>
+            <p>{{ $email }}</p>
+            <h1 class="text-3xl font-bold text-gray-800 mb-5">Password Recovery</h1>
 
             <input type="hidden" name="email" value="{{ $email }}">
 
