@@ -5,6 +5,7 @@
             // Check for saved theme or system preference and apply it
             const currentTheme = localStorage.getItem("theme");
             const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
             if (currentTheme === "dark" || (!currentTheme && deviceTheme)) {
                 document.documentElement.classList.add("dark");
             } else {
@@ -12,6 +13,7 @@
             }
         })();
 
+        
 function toggleTheme(){
     var currentTheme = localStorage.getItem("theme");
 
@@ -22,12 +24,17 @@ function toggleTheme(){
     }else{
         localStorage.setItem("theme","dark");
     }
-    document.documentElement.classList.toggle("dark")
-
+    document.documentElement.classList.toggle("dark");
 }
+document.addEventListener('DOMContentLoaded',(e)=>{
+   for(let E of document){
+    E.classList.remove('transition-none')
+   } 
+});
 </script>
+
 </head>
-<body class="transition-all ease-in-out duration-1000">
+<body class="transition-none transition-all ease-in-out duration-1000">
     <div class="overflow-hidden">
         <!-- navbar -->
         <nav

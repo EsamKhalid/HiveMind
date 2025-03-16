@@ -7,7 +7,7 @@
 
     </head>
 
-    <body class="bg-white dark:bg-stone-950 flex w-[80%] mx-auto">
+    <body class="transition-none bg-white dark:bg-stone-950 flex w-[80%] mx-auto">
         @include('layouts.sidebar') 
 
         <div class="flex justify-center overflow-x-auto w-full">

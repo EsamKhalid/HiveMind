@@ -43,7 +43,7 @@
     }
 </script>
 
-<body class="bg-white dark:bg-stone-950 flex">
+<body class="transition-none bg-white dark:bg-stone-950 flex">
 <!-- Back Button-->
 <a
             href="{{route('admin.user-management')}}"

@@ -34,7 +34,7 @@
     </script>
 </head>
 
-<body class="dark:bg-stone-950 transition-colors duration-1000 flex flex-col min-h-screen">
+<body class="transition-none dark:bg-stone-950 transition-colors duration-1000 flex flex-col min-h-screen">
     @include('layouts.navbar')
 
     <main>

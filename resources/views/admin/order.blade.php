@@ -7,7 +7,7 @@
     <title>Stock Reorder</title>
 </head>
 
-<body class="dark:bg-stone-900 transition-all duration-1000 w-">
+<body class="transition-none dark:bg-stone-900 transition-all duration-1000 w-">
     <header></header>
     @include('layouts.sidebar')
     <main>

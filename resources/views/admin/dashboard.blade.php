@@ -6,7 +6,7 @@
         <link rel="icon" href="/favicon.ico">
     </head>
 
-    <body class="bg-white dark:bg-stone-950 flex">
+    <body class="transition-none bg-white dark:bg-stone-950 flex">
         @include('layouts.sidebar')
         <div
             id="notifications"

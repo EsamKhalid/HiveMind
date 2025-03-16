@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 </head>
 
-<body class="bg-white dark:bg-stone-900 w-full">
+<body class="transition-none bg-white dark:bg-stone-900 w-full">
     @include('layouts.sidebar')
     <div class="relative text-center mt-24 h-48">
         <h2
