@@ -168,6 +168,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/password/recover', [PasswordResetController::class, 'showRecoveryForm'])->name('password.recover');
     Route::post('/password/recover', [PasswordResetController::class, 'processRecovery']);
     Route::post('/password/verify', [PasswordResetController::class, 'verifyAnswer'])->name('password.verifyAnswer');
+    Route::get('/password/resetForm', [PasswordResetController::class, 'resetForm'])->name('password.resetForm');
     Route::post('/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
 
 
