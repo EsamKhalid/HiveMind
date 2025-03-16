@@ -259,7 +259,7 @@ class CheckoutController extends Controller
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
-            return redirect()->route('orders');
+            return redirect()->route('checkout.confirmation', $order->confirmation_number);
 
         } else {
             $guestID = session()->get('guest_id');

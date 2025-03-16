@@ -43,11 +43,9 @@
                     @foreach ($orders as $index => $order)
                     <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
                         <div class="mb-4">
+
                             <h3 class="text-2xl font-bold text-grey-800">
-                                Order #{{ $index + 1 }}
-                            </h3>
-                            <h3 class="text-2xl font-bold text-grey-800">
-                                Confirmation Number {{ $order->confirmation_number}}
+                                Confirmation Number: {{ $order->confirmation_number}}
                             </h3>
                         </div>
                         <div class="text-gray-700">
