@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class PasswordResetController extends Controller
 {
@@ -47,12 +48,30 @@ class PasswordResetController extends Controller
         return view('login.passwordReset', ['email' => $request->email]);
     }
 
+
+    public function resetForm(Request $request){
+        return view('login.passwordReset', ['email' => $request->email]);
+    }
+
     public function resetPassword(Request $request)
     {
-        $request->validate([
+
+
+        //Esam - Had to make this custom validator to pass through the email on the validate fail since there was no auth to grab from
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users,email_address',
             'password' => 'required|string|min:8|confirmed',
         ]);
+
+        if($validator->fails()){
+             return redirect()->route('password.resetForm', ['email' => $request->email])
+                             ->withErrors($validator);
+        }
+
+        // $request->validate([
+        //     'email' => 'required|email|exists:users,email_address',
+        //     'password' => 'required|string|min:8|confirmed',
+        // ]);
 
         $user = User::where('email_address', $request->email)->first();
         $user->password = Hash::make($request->password);
