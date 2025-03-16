@@ -12,6 +12,8 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\SettingsController;
+
 
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\InventoryController;
@@ -169,7 +171,10 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/password/recover', [PasswordResetController::class, 'processRecovery']);
     Route::post('/password/verify', [PasswordResetController::class, 'verifyAnswer'])->name('password.verifyAnswer');
     Route::post('/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
-
+    
+    // Routes to update Memorable information
+    Route::get('/settings/security', [SettingsController::class, 'securityView'])->name('settings.security');
+    Route::post('/settings/security', [SettingsController::class, 'securityUpdate'])->name('settings.security.update');
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
