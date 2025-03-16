@@ -7,7 +7,7 @@
         <title>HiveMind 🐝</title>
     </head>
 
-    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-white">
+    <body class="transition-none transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-white">
         @include('layouts.navbar')
 
         <main>
