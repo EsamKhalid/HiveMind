@@ -40,7 +40,7 @@
                 />
             </div>
 
-            <div class="mb-6">
+            <div>
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
                 <input 
                     type="password" 
@@ -49,6 +49,12 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                     placeholder="Enter your password" 
                 />
+            </div>
+
+            <div class="mt-2 mb-4">
+                <a href="{{ route('password.recover') }}" class="text-blue-500 hover:underline text-sm">
+                    Forgot password?
+                </a>
             </div>
 
             <div class="flex items-center justify-between">
