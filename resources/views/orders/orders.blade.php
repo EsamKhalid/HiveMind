@@ -46,6 +46,9 @@
                             <h3 class="text-2xl font-bold text-grey-800">
                                 Order #{{ $index + 1 }}
                             </h3>
+                            <h3 class="text-2xl font-bold text-grey-800">
+                                Confirmation Number {{ $order->confirmation_number}}
+                            </h3>
                         </div>
                         <div class="text-gray-700">
                             <p class="mb-2">

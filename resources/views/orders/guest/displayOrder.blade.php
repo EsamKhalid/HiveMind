@@ -17,8 +17,8 @@
 
                         <div class="text-gray-700">
                             <p class="mb-2">
-                                <strong>Order ID: </strong>
-                                {{ $order->id }}
+                                <strong>Confirmation Number: </strong>
+                                {{ $order->confirmation_number }}
                             </p>
                             <p class="mb-2">
                                 <strong>Order Date:</strong>
