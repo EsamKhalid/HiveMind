@@ -5,7 +5,7 @@
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <title>Products 🐝</title>
     </head>
-    <body class="transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-yellow-200">
+    <body class="transition-none transition-all ease-in-out duration-1000 transform bg-yellow-50 dark:bg-stone-950 dark:text-yellow-200">
         <header>@include('layouts.navbar')</header>
         <main class="mb-auto h-screen
         "><div class="justify-center py-5">
