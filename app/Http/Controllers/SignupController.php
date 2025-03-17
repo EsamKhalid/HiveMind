@@ -19,8 +19,8 @@ class SignupController extends Controller{
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:12',
-            'email_address' => 'required|string|email|max:255',
+            'phone_number' => 'required|string|max:12|regex:/^\+?[0-9]{10,12}$/',
+            'email_address' => 'required|string|email|max:255|unique:users,email_address',
             'password' => 'required|string|min:8|confirmed',
             'memorable_question' => 'required|string|max:255',
             'memorable_answer' => 'required|string|max:55',
