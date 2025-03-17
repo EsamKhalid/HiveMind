@@ -16,6 +16,33 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basket</title>
+    <script>
+        function toggleMobileAddressBox() {
+            var elements = document.getElementsByClassName('mobileViewAddressLine');
+            for (let element of elements) {
+                if (element.classList.contains('hidden')) {
+                    element.classList.remove('hidden');
+                    element.classList.add('flex');
+                    document.getElementById('show-hide').innerText = 'Hide Details'
+                } else {
+                    element.classList.add('hidden');
+                    element.classList.remove('flex');
+                    document.getElementById('show-hide').innerText = 'Show Details'
+                }
+            }
+        }
+        function hideCheckoutButton() {
+            var elements = document.getElementsByClassName('mobileViewAddressLine');
+            for (let element of elements) {
+                if (!element.classList.contains('hidden')) {
+                    element.classList.add('hidden');
+                    element.classList.remove('flex');
+                    document.getElementById('show-hide').innerText = 'Show Details'
+                }
+            }
+        }
+
+    </script>
 </head>
 
 <body class="dark:bg-stone-900 transition-all duration-1000 flex flex-col min-h-screen">

@@ -11,7 +11,18 @@
             <h4 class="text-3xl">{{$errors->first()}}</h4>
             @endif
         </div>
-
+        <header class="bg-gray-200 dark:bg-stone-900 pt-4 pb-8 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
+            <a
+                href="{{ url()->previous()}}"
+                class="fas fa-arrow-left fa-2x pl-4 dark:text-amber"
+            ></a>
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">My Orders</h1>
+                <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">
+                    Here are your recent purchases.
+                </p>
+            </div>
+        </header>
         <main class="flex justify-center items-center min-h-screen">
             <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
 

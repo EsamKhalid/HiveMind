@@ -6,17 +6,17 @@
         <title>Admin - User Orders</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-gray-100 min-h-screen">
+    <body class="bg-gray-200 dark:bg-stone-900 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
         @include('layouts.navbar')
 
-        <header class="bg-gradient-to- pt-4 pb-8 shadow-md border">
+        <header class="bg-gradient-to- pt-4 pb-8 shadow-md border dark:border-none">
             <a
                 href="{{ route('account') }}"
-                class="fas fa-arrow-left fa-2x pl-4"
+                class="fas fa-arrow-left fa-2x pl-4 dark:text-amber"
             ></a>
             <div class="max-w-7xl mx-auto text-center">
-                <h1 class="text-4xl font-extrabold">User Orders</h1>
-                <p class="text-lg mt-2 text-gray-600">Manage all user orders and returns.</p>
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">User Orders</h1>
+                <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage all user orders and returns.</p>
             </div>
         </header>
 
@@ -35,7 +35,7 @@
             <section class="max-w-7xl mx-auto p-6">
                 @if ($orders->isEmpty())
                 <div class="text-center mt-10">
-                    <p class="text-gray-600 text-lg">No orders found.</p>
+                    <p class="text-gray-600 dark:text-yellow-200 text-lg transition-colours duration-1000">No orders found.</p>
                 </div>
                 @else
 
@@ -43,15 +43,15 @@
                     <form action="{{ route('admin.orders.processAll') }}" method="POST" onsubmit="return confirm('Are you sure you want to process all orders (excluding returns and your own orders) to the next stage?');">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="bg-purple-500 text-white px-8 py-3 mb-8 rounded-lg hover:bg-purple-700 transition">
+                        <button type="submit" class="bg-purple-500 text-white px-8 py-3 mb-8 rounded-lg hover:bg-purple-700 dark:bg-red-500 dark:hover:bg-red-700 transition">
                             Process All Orders
                         </button>
                     </form>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 dark:text-yellow-200">
                     @foreach ($orders as $order)
-                    <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
+                    <div class="bg-white dark:bg-stone-600 shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg mb-[10%] transition-colours duration-1000">
                         <h3 class="mb-4 text-2xl font-bold text-grey-800">Order ID #{{ $order->id }}</h3>
                         @if ($order->user == null)
                         <p class="mb-2"><strong>Guest:</strong> {{ $order->guest->email_address }}</p>
@@ -84,7 +84,7 @@
                         <ul>
                             @foreach ($order->orderItems as $item)
                             <li class="mb-2">
-                                <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold">
+                                <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold text-stone-900 dark:text-yellow-400 transition-colours duration-1000">
                                         {{ $item->products->product_name }}
                                 </a>
                                 @if ($item->returnItem && $item->order->order_status === 'Return Approved')
@@ -104,7 +104,7 @@
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="status" value="Processing">
-                                    <button type="submit" class="bg-cyan-500 text-white px-4 py-2 mt-4 rounded hover:bg-cyan-600">Mark as Processing</button>
+                                    <button type="submit" class="bg-cyan-500 text-white px-4 py-2 mt-4 rounded hover:bg-cyan-600 dark:bg-emerald-500 dark:hover:bg-emerald-600">Mark as Processing</button>
                                 </form>
                             @elseif ($order->order_status === 'Processing')
                                 <form action="{{ route('admin.orders.update', $order->id) }}" method="POST" onsubmit="return confirm('Mark this order as Shipped?');">
