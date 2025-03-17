@@ -10,7 +10,7 @@
             <p class="text-lg">
                 Have an enquiry? Fill in a
                 <a
-                    href="{{ route('contact') }}"
+                    href="{{ route('contact.view') }}"
                     class="text-lg text-blue-500 dark:text-amber hover:underline"
                     >Contact Form</a
                 >

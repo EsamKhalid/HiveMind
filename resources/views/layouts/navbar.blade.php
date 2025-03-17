@@ -53,10 +53,6 @@
                 <!-- links are next to icons -->
                 <ul class="hidden lg:flex-row-reverse space-x-8 text-lg">
                     <li>
-                        <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber"
-                            onclick="toggleTheme()"></a>
-                    </li>
-                    <li>
                         <a href="{{ route('contact.view') }}"
                             class="hidden lg:flex hover:text-yellow-100 dark:hover:text-amber">Contact Us</a>
                     </li>

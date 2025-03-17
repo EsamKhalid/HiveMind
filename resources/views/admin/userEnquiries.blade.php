@@ -5,7 +5,7 @@
         <title>User Enquiries</title>
     </head>
     <body>
-        @include('layouts.navbar')
+        @include('layouts.sidebar')
         <div class="flex justify-center">
             @if($errors->any())
                 <h4 class="text-3xl">{{$errors->first()}}</h4>
