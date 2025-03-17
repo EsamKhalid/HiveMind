@@ -28,6 +28,8 @@ class User extends Authenticatable
         'memorable_information_question',
         'memorable_information',
         'permission_level',
+        'memorable_question',
+        'memorable_answer',
     ];
     
     /** (Default method)

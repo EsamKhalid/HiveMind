@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <head>
-    <script >
-    (function() {
+    <script>
+        (function () {
             // Check for saved theme or system preference and apply it
             const currentTheme = localStorage.getItem("theme");
-            const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
+            const deviceTheme = window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches;
             if (currentTheme === "dark" || (!currentTheme && deviceTheme)) {
                 document.documentElement.classList.add("dark");
             } else {
                 document.documentElement.classList.remove("dark");
             }
         })();
-
         
 function toggleTheme(){
     var currentTheme = localStorage.getItem("theme");
@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded',(e)=>{
    } 
 });
 </script>
-
 </head>
 <body class="transition-none transition-all ease-in-out duration-1000">
     <div class="overflow-hidden">
@@ -58,9 +57,14 @@ document.addEventListener('DOMContentLoaded',(e)=>{
             <div class="flex space-x-4 items-center justify-end">
                 <!-- navigation links -->
                 <!-- links are next to icons -->
-                
                 <ul class="hidden lg:flex-row-reverse space-x-8 text-lg">
-                <li>
+                    <li>
+                        <a
+                            class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer dark:hover:text-amber"
+                            onclick="toggleTheme()"
+                        ></a>
+                    </li>
+                    <li>
                         <a
                             href="{{ route('contact') }}"
                             class="hidden lg:flex hover:text-yellow-100 dark:hover:text-amber"
@@ -104,11 +108,12 @@ document.addEventListener('DOMContentLoaded',(e)=>{
                             class="text-stone-800 dark:text-yellow-100 dark:hover:text-amber transition-colors duration-1000"
                             name="productSearchIcon"
                         >
-                            <i class="fas fa-search fa-xl dark:hover:text-amber"></i>
+                            <i
+                                class="fas fa-search fa-xl dark:hover:text-amber"
+                            ></i>
                         </button>
                     </div>
                 </form>
-                @auth
                 <a
                     href="{{ route('basket.view') }}"
                     class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-yellow-100 "

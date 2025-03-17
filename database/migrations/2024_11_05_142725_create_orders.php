@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('id');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('guest_id')->nullable()->constrained('guests')->onDelete('cascade');
             $table->date('order_date');
             $table->string('order_status'); 
             $table->decimal('total_amount', 10, 2);
             $table->string('payment_method');
             $table->date('payment_date')->nullable();
             $table->decimal('amount_paid', 10, 2)->nullable();
+            $table->integer('confirmation_number');
             $table->timestamps();
         });
     }

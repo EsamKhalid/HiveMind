@@ -8,9 +8,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\SettingsController;
+
 
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\InventoryController;
@@ -19,8 +22,17 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AdminController;
 
 
+
+use App\Http\Controllers\ReviewController;
+
+use App\Http\Controllers\AdminOrderController;
+
+
 use App\Http\Controllers\UserManagementController;
 
+use App\Http\Controllers\EnquiriesController;
+
+use App\Http\Controllers\GuestOrderController;
 
 Route::get('/', function () {
     return view('home');
@@ -97,13 +109,26 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
     Route::get('admin/supplier', [SupplierController::class, 'list'])->name('supplier.list');
     Route::post('admin/supplier', [SupplierController::class, 'addSupplier'])->name('supplier.create');
+    
+    // View and process user orders - Aryan
+    Route::get('adminOrder', [AdminOrderController::class, 'index'])->name('admin.adminOrder');
+    Route::patch('adminOrder/{order}/process', [AdminOrderController::class, 'processOrder'])
+        ->name('admin.orders.update');
+    Route::patch('/admin/orders/processAll', [AdminOrderController::class, 'processAllOrders'])->name('admin.orders.processAll');
+    
+    // View, aprrove or deny return requests - Aryan
+    Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
+    Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
+    Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
+
+    Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
 });
 
 
 
-/**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
- * before or after the request is processed by your controller. Ultimately, it acts as a bridge between request and a response. */
-
+    Route::get('orders/guest/validate', [GuestOrderController::class, 'view'])->name('orders.guest.validate');
+    Route::get('orders/guest/getOrder', [GuestOrderController::class, 'getOrder'])->name('orders.guest.getOrder');
+    Route::get('orders/guest/displayOrder/{confnum}/{surname}', [GuestOrderController::class, 'displayOrder'])->name('orders.guest.displayOrder');
 
 
     Route::get('basket',[BasketController::class, 'view'])->name('basket.view');
@@ -116,7 +141,8 @@ Route::middleware(['admin'])->group(function () {
    Route::post('basket/decreaseQuantity',[BasketController::class,'decreaseQuantity'])->name('basket.decreaseQuantity');
 
    Route::post('basket/add',[BasketController::class, 'addToBasket'])->name('basket.add');
-
+   Route::post('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
+   Route::get('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
 
     //Route::post('/basket/add/{productID}',[BasketController::class, 'addToBasket'])->name('basket.add');
 
@@ -124,10 +150,11 @@ Route::middleware(['admin'])->group(function () {
     Route::get('checkout', [CheckoutController::class, 'view'])->name('checkout.view');  
 
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
-    Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
+    Route::post('checkout/save-guest', [CheckoutController::class, 'storeGuest'])->name('checkout.storeGuest');
+    Route::get('checkout/confirmation/{confNum}', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
-    Route::get('contact', [ContactController::class, 'view'])->name('contact');
+    Route::get('contact', [ContactController::class, 'view'])->name('contact.view');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
     // Routes for Details page - Aryan
@@ -142,9 +169,26 @@ Route::middleware(['admin'])->group(function () {
     // Route for Cancel Order Functionality - Aryan
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 
+    // Route for Password Revocery Functionality - Aryan
+    Route::get('/password/recover', [PasswordResetController::class, 'showRecoveryForm'])->name('password.recover');
+    Route::post('/password/recover', [PasswordResetController::class, 'processRecovery']);
+    Route::post('/password/verify', [PasswordResetController::class, 'verifyAnswer'])->name('password.verifyAnswer');
+    Route::get('/password/resetForm', [PasswordResetController::class, 'resetForm'])->name('password.resetForm');
+    Route::post('/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
+    
+    // Routes to update Memorable information
+    Route::get('/settings/security', [SettingsController::class, 'securityView'])->name('settings.security');
+    Route::post('/settings/security', [SettingsController::class, 'securityUpdate'])->name('settings.security.update');
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+
+
+    Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
+    Route::post('review/storeSiteReview', [ReviewController::class, 'storeSiteReview'])->name('review.storeSiteReview');
+    Route::get('review/productReview/{id}', [ReviewController::class, 'productReview'])->name('review.productReview');
+    Route::post('/review/storeProductReview/{id}', [ReviewController::class, 'storeProductReview'])->name('review.storeProductReview');
+
     
     // NOTE FROM HARRY (15/02/25)
     // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
@@ -154,3 +198,4 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin', [AdminController::class, 'adm'])->name('adm');
 
      
+

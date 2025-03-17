@@ -6,21 +6,27 @@
         <title>Contact Us 🐝</title>
         <link rel="icon" href="/favicon.ico">
     </head>
-
     <body class="transition-none dark:bg-stone-900 duration-1000">
     
         @include('layouts.navbar')
         
         <main class="mb-3">
             @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="bg-red-500 text-white p-4 rounded mb-4 text-center">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            
         </div>
         @endif
+
+         @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4 text-center">
+                {{ session('success') }}
+            </div>
+            @endif
         <!-- title -->
         <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000 w-[69%] lg:w-[50%] mx-auto rounded-lg mt-5 mb-3">
             <h1 class="text-4xl font-bold text-orange-800 dark:text-amber">Get in Touch</h1>
@@ -32,7 +38,7 @@
             <!-- contact details -->
                 <section class="contact-options h-3/4 grid grid-cols-1 md:grid-cols-2 gap-6 py-4 dark:bg-stone-900 transition-all duration-1000 w-[70%] mx-auto">
                     <!-- card 1: contact options -->
-                    <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center transition-all duration-1000">
+                    <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center">
                         <div class="icon text-3xl text-blue-600 mb-4 dark:text-white">📞</div>
                         <h2 class="text-xl font-bold mb-2 dark:text-amber">Contact Us</h2>
                         <p class="text-stone-600 mb-4 dark:text-white">Contact us either via phone or email address.</p>
@@ -47,7 +53,7 @@
 
 
                 <!-- card 2: contact form -->
-                <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center transition-all duration-1000">
+                <div class="card bg-yellow-50 dark:dark:bg-stone-700 p-6 rounded-lg shadow-md text-center">
                     <div class="icon text-3xl text-green-600 mb-4">✉️</div>
                     <h2 class="text-xl font-bold mb-2 dark:text-amber">Online Enquiry</h2>
                     <p class="text-stone-600 mb-4 dark:text-white">Fill out the form below, and we'll get back to you as soon as possible.</p>
@@ -55,17 +61,22 @@
                     <!-- contact form -->
                     <form action="{{ route('contact.store') }}" method="POST" id="contact-us-form">
                         @csrf
-                        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required>
-                        <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required>
-                        <textarea name="enquiry" placeholder="Your Message (max 500 characters)" class="w-full p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" rows="4" required></textarea>
-                        <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-900 dark:hover:text-amber transition-all duration-500">Submit</button>
+                        @if($user != null)
+                        <input type="text" name="name" value="{{$user->first_name}}" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        <input type="email" name="email_address" value="{{$user->email_address}}" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        @else
+                        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        <input type="email" name="email_address" placeholder="Your Email" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        @endif
+                        <textarea name="enquiry" placeholder="Your Message (max 500 characters)" class="w-full p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" rows="4" required></textarea>
+                        <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:underline dark:dark:bg-stone-900 dark:hover:text-amber">Submit</button>
                     </form>
                 </div>
 
             </section>
 
                 <!-- pop-up when user submits an enquiry -->
-                <div class="popup-overlay hidden fixed top-0 left-0 w-full h-full transition-all duration-1000" id="popupOverlay"></div>
+                <div class="popup-overlay hidden fixed top-0 left-0 w-full h-full transition-all" id="popupOverlay"></div>
                     <div class="popup hidden fixed top-10 left-1/2 -translate-x-1/2 bg-white p-5 rounded-lg shadow-lg" id="popup">
                         <span class="close absolute top-1 right-2.5 text-xl cursor-pointer text-stone-800" id="closePopup">&times;</span>
                         <div class="popup-content text-center">

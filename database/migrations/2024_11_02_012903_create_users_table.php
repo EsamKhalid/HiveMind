@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('memorable_information_question');
             $table->string('memorable_information');
             $table->string('permission_level')->default('user');
-            $table->timestamps();
-
-            
+            $table->string('memorable_question');
+            $table->string('memorable_answer');
+            $table->timestamps();    
         });
         //DB::table('users')->insert([['first_name'=> 'test', 'last_name' => 'user', 'email_address' => 'test@user.com', 'phone_number' => '0', 'password' => bcrypt('password')]]);
     }

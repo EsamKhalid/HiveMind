@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Supplier</title>
 </head>
-
 <body class="transition-none dark:bg-stone-900 transition-all duration-1000 w-">
     <header></header>
     @include('layouts.sidebar')
@@ -33,7 +32,8 @@
                         <input type="tel" name="supplier_phone" class="w-1/2 p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required />
                     </div>
 
-                    <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:underline dark:bg-stone-900 dark:hover:text-amber" onclick="{{ route('admin.order') }}">Add Supplier</button>
+
+                    <button type="submit" class="bg-yellow-400 text-white py-2 px-6 rounded-md hover:underline dark:bg-stone-900 dark:hover:text-amber">Add Supplier</button>
                 </form>
 
                 <a href="{{ route('admin.inventory') }}" class="text-lg font-bold text-blue-500 hover:underline dark:text-orange-300 mt-4 block">
