@@ -9,19 +9,19 @@
         <header>@include('layouts.navbar')</header>
         <div class="aboutUsPage w-[80%] lg:w-fit mx-auto">
             <h2
-                class="text-5xl font-semibold tracking-tight sm:text-7xl text-center pt-6"
+                class="text-5xl font-semibold tracking-tight sm:text-7xl text-center pt-6 dark:text-amber"
             >
                 About HiveMind
             </h2>
             <br />
             <p class="text-2xl text-center font-style: italic">
                 By purchasing our products, you are supporting
-                <u>our mission</u> to save the bees.
+                <u class="dark:text-amber font-semibold">our mission</u> to save the bees.
             </p>
             <br />
             <div class="flex justify-center">
                 <img
-                    class="shadow-lg dark:shadow-yellow-300"
+                    class="shadow-lg dark:shadow-amber"
                     src="/Images/beekeeperfamily.jpeg"
                     alt="beekeeper and son"
                 />
@@ -39,7 +39,7 @@
                     the welfare of the bees<br /><br />
                     <div class="flex justify-center ">
                         <img 
-                            class="shadow-lg shadow-yellow-300"
+                            class="shadow-lg dark:shadow-amber"
                             src="/Images/beedaisy.jpg"
                             alt="bee on a daisy" />
                     </div>
@@ -48,8 +48,8 @@
             </div>
             <div class="flex justify-center">
                 <div class="=BeeCharityFacts">
-                    <p class="text-3xl text-center">
-                        <strong>Bee & Charity Facts:</strong>
+                    <p class="text-3xl text-center dark:text-amber">
+                        <strong >Bee & Charity Facts:</strong>
                     </p>
                     <br />
                     <div>
@@ -127,9 +127,9 @@
                             </li>
                             <li>Donate to bee charities. See more below!</li>
                             <br />
-                            <h1 class="text-2xl">
+                            <h1 class="text-2xl mb-1">
                                 For more information,
-                                <u>visit the following charities:</u>
+                                <u class="font-semibold">visit the following charities:</u>
                             </h1>
                             <!-- https://impactful.ninja/best-charities-that-save-the-bees/#:~:text=These%20Are%20the%209%20Best%20Charities%20That%20Help,7%20The%20Bee%20Conservancy%3A%20Save%20The%20Bees%20 -->
                             <a
