@@ -46,10 +46,15 @@
                             name="product_id"
                             value="{{ $product->id }}"
                         />
-                        <button type="submit" class="bg-yellow-400 text-white py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
+                        <button type="submit" class="bg-yellow-400 text-white py-6 px-9 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
                             Add to Basket
                         </button>
                     </form>
+
+                    <!-- need to add backend for wishlist!! -->
+                    <button class="bg-yellow-400 text-white mt-4 py-6 px-8 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
+                        Add to Wishlist
+                    </button>
 
                     <button onclick="OPEN()" class="bg-amber w-1/2 p-2 mt-5">
                         Submit Review

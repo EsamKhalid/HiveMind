@@ -87,6 +87,8 @@ Route::post('signup.signup', [SignupController::class, 'store'])->name('signup.s
 
 Route::get('products',[ProductController::class,'list'])->name('products');
 
+// view wishlist
+Route::get('wishlist.wishlist',[TestController::class,'wishlist'])->name('wishlist');
 
 
 //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
