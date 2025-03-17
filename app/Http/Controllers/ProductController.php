@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
-use App\Models\ProductReviews;
-use App\Models\Users;
 
 class ProductController extends Controller
 {
@@ -66,19 +64,6 @@ class ProductController extends Controller
    public function show($id)
     {
         $product = Products::findOrFail($id);
-        
-        $reviews = ProductReviews::query();
-
-        $reviews = $reviews->where('product_id', '=', $product->id);
-
-        $reviews = $reviews->get();
-
-        $users = Users::all();
-
-        //echo $reviews;
-
-        //$reviews = ProductReviews::all();
-
-        return view('products.show', ['product' => $product], ['reviews' => $reviews], ['users' => $users]); 
+        return view('products.show', ['product' => $product]); 
     }
 }

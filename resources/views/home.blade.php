@@ -13,7 +13,6 @@
         <main>
             <!-- added a backdrop -->
             <section
-
                 class="bg-white dark:bg-stone-800 py-40 bg-cover bg-center dark:bg-image:brightness-[200%]"
                 style="background-image: url('{{asset('../Images/hd bee backdrop lols.jpeg')}}');"
             >
@@ -75,9 +74,8 @@
                                 <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset(
-                                                '../Images/categories/healthcare.png'
-                                            )
+                                            asset('../Images/categories/healthcare.png')
+
                                         }}"
                                         alt="Health"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -100,9 +98,7 @@
                                 <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset(
-                                                '../Images/categories/skincare.png'
-                                            )
+                                            asset('../Images/categories/skincare.png')
                                         }}"
                                         alt="Skincare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -125,11 +121,7 @@
                                 <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                        
-                                            asset(
-                                                '../Images/categories/beauty.png'
-                                            )
-                                            
+                                            asset('../Images/categories/beauty.png')    
                                         }}"
                                         alt="Beauty"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -152,9 +144,8 @@
                                 <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset(
-                                                '../Images/categories/haircare.png'
-                                            )
+                                            asset('../Images/categories/haircare.png')
+
                                         }}"
                                         alt="Haircare"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -177,9 +168,8 @@
                                 <div class="bg-white dark:bg-stone-800 rounded-lg shadow-md">
                                     <img
                                         src="{{
-                                            asset(
-                                                '../Images/categories/hivemind logo.png'
-                                            )
+                                            asset('../Images/categories/hivemind logo.png')
+
                                         }}"
                                         alt="Merchandise"
                                         class="w-full h-64 object-cover rounded-t-lg"
@@ -193,19 +183,9 @@
                                     </div>
                                 </div>
                             </button>
+                            
                         </div>
                     </form>
-                    <div class="flex justify-center mt-5">
-                        <div class="text-2xl">
-                            Made an Order? Click
-                            <a
-                                href="{{ route('orders.guest.validate') }}"
-                                class="text-amber"
-                                >Here</a
-                            >
-                            to track your order
-                        </div>
-                    </div>
                 </div>
             </section>
         </main>

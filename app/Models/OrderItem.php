@@ -26,10 +26,4 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Products::class, 'product_id');
     }
-
-    public function returnItem()
-    {
-    return $this->hasOne(ReturnItem::class, 'order_item_id');
-    }
-
 }

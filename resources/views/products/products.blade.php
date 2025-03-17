@@ -61,18 +61,14 @@
 
             @endif
             <div class="flex justify-center">
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-0 mb-2 mx-auto w-[80%]">
-
                     @foreach($products as $product)
                     <a
                         href="{{route('products.show', $product->id)}}"
                         class="w-fit"
                         ><div class="h-auto hover:scale-110 transition-all duration-500 max-w-3/4 p-5">
                             <img
-                            
                                 class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100 rounded-lg dark:border-yellow-100 dark:border-2"
-
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
                              <h1 class="text-center text-xl mt-5">

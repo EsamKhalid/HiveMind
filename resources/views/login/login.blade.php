@@ -52,12 +52,6 @@
                 />
             </div>
 
-            <div class="mt-2 mb-4">
-                <a href="{{ route('password.recover') }}" class="text-blue-500 hover:underline text-sm">
-                    Forgot password?
-                </a>
-            </div>
-
             <div class="flex items-center justify-between">
                 <button 
                     type="submit" 
