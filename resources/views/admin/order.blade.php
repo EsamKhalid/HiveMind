@@ -7,7 +7,7 @@
     <title>Stock Order</title>
 </head>
 
-<body class="dark:bg-stone-900 transition-all duration-1000 w-screen">
+<body class="dark:bg-stone-900 transition:none transition-all duration-1000 w-screen">
     <header></header>
     @include('layouts.sidebar')
 
@@ -56,6 +56,15 @@
                 </a>
             </div>
         </div>
+        <div>
+            @if(session()->has('error'))
+            <!-- unsuccessful deletion-->
+             {{ session()->get('error') }}
+        </div>
+        @elseif(session()->has('success'))
+        <!-- successful deletion-->
+        {{ session()->get('success') }}
+        @endif
     </main>
 </body>
 

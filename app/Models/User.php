@@ -25,6 +25,8 @@ class User extends Authenticatable
         'email_address',
         'phone_number',
         'password',
+        'memorable_information_question',
+        'memorable_information',
         'permission_level',
         'memorable_question',
         'memorable_answer',

@@ -180,14 +180,16 @@
                                 </button>
                             </div>
                         </div>
+
                         @endif
                     </div>
                 </div>
             </div>
         </div>
-
-            <!--- CHECKOUT BUTTON - LAST MINUTE CODE SO I JUST TOOK THE SIGNUP BUTTON  -->
-        </main>
+    </main>
+    <div class="hidden lg:block">
         @include('layouts.footer')
-    </body>
+    </div>
+</body>
+
 </html>

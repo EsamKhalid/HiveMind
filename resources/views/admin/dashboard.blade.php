@@ -2,19 +2,20 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <title>Dashboard</title>
+        <title>Dashboard 🐝</title>
+        <link rel="icon" href="/favicon.ico">
     </head>
 
-    <body class="bg-white dark:bg-stone-950 flex">
+    <body class="transition-none bg-white dark:bg-stone-950 flex">
         @include('layouts.sidebar')
         <div
             id="notifications"
             class="mx-auto mb-auto flex-col w-[80%] mt-[4%]"
         >
             <p
-                class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"
+                class="text-4xl lg:text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"
             >
-                <i class="fa-solid fa-inbox text-7xl mr-4 my-auto"></i
+                <i class="fa-solid fa-inbox mr-4 my-auto"></i
                 >NOTIFICATIONS
             </p>
             <div

@@ -3,7 +3,7 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
+    <body class="transition-none">
         <header></header>
         @include('layouts.navbar')
 
@@ -37,5 +37,5 @@
         </main>
 
         @include('layouts.footer')
-    </body>
+    </body class="transition-none >
 </html>

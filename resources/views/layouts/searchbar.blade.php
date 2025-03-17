@@ -4,7 +4,7 @@
         name="search"
         id="SEARCH-IO"
         placeholder="Search"
-        class="absolute right-20 w-0 min-w-0 p-0 opacity-0 transition-all duration-300 ease-in-out bg-white text-gray-800 rounded-full shadow-lg focus:outline-none"
+        class="absolute left-20 w-0 min-w-0 p-0 opacity-0 transition-all duration-300 ease-in-out bg-white text-gray-800 rounded-full shadow-lg focus:outline-none"
         oninput="ADJUST_SEARCH_WIDTH()"
     />
 
@@ -36,7 +36,7 @@
         const SEARCH_IO = document.getElementById('SEARCH-IO');
         const LENGTH = SEARCH_IO.value.length;
         const BASE_WIDTH = 150;
-        const MAX = 550;
+        const MAX = 0.4 * window.visualViewport.width;
 
         let NEW_WIDTH = BASE_WIDTH + LENGTH * 8;
         NEW_WIDTH = Math.min(NEW_WIDTH, MAX);
