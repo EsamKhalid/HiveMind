@@ -9,18 +9,18 @@
 
         <main class="flex justify-center min-h-screen bg-white dark:bg-stone-950 transition-colors duration-1000">
             <div
-                class="bg-yellow-100 dark:bg-stone-600 border dark:border-none p-16 rounded-lg shadow-lg w-2/3 min-w-4/5 lg:max-w-6xl  mt-[10%] max-h-fit"
+                class="bg-yellow-100 dark:bg-stone-600 border dark:border-none p-16 rounded-lg shadow-lg w-2/3 min-w-4/5 lg:max-w-6xl  my-[10%] max-h-fit"
             >
                 <!-- want to add customer's name when they log in -->
                 <h1
-                    class="text-6xl font-bold text-orange-950 dark:text-amber pt-10 mb-20 "
+                    class="text-4xl lg:text-6xl font-bold text-orange-950 dark:text-amber pt-10 mb-20"
                 >
-                    Hi {{ ucfirst($user->first_name)}}
+                    Hi {{  (strlen($user->first_name) <= 16) ? ucfirst(strtolower(substr($user->first_name,0,16))) . '!' : ucfirst(strtolower(substr($user->first_name,0,16))) . '...'}} 
                 </h1>
 
                 <div class="flex justify-between flex-col lg:flex-row">
                     <!-- buttons for customer to easily access once logged in -->
-                    <div class="flex flex-col space-y-7 lg:space-y-4 lg:mr-5 text-3xl lg:text-lg">
+                    <div class="flex flex-col space-y-7 lg:space-y-4 lg:mr-5 text-xl lg:text-lg">
                         <button
                             class="bg-yellow-600 dark:bg-stone-500 text-white px-6 py-3 rounded-md hover:bg-yellow-700 dark:hover:bg-stone-700"
                         >
@@ -50,25 +50,25 @@
                     <div
                         class="border bg-yellow-50 p-6 rounded-lg shadow-md text-center "
                     >
-                        <ul class="space-y-8 lg:space-y-4 text-orange-950 text-3xl lg:text-lg">
-                            <li><a class="hover:bg-stone-300 px-10 py-2" href="{{ route('orders') }}">Orders</a></li>
+                        <ul class="space-y-8 lg:space-y-4 text-orange-950 text-xl lg:text-lg">
+                            <li><a class="hover:bg-stone-300 lg:px-10 lg:py-2" href="{{ route('orders') }}">Orders</a></li>
                             <!-- these pages aren't implemented yet, redirects to products page for now -->
                             <li>
-                                <a class="hover:bg-stone-300 px-10 py-2" href="{{ route('user.details') }}"
+                                <a class="hover:bg-stone-300 lg:px-10 lg:py-2" href="{{ route('user.details') }}"
                                     >Details</a
                                 >
                             </li>
                             <li>
-                                <a class="hover:bg-stone-300 px-5 py-2" href="{{ route('terms') }}"
+                                <a class="hover:bg-stone-300 lg:px-5 lg:py-2" href="{{ route('terms') }}"
                                     >Terms & Conditions</a
                                 >
                             </li>
                             <li>
-                                <a class="hover:bg-stone-300 px-10 py-2" href="{{ route('user.settings') }}"
+                                <a class="hover:bg-stone-300 lg:px-10 lg:py-2" href="{{ route('user.settings') }}"
                                     >Settings</a
                                 >
                             </li>
-                            <li><a class="hover:bg-stone-300 px-10 py-2" href="{{ route('logout') }}">Log out</a></li>
+                            <li><a class="hover:bg-stone-300 lg:px-10 lg:py-2" href="{{ route('logout') }}">Log out</a></li>
                         </ul>
                     </div>
                 </div>
