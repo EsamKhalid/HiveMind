@@ -22,6 +22,7 @@
             height: 40%;
             pointer-events: none;
             border-radius: 8px;
+            z-index: 6;
         }
 
         .img-magnifier-container:hover img,
@@ -63,29 +64,16 @@
                             name="product_id"
                             value="{{ $product->id }}"
                         />
-                        <button type="submit" class="bg-yellow-400 text-white py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
+                        <button type="submit" class="bg-yellow-400 text-black  py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
                             Add to Basket
                         </button>
                     </form>
 
-                    <button onclick="OPEN()" class="bg-amber w-1/2 p-2 mt-5">
+                    <button onclick="OPEN()" class="text-black bg-amber w-1/2 p-2 mt-5">
                         Submit Review
                     </button>
 
                 </div>
-                <h1 class="text-3xl pb-4">£{{ $product->price }}</h1>
-                <p class="text-left pb-4">
-                    {{ $product->description }}
-                </p>
-
-                <form action="{{ route('basket.add') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}" />
-                    <button type="submit"
-                        class="bg-yellow-400 text-white py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
-                        Add to Basket
-                    </button>
-                </form>
             </div>
         </div>
     </div>
