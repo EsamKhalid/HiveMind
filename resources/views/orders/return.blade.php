@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request a Return</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="bg-gray-100 min-h-screen">
     @include('layouts.navbar')
 
@@ -26,8 +28,8 @@
                 <div class="mb-4">
                     <input type="checkbox" name="items[]" value="{{ $item->id }}" id="item-{{ $item->id }}">
                     <label for="item-{{ $item->id }}" class="ml-2">
-                        {{ $item->products->product_name }} 
-                        - Quantity: {{ $item->quantity }} 
+                        {{ $item->products->product_name }}
+                        - Quantity: {{ $item->quantity }}
                         - Total Price: £{{ number_format($item->products->price * $item->quantity, 2) }}
                     </label>
                 </div>
@@ -48,11 +50,8 @@
             </select>
 
             <h2 class="font-semibold mt-6 mb-4">Comments (Optional)</h2>
-            <textarea 
-                name="comments" 
-                rows="4" 
-                class="w-full border border-gray-300 rounded p-2">
-            </textarea>
+            <textarea name="comments" rows="4" class="w-full border border-gray-300 rounded p-2"></textarea>
+
 
             <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded mt-6 mr-2 hover:bg-blue-600">
                 Request Return
@@ -78,4 +77,5 @@
     </script>
 
 </body>
+
 </html>

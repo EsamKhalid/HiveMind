@@ -6,10 +6,10 @@
         <title>Admin - User Orders</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-gray-200 dark:bg-stone-900 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
+    <body class="min-h-screen bg-gray-200 dark:bg-stone-950 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
         @include('layouts.navbar')
 
-        <header class="bg-gradient-to- pt-4 pb-8 shadow-md border dark:border-none">
+        <header class="bg-gradient-to- bg-gray-200 dark:bg-stone-900 pt-4 pb-8 shadow-md border dark:border-none">
             <a
                 href="{{ route('account') }}"
                 class="fas fa-arrow-left fa-2x pl-4 dark:text-amber"
@@ -35,7 +35,7 @@
             <section class="max-w-7xl mx-auto p-6">
                 @if ($orders->isEmpty())
                 <div class="text-center mt-10">
-                    <p class="text-gray-600 dark:text-yellow-200 text-lg transition-colours duration-1000">No orders found.</p>
+                    <p class="text-gray-600 dark:text-yellow-400 text-lg transition-colours duration-1000">No orders found.</p>
                 </div>
                 @else
 
@@ -51,7 +51,7 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 dark:text-yellow-200">
                     @foreach ($orders as $order)
-                    <div class="bg-white dark:bg-stone-600 shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg mb-[10%] transition-colours duration-1000">
+                    <div class="bg-white dark:bg-stone-800 shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg mb-[10%] transition-colours duration-1000">
                         <h3 class="mb-4 text-2xl font-bold text-grey-800">Order ID #{{ $order->id }}</h3>
                         @if ($order->user == null)
                         <p class="mb-2"><strong>Guest:</strong> {{ $order->guest->email_address }}</p>
@@ -84,7 +84,7 @@
                         <ul>
                             @foreach ($order->orderItems as $item)
                             <li class="mb-2">
-                                <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold text-stone-900 dark:text-yellow-400 transition-colours duration-1000">
+                                <a href="{{ route('products.show', $item->products->id) }}" class="hover:underline font-semibold">
                                         {{ $item->products->product_name }}
                                 </a>
                                 @if ($item->returnItem && $item->order->order_status === 'Return Approved')

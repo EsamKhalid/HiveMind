@@ -4,7 +4,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Your account</title>
     </head>
-    <body>
+    <body class="bg-gray-100 dark:bg-stone-950 min-h-screen transition-colours duration-1000">
         @include('layouts.navbar')
         <div class="flex justify-center">
             @if($errors->any())
@@ -23,10 +23,10 @@
                 </p>
             </div>
         </header>
-        <main class="flex justify-center items-center min-h-screen">
-            <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
+        <main class="flex justify-center items-center max-h-screen">
+            <div class="bg-gray-200 dark:bg-stone-800 shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg text-stone-950 dark:text-yellow-200">
 
-                        <div class="text-gray-700">
+                        <div>
                             <p class="mb-2">
                                 <strong>Confirmation Number: </strong>
                                 {{ $order->confirmation_number }}
@@ -72,7 +72,7 @@
                                 @foreach ($order->orderItems as $item)
                                 <li class="mb-2">
 
-                                    <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold">
+                                    <a href="{{ route('products.show', $item->products->id) }}" class="hover:underline font-semibold">
                                         {{ $item->products->product_name }}
                                     </a>
                                     @if ($item->returnItem && $item->order->order_status === 'Return Approved')
@@ -84,8 +84,9 @@
 
                                     Price: £{{ number_format($item->products->price, 2) }}
                                     <br />
+                                    <br />
                                     <a
-                                        class="rounded bg-amber p-1"
+                                        class="rounded text-stone-950 dark:text-white bg-cyan-500 hover:underline p-1"
                                         href="{{
                                             route('review.productReview', $item->products->id)
                                         }}"
