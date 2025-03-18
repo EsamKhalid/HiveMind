@@ -10,15 +10,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 </head>
 
-<body class="transition-none bg-white dark:bg-stone-900 w-full">
+<body class="transition-none bg-stone-200 dark:bg-stone-900 w-full">
     @include('layouts.sidebar')
-    <div class="relative text-center mt-24 h-48">
-        <h2
-            class="absolute inset-0 w-full text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-gray-300 dark:text-yellow-400 dark:opacity-80 opacity-90 pointer-events-none">
-            INVENTORY
-        </h2>
-
-    </div>
+    <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Inventory</h1>
+            <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage all products in our Warehouses.</p>
+        </div>
+    </header>
     <p class="text-white dark:text-amber mx-auto text-4xl mb-3">{{ $category != 'none' ? ucfirst($category) : '' }}</p>
     <div
         class="flex flex-row-reverse justify-start align-middle lg:flex-col top-0 bg-stone-200 dark:bg-stone-950 z-8 py-4">

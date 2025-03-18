@@ -7,18 +7,22 @@
 
     </head>
 
-    <body class="transition-none bg-white dark:bg-stone-950 flex w-[80%] mx-auto">
+    <body class="transition-none bg-white dark:bg-stone-950 flex w-full mx-auto">
         @include('layouts.sidebar') 
 
+        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">User Management</h1>
+                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage all users.</p>
+            </div>
+        </header>
+
         <div class="flex justify-center overflow-x-auto w-full">
-            <div class="w-full">
-                <p class="text-3xl lg:text-6xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md my-10 w-full text-nowrap">
-                    <i class="fa-solid fa-sitemap  mr-4 my-auto"></i>
-                    Manage Users
-                </p>  
+            <div class="w-[80%]">
+                
                 
                 <!-- using a table to display user records -->
-                <table class="w-full border-collapse border border-gray-300">
+                <table class="w-full border-collapse border border-gray-300 my-10">
                     <thead class="bg-gray-200">
                         <tr>
                             <th class="p-1  text-sm lg:text-2xl">User ID</th>

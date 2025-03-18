@@ -8,26 +8,24 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100 dark:bg-stone-950 min-h-screen transition-colors duration-1000">
-    @include('layouts.sidebar')
+<body class="bg-stone-200 dark:bg-stone-950 min-h-screen transition-colors duration-1000">
+    <body class="min-h-screen bg-stone-200 dark:bg-stone-950 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
+        @include('layouts.sidebar')
 
-    <header class="bg-white dark:bg-stone-900 shadow-md py-6 transition-colors duration-1000">
-        <div class="max-w-7xl mx-auto text-center">
-            <h1 class="text-3xl font-bold text-stone-950 dark:text-yellow-400 transition-colors duration-1000">User Enquiries</h1>
-        </div>
-    </header>
+        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">User Enquiries</h1>
+                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage Enquiries from Users and Guests.</p>
+            </div>
+        </header>
 
-    <main class="max-w-4xl mx-auto mt-6 mb-12 p-6 bg-white dark:bg-stone-800 shadow-lg rounded-lg transition-colors duration-1000">
+    <main class="min-w-4xl mx-auto mt-6 mb-12 p-6 bg-white dark:bg-stone-800 shadow-lg rounded-lg transition-colors duration-1000">
         <div class="flex justify-center">
             @if($errors->any())
                 <h4 class="text-3xl text-red-500">{{$errors->first()}}</h4>
             @endif
         </div>
 
-        <p class="text-7xl text-white p-5 bg-yellow-400 dark:bg-stone-400 dark:bg-opacity-40 dark:text-yellow-200 rounded-md my-10">
-            <i class="fa-solid fa-question-circle text-7xl mr-4 my-auto"></i>
-            User Enquiries
-        </p>  
 
         <form action="{{ route('admin.userEnquiries') }}" method="GET" class="w-full mr-3 mb-3">
             <input type="text" name="search" placeholder="search by email" value="{{ request('email_address') }}" class="rounded w-full p-2 border border-gray-300 dark:bg-stone-700 dark:text-yellow-200">
@@ -53,13 +51,13 @@
             <tbody>
                 @foreach($enquiries as $enq)
                     <tr>
-                        <td class="py-2 px-4 border-b dark:border-stone-700">{{ $enq->name }}</td>
-                        <td class="py-2 px-4 border-b dark:border-stone-700">{{ $enq->email_address }}</td>
-                        <td class="py-2 px-4 border-b dark:border-stone-700">{{ $enq->enquiry }}</td>
+                        <td class="py-2 px-4 border-b dark:border-stone-700 dark:bg-stone-700 dark:text-yellow-200">{{ $enq->name }}</td>
+                        <td class="py-2 px-4 border-b dark:border-stone-700 dark:bg-stone-700 dark:text-yellow-200">{{ $enq->email_address }}</td>
+                        <td class="py-2 px-4 border-b dark:border-stone-700 dark:bg-stone-700 dark:text-yellow-200">{{ $enq->enquiry }}</td>
                         @if($enq->user_id != null)
-                            <td class="py-2 px-4 border-b dark:border-stone-700">Registered</td>
+                            <td class="py-2 px-4 border-b dark:border-stone-700 dark:bg-stone-700 dark:text-yellow-200">Registered</td>
                         @else
-                            <td class="py-2 px-4 border-b dark:border-stone-700">Guest</td>
+                            <td class="py-2 px-4 border-b dark:border-stone-700 dark:bg-stone-700 dark:text-yellow-200">Guest</td>
                         @endif
                     </tr>
                 @endforeach

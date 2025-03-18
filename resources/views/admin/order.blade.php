@@ -7,9 +7,14 @@
     <title>Stock Order</title>
 </head>
 
-<body class="dark:bg-stone-900 transition:none transition-all duration-1000 w-screen">
-    <header></header>
+<body class="dark:bg-stone-900 bg-stone-200 transition:none transition-all duration-1000 w-screen">
     @include('layouts.sidebar')
+    <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Stock Order Page</h1>
+            <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Reorder stock from suppliers here.</p>
+        </div>
+    </header>
 
     <main>
         <div class="flex justify-center m-4">

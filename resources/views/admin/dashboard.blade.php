@@ -8,18 +8,18 @@
 
     <body class="transition-none bg-white dark:bg-stone-950 flex">
         @include('layouts.sidebar')
+        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Notifications</h1>
+                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Notifications Dashboard</p>
+            </div>
+        </header>
         <div
             id="notifications"
-            class="mx-auto mb-auto flex-col w-[80%] mt-[4%]"
+            class="mx-auto mb-auto flex-col w-[80%] mt-[1%]"
         >
-            <p
-                class="text-4xl lg:text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"
-            >
-                <i class="fa-solid fa-inbox mr-4 my-auto"></i
-                >NOTIFICATIONS
-            </p>
             <div
-                class="bg-yellow-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md my-5 mx-5"
+                class="bg-yellow-100 dark:bg-red-100 border-t-4 border-yellow-800 dark:border-red-700 rounded-b text-yellow-900 dark:text-red-900 px-4 py-3 shadow-md"
             >
                 <div class="flex">
                     <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
