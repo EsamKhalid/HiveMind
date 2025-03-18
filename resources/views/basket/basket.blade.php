@@ -214,9 +214,7 @@
             </div>
         </div>
     </main>
-    <div class="hidden lg:block">
         @include('layouts.footer')
-    </div>
 </body>
 
 </html>

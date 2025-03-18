@@ -83,7 +83,7 @@
                             </div>
                             <div class="mb-4">
                                 <h3 class="text-xl font-semibold text-yellow-600 dark:text-yellow-200">Contact Us</h3>
-                                <p class="text-lg">If you have any questions or concerns, please contact us using our <a href="{{ route('contact') }}" class="text-lg text-blue-500 dark:text-amber hover:underline">contact form</a></p>
+                                <p class="text-lg">If you have any questions or concerns, please contact us using our <a href="{{ route('contact.view') }}" class="text-lg text-blue-500 dark:text-amber hover:underline">contact form</a></p>
                             </div>
                         </div>
                     </div>
