@@ -65,7 +65,7 @@
                         <a
                             class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.dashboard') }}"
-                            ><p>Notifications</p>
+                            ><p>Dashboard</p>
                             <i
                                 class="fa-solid fa-inbox text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
                             ></i
