@@ -64,8 +64,6 @@
             </tbody>
         </table>
     </main>
-
-    @include('layouts.footer')
 </body>
 
 </html>
