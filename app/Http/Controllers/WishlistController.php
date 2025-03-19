@@ -14,6 +14,12 @@ class WishlistController extends Controller
 
     public function view() {
 
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
         $wishlist = $this->getWishlist();
 
         $wishlistItems = WishlistItems::where('wishlist_id', $wishlist->id)
@@ -25,7 +31,8 @@ class WishlistController extends Controller
                 'products.price'
             )->get();
 
-        return view('wishlist', [
+        return view('wishlist.view', [
+            'wishlistItems' => $wishlistItems,
             'wishlist' => $wishlist,
         ]);
     }
@@ -37,14 +44,11 @@ class WishlistController extends Controller
         //Check if user is logged in
         $user = Auth::user();
 
-        //If the user is logged in, fetch users' wishlist from database.
-        if ($user) {
-            $wishlist = Wishlist::where('user_id', $user->id)->first();
-        }
-
-        else {
+        if (!$user) {
             return redirect()->route('login');
         }
+
+        $wishlist = Wishlist::where('user_id', $user->id)->first();
 
         if (!$wishlist) {
             $wishlist = Wishlist::Create([
