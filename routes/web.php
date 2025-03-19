@@ -144,7 +144,6 @@ Route::middleware(['admin'])->group(function () {
    Route::post('basket/decreaseQuantity',[BasketController::class,'decreaseQuantity'])->name('basket.decreaseQuantity');
 
    Route::post('basket/add',[BasketController::class, 'addToBasket'])->name('basket.add');
-   Route::post('basket/add',[BasketController::class, 'addFromWishlist'])->name('basket.addwl');
    Route::post('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
    Route::get('basket/transfer',[BasketController::class, 'transferBasket'])->name('basket.transfer');
 
