@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+@php
+    $user = Auth::user();
+
+    if ($user) { 
+        $address = \App\Models\Addresses::where('user_id', $user->id)->first();
+    } else {
+        $guestID = session()->get('guest_id');
+        $guest = \App\Models\Guest::where('id', $guestID)->first();
+        $address = \App\Models\Addresses::where('guest_id', $guestID)->first();
+        }
+@endphp
 <form action="{{ route('checkout.storeAddress') }}" method="post"
                             class="flex flex-col justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg">
                             @csrf

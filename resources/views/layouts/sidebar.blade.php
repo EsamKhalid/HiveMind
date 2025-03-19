@@ -40,7 +40,7 @@
             <i id="cross" class="fa-solid fa-x hidden"></i>
         </label>
         <div
-            class="fixed top-0 left-0 z-1 w-[80%] lg:w-[400px] md:w-[35%] h-full transition-all ease-in-out duration-1000 transform -translate-x-full bg-white dark:bg-stone-950 shadow-lg dark:shadow-md dark:shadow-gray-300 peer-checked:translate-x-0"
+            class="fixed top-0 left-0 z-1 w-[80%] lg:w-[400px] md:w-[35%] h-full transition-all ease-in-out duration-1000 transform -translate-x-full bg-white dark:bg-stone-950 shadow-lg dark:shadow-md  peer-checked:translate-x-0"
         >
             <div class="px-6 py-4 h-full">
                 <div class="flex justify-start align-middle mb-3 lg:mb-4">
@@ -106,7 +106,7 @@
                             href="{{ route('admin.adminOrder') }}"
                             ><p>Orders and Returns</p>
                             <i
-                                class="fa-solid fa-right-left  text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
+                                class="fa-solid fa-box text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
                             ></i
                         ></a>
                         <a
@@ -114,7 +114,7 @@
                             href="{{ route('admin.userEnquiries') }}"
                             ><p>User Enquiries</p>
                             <i
-                                class="fa-solid fa-user  text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
+                                class="fa-solid fa-message text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
                             ></i
                         ></a>
                     </div>

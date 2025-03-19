@@ -19,7 +19,7 @@
             </div>
         </header>
 
-    <main class="min-w-4xl mx-auto mt-6 mb-12 p-6 bg-white dark:bg-stone-800 shadow-lg rounded-lg transition-colors duration-1000">
+    <main class="min-w-4xl w-[80%] mx-auto mt-6 mb-12 p-6 bg-white dark:bg-stone-800 shadow-lg rounded-lg transition-colors duration-1000">
         <div class="flex justify-center">
             @if($errors->any())
                 <h4 class="text-3xl text-red-500">{{$errors->first()}}</h4>
@@ -39,7 +39,7 @@
             </select>   
         </form>
 
-        <table class="min-w-full bg-white dark:bg-stone-800 border border-gray-300 dark:border-stone-700">
+        <table class="min-w-full w-[80%] bg-white dark:bg-stone-800 border border-gray-300 dark:border-stone-700">
             <thead>
                 <tr>
                     <th class="py-2 px-4 border-b dark:border-stone-700 dark:bg-stone-700 dark:text-yellow-200">Name</th>
