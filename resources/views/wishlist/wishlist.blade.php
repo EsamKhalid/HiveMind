@@ -51,12 +51,19 @@
                                 <p class="text-base xl:text-lg text-center h-fit">{{$wishlistItem->product_name}}</p>
                                 <div class="flex justify-center items-center p-2">
 
+                                    <form action="{{ route('basket.add') }}" method="post" class="ml-4">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $wishlistItem->product_id }}" />
+                                        <button class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber"
+                                            type="submit">Add to Basket</button>
+                                    </form>
                                     <form action="{{ route('wishlist.remove') }}" method="post" class="ml-4">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $wishlistItem->product_id }}" />
                                         <button class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md hover:text-amber"
-                                            type="submit">remove</button>
+                                            type="submit">Remove</button>
                                     </form>
+
                                 </div>
                             </div>
                         @endforeach
