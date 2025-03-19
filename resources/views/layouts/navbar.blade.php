@@ -110,7 +110,7 @@
                 ></a>
 
                 <a
-                    href="{{ route('wishlist') }}"
+                    href="{{ route('wishlist.view') }}"
                     class="fas fa-heart fa-xl dark:hover:text-amber hover:text-gray-200"
                 ></a>
 
