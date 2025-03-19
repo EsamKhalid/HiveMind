@@ -31,7 +31,7 @@ class WishlistController extends Controller
                 'products.price'
             )->get();
 
-        return view('wishlist.view', [
+        return view('wishlist.wishlist', [
             'wishlistItems' => $wishlistItems,
             'wishlist' => $wishlist,
         ]);
