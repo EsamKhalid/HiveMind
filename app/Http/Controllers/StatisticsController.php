@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Users;
+use App\Models\Guest;
+use App\Models\Order;
 
 class StatisticsController extends Controller
 {
     //
     public function view(){
-        return view('admin.statistics');
+        $registeredUsers = Users::count();
+        $unregisteredUsers = Guest::count();
+        $numberOfOrders = Order::count();
+        $revenue = 0;
+        $orders = Order::all();
+        foreach($orders as $ord){
+            $revenue = $revenue + $ord->total_amount;
+        }
+        return view('admin.statistics', compact('unregisteredUsers', 'registeredUsers', 'numberOfOrders', 'revenue'));
     }
 }
 

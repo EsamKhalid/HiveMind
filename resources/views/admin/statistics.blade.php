@@ -17,8 +17,10 @@
             </p>
         </div>
 
-        <div>
-            <canvas id="myChart"></canvas>
+        <div class="flex justify-center">
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -29,29 +31,16 @@
             new Chart(ctx, {
                 type: "pie",
                 data: {
-                    labels: [
-                        "Red",
-                        "Blue",
-                        "Yellow",
-                        "Green",
-                        "Purple",
-                        "Orange",
-                    ],
+                    labels: ["Registered", "Unregistered"],
                     datasets: [
                         {
-                            label: "# of Votes",
-                            data: [12, 19, 3, 5, 2, 3],
+                            label: "# of Users",
+                            data: [{{$registeredUsers}}, {{$unregisteredUsers}}],
                             borderWidth: 1,
                         },
                     ],
                 },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                        },
-                    },
-                },
+                options: {},
             });
         </script>
     </body>
