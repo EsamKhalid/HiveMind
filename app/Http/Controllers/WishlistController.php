@@ -19,7 +19,7 @@ class WishlistController extends Controller
         $wishlsitItems = WishlistItems::where('wishlist_id', $wishlist->id)
             ->join('products', 'wishlist_items.product_id', '=', 'products.id')
             ->select(
-                'wishlist_items.*', // Select all basket item fields
+                'wishlist_items.*', // Select all wishlist item fields
                 'products.product_name',
                 'products.description',
                 'products.price'
@@ -54,4 +54,38 @@ class WishlistController extends Controller
 
         return $wishlist;
     }
+
+    public function addToWishlist(Request $request)
+    {
+
+        $wishlist = $this->getWishlist();
+        $productId = $request->input('product_id');
+
+        $wishlistItems = WishlistItems::where('wishlist_id', $wishlist->id)
+            ->join('products', 'wishlist_items.product_id', '=', 'products.id')
+            ->select(
+                'wishlist_items.*', 
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+
+        $wishlistItem = $wishlistItems->where('product_id', $productId)->first();
+
+        if (is_null($wishlistItem)) {
+            WishlistItems::Create([
+                'wishlist_id' => $wishlist->id,
+                'product_id' => $productId,
+                'quantity' => 1
+            ]);
+        } else {
+            $wishlistItem->quantity = $wishlistItem->quantity + 1;
+            $wishlistItem->save();
+        }
+
+        return redirect()->route('wishlist.view');
+
+    }
+
 }
