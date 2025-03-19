@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WishlistItems;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ use App\Models\Users;
 use App\Models\Guest;
 
 use App\Models\Addresses;
+use App\Models\Wishlist;
 
 class BasketController extends Controller
 {
@@ -299,6 +301,52 @@ class BasketController extends Controller
 
     }
 
+    public function addFromWishlist(Request $request)
+    {
+
+        $basket = $this->getBasket();
+        $productId = $request->input('product_id');
+
+        $basketItems = BasketItems::where('basket_id', $basket->id)
+            ->join('products', 'basket_items.product_id', '=', 'products.id')
+            ->select(
+                'basket_items.*', // Select all basket item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+
+        $basketItem = $basketItems->where('product_id', $productId)->first();
+
+        if (is_null($basketItem)) {
+            BasketItems::Create([
+                'basket_id' => $basket->id,
+                'product_id' => $productId,
+                'quantity' => 1
+            ]);
+        } else {
+            $basketItem->quantity = $basketItem->quantity + 1;
+            $basketItem->save();
+        }
+
+        $basket->update([
+            'total_amount' => $this->basketTotal()
+        ]);
+
+        $user = Auth::user();
+        $wishlist = Wishlist::where('user_id', $user->id)->first();
+
+        if ($wishlist) {
+            WishlistItems::where('wishlist_id', $wishlist->id)
+                ->where('product_id', $productId)
+                ->delete();
+        }
+
+        return redirect()->route('basket.view');
+
+    }
+
     public function basketTotal()
     {
 
@@ -351,11 +399,11 @@ class BasketController extends Controller
                     'user_id' => $user->id,
                     'guest_id' => null,
                 ]);
-            session()->forget('guest_id');
-            return redirect()->route('basket.view');
-            
-        } else
-            return redirect()->route('basket.view');
+                session()->forget('guest_id');
+                return redirect()->route('basket.view');
+
+            } else
+                return redirect()->route('basket.view');
         }
     }
 
