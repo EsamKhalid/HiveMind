@@ -17,7 +17,7 @@
             </p>
             <p>{{ $avgOrderValue }}</p>
             <p>R{{ $noReturnedOrders }}</p>
-            £{{ $inventoryValue }}
+            £{{ $avgProductRating }}
         </div>
 
         <div class="flex justify-center">

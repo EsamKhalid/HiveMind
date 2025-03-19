@@ -7,6 +7,9 @@ use App\Models\Users;
 use App\Models\Guest;
 use App\Models\Order;
 use App\Models\Products;
+use App\Models\Enquiries;
+use App\Models\ProductReviews;
+use App\Models\SiteReviews;
 
 class StatisticsController extends Controller
 {
@@ -31,9 +34,44 @@ class StatisticsController extends Controller
             $inventoryValue = $inventoryValue + ($product->price * $product->stock_level);
         }
         
+        $returnRate =  number_format((float)$noReturnedOrders / count($orders), 2, '.', '') * 10;
+
+        $noEnquiries = Enquiries::count();
+
+        $noProdReviews = ProductReviews::count();
+        $noSiteReviews = SiteReviews::count();
+
+        $productReviews = ProductReviews::all();
+        $siteReviews = SiteReviews::all();
+
+        $avgSiteRating = 0;
+        $avgProductRating = 0;
         
+        foreach($productReviews as $review){
+            $avgProductRating = $avgProductRating + $review->rating;
+        }        
+
+         if($noProdReviews > 0){
+              $avgProductRating = $avgProductRating / $noProdReviews;
+        }
+        else{
+            $avgProductRating = 0;
+        }
+
+       
+
+        foreach($siteReviews as $review){
+            $avgSiteRating = $avgSiteRating + $review->rating;
+        }
+
+        if($noSiteReviews > 0){
+             $avgSiteRating = $avgSiteRating / $noSiteReviews;
+        }
+        else{
+            $avgSiteRating = 0;
+        }
         
-        return view('admin.statistics', compact('unregisteredUsers', 'registeredUsers', 'numberOfOrders', 'revenue', 'avgOrderValue', 'noReturnedOrders', 'inventoryValue'));
+        return view('admin.statistics', compact('unregisteredUsers', 'registeredUsers', 'numberOfOrders', 'revenue', 'avgOrderValue', 'noReturnedOrders', 'inventoryValue', 'returnRate', 'noEnquiries', 'noProdReviews','noSiteReviews', 'avgProductRating', 'avgSiteRating'));
     }
 }
 
