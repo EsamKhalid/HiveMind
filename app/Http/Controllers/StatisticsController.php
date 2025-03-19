@@ -11,3 +11,39 @@ class StatisticsController extends Controller
         return view('admin.statistics');
     }
 }
+
+// Total number of users
+// Number of new users in the last month
+// Active users vs. inactive users
+// User growth rate
+// Product Statistics
+
+// Total number of products
+// Number of products added in the last month
+// Most popular products (based on sales or views)
+// Products low in stock
+// Sales Statistics
+
+// Total sales revenue
+// Sales revenue in the last month
+// Number of orders
+// Average order value
+// Sales by product category
+// Order Statistics
+
+// Total number of orders
+// Number of orders in the last month
+// Order fulfillment rate
+// Number of returned orders
+// Inventory Statistics
+
+// Total inventory value
+// Number of items in stock
+// Number of items out of stock
+// Inventory turnover rate
+// Customer Support Statistics
+
+// Number of support tickets
+// Average response time
+// Number of resolved tickets
+// Customer satisfaction rate
