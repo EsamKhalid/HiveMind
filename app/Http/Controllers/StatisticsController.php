@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Guest;
 use App\Models\Order;
+use App\Models\Products;
 
 class StatisticsController extends Controller
 {
@@ -19,7 +20,20 @@ class StatisticsController extends Controller
         foreach($orders as $ord){
             $revenue = $revenue + $ord->total_amount;
         }
-        return view('admin.statistics', compact('unregisteredUsers', 'registeredUsers', 'numberOfOrders', 'revenue'));
+        $avgOrderValue = $revenue / count($orders);
+        $avgOrderValue = number_format((float)$avgOrderValue, 2, '.', '');
+        $noReturnedOrders = Order::where('order_status', "Return Approved")->count();
+        
+        $inventoryValue = 0;
+
+        $products = Products::all();
+        foreach($products as $product){
+            $inventoryValue = $inventoryValue + ($product->price * $product->stock_level);
+        }
+        
+        
+        
+        return view('admin.statistics', compact('unregisteredUsers', 'registeredUsers', 'numberOfOrders', 'revenue', 'avgOrderValue', 'noReturnedOrders', 'inventoryValue'));
     }
 }
 

@@ -15,6 +15,9 @@
                 <i class="fa-solid fa-chart-line text-7xl mr-4 my-auto"></i>
                 Statistics
             </p>
+            <p>{{ $avgOrderValue }}</p>
+            <p>R{{ $noReturnedOrders }}</p>
+            £{{ $inventoryValue }}
         </div>
 
         <div class="flex justify-center">
