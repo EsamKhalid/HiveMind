@@ -88,4 +88,27 @@ class WishlistController extends Controller
 
     }
 
+    public function removeFromWishlist(Request $request)
+    {
+
+        $newQuantity = $request->input('quantity');
+        $productId = $request->input('product_id');
+        $wishlist = $this->getWishlist();
+
+        $wishlistItems = WishlistItems::where('wishlist_id', $wishlist->id)
+            ->join('products', 'wishlist_items.product_id', '=', 'products.id')
+            ->select(
+                'wishlist_items.*', // Select all wishlist item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+        $wishlistItem = $wishlistItems->where('product_id', $productId)->first();
+
+        $wishlistItem->delete();
+
+        return redirect()->route('wishlist.view');
+    }
+
 }
