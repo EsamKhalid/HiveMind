@@ -31,7 +31,7 @@
             <section class="max-w-7xl mx-auto p-6">
                 @if ($orders->isEmpty())
                 <div class="text-center mt-10">
-                    <p class="text-gray-600 dark:text-yellow-400 text-lg transition-colours duration-1000">No orders found.</p>
+                    <p class="text-stone-600 dark:text-yellow-400 text-lg transition-colours duration-1000">No orders found.</p>
                 </div>
                 @else
 
@@ -84,7 +84,7 @@
                                         {{ $item->products->product_name }}
                                 </a>
                                 @if ($item->returnItem && $item->order->order_status === 'Return Approved')
-                                        <span class="bg-gray-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
+                                        <span class="bg-stone-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
                                 @endif
                                 <br/>
                                 Quantity: {{ $item->quantity }}<br/>
@@ -117,7 +117,7 @@
                                     <button type="submit" class="bg-green-500 text-white px-4 py-2 mt-4 rounded hover:bg-green-600">Mark as Delivered</button>
                                 </form>
                             @elseif ($order->order_status === 'Delivered')
-                                <button title="No return request available." class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" disabled>
+                                <button title="No return request available." class="bg-stone-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" disabled>
                                     View Return Request
                                 </button>
                             @elseif ($order->order_status === 'Return Requested')
@@ -151,7 +151,7 @@
                                     <button type="submit" class="bg-green-500 text-white px-4 py-2 mt-4 rounded hover:bg-green-600">Mark as Delivered</button>
                                 </form>
                             @elseif ($order->order_status === 'Delivered')
-                                <button title="No return request available." class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" disabled>
+                                <button title="No return request available." class="bg-stone-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed" disabled>
                                     View Return Request
                                 </button>
                             @elseif ($order->order_status === 'Return Requested')

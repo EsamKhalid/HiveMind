@@ -15,7 +15,7 @@
             <section
 
                 class="bg-white dark:bg-stone-800 py-40 bg-cover bg-center dark:bg-image:brightness-[200%]"
-                style="background-image: url('{{asset('../Images/hd bee backdrop lols.jpeg')}}');"
+                style="background-image: url('{{asset('../Images/dark hd bee backdrop lols.jpeg')}}');"
             >
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <h1 class="text-4xl font-bold text-white mb-4">

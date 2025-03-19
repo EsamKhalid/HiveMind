@@ -18,18 +18,18 @@
                     @csrf
 
                     <div class="flex flex-col items-center mb-4">
-                        <label for="supplier_name" class="block text-gray-600 dark:text-white mb-2">Supplier Name</label>
-                        <input type="text" name="supplier_name" class="w-1/2 p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required />
+                        <label for="supplier_name" class="block text-stone-600 dark:text-white mb-2">Supplier Name</label>
+                        <input type="text" name="supplier_name" class="w-1/2 p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required />
                     </div>
 
                     <div class="flex flex-col items-center mb-4">
-                        <label for="supplier_email" class="block text-gray-600 dark:text-white mb-2">Supplier Email</label>
-                        <input type="email" name="supplier_email" class="w-1/2 p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required />
+                        <label for="supplier_email" class="block text-stone-600 dark:text-white mb-2">Supplier Email</label>
+                        <input type="email" name="supplier_email" class="w-1/2 p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required />
                     </div>
 
                     <div class="flex flex-col items-center mb-4">
-                        <label for="supplier_phone" class="block text-gray-600 dark:text-white mb-2">Supplier Phone</label>
-                        <input type="tel" name="supplier_phone" class="w-1/2 p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required />
+                        <label for="supplier_phone" class="block text-stone-600 dark:text-white mb-2">Supplier Phone</label>
+                        <input type="tel" name="supplier_phone" class="w-1/2 p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required />
                     </div>
 
 

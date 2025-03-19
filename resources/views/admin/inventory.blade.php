@@ -41,7 +41,7 @@
                     </div>
                     <div class="space-y-2 lg:space-y-0 space-x-2 hidden justify-evenly lg:flex-row lg:flex w-4/5">
                         <button name="filter" value="none"
-                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-gray-800 hover:bg-gray-700 dark:bg-stone-400 dark:hover:bg-stone-300">
+                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-stone-800 hover:bg-stone-700 dark:bg-stone-400 dark:hover:bg-stone-300">
                             <i class="fas fa-th-large"></i> All
                         </button>
 
@@ -93,7 +93,7 @@
         </div>
 
         <div class="container mx-auto pb-12 w-fit flex-grow">
-            <div class=" bg-gray-200 dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300 w-[90%] lg:w-full mx-5">
+            <div class=" bg-stone-200 dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300 w-[90%] lg:w-full mx-5">
                 <form action="{{ route('admin.inventory')}}" method="GET" class="w-full mr-3">
                     <input type="text" name="search"
                         class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
@@ -101,19 +101,19 @@
                     <br />
                 </form>
                 <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 bg-gray-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300 w-full">
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 bg-stone-200  dark:bg-stone-700 p-6 rounded-lg shadow-md transition-all duration-300 w-full">
                     @foreach($products as $product)
 
                         <div
                             class="bg-white dark:bg-stone-300 max-w-60 min-w-40 {{ ($product->stock_level == 0 ? 'border-t-red-500' : ($product->stock_level < 35 ? 'border-t-amber' : 'border-t-green-500')) }} border-t-8 rounded-lg shadow-md p-4 text-center transform transition-all duration-300">
                             <div class="absolute top-2 right-2">
-                                <span class="text-xs flex items-center gap-1 text-gray-500">
+                                <span class="text-xs flex items-center gap-1 text-stone-500">
                                     <i class="fas {{ $TYPE_ICONS[$product->product_type] ?? 'fa-box' }}"></i>
                                 </span>
                             </div>
                             <div class="my-3">
                                 <div class="text-lg font-bold">{{ strtoupper($product->product_name) }}</div>
-                                <div class="text-gray-700">£{{ $product->price }}</div>
+                                <div class="text-stone-700">£{{ $product->price }}</div>
                                 <div
                                     class="text-sm {{ ($product->stock_level == 0 ? 'text-red-700' : ($product->stock_level < 35 ? 'text-yellow-700' : 'text-green-700')) }}">
                                     {{ ($product->stock_level == 0 ? 'OUT OF STOCK' : ($product->stock_level < 35 ? 'LOW STOCK' : 'IN STOCK')) }}

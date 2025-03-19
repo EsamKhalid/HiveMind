@@ -6,10 +6,10 @@
         <title>My Orders</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-gray-100 dark:bg-stone-950  min-h-screen transition-colours duration-1000">
+    <body class="bg-stone-100 dark:bg-stone-950  min-h-screen transition-colours duration-1000">
         @include('layouts.navbar')
 
-        <header class="bg-gray-200 dark:bg-stone-900 pt-4 pb-8 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
+        <header class="bg-stone-200 dark:bg-stone-900 pt-4 pb-8 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
             <a
                 href="{{ url()->previous()}}"
                 class="fas fa-arrow-left fa-2x pl-4 dark:text-amber"
@@ -36,7 +36,7 @@
             <section class="max-w-7xl mx-auto p-6">
                 @if ($orders->isEmpty())
                 <div class="text-center mt-10">
-                    <p class="text-gray-600 dark:text-yellow-200 text-lg transition-colours duration-1000">You have no orders yet.</p>
+                    <p class="text-stone-600 dark:text-yellow-200 text-lg transition-colours duration-1000">You have no orders yet.</p>
                 </div>
                 @else
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -98,7 +98,7 @@
                                         {{ $item->products->product_name }}
                                     </a>
                                     @if ($item->returnItem && $item->order->order_status === 'Return Approved')
-                                        <span class="bg-gray-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
+                                        <span class="bg-stone-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
                                     @endif
                                     <br/>
                                     <!--Description: {{ $item->products->description }}<br/>-->
@@ -131,11 +131,11 @@
                                 </form>
                             @elseif ($order->order_status === 'Return Approved')
                             @elseif ($order->order_status === 'Return Denied')
-                                <p class="bg-gray-100 text-red-400 mt-4 p-2 rounded font-semibold">Please contact customer support if unsatisfied with the return request outcome (+353-123-4567, admin@hivemind.com).</p>
+                                <p class="bg-stone-100 text-red-400 mt-4 p-2 rounded font-semibold">Please contact customer support if unsatisfied with the return request outcome (+353-123-4567, admin@hivemind.com).</p>
 
                             @else
                             <button
-                                class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed"
+                                class="bg-stone-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed"
                                 title="Cannot request return until order is delivered"
                                 disabled>
                                     Return Items

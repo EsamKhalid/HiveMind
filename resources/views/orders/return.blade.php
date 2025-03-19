@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100 dark:bg-stone-950 min-h-screen transition-colors duration-1000">
+<body class="bg-stone-100 dark:bg-stone-950 min-h-screen transition-colors duration-1000">
     @include('layouts.navbar')
 
     <header class="bg-white dark:bg-stone-900 shadow-md py-6 transition-colors duration-1000">
@@ -50,12 +50,12 @@
             </select>
 
             <h2 class="font-semibold mt-6 mb-4 text-stone-950 dark:text-yellow-400 transition-colors duration-1000">Comments (Optional)</h2>
-            <textarea name="comments" rows="4" class="w-full border border-gray-300 rounded p-2 dark:bg-stone-700 dark:text-yellow-200"></textarea>
+            <textarea name="comments" rows="4" class="w-full border border-stone-300 rounded p-2 dark:bg-stone-700 dark:text-yellow-200"></textarea>
 
             <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded mt-6 mr-2 hover:bg-blue-600 transition-colors duration-1000">
                 Request Return
             </button>
-            <a href="{{ route('orders') }}" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors duration-1000">
+            <a href="{{ route('orders') }}" class="px-4 py-2 bg-stone-500 text-white rounded hover:bg-stone-600 transition-colors duration-1000">
                 Cancel
             </a>
         </form>

@@ -7,7 +7,7 @@
 
     </head>
 
-    <body class="transition-none bg-white dark:bg-stone-950 flex w-full mx-auto">
+    <body class="transition-none bg-stone-200 dark:bg-stone-950 flex w-full mx-auto">
         @include('layouts.sidebar') 
 
         <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
@@ -22,8 +22,8 @@
                 
                 
                 <!-- using a table to display user records -->
-                <table class="w-full border-collapse border border-gray-300 my-10">
-                    <thead class="bg-gray-200">
+                <table class="w-full border-collapse border border-stone-300 my-10">
+                    <thead class="bg-stone-200">
                         <tr>
                             <th class="p-1  text-sm lg:text-2xl">User ID</th>
                             <th class="p-1  text-sm lg:text-2xl">First name</th>

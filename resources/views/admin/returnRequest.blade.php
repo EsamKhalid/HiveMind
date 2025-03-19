@@ -25,9 +25,9 @@
             <h1 class="text-3xl font-bold mb-4">
                 Return Request for Order #{{ $order->id }}
             </h1>
-            <p class="text-gray-600">Review and process this return request.</p>
+            <p class="text-stone-600">Review and process this return request.</p>
 
-            <div class="mt-4 p-4 border rounded bg-gray-50">
+            <div class="mt-4 p-4 border rounded bg-stone-50">
                 <h2 class="text-xl font-semibold mb-2">Order Details</h2>
                 <p><strong>Order ID:</strong> {{ $order->id }}</p>
                 @if($order->user != null)
@@ -48,7 +48,7 @@
                 </p>
             </div>
 
-            <div class="mt-6 p-4 border rounded bg-gray-50">
+            <div class="mt-6 p-4 border rounded bg-stone-50">
                 <h2 class="text-xl font-semibold mb-2">
                     Return Request Details
                 </h2>
@@ -69,10 +69,10 @@
                 </p>
             </div>
 
-            <div class="mt-6 p-4 border rounded bg-gray-50">
+            <div class="mt-6 p-4 border rounded bg-stone-50">
                 <h2 class="text-xl font-semibold mb-2">Items to be Returned</h2>
-                <table class="w-full border-collapse border border-gray-300">
-                    <thead class="bg-gray-200">
+                <table class="w-full border-collapse border border-stone-300">
+                    <thead class="bg-stone-200">
                         <tr>
                             <th class="border p-2">Item</th>
                             <th class="border p-2">Quantity</th>

@@ -87,13 +87,13 @@
                     </div>
                 </form>
                 <a href="{{ route('basket.view') }}"
-                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-gray-200"></a>
+                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-stone-200"></a>
                 @auth
                     <a href="{{ route('account') }}"
-                        class="fas fa-user fa-xl hover:text-gray-200 transition dark:hover:text-amber"></a>
+                        class="fas fa-user fa-xl hover:text-stone-200 transition dark:hover:text-amber"></a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="fas fa-user fa-xl hover:text-gray-200 transition dark:hover:text-amber"></a>
+                        class="fas fa-user fa-xl hover:text-stone-200 transition dark:hover:text-amber"></a>
                 @endauth
             </div>
     </div>

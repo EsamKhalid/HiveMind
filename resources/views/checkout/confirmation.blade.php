@@ -6,7 +6,7 @@
         <title>Order Confirmation</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-gray-100">
+    <body class="bg-stone-100">
         @include('layouts.navbar')
 
         <main
@@ -15,16 +15,16 @@
             <div
                 class="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full text-center"
             >
-                <h1 class="text-4xl font-bold text-gray-800 mb-6">
+                <h1 class="text-4xl font-bold text-stone-800 mb-6">
                     Order Confirmation
                 </h1>
-                <p class="text-2xl text-gray-600 mb-4">
+                <p class="text-2xl text-stone-600 mb-4">
                     Thank you for your order!
                 </p>
-                <p class="text-xl text-gray-700 mb-8">
+                <p class="text-xl text-stone-700 mb-8">
                     Your confirmation number is:
                 </p>
-                <p class="text-3xl font-semibold text-gray-900 mb-8">
+                <p class="text-3xl font-semibold text-stone-900 mb-8">
                     {{ $confirmation_number }}
                 </p>
 

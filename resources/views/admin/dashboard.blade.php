@@ -6,7 +6,7 @@
         <link rel="icon" href="/favicon.ico">
     </head>
 
-    <body class="transition-none bg-white dark:bg-stone-950 flex">
+    <body class="transition-none bg-stone-200 dark:bg-stone-950 flex">
         @include('layouts.sidebar')
         <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
             <div class="max-w-7xl mx-auto text-center">

@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-white dark:bg-stone-950 transition-colors duration-1000">
+<body class="bg-white dark:bg-stone-950 transition-none transition-colors duration-1000">
     @include('layouts.navbar')
 
     <main class="mt-12 mb-12 flex flex-col items-center">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="mt-2 mb-4">
-                <a href="{{ route('password.recover') }}" class="text-blue-500 hover:underline text-sm">
+                <a href="{{ route('password.recover') }}" class="text-blue-500 dark:text-amber hover:underline text-sm transition-colors duration-1000">
                     Forgot password?
                 </a>
             </div>

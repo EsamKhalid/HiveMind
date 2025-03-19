@@ -139,7 +139,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="memorable_question" class="block text-gray-700 text-sm font-bold mb-2">Memorable Question:</label>
+                        <label for="memorable_question" class="block text-stone-700 text-sm font-bold mb-2">Memorable Question:</label>
                         <select name="memorable_question" id="memorable_question" class="shadow appearance-none border rounded w-full py-2 px-3" required>
                             <option value="" disabled selected hidden>Select a question</option>
                             <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
@@ -152,7 +152,7 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="memorable_answer" class="block text-gray-700 text-sm font-bold mb-2">Memorable Answer:</label>
+                        <label for="memorable_answer" class="block text-stone-700 text-sm font-bold mb-2">Memorable Answer:</label>
                         <input type="text" name="memorable_answer" class="shadow appearance-none border rounded w-full py-2 px-3" placeholder="Enter your answer" required>
                     </div>
 

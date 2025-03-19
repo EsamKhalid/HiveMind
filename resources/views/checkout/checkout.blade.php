@@ -28,7 +28,7 @@
                 @endif
             <div class="flex flex-row space-x-3 justify-evenly" >
                 @if(!$user)
-            <form action="{{ route('checkout.storeGuest') }}" method="post" class="space-y-5 h-full flex flex-col justify-between w-[30%] ">
+            <form action="{{ route('checkout.storeGuest') }}" method="post" class="space-y-5 h-full flex flex-col justify-between w-[50%] lg:w-[30%]">
                             @csrf
                             @auth
                             <div class="flex flex-col items-start mb-4">
@@ -71,7 +71,7 @@
                             @endauth
                         </form>
                 @endif
-            <form action="{{ route('checkout.storeAddress') }}" method="post" class="flex flex-col justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg w-[40%]">
+            <form action="{{ route('checkout.storeAddress') }}" method="post" class="hidden lg:flex flex-col justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg w-[40%]">
                             @csrf
                             @if($address != null)
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">
@@ -112,28 +112,28 @@
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">
                                     <label for="street_address" class="xl:w-full mx-auto block text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">Street
                                         Address</label>
-                                    <input type="text" name="street_address" id="street_address" value="Street Address"
+                                    <input type="text" name="street_address" id="street_address" placeholder="Street Address"
                                         required class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
                                 </div>
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">
                                     <label for="city" class="xl:w-full mx-auto block text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">City</label>
-                                    <input type="text" name="city" id="city" value="City" required
+                                    <input type="text" name="city" id="city" placeholder="City" required
                                         class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
                                 </div>
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">
                                     <label for="county" class="xl:w-full mx-auto block text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">County</label>
-                                    <input type="text" name="county" id="county" value="County" required
+                                    <input type="text" name="county" id="county" placeholder="County" required
                                         class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
                                 </div>
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">
                                     <label for="country" class="xl:w-full mx-auto block text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">Country</label>
-                                    <input type="text" name="country" id="country" value="Country" required
+                                    <input type="text" name="country" id="country" placeholder="Country" required
                                         class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
                                 </div>
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">
                                     <label for="post_code" class="xl:w-full mx-auto block text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">Post
                                         Code</label>
-                                    <input type="text" name="post_code" id="post_code" value="Post Code" required
+                                    <input type="text" name="post_code" id="post_code" placeholder="Post Code" required
                                         class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
                                 </div>
                                 <input type="hidden" name="type" value="shipping" />

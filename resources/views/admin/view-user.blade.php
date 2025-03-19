@@ -59,7 +59,7 @@
 
 <!-- user name header-->
     <div class="mx-auto mb-10 flex-col w-[80%] mt-[5%]">
-        <p class="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md font-bold">
+        <p class="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl text-white p-5 bg-yellow-400 dark:bg-stone-400 dark:bg-opacity-40 rounded-md font-bold">
             @if($user->permission_level == 'user')
                 <i class="fa-regular fa-user mr-5"></i>
                 User

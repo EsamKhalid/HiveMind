@@ -28,18 +28,18 @@
 
 
         <form action="{{ route('admin.userEnquiries') }}" method="GET" class="w-full mr-3 mb-3">
-            <input type="text" name="search" placeholder="search by email" value="{{ request('email_address') }}" class="rounded w-full p-2 border border-gray-300 dark:bg-stone-700 dark:text-yellow-200">
+            <input type="text" name="search" placeholder="search by email" value="{{ request('email_address') }}" class="rounded w-full p-2 border border-stone-300 dark:bg-stone-700 dark:text-yellow-200">
         </form>
 
         <form action="{{ route('admin.userEnquiries') }}" method="GET" class="text-black w-full">
-            <select name="filter" onchange="this.form.submit()" class="w-full mb-2 rounded p-2 border border-gray-300 dark:bg-stone-700 dark:text-yellow-200">
+            <select name="filter" onchange="this.form.submit()" class="w-full mb-2 rounded p-2 border border-stone-300 dark:bg-stone-700 dark:text-yellow-200">
                 <option value="none" {{ request('filter') == 'none' ? 'selected' : '' }}>None</option>
                 <option value="Registered" {{ request('filter') == 'Registered' ? 'selected' : '' }}>Registered Users</option>
                 <option value="Guest" {{ request('filter') == 'Guest' ? 'selected' : '' }}>Guest Users</option>
             </select>   
         </form>
 
-        <table class="min-w-full w-[80%] bg-white dark:bg-stone-800 border border-gray-300 dark:border-stone-700">
+        <table class="min-w-full w-[80%] bg-white dark:bg-stone-800 border border-stone-300 dark:border-stone-700">
             <thead>
                 <tr>
                     <th class="py-2 px-4 border-b dark:border-stone-700 dark:bg-stone-700 dark:text-yellow-200">Name</th>

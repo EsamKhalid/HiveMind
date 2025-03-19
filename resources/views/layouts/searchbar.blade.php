@@ -4,7 +4,7 @@
         name="search"
         id="SEARCH-IO"
         placeholder="Search"
-        class="absolute left-20 w-0 min-w-0 p-0 opacity-0 transition-all duration-300 ease-in-out bg-white text-gray-800 rounded-full shadow-lg focus:outline-none"
+        class="absolute left-20 w-0 min-w-0 p-0 opacity-0 transition-all duration-300 ease-in-out bg-white text-stone-800 rounded-full shadow-lg focus:outline-none"
         oninput="ADJUST_SEARCH_WIDTH()"
     />
 
