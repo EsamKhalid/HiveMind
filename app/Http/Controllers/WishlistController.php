@@ -6,10 +6,29 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Wishlist;
+use App\Models\WishlistItems;
 
 class WishlistController extends Controller
 {
     //
+
+    public function view() {
+
+        $wishlist = $this->getWishlist();
+
+        $wishlsitItems = WishlistItems::where('wishlist_id', $wishlist->id)
+            ->join('products', 'wishlist_items.product_id', '=', 'products.id')
+            ->select(
+                'wishlist_items.*', // Select all basket item fields
+                'products.product_name',
+                'products.description',
+                'products.price'
+            )->get();
+
+        return view('wishlist', [
+            'wishlist' => $wishlist,
+        ]);
+    }
 
     public function getWishlist()
     {
