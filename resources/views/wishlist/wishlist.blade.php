@@ -45,10 +45,12 @@
                     <ul class="h-full w-full">
                         @foreach($wishlistItems as $wishlistItem)
                             <div class="bg-white rounded-lg flex justify-between bg-white text-stone-800 dark:text-amber dark:bg-stone-800 text-center items-center p-2 mb-2 w-full">
-                                <img class="size-[125px] min-w-[125px] rounded"
-                                    src="{{ asset('Images/product images/' . $wishlistItem->product_name . '.png') }}" />
+                                <div class="flex justify-start items-center p-2 w-1/3">
+                                    <img class="size-[125px] min-w-[125px] rounded "
+                                        src="{{ asset('Images/product images/' . $wishlistItem->product_name . '.png') }}" />
+                                </div>
                                 <p class="text-base xl:text-lg text-center h-fit w-1/3 pl-5">{{$wishlistItem->product_name}}</p>
-                                <div class="flex justify-center items-center p-2">
+                                <div class="flex justify-center items-center p-2 w-1/3">
                                     <form action="{{ route('basket.add') }}" method="post" class="ml-4">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $wishlistItem->product_id }}" />
