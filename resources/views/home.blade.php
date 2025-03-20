@@ -24,16 +24,16 @@
                     <p class="text-white text-lg mb-8">
                         Bee a part of a kinder world with one click
                     </p>
-                    <button
-                        class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700"
+                    <!--<button
+                        class="bg-orange-600 text-white px-6 py-3 rounded-md hover:underline dark:bg-orange-700 duration-500"
                     >
                         <a href="{{ route('products') }}">Shop Now</a>
                     </button>
                     <button
-                        class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700"
+                        class="bg-orange-600 text-white px-6 py-3 rounded-md hover:underline dark:bg-orange-700 duration-500"
                     >
                         <a href="{{ route('about') }}">Learn More About Us</a>
-                    </button>
+                    </button>-->
                 </div>
             </section>
 
@@ -195,7 +195,7 @@
                             </button>
                         </div>
                     </form>
-                    <div class="flex justify-center mt-5">
+                    <div class="flex justify-center mt-10">
                         <div class="text-2xl">
                             Made an Order? Click
                             <a
