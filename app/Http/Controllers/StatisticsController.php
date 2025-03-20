@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Guest;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Products;
 use App\Models\Enquiries;
 use App\Models\ProductReviews;
@@ -70,8 +71,32 @@ class StatisticsController extends Controller
         else{
             $avgSiteRating = 0;
         }
+
+        $orderItems = OrderItem::all();
+
         
-        return view('admin.statistics', compact('unregisteredUsers', 'registeredUsers', 'numberOfOrders', 'revenue', 'avgOrderValue', 'noReturnedOrders', 'inventoryValue', 'returnRate', 'noEnquiries', 'noProdReviews','noSiteReviews', 'avgProductRating', 'avgSiteRating'));
+
+    
+
+        $data = compact(
+            'unregisteredUsers',
+            'registeredUsers',
+            'numberOfOrders',
+            'revenue',
+            'avgOrderValue',
+            'noReturnedOrders',
+            'inventoryValue',
+            'returnRate',
+            'noEnquiries',
+            'noProdReviews',
+            'noSiteReviews',
+            'avgProductRating',
+            'avgSiteRating'
+        );
+
+        
+        return view('admin.statistics', ['data' => $data]);    
+        
     }
 }
 
