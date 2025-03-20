@@ -74,8 +74,25 @@ class StatisticsController extends Controller
 
         $orderItems = OrderItem::all();
 
+        ($orderItems[0]->products->product_type);
+
+        $categorySales = array("Beauty" => 0, "Health" => 0, "Haircare" => 0, "Skincare" => 0);
+
+        foreach($orderItems as $order){
+            $categorySales[$order->products->product_type] += 1;
+        }
         
 
+        // $test = "var";
+
+        // $arr = array("var" => 0, "var2" => 10);  
+
+        // $arr[$test] += 2;
+
+        // dd($arr["var"]);
+
+
+        
     
 
         $data = compact(
