@@ -11,7 +11,7 @@
 <body class="bg-stone-100 dark:bg-stone-950 min-h-screen transition-colours duration-1000">
     @include('layouts.navbar')
 
-    <header class="bg-stone-200 dark:bg-stone-900 pt-4 pb-8 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000 mb-5">
+    <header class="bg-stone-100 dark:bg-stone-900 pt-4 pb-8 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000 mb-5">
         <a href="{{ route('account') }}" class="fas fa-arrow-left fa-2x pl-4 dark:text-amber"></a>
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Wishlist</h1>
