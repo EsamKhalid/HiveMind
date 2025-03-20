@@ -76,7 +76,7 @@ class StatisticsController extends Controller
 
         ($orderItems[0]->products->product_type);
 
-        $categorySales = array("Beauty" => 0, "Health" => 0, "Haircare" => 0, "Skincare" => 0);
+        $categorySales = array("Beauty" => 0, "Health" => 0, "Haircare" => 0, "Skincare" => 0, "Merchandise" => 0);
 
         foreach($orderItems as $order){
             $categorySales[$order->products->product_type] += 1;
@@ -108,7 +108,8 @@ class StatisticsController extends Controller
             'noProdReviews',
             'noSiteReviews',
             'avgProductRating',
-            'avgSiteRating'
+            'avgSiteRating',
+            'categorySales',
         );
 
         

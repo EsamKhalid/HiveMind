@@ -77,7 +77,10 @@
 
             <div class="flex justify-center mt-10">
                 <div>
-                    <canvas id="myChart"></canvas>
+                    <canvas id="userChart"></canvas>
+                </div>
+                <div>
+                    <canvas id="categoryChart"></canvas>
                 </div>
             </div>
 
@@ -87,7 +90,7 @@
                 document.addEventListener('DOMContentLoaded', function () {
                     const data = @json($data);
 
-                    const ctx = document.getElementById("myChart").getContext('2d');
+                    const ctx = document.getElementById("userChart").getContext('2d');
 
                     new Chart(ctx, {
                         type: "pie",
@@ -97,6 +100,28 @@
                                 {
                                     label: "# of Users",
                                     data: [data.registeredUsers, data.unregisteredUsers],
+                                    borderWidth: 1,
+                                },
+                            ],
+                        },
+                        options: {},
+                    });
+                });
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const data = @json($data);
+
+                    const ctx = document.getElementById("categoryChart").getContext('2d');
+
+                    new Chart(ctx, {
+                        type: "pie",
+                        data: {
+                            labels: Object.keys(data.categorySales),
+                            datasets: [
+                                {
+                                    label: "# of Sales",
+                                    data: Object.values(data.categorySales),
                                     borderWidth: 1,
                                 },
                             ],
