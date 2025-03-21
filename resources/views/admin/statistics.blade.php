@@ -47,6 +47,7 @@
                         Inventory Statistics
                     </h2>
                     <p>Total Inventory Value: £{{ $data["inventoryValue"] }}</p>
+                    <p>Total Inventory Items: {{ $data["inventoryItems"] }}</p>
                 </div>
 
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
@@ -76,10 +77,12 @@
             </div>
 
             <div class="flex justify-center mt-10">
-                <div>
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold mb-4">User Distribution</h2>
                     <canvas id="userChart"></canvas>
                 </div>
-                <div>
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold mb-4">Category Sales</h2>
                     <canvas id="categoryChart"></canvas>
                 </div>
             </div>
@@ -90,9 +93,10 @@
                 document.addEventListener('DOMContentLoaded', function () {
                     const data = @json($data);
 
-                    const ctx = document.getElementById("userChart").getContext('2d');
+                    const userCtx = document.getElementById("userChart").getContext('2d');
+                    const categoryCtx = document.getElementById("categoryChart").getContext('2d');
 
-                    new Chart(ctx, {
+                    new Chart(userCtx, {
                         type: "pie",
                         data: {
                             labels: ["Registered", "Unregistered"],
@@ -104,17 +108,17 @@
                                 },
                             ],
                         },
-                        options: {},
+                        options: {
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'User Distribution'
+                                }
+                            }
+                        },
                     });
-                });
-            </script>
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const data = @json($data);
 
-                    const ctx = document.getElementById("categoryChart").getContext('2d');
-
-                    new Chart(ctx, {
+                    new Chart(categoryCtx, {
                         type: "pie",
                         data: {
                             labels: Object.keys(data.categorySales),
@@ -126,7 +130,14 @@
                                 },
                             ],
                         },
-                        options: {},
+                        options: {
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Category Sales'
+                                }
+                            }
+                        },
                     });
                 });
             </script>

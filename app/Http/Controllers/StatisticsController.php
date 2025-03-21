@@ -29,10 +29,12 @@ class StatisticsController extends Controller
         $noReturnedOrders = Order::where('order_status', "Return Approved")->count();
         
         $inventoryValue = 0;
+        $inventoryItems = 0;
 
         $products = Products::all();
         foreach($products as $product){
             $inventoryValue = $inventoryValue + ($product->price * $product->stock_level);
+            $inventoryItems = $inventoryItems += $product->stock_level;
         }
         
         $returnRate =  number_format((float)$noReturnedOrders / count($orders), 2, '.', '') * 10;
@@ -110,6 +112,7 @@ class StatisticsController extends Controller
             'avgProductRating',
             'avgSiteRating',
             'categorySales',
+            'inventoryItems',
         );
 
         
