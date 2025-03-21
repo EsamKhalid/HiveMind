@@ -55,7 +55,7 @@
                                         src="{{ asset('Images/product images/' . $wishlistItem->product_name . '.png') }}" />
                                 </div>
                                 <div class="flex flex-col md:flex-row w-2/3">
-                                    <p class="text-base lg:text-lg text-center h-fit w-1/2 pl-5">
+                                    <p class="text-base lg:text-lg text-start h-fit w-full pl-5 truncate">
                                         {{ $wishlistItem->product_name }}</p>
                                     <div class="flex justify-start  items-center p-2 pl-5 w-fit">
                                         <form action="{{ route('basket.add') }}" method="post" class="ml-4">
