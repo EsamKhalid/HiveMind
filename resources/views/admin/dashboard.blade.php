@@ -19,21 +19,15 @@
             id="notifications"
             class="mx-auto mb-auto flex-col w-[80%] mt-[1%]"
         >
-            <p
-                class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"
-            >
-                <i class="fa-solid fa-desktop text-7xl mr-4 my-auto"></i
-                >Dashboard
-            </p>
 
             <!-- <div class="columns-2"> -->
 
                 <!-- notifications -->
                 <div>
-                <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-inbox mr-4 my-auto"></i>Notifications</p>
+                <p class="text-3xl pt-5 px-4 text-stone-950 dark:text-white"><i class="fa-solid fa-inbox mr-4 my-auto"></i>Notifications</p>
                 @forelse ( $notifications as $notification )
                 @if($notification->type == 'userCreated')
-                <div class="bg-purple-100 dark:bg-purple-100 border-t-4 border-indigo-400 dark:border-indigo-400 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-purple-100 dark:bg-purple-300 border-t-4 border-indigo-400 dark:border-indigo-400 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -47,7 +41,7 @@
                     </div>
                 </div>
                 @elseif($notification->type == 'userOrder')
-                <div class="bg-green-100 dark:bg-green-100 border-t-4 border-emerald-800 dark:border-emerald-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-green-100 dark:bg-green-300 border-t-4 border-emerald-800 dark:border-emerald-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -61,7 +55,7 @@
                     </div>
                 </div>
                 @elseif($notification->type == 'guestOrder')
-                <div class="bg-green-100 dark:bg-green-100 border-t-4 border-emerald-800 dark:border-emerald-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-green-100 dark:bg-green-300 border-t-4 border-emerald-800 dark:border-emerald-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -75,7 +69,7 @@
                     </div>
                 </div>
                 @elseif($notification->type == 'stockOrder')
-                <div class="bg-yellow-100 dark:bg-yellow-100 border-t-4 border-yellow-800 dark:border-yellow-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-yellow-100 dark:bg-yellow-300 border-t-4 border-yellow-800 dark:border-yellow-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -89,7 +83,7 @@
                     </div>
                 </div>
                 @elseif($notification->type == 'userOrderUpdate')
-                <div class="bg-blue-100 dark:bg-blue-100 border-t-4 border-blue-800 dark:border-blue-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-blue-100 dark:bg-blue-300 border-t-4 border-blue-800 dark:border-blue-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -103,7 +97,7 @@
                     </div>
                 </div>
                 @elseif($notification->type == 'guestOrderUpdate')
-                <div class="bg-blue-100 dark:bg-blue-100 border-t-4 border-blue-800 dark:border-blue-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-blue-100 dark:bg-blue-300 border-t-4 border-blue-800 dark:border-blue-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -137,8 +131,8 @@
 
                 <!-- live reports -->
                 <div>
-                <p class="text-3xl pt-5 px-4"><i class="fa-solid fa-chart-simple mr-4 my-auto"></i>Live reports</p>
-                <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <p class="text-3xl pt-5 px-4 text-stone-950 dark:text-white"><i class="fa-solid fa-chart-simple mr-4 my-auto  "></i>Live reports</p>
+                <div class="bg-red-100 dark:bg-red-300 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -151,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-red-100 dark:bg-red-300 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -166,7 +160,7 @@
                 </div>
                 @forelse ( $live_reports as $live_report )
                 @if($live_report->type == 'noStock')
-                <div class="bg-red-100 dark:bg-red-100 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-red-100 dark:bg-red-300 border-t-4 border-red-800 dark:border-red-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -180,7 +174,7 @@
                     </div>
                 </div>
                 @elseif($live_report->type == 'lowStock')
-                <div class="bg-orange-100 dark:bg-orange-100 border-t-4 border-orange-800 dark:border-orange-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-orange-100 dark:bg-orange-300 border-t-4 border-orange-800 dark:border-orange-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
@@ -195,7 +189,7 @@
                 </div>
                 @endif
                 @empty
-                <div class="bg-pink-100 dark:bg-pink-100 border-t-4 border-pink-800 dark:border-pink-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                <div class="bg-pink-100 dark:bg-pink-300 border-t-4 border-pink-800 dark:border-pink-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                     <div class="flex">
                         <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
                         <div>
