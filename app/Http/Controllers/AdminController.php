@@ -99,9 +99,26 @@ class AdminController extends Controller
          ->where('orders.created_at', '>=', now()->subDay())
          ->get();
 
-      $orderUpdates = Order::select('orders.id', 'orders.order_status', 'orders.updated_at AS time', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
+      $guestOrders = Order::select('orders.id', 'orders.total_amount', 'orders.created_at AS time', 'guests.id', 'guests.first_name', 'guests.last_name')
+         ->selectRaw('"guestOrder" AS type')
+         ->join('guests', 'orders.guest_id', '=', 'guests.id')
+         //->join('order_items', 'orders.id', '=', 'order_items.order_id')
+         //->join('products', 'order_items.product_id', '=', 'products.id')
+         ->where('orders.created_at', '>=', now()->subDay())
+         ->get();
+
+      $userOrderUpdates = Order::select('orders.id', 'orders.order_status', 'orders.updated_at AS time', 'users.id', 'users.first_name', 'users.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
          ->selectRaw('"orderUpdate" AS type')
          ->join('users', 'orders.user_id', '=', 'users.id')
+         ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+         ->join('products', 'order_items.product_id', '=', 'products.id')
+         ->where('orders.updated_at', '>=', now()->subDay())
+         ->whereColumn('orders.updated_at', '!=', 'orders.created_at')
+         ->get();
+
+      $guestOrderUpdates = Order::select('orders.id', 'orders.order_status', 'orders.updated_at AS time', 'guests.id', 'guests.first_name', 'guests.last_name', 'products.product_name', 'order_items.id', 'order_items.quantity')
+         ->selectRaw('"orderUpdate" AS type')
+         ->join('guests', 'orders.guest_id', '=', 'guests.id')
          ->join('order_items', 'orders.id', '=', 'order_items.order_id')
          ->join('products', 'order_items.product_id', '=', 'products.id')
          ->where('orders.updated_at', '>=', now()->subDay())
@@ -114,7 +131,7 @@ class AdminController extends Controller
          ->where('stock_orders.created_at', '>=', now()->subDay())
          ->get();
 
-      $notifications = $userCreated->concat($stockOrders)->concat($userOrders)->concat($orderUpdates)->sortByDesc('time');
+      $notifications = $userCreated->concat($stockOrders)->concat($userOrders)->concat($guestOrders)->concat($userOrderUpdates)->concat($guestOrderUpdates)->sortByDesc('time');
 
       return $notifications;
 
