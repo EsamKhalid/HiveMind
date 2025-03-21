@@ -2,43 +2,49 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <title>Dashboard</title>
+        <title>User Management 🐝</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
     </head>
 
-    <body class="bg-white dark:bg-stone-950 flex">
+    <body class="transition-none bg-stone-200 dark:bg-stone-950 flex w-full mx-auto">
         @include('layouts.sidebar') 
 
-        <div class="flex justify-center overflow-x-auto">
-            <div class="">
-                <p class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md my-10">
-                    <i class="fa-solid fa-sitemap text-7xl mr-4 my-auto"></i>
-                    Manage Users
-                </p>  
+        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">User Management</h1>
+                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage all users.</p>
+            </div>
+        </header>
+
+        <div class="flex justify-center overflow-x-auto w-full">
+            <div class="w-[80%]">
+                
                 
                 <!-- using a table to display user records -->
-                <table class="w-full border-collapse border border-gray-300">
-                    <thead class="bg-gray-200">
+                <table class="w-full border-collapse border border-stone-300 my-10">
+                    <thead class="bg-stone-200">
                         <tr>
-                            <th class="p-4 text-2xl">User ID</th>
-                            <th class="p-4 text-2xl">First name</th>
-                            <th class="p-4 text-2xl">Last name</th>
-                            <th class="p-4 text-2xl">Email</th>
-                            <th class="p-4 text-2xl">Level</th>
-                            <th class="p-4 text-2xl">Action</th>
+                            <th class="p-1  text-sm lg:text-2xl">User ID</th>
+                            <th class="p-1  text-sm lg:text-2xl">First name</th>
+                            <th class="p-1  text-sm lg:text-2xl">Last name</th>
+                            <th class="p-1  text-sm lg:text-2xl">Email</th>
+                            <th class="p-1  text-sm lg:text-2xl">Level</th>
+                            <th class="p-1  text-sm lg:text-2xl">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $user)
                         <tr class="bg-white text-center border">
-                            <td class="p-4 text-2xl">{{$user->id}}</td>
-                            <td class="p-4 text-2xl">{{$user->first_name}}</td>
-                            <td class="p-4 text-2xl">{{$user->last_name}}</td>
-                            <td class="p-4 text-2xl">{{$user->email_address}}</td>
-                            <td class="p-4 text-2xl">{{$user->permission_level}}</td>
-                            <td class="p-4">
-                                <a class="bg-yellow-500 rounded-md text-center p-2 text-xl" href={{ route('admin.view-user', $user->id) }}>
+                            <td class="p-1  text-sm lg:text-2xl">{{$user->id}}</td>
+                            <td class="p-1  text-sm lg:text-2xl">{{$user->first_name}}</td>
+                            <td class="p-1  text-sm lg:text-2xl">{{$user->last_name}}</td>
+                            <td class="p-1  text-sm lg:text-2xl">{{$user->email_address}}</td>
+                            <td class="p-1  text-sm lg:text-2xl">{{$user->permission_level}}</td>
+                            <td class="p-1 ">
+                                <a class="text-yellow-600 hover:text-yellow-400 underline rounded-md text-center p-1 text-nowrap text-sm lg:text-2xl" href={{ route('admin.view-user', $user->id) }}>
                                     View user
-                                </a>
+                                </a> 
                             </td>
                         </tr>
                         @endforeach
@@ -54,8 +60,9 @@
             @elseif(session()->has('error'))
         <!-- unsuccessful deletion-->
              {{ session()->get('error') }}
+              @endif
     </div>
-    @endif
+    
 
   
 

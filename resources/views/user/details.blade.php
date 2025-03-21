@@ -6,14 +6,14 @@
     <title>Update Your Details</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="transition-none transition-colors ease-in-out duration-1000 bg-white dark:bg-stone-950">
     @include('layouts.navbar')
     <main>
     <a  href="{{ route('account') }}"
-        class="fas fa-arrow-left fa-3x pl-4 pt-2"></a>
+        class="fas fa-arrow-left fa-3x pl-4 pt-2 dark:text-amber transition-colors ease-in-out duration-1000"></a>
 
-    <div class="xl:w-[40%] lg:w-[50%] md:w-[60%] max-w-full mx-auto mt-2 mb-20 p-8 bg-white rounded-lg shadow-md">
-        <h1 class="text-3xl font-bold mb-6">Update Your Details</h1>
+    <div class="max-w-4xl w-[2/3] mx-auto mt-2 mb-20 p-8 bg-white dark:bg-stone-700 rounded-lg shadow-md transition-colors ease-in-out duration-1000">
+        <h1 class="text-3xl font-bold mb-6 text-stone-950 dark:text-yellow-400 transition-colors ease-in-out duration-1000">Update Your Details</h1>
 
         @if(session('success'))
             <div class="mb-4 p-3 bg-green-100 text-green-700 rounded">
@@ -35,44 +35,44 @@
             @csrf
             <div class="flex flex-row">
                 <div>
-                    <label class="block text-sm font-semibold">First Name</label>
+                    <label class="block text-stone-950 dark:text-yellow-200 text-sm font-semibold transition-colors ease-in-out duration-1000">First Name</label>
                     <input type="text" name="first_name" value="{{ old('first_name', $user->first_name) }}" required 
                         class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
                 </div>
 
                 <div class="ml-8">
-                    <label class="block text-sm font-semibold">Last Name</label>
+                    <label class="block text-stone-950 dark:text-yellow-200 text-sm font-semibold transition-colors ease-in-out duration-1000">Last Name</label>
                     <input type="text" name="last_name" value="{{ old('last_name', $user->last_name) }}" required 
                         class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
                 </div>
             </div>
 
             <div>
-                <label class="block text-sm font-semibold">Email Address</label>
+                <label class="block text-stone-950 dark:text-yellow-200 text-sm font-semibold transition-colors ease-in-out duration-1000">Email Address</label>
                 <input type="email" name="email_address" value="{{ old('email_address', $user->email_address) }}" required 
                     class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>
 
             <div>
-                <label class="block text-sm font-semibold">Phone Number</label>
+                <label class="block text-stone-950 dark:text-yellow-200 text-sm font-semibold transition-colors ease-in-out duration-1000">Phone Number</label>
                 <input type="text" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" 
                     class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>
 
             <div>
-                <label class="block text-sm font-semibold">Current Password</label>
+                <label class="block text-stone-950 dark:text-yellow-200 text-sm font-semibold transition-colors ease-in-out duration-1000">Current Password</label>
                 <input type="password" name="current_password" required
                     class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>
 
             <div>
-                <label class="block text-sm font-semibold">New Password (Optional)</label>
+                <label class="block text-stone-950 dark:text-yellow-200 text-sm font-semibold transition-colors ease-in-out duration-1000">New Password (Optional)</label>
                 <input type="password" name="password" id="password" autocomplete="new-password"
                     class="w-full px-4 py-2 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>
 
             <div>
-                <label class="block text-sm font-semibold">Confirm New Password</label>
+                <label class="block text-stone-950 dark:text-yellow-200 text-sm font-semibold transition-colors ease-in-out duration-1000">Confirm New Password</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" autocomplete="new-password"
                     class="w-full px-4 py-2 mb-6 border rounded-lg focus:ring-yellow-500 focus:border-yellow-500">
             </div>

@@ -33,20 +33,20 @@
 
                 <p>{{ $email }}</p>
 
-                <h1 class="text-3xl font-bold text-gray-800 mb-6">
+                <h1 class="text-3xl font-bold text-stone-800 mb-6">
                     Reset Password
                 </h1>
 
                 <div class="mb-4">
                     <label
                         for="password"
-                        class="block text-gray-700 text-sm font-bold mb-2"
+                        class="block text-stone-700 text-sm font-bold mb-2"
                         >New Password:</label
                     >
                     <input
                         type="password"
                         name="password"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700"
                         required
                     />
                 </div>
@@ -54,13 +54,13 @@
                 <div class="mb-6">
                     <label
                         for="password_confirmation"
-                        class="block text-gray-700 text-sm font-bold mb-2"
+                        class="block text-stone-700 text-sm font-bold mb-2"
                         >Confirm New Password:</label
                     >
                     <input
                         type="password"
                         name="password_confirmation"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700"
                         required
                     />
                 </div>
@@ -73,7 +73,7 @@
                 </button>
                 <a
                     href="{{ route('login') }}"
-                    class="px-4 py-2 ml-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                    class="px-4 py-2 ml-2 bg-stone-500 text-white rounded hover:bg-stone-600"
                 >
                     Cancel
                 </a>

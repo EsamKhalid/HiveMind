@@ -4,18 +4,29 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Your account</title>
     </head>
-    <body>
+    <body class="bg-stone-100 dark:bg-stone-950 min-h-screen transition-colours duration-1000">
         @include('layouts.navbar')
         <div class="flex justify-center">
             @if($errors->any())
             <h4 class="text-3xl">{{$errors->first()}}</h4>
             @endif
         </div>
+        <header class="bg-stone-200 dark:bg-stone-900 pt-4 pb-8 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
+            <a
+                href="{{ url()->previous()}}"
+                class="fas fa-arrow-left fa-2x pl-4 dark:text-amber"
+            ></a>
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">My Orders</h1>
+                <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">
+                    Here are your recent purchases.
+                </p>
+            </div>
+        </header>
+        <main class="flex justify-center items-center max-h-screen">
+            <div class="bg-stone-200 dark:bg-stone-800 shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg text-stone-950 dark:text-yellow-200">
 
-        <main class="flex justify-center items-center min-h-screen">
-            <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
-
-                        <div class="text-gray-700">
+                        <div>
                             <p class="mb-2">
                                 <strong>Confirmation Number: </strong>
                                 {{ $order->confirmation_number }}
@@ -61,11 +72,11 @@
                                 @foreach ($order->orderItems as $item)
                                 <li class="mb-2">
 
-                                    <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold">
+                                    <a href="{{ route('products.show', $item->products->id) }}" class="hover:underline font-semibold">
                                         {{ $item->products->product_name }}
                                     </a>
                                     @if ($item->returnItem && $item->order->order_status === 'Return Approved')
-                                        <span class="bg-gray-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
+                                        <span class="bg-stone-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
                                     @endif
                                     <br/>
                                     <!--Description: {{ $item->products->description }}<br/>-->
@@ -73,8 +84,9 @@
 
                                     Price: £{{ number_format($item->products->price, 2) }}
                                     <br />
+                                    <br />
                                     <a
-                                        class="rounded bg-amber p-1"
+                                        class="rounded text-stone-950 dark:text-white bg-cyan-500 hover:underline p-1"
                                         href="{{
                                             route('review.productReview', $item->products->id)
                                         }}"
@@ -100,11 +112,11 @@
                                 </form>
                             @elseif ($order->order_status === 'Return Approved')
                             @elseif ($order->order_status === 'Return Denied')
-                                <p class="bg-gray-100 text-red-400 mt-4 p-2 rounded font-semibold">Please contact customer support if unsatisfied with the return request outcome (+353-123-4567, admin@hivemind.com).</p>
+                                <p class="bg-stone-100 text-red-400 mt-4 p-2 rounded font-semibold">Please contact customer support if unsatisfied with the return request outcome (+353-123-4567, admin@hivemind.com).</p>
 
                             @else
                             <button
-                                class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed"
+                                class="bg-stone-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed"
                                 title="Cannot request return until order is delivered"
                                 disabled
                             >

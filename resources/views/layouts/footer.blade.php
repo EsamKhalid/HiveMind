@@ -1,8 +1,8 @@
 <footer
-    class="bottom:0 w-full border border-amber bg-[#FBBF24] dark:border-stone-800 dark:bg-stone-800 text-white transition-colors duration-1000"
+    class="bottom:0 w-full bg-amber dark:bg-stone-800 text-stone-800 dark:text-yellow-100 transition-colors duration-1000"
 >
     <div
-        class="container mx-auto flex flex-wrap justify-between items-start py-8"
+        class="container mx-auto flex flex-wrap justify-between items-start mt-4"
     >
         <!-- adding first third of footer (left side), includes contact information / link to contact page -->
         <div class="w-full md:w-1/3 flex flex-col mb-4 md:mb-0 px-8">
@@ -11,7 +11,7 @@
                 Have an enquiry? Fill in a
                 <a
                     href="{{ route('contact.view') }}"
-                    class="text-lg text-blue-500 hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber hover:underline"
                     >Contact Form</a
                 >
             </p>
@@ -19,7 +19,7 @@
                 Check out our
                 <a
                     href="{{ route('faq') }}"
-                    class="text-lg text-blue-500 hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber hover:underline"
                     >FAQs</a
                 >
                 for more information.
@@ -27,7 +27,7 @@
             <p class="text-lg">
                 <a
                     href="{{ route('terms') }}"
-                    class="text-lg text-blue-500 hover:underline"
+                    class="text-lg text-blue-500 dark:text-amber hover:underline"
                     >Terms and Conditions apply</a
                 >
             </p>
@@ -38,7 +38,7 @@
             <p class="text-lg">Help us save the bees by donating today!</p>
             <a
                 href="https://www.paypal.com/donate/?hosted_button_id=VZZ8YQ994DXUE"
-                class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 dark:bg-stone-700 mt-4 inline-block text-center transition-colors duration-1000"
+                class="bg-yellow-600 text-white px-6 py-3 rounded-md hover:bg-yellow-700 dark:bg-stone-600 mt-4 inline-block text-center transition-colors duration-1000 dark:hover:bg-stone-700"
                 >Donate</a
             >
         </div>

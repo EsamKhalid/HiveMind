@@ -5,6 +5,7 @@
     <title>Your Account</title>
 </head>
 
+
 <body class="bg-yellow-50">
     @include('layouts.navbar')
 
@@ -19,6 +20,7 @@
             </p>
         </div>
     </section>
+
 
     <main class="max-w-6xl mx-auto py-20 px-4 grid md:grid-cols-2 gap-12">
         
@@ -36,6 +38,7 @@
                         View Basket
                     </a>
                     @if($user->permission_level == "admin")
+
                     <a href="{{ route('admin.dashboard') }}"
                         class="bg-yellow-600 hover:bg-yellow-700 transition duration-200 text-white px-6 py-4 rounded-lg text-center font-semibold shadow-md">
                         Go to Admin Portal

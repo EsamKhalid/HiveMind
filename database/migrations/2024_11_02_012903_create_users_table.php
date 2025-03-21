@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('email_address')->unique();;
             $table->string('phone_number');
             $table->string('password');
+            $table->string('memorable_information_question');
+            $table->string('memorable_information');
             $table->string('permission_level')->default('user');
             $table->string('memorable_question');
             $table->string('memorable_answer');

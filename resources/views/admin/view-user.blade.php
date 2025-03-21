@@ -3,7 +3,7 @@
 
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>🐝 Viewing user 🐝</title>
+    <title>Viewing user 🐝</title>
 </head>
 <script>
 
@@ -43,16 +43,23 @@
     }
 </script>
 
-<body class="bg-white dark:bg-stone-950 flex">
+<body class="transition-none bg-stone-200 dark:bg-stone-950 flex">
 <!-- Back Button-->
 <a
             href="{{route('admin.user-management')}}"
             class="fas fa-arrow-left md:text-3xl p-5 absolute top-3 left-3 dark:text-amber"
         ></a>
 
+        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">User Management</h1>
+                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage User {{$user->id}}</p>
+            </div>
+        </header>
+
 <!-- user name header-->
     <div class="mx-auto mb-10 flex-col w-[80%] mt-[5%]">
-        <p class="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md font-bold">
+        <p class="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl text-white p-5 bg-yellow-400 dark:bg-stone-400 dark:bg-opacity-40 rounded-md font-bold">
             @if($user->permission_level == 'user')
                 <i class="fa-regular fa-user mr-5"></i>
                 User
@@ -71,11 +78,11 @@
             <p class="w-[25%] text-end mt-5 lg:text-lg md:text-xl xl:text-2xl 2xl:text-3xl dark:text-white">Edit?</p>
         </div>
         <hr class="border-black mt-5 dark:border-white">
-        <form method="Post" action={{ route('admin.view-user.update', $user->id)}} class="text-2xl pl-5 flex-col dark:text-yellow-200">
+        <form method="Post" action={{ route('admin.view-user.update', $user->id)}} class="text-2xl pl-5 flex-col dark:text-yellow-200" >
             @csrf
             @method('PATCH')
             
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">First name:</p>
                 <div class="w-[25%]">
                     <span id="firstname" class="text-black dark:text-white mx-auto">{{ $user->first_name }}</span>
@@ -90,7 +97,7 @@
                 </i>
             </div>
 
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">Last name: </p>
                 <div class="w-[25%]">
                     <input type="text" name="last_name" id="lastnameform" class="hidden text-xl md:text-2xl lg:text-2xl w-[95%] text-black"
@@ -103,7 +110,7 @@
                     onclick="replaceWithInputBox('lastname')"></i>
             </div>
 
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
                 <p class="w-[25%]">Email: </p>
                 <div class="w-[25%]">
                     <span id="email" class="text-black dark:text-white mx-auto">{{ $user->email_address }}</span>
@@ -116,7 +123,7 @@
                     onclick="replaceWithInputBox('email')"></i>
             </div>
 
-            <div class="mt-16 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
+            <div class="mt-6 lg:mt-8 py-5 text-lg md:text-xl xl:text-2xl 2xl:text-3xl flex hover:bg-yellow-100 rounded-md hover:dark:bg-stone-600 dark:text-yellow-200 justify-between">
 
                 <p class="w-[25%]">Phone Number: </p>
                 <div class="w-[25%]">
@@ -132,13 +139,13 @@
     </div>
     
     <div class="flex flex-row-reverse justify-evenly w-[80%] mx-auto">
-            <button class="mt-2 xl:mt-5 ml-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
+            <button class="mt-0 xl:mt-5 ml-auto p-3 lg:p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-green-600 w-fit text-white hover:bg-green-300 font-bold" type="submit">Save Changes</button>
     </form>
     
-    <form method="post" action={{ route('admin.view-user.delete', $user->id)}} >
+    <form method="post" action={{ route('admin.view-user.delete', $user->id)}} onsubmit="return confirm('Are you sure you want to delete user {{ 'ID: '.$user->id . ' Email: ' .$user->email_address }}? ');" >
         @csrf
         @method("DELETE")
-        <button class="mt-2 xl:mt-5 mr-auto p-7 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete Account</button>
+        <button class="mt-0 xl:mt-5 mr-auto p-3 lg:p-7 ml-3 rounded-xl lg:text-base xl:text-2xl 2xl:text-3xl bg-red-600 w-fit text-white hover:bg-red-300 font-bold" type="submit">Delete Account</button>
     </form>
 
     </div>
@@ -151,11 +158,15 @@
     </div>
     @endif
     
-    @if(session()->has('error'))
-    <div class="mx-auto alert alert-error text-red-700 font-bold">
-        {{ session()->get('error') }}
-    </div>
-    @endif
+    @if ($errors->any())
+            <div class="mx-auto alert alert-error text-red-700 font-bold">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 </body>
 
 </html>

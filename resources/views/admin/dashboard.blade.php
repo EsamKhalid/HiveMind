@@ -2,14 +2,22 @@
 <html lang="en">
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <title>Dashboard</title>
+        <title>Dashboard 🐝</title>
+        <link rel="icon" href="/favicon.ico">
     </head>
 
-    <body class="bg-white dark:bg-stone-950 flex">
+    <body class="transition-none bg-stone-200 dark:bg-stone-950 flex">
         @include('layouts.sidebar')
+        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000"><i
+                                class="fa-solid fa-inbox text-yellow-500 text-4xl"></i> Admin Dashboard</h1>
+                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage/Track all admin-related activities from this dashboard</p>
+            </div>
+        </header>
         <div
             id="notifications"
-            class="mx-auto mb-auto flex-col w-[80%] mt-[4%]"
+            class="mx-auto mb-auto flex-col w-[80%] mt-[1%]"
         >
             <p
                 class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"

@@ -10,19 +10,33 @@ use App\Models\Supplier;
 class InventoryController extends Controller
 {
     //
-    public function view(){
-        // $basket = Basket::where('user_id', $user->id)->first();
-       // $product = Products::where('product_id', $product->id)->first();
-        // Return the basket view with basket items
-        //return view('basket.basket', ['basketItems' => $basketItems]);
+    public function list(Request $request){
+        $search = $request->search;
+        $filter = $request->filter;
+        $stockLevel = $request->stockLevel;
 
         $products = Products::query();
+
+        if($search){
+            $products->where('product_name', 'like', '%' . $search . '%');
+        }
+        if ($filter && $filter != 'none') {
+            $products->where('product_type', '=', $filter);
+        }
+
+        if ($stockLevel) {
+            if ($stockLevel == 'out_of_stock') {
+                $products->where('stock_level', '=', 0);
+            } elseif ($stockLevel == 'low_stock') {
+                $products->where('stock_level', '>', 0)->where('stock_level', '<', 35);
+            } elseif ($stockLevel == 'in_stock') {
+                $products->where('stock_level', '>=', 35);
+            }
+        }
+
         $products = $products->get();
 
-        return view('admin.inventory', ['products' => $products]);
-
-        //$products = Products::query();
-        //$products = $products->get();
+        return view('admin.inventory', ['products' => $products,'category'=> $filter]);
     }
 
     public function show($id){
@@ -40,8 +54,8 @@ class InventoryController extends Controller
         $request->validate([
             'product_id' => 'required',
             'supplier_id' => 'required',
-            'stock_quantity' => 'required',
-            'lead_time' => 'required',
+            'stock_quantity' => 'required|integer',
+            'lead_time' => 'required|integer',
         ]);
 
         StockOrder::create([
@@ -56,7 +70,7 @@ class InventoryController extends Controller
         $stock->stock_level = $stock->stock_level + $request->stock_quantity;
         $stock->save();
 
-        return redirect()->route('admin.inventory');
+        return redirect()->route('admin.inventory')->with('success', 'Order placed successfully');
 
     }
 
