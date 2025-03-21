@@ -28,7 +28,7 @@
                 @endif
             <div class="flex flex-row space-x-3 justify-evenly" >
                 @if(!$user)
-            <form action="{{ route('checkout.storeGuest') }}" method="post" class="space-y-5 h-full flex flex-col justify-between w-[50%] lg:w-[30%]">
+            <form action="{{ route('checkout.storeGuest') }}" method="post" class="bg-stone-500 p-3 rounded-lg space-y-5 h-full flex flex-col justify-between w-[50%] lg:w-[30%]">
                             @csrf
                             @auth
                             <div class="flex flex-col items-start mb-4">
@@ -71,7 +71,7 @@
                             @endauth
                         </form>
                 @endif
-            <form action="{{ route('checkout.storeAddress') }}" method="post" class="hidden lg:flex flex-col justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg w-[40%]">
+            <form action="{{ route('checkout.storeAddress') }}" method="post" class="hidden lg:flex flex-col bg-stone-500 p-3 rounded-lg justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg w-[40%]">
                             @csrf
                             @if($address != null)
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">

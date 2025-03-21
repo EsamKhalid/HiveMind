@@ -13,9 +13,9 @@
             >
                 <!-- want to add customer's name when they log in -->
                 <h1
-                    class="text-4xl lg:text-6xl font-bold text-orange-950 dark:text-amber pt-10 mb-20"
+                    class="text-4xl lg:text-6xl font-bold text-orange-950 dark:text-amber pt-10 mb-20 truncate"
                 >
-                    Hi {{  (strlen($user->first_name) <= 16) ? ucfirst(strtolower(substr($user->first_name,0,16))) . '!' : ucfirst(strtolower(substr($user->first_name,0,16))) . '...'}} 
+                    Hi {{$user->first_name}} 
                 </h1>
 
                 <div class="flex justify-between flex-col lg:flex-row">

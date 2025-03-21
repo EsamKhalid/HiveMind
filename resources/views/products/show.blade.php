@@ -66,12 +66,12 @@
                             name="product_id"
                             value="{{ $product->id }}"
                         />
-                        <button type="submit" class="bg-yellow-400 text-black dark:text-white py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
+                        <button type="submit" class="bg-yellow-400 text-black dark:text-white py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500 w-full">
                             Add to Basket
                         </button>
                     </form>
 
-                    <button onclick="OPEN()" class="bg-amber text-black dark:text-white hover:text-white dark:hover:text-amber dark:dark:bg-stone-700 w-1/2 mt-5 rounded-md transition-all duration-500 p-5">
+                    <button onclick="OPEN()" class="bg-amber text-black dark:text-white hover:text-white dark:hover:text-amber dark:dark:bg-stone-700 w-full mt-5 rounded-md transition-all duration-500 p-5">
                         Submit Review
                     </button>
 
