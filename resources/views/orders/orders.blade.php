@@ -33,10 +33,13 @@
         @endif
 
         <main>
-            <section class="max-w-7xl mx-auto p-6">
+            <section class="max-w-7xl mx-auto p-6 mb-10">
                 @if ($orders->isEmpty())
+
                 <div class="text-center mt-10">
                     <p class="text-stone-600 dark:text-yellow-200 text-lg transition-colours duration-1000">You have no orders yet.</p>
+                    <a href="{{ route('products') }}" class="underline text-yellow-500 hover:text-yellow-600">Shop now!</a>
+
                 </div>
                 @else
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -105,19 +108,17 @@
                                     Quantity: {{ $item->quantity }}<br/>
 
                                     Price: £{{ number_format($item->products->price, 2) }}
-                                    <br />
-                                    <a
-                                        class="rounded bg-yellow-300 hover:bg-yellow-400 py-1 px-2"
-                                        href="{{ route('review.productReview', $item->products->id) }}">
-                                            Review
-                                    </a>
+                                    <br/>
+                    
                                 </li>
                                 @endforeach
                             </ul>
                             @if ($order->order_status === 'Delivered')
 
                                 <a href="{{ route('orders.return', $order->id) }}" 
-                                    class="bg-blue-400 text-white px-4 py-2 mt-4 mr-[50%] rounded block text-center hover:bg-blue-500 transition-colours duration-1000">
+
+                                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold px-4 py-2 mt-6 mr-[50%] rounded block text-center transition-colors">
+
                                     Return Items
                                 </a>
                             @elseif ($order->order_status === 'Return Requested')

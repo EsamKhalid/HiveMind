@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WishlistItems;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,7 @@ use App\Models\Users;
 use App\Models\Guest;
 
 use App\Models\Addresses;
+use App\Models\Wishlist;
 
 class BasketController extends Controller
 {
@@ -279,6 +281,18 @@ class BasketController extends Controller
             'total_amount' => $this->basketTotal()
         ]);
 
+        $user = Auth::user();
+
+        if ($user) {
+            $wishlist = Wishlist::where('user_id', $user->id)->first();
+
+            if ($wishlist) {
+                WishlistItems::where('wishlist_id', $wishlist->id)
+                    ->where('product_id', $productId)
+                    ->delete();
+            }
+        }
+
         //$totalPrice = 0;
 //
         //foreach ($basketItems as $item) {
@@ -351,11 +365,11 @@ class BasketController extends Controller
                     'user_id' => $user->id,
                     'guest_id' => null,
                 ]);
-            session()->forget('guest_id');
-            return redirect()->route('basket.view');
-            
-        } else
-            return redirect()->route('basket.view');
+                session()->forget('guest_id');
+                return redirect()->route('basket.view');
+
+            } else
+                return redirect()->route('basket.view');
         }
     }
 

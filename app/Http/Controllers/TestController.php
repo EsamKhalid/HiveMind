@@ -39,4 +39,8 @@ class TestController extends Controller
     public function faq() { 
         return view('faq.faq'); 
     }
+
+    public function wishlist() { 
+        return view('wishlist.wishlist'); 
+    }
 }

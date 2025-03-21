@@ -3,6 +3,7 @@
 
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <title>{{ $product->product_name }} 🐝</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style>
@@ -30,11 +31,16 @@
             cursor: none;
         }
     </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
 </head>
 
 <body class="bg-yellow-50 dark:bg-stone-950">
     @include('layouts.navbar')
     <a href="{{ url()->previous() }}" class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"></a>
+
     <div class="flex justify-center p-3">
         <div class="flex flex-col lg:flex-row justify-center mt-[10%] px-5 pb-7 pt-5 dark:bg-stone-800 rounded-lg">
             <div class="mr-5">
@@ -166,9 +172,24 @@
                             Submit Review
                         </button>
                     </div>
+
+
+                <form action="{{ route('wishlist.add') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                    <button
+                        class="bg-yellow-400 text-white mt-4 py-6 px-8 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
+                        Add to Wishlist
+                    </button>
+
                 </form>
+
+                <button onclick="OPEN()" class="bg-amber w-1/2 p-2 mt-5">
+                    Submit Review
+                </button>
             </div>
         </div>
+
         <div class="flex justify-center mt-24 h-fit">
             <div class="bg-amber size-10 w-1/2 text-center">
                 <div class="relative flex items-center justify-center py-2">
@@ -178,14 +199,27 @@
                         class="absolute right-0 top-[0px] bg-stone-500 text-white px-4 py-2 rounded-md"
                     >
                         <i id="COLLAPSE_ICON" class="fa fa-chevron-down"></i>
+
                     </button>
                 </div>
-                <div id="REVIEWS_CONTAINER" class="space-y-4">
-                    @foreach($reviews as $rev)
+            </form>
+        </div>
+    </div>
+    <div class="flex justify-center mt-24 h-fit">
+        <div class="bg-amber size-10 w-1/2 text-center">
+            <div class="relative flex items-center justify-center py-2">
+                <h1 class="text-2xl font-bold">Reviews</h1>
+                <button onclick="TOGGLE_REVIEW()"
+                    class="absolute right-0 top-[0px] bg-gray-500 text-white px-4 py-2 rounded-md">
+                    <i id="COLLAPSE_ICON" class="fa fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="REVIEWS_CONTAINER" class="space-y-4">
+                @foreach($reviews as $rev)
                     <div class="bg-white rounded-lg shadow-md p-4 text-center">
                         <div class="flex justify-center">
                             @for ($i = 0; $i < $rev->rating; $i++)
-                            <div class="fa fa-star text-yellow-400"></div>
+                                <div class="fa fa-star text-yellow-400"></div>
                             @endfor
                         </div>
                         <p class="text-lg font-semibold mt-2">
@@ -195,43 +229,43 @@
                         <p class="text-stone-700">{{ $rev->review_title }}</p>
                         <p class="text-stone-700">{{ $rev->review }}</p>
                     </div>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
-        <script>
-            function OPEN() {
-                document
-                    .getElementById("REVIEW_MODAL")
-                    .classList.remove("hidden");
+    </div>
+    <script>
+        function OPEN() {
+            document
+                .getElementById("REVIEW_MODAL")
+                .classList.remove("hidden");
+        }
+
+        function CLOSE() {
+            document.getElementById("REVIEW_MODAL").classList.add("hidden");
+        }
+
+        window.onclick = function (event) {
+            const MODAL = document.getElementById("REVIEW_MODAL");
+            if (event.target === MODAL) {
+                CLOSE();
+            }
+        };
+
+        function TOGGLE_REVIEW() {
+            const reviewsContainer =
+                document.getElementById("REVIEWS_CONTAINER");
+            const collapseIcon = document.getElementById("COLLAPSE_ICON");
+
+            if (reviewsContainer.classList.contains("hidden")) {
+                reviewsContainer.classList.remove("hidden");
+                collapseIcon.classList.remove("fa-chevron-up");
+                collapseIcon.classList.add("fa-chevron-down");
+            } else {
+                reviewsContainer.classList.add("hidden");
+                collapseIcon.classList.remove("fa-chevron-down");
+                collapseIcon.classList.add("fa-chevron-up");
             }
 
-            function CLOSE() {
-                document.getElementById("REVIEW_MODAL").classList.add("hidden");
-            }
-
-            window.onclick = function (event) {
-                const MODAL = document.getElementById("REVIEW_MODAL");
-                if (event.target === MODAL) {
-                    CLOSE();
-                }
-            };
-
-            function TOGGLE_REVIEW() {
-                const reviewsContainer =
-                    document.getElementById("REVIEWS_CONTAINER");
-                const collapseIcon = document.getElementById("COLLAPSE_ICON");
-
-                if (reviewsContainer.classList.contains("hidden")) {
-                    reviewsContainer.classList.remove("hidden");
-                    collapseIcon.classList.remove("fa-chevron-up");
-                    collapseIcon.classList.add("fa-chevron-down");
-                } else {
-                    reviewsContainer.classList.add("hidden");
-                    collapseIcon.classList.remove("fa-chevron-down");
-                    collapseIcon.classList.add("fa-chevron-up");
-                }
-            }
         </script>
         <script>
         function magnify(imgID, zoom) {
@@ -323,3 +357,4 @@
     </script>
     </body>
 </html>
+

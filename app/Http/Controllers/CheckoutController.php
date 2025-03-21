@@ -169,10 +169,10 @@ class CheckoutController extends Controller
     {
 
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email_address' => 'required',
-            'phone_number' => 'required',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email_address' => 'required|string|email|max:255|unique:guests,email_address',
+            'phone_number' => 'required|string|max:12|regex:/^\+?[0-9]{10,12}$/',
         ]);
 
         $guestID = session()->get('guest_id');

@@ -93,6 +93,15 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
     
         if (in_array($order->order_status, ['pending', 'Processing', 'Shipped'])) {
+
+            foreach ($order->orderItems as $item) {
+                $product = $item->products;
+                if ($product) {
+                    $product->stock_level += $item->quantity;
+                    $product->save();
+                }
+            }
+
             $order->delete();
             return redirect()->route('orders')->with('success', 'Order cancelled successfully.');
         }

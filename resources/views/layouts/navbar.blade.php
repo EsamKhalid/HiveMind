@@ -88,6 +88,12 @@
                 </form>
                 <a href="{{ route('basket.view') }}"
                     class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-stone-200"></a>
+
+                <a
+                    href="{{ route('wishlist.view') }}"
+                    class="fas fa-heart fa-xl dark:hover:text-amber hover:text-gray-200"
+                ></a>
+
                 @auth
                     <a href="{{ route('account') }}"
                         class="fas fa-user fa-xl hover:text-stone-200 transition dark:hover:text-amber"></a>

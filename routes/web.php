@@ -30,9 +30,17 @@ use App\Http\Controllers\AdminOrderController;
 
 use App\Http\Controllers\UserManagementController;
 
+// Jo'Ardie Richardson's work
+use App\Http\Controllers\ReportController;
+// end
 use App\Http\Controllers\EnquiriesController;
 
 use App\Http\Controllers\GuestOrderController;
+
+use App\Http\Controllers\WishlistController;
+
+use App\Http\Controllers\StatisticsController;
+
 
 Route::get('/', function () {
     return view('home');
@@ -87,6 +95,8 @@ Route::post('signup.signup', [SignupController::class, 'store'])->name('signup.s
 
 Route::get('products',[ProductController::class,'list'])->name('products');
 
+// view wishlist
+Route::get('wishlist.wishlist',[TestController::class,'wishlist'])->name('wishlist');
 
 
 //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -99,11 +109,20 @@ Route::get('/admin/user-management/user/{id}', [UserManagementController::class,
 Route::patch('/admin/user-management/user/update/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
 Route::delete('/admin/user-management/user/delete/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
 
+// Jo'Ardie Richardson's work
+Route::get('/admin/reports',[ReportController::class,'list'])->name('admin.reports');
+// end
+
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('admin/inventory', [InventoryController::class, 'list'])->name('admin.inventory');
     Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
-    Route::patch('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
+
+    //Route::patch('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
+
+    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order');
+    Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
+
 
 
     Route::get('admin/supplier', [SupplierController::class, 'view'])->name('supplier.view');
@@ -122,13 +141,20 @@ Route::middleware(['admin'])->group(function () {
     Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
 
     Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
+    Route::get('admin/statistics', [StatisticsController::class, 'view'])->name('admin.statistics');
 });
+
+
+
+/**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
+ * before or after the request is processed by your controller. Ultimately, it acts as a bridge between request and a response. */
 
 
 
     Route::get('orders/guest/validate', [GuestOrderController::class, 'view'])->name('orders.guest.validate');
     Route::get('orders/guest/getOrder', [GuestOrderController::class, 'getOrder'])->name('orders.guest.getOrder');
     Route::get('orders/guest/displayOrder/{confnum}/{surname}', [GuestOrderController::class, 'displayOrder'])->name('orders.guest.displayOrder');
+
 
 
     Route::get('basket',[BasketController::class, 'view'])->name('basket.view');
@@ -191,6 +217,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('review/productReview/{id}', [ReviewController::class, 'productReview'])->name('review.productReview');
     Route::post('/review/storeProductReview/{id}', [ReviewController::class, 'storeProductReview'])->name('review.storeProductReview');
 
+
+    Route::get('wishlist',[WishlistController::class, 'view'])->name('wishlist.view');
+    Route::post('wishlist/add',[WishlistController::class, 'addtoWishlist'])->name('wishlist.add');
+    Route::post('wishlist/remove',[WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
     
     // NOTE FROM HARRY (15/02/25)
     // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
