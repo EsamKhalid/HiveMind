@@ -282,12 +282,15 @@ class BasketController extends Controller
         ]);
 
         $user = Auth::user();
-        $wishlist = Wishlist::where('user_id', $user->id)->first();
 
-        if ($wishlist) {
-            WishlistItems::where('wishlist_id', $wishlist->id)
-                ->where('product_id', $productId)
-                ->delete();
+        if ($user) {
+            $wishlist = Wishlist::where('user_id', $user->id)->first();
+
+            if ($wishlist) {
+                WishlistItems::where('wishlist_id', $wishlist->id)
+                    ->where('product_id', $productId)
+                    ->delete();
+            }
         }
 
         //$totalPrice = 0;
