@@ -11,7 +11,7 @@
         <div class="flex flex-col justify-center overflow-x-auto w-full p-10">
             <div class="text-center mb-10">
                 <p
-                    class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"
+                    class="text-7xl text-white p-5 bg-yellow-400 dark:bg-stone-400 dark:bg-opacity-40 rounded-md"
                 >
                     <i class="fa-solid fa-chart-line text-7xl mr-4 my-auto"></i>
                     Statistics
@@ -19,70 +19,70 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">User Statistics</h2>
-                    <p>
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">User Statistics</h2>
+                    <p class="text-stone-950 dark:text-white">"
                         Total Registered Users: {{ $data["registeredUsers"] }}
                     </p>
-                    <p>
+                    <p class="text-stone-950 dark:text-white">"
                         Total Unregistered Users:
                         {{ $data["unregisteredUsers"] }}
                     </p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">Order Statistics</h2>
-                    <p>Total Orders: {{ $data["numberOfOrders"] }}</p>
-                    <p>Average Order Value: £{{ $data["avgOrderValue"] }}</p>
-                    <p>Returned Orders: {{ $data["noReturnedOrders"] }}</p>
-                    <p>Return Rate: {{ $data["returnRate"] }}%</p>
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">Order Statistics</h2>
+                    <p class="text-stone-950 dark:text-white">"Total Orders: {{ $data["numberOfOrders"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Average Order Value: £{{ $data["avgOrderValue"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Returned Orders: {{ $data["noReturnedOrders"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Return Rate: {{ $data["returnRate"] }}%</p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">Sales Statistics</h2>
-                    <p>Total Revenue: £{{ $data["revenue"] }}</p>
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">Sales Statistics</h2>
+                    <p class="text-stone-950 dark:text-white">"Total Revenue: £{{ $data["revenue"] }}</p>
                 </div>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">
                         Inventory Statistics
                     </h2>
-                    <p>Total Inventory Value: £{{ $data["inventoryValue"] }}</p>
-                    <p>Total Inventory Items: {{ $data["inventoryItems"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Total Inventory Value: £{{ $data["inventoryValue"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Total Inventory Items: {{ $data["inventoryItems"] }}</p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">
                         Customer Support Statistics
                     </h2>
-                    <p>Total Enquiries: {{ $data["noEnquiries"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Total Enquiries: {{ $data["noEnquiries"] }}</p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">
                         Product Review Statistics
                     </h2>
-                    <p>Total Product Reviews: {{ $data["noProdReviews"] }}</p>
-                    <p>
+                    <p class="text-stone-950 dark:text-white">"Total Product Reviews: {{ $data["noProdReviews"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"
                         Average Product Rating: {{ $data["avgProductRating"] }}
                     </p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">
                         Site Review Statistics
                     </h2>
-                    <p>Total Site Reviews: {{ $data["noSiteReviews"] }}</p>
-                    <p>Average Site Rating: {{ $data["avgSiteRating"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Total Site Reviews: {{ $data["noSiteReviews"] }}</p>
+                    <p class="text-stone-950 dark:text-white">"Average Site Rating: {{ $data["avgSiteRating"] }}</p>
                 </div>
             </div>
 
-            <div class="flex justify-center mt-10">
-                <div class="text-center">
-                    <h2 class="text-2xl font-bold mb-4">User Distribution</h2>
+            <div class="flex justify-center mt-10 w-fit mx-auto rounded-lg dark:bg-stone-800 p-3">
+                <div class="text-center ">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white  ">User Distribution</h2>
                     <canvas id="userChart"></canvas>
                 </div>
-                <div class="text-center">
-                    <h2 class="text-2xl font-bold mb-4">Category Sales</h2>
+                <div class="text-cente">
+                    <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">Category Sales</h2>
                     <canvas id="categoryChart"></canvas>
                 </div>
             </div>

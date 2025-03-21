@@ -115,7 +115,7 @@
                                 No items in basket
                             </div>
                         @else
-                            <div class="overflow-y-auto no-scrollbar overflow-x-hidden h-[630px] mb-4 rounded-lg transition-all duration-1000 w-full">
+                            <div class="overflow-y-auto no-scrollbar overflow-x-hidden h-[50%] mb-4 rounded-lg transition-all duration-1000 w-full">
                                 <ul class="h-full mb-6 w-full">
                                     @foreach($basketItems as $basketItem)
                                         <div
