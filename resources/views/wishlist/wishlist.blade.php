@@ -50,29 +50,35 @@
                         @foreach ($wishlistItems as $wishlistItem)
                             <li
                                 class="bg-white rounded-lg flex bg-white text-stone-800 dark:text-amber dark:bg-stone-800 text-center items-center p-2 mb-2 w-full">
-                                <div class="flex justify-start items-center p-2 w-1/2">
-                                    <img class="size-[125px] min-w-[125px] rounded "
+                                <div class="flex justify-start items-center p-2 w-1/3">
+                                    <img class="size-[60px] min-w-[60px] md:size-[125px] lg:min-w-[125px] rounded "
                                         src="{{ asset('Images/product images/' . $wishlistItem->product_name . '.png') }}" />
                                 </div>
-                                <div class="flex flex-col w-1/2">
-                                    <p class="text-base xl:text-lg text-center h-fit w-1/2 pl-5">
+                                <div class="flex flex-col md:flex-row w-2/3">
+                                    <p class="text-base lg:text-lg text-center h-fit w-1/2 pl-5">
                                         {{ $wishlistItem->product_name }}</p>
-                                    <div class="flex justify-center items-center p-2 w-1/2">
+                                    <div class="flex justify-start  items-center p-2 pl-5 w-fit">
                                         <form action="{{ route('basket.add') }}" method="post" class="ml-4">
                                             @csrf
                                             <input type="hidden" name="product_id"
                                                 value="{{ $wishlistItem->product_id }}" />
                                             <button
-                                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg text-nowrap shadow-md dark:text-amber dark:bg-stone-700 dark:hover:underline hover:underline"
+                                                class="hidden md:block py-2 a px-4 bg-white text-grey-800 text-sm rounded-lg text-nowrap shadow-md dark:text-amber dark:bg-stone-700 dark:hover:underline hover:underline"
                                                 type="submit">Add to Basket</button>
+                                                <button
+                                                class="block md:hidden py-2 a px-2 lg:py-1 lg:px-4 bg-white text-grey-800 text-sm rounded-lg text-nowrap shadow-md dark:text-amber dark:bg-stone-700 dark:hover:underline hover:underline"
+                                                type="submit"><i class="fa-solid fa-shopping-basket fa-sm"></i></button>
                                         </form>
                                         <form action="{{ route('wishlist.remove') }}" method="post" class="ml-4">
                                             @csrf
                                             <input type="hidden" name="product_id"
                                                 value="{{ $wishlistItem->product_id }}" />
                                             <button
-                                                class="py-2 a px-4 bg-white text-grey-800 rounded-lg shadow-md dark:text-amber dark:bg-stone-700 dark:hover:underline hover:underline"
+                                                class="hidden md:block py-2 a px-4 bg-white text-grey-800 text-sm rounded-lg shadow-md dark:text-amber dark:bg-stone-700 dark:hover:underline hover:underline"
                                                 type="submit">Remove</button>
+                                                <button
+                                                class="block md:hidden py-2 a px-4 bg-white text-grey-800 text-sm rounded-lg shadow-md dark:text-amber dark:bg-stone-700 dark:hover:underline hover:underline"
+                                                type="submit"><i class="fa-solid fa-x "></i></button>
                                         </form>
                                     </div>
                                 </div>
