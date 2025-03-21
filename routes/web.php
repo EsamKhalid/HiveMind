@@ -34,6 +34,8 @@ use App\Http\Controllers\EnquiriesController;
 
 use App\Http\Controllers\GuestOrderController;
 
+use App\Http\Controllers\StatisticsController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -121,6 +123,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
 
     Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
+    Route::get('admin/statistics', [StatisticsController::class, 'view'])->name('admin.statistics');
 });
 
 
