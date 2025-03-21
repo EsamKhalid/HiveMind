@@ -77,6 +77,16 @@
                         </button>
                     </form>
 
+                    <form action="{{ route('wishlist.add') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                    <button
+                        class="w-full bg-yellow-400 text-black mt-4 py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
+                        Add to Wishlist
+                    </button>
+
+                </form>
+
                     <button onclick="OPEN()" class="bg-amber text-black dark:text-white hover:text-white dark:hover:text-amber dark:dark:bg-stone-700 w-full mt-5 rounded-md transition-all duration-500 p-5">
                         Submit Review
                     </button>
@@ -172,24 +182,7 @@
                             Submit Review
                         </button>
                     </div>
-
-
-                <form action="{{ route('wishlist.add') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="product_id" value="{{ $product->id }}" />
-                    <button
-                        class="bg-yellow-400 text-white mt-4 py-6 px-8 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
-                        Add to Wishlist
-                    </button>
-
-                </form>
-
-                <button onclick="OPEN()" class="bg-amber w-1/2 p-2 mt-5">
-                    Submit Review
-                </button>
-            </div>
-        </div>
-
+                
         <div class="flex justify-center mt-24 h-fit">
             <div class="bg-amber size-10 w-1/2 text-center">
                 <div class="relative flex items-center justify-center py-2">
