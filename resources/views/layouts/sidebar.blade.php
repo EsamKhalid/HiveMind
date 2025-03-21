@@ -63,8 +63,16 @@
                         class="flex flex-col dark:text-white"
                     >
                         <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-3 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.dashboard') }}"
+                            ><p>Dashboard</p>
+                            <i
+                                class="fa-solid fa-desktop text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
+                            ></i
+                        ></a>
+                        <a
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('admin.notifications') }}"
                             ><p>Notifications</p>
                             <i
                                 class="fa-solid fa-inbox text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
@@ -81,9 +89,25 @@
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.user-management') }}"
-                            ><p>Manage users</p>
+                            ><p>Manage Users</p>
                             <i
                                 class="fa-solid fa-sitemap text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
+                            ></i
+                        ></a>
+                        <a
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+
+                            ><p>Refunds & Returns</p>
+                            <i
+                                class="fa-solid fa-store text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
+                            ></i
+                        ></a>
+                        <a
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('admin.reports') }}"
+                            ><p>View Reports</p>
+                            <i
+                                class="fa-solid fa-newspaper text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
                             ></i
                         ></a>
                         <a
@@ -97,7 +121,7 @@
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('home') }}"
-                            ><p>Customer View</p>
+                            ><p>Customer view</p>
                             <i
                                 class="fa-solid fa-right-left text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
                             ></i
