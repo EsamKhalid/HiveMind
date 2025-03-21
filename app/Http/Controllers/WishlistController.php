@@ -12,7 +12,8 @@ class WishlistController extends Controller
 {
     //
 
-    public function view() {
+    public function view()
+    {
 
         $user = Auth::user();
 
@@ -62,13 +63,20 @@ class WishlistController extends Controller
     public function addToWishlist(Request $request)
     {
 
+        //Check if user is logged in
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
         $wishlist = $this->getWishlist();
         $productId = $request->input('product_id');
 
         $wishlistItems = WishlistItems::where('wishlist_id', $wishlist->id)
             ->join('products', 'wishlist_items.product_id', '=', 'products.id')
             ->select(
-                'wishlist_items.*', 
+                'wishlist_items.*',
                 'products.product_name',
                 'products.description',
                 'products.price'
