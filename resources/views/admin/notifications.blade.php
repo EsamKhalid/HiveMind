@@ -43,6 +43,20 @@
                     </div>
                 </div>
             </div>
+            @elseif($notification->type == 'guestOrder')
+                <div class="bg-green-100 dark:bg-green-100 border-t-4 border-emerald-800 dark:border-emerald-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                                New Order Placed 
+                            </p>
+                            <p class="text-sm">
+                                New Order for @foreach ($notification->orderItems as $order_item) {{ $order_item->quantity }}x {{ $order_item->products->product_name }}, @endforeach for guest {{ $notification->first_name }} {{ $notification->last_name }} worth £{{ $notification->total_amount }} has been placed. ({{ $notification->time }}).
+                            </p>
+                        </div>
+                    </div>
+                </div>
             @elseif($notification->type == 'stockOrder')
             <div class="bg-yellow-100 dark:bg-yellow-100 border-t-4 border-yellow-800 dark:border-yellow-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                 <div class="flex">
@@ -57,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            @elseif($notification->type == 'orderUpdate')
+            @elseif($notification->type == 'userOrderUpdate')
             <div class="bg-blue-100 dark:bg-blue-100 border-t-4 border-blue-800 dark:border-blue-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
                 <div class="flex">
                     <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
@@ -71,6 +85,20 @@
                     </div>
                 </div>
             </div>
+            @elseif($notification->type == 'guestOrderUpdate')
+                <div class="bg-blue-100 dark:bg-blue-100 border-t-4 border-blue-800 dark:border-blue-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
+                    <div class="flex">
+                        <i class="fa-solid fa-warehouse text-2xl mr-4 my-auto"></i>
+                        <div>
+                            <p class="font-bold">
+                                Order Status Updated
+                            </p>
+                            <p class="text-sm">
+                                Order Status for @foreach ($notification->orderItems as $order_item) {{ $order_item->quantity }}x {{ $order_item->products->product_name }}, @endforeach for guest {{ $notification->first_name }} {{ $notification->last_name }} has been updated to {{ $notification->order_status }}. ({{ $notification->time }}).
+                            </p>
+                        </div>
+                    </div>
+                </div>
             @endif
             @empty
             <div class="bg-pink-100 dark:bg-pink-100 border-t-4 border-pink-800 dark:border-pink-800 rounded-b text-gray-800 dark:text-gray-800 px-4 py-3 shadow-md my-5 mx-5">
