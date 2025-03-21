@@ -116,7 +116,7 @@ Route::middleware(['admin'])->group(function () {
         ->name('admin.orders.update');
     Route::patch('/admin/orders/processAll', [AdminOrderController::class, 'processAllOrders'])->name('admin.orders.processAll');
     
-    // View, aprrove or deny return requests - Aryan
+    // View, approve or deny return requests - Aryan
     Route::get('admin/orders/{order}/return-request', [AdminOrderController::class, 'returnRequest'])->name('admin.returnRequest');
     Route::put('admin/returns/{returnRequest}/approve', [AdminOrderController::class, 'approveReturn'])->name('admin.return.approve');
     Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
@@ -153,6 +153,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('checkout/save-guest', [CheckoutController::class, 'storeGuest'])->name('checkout.storeGuest');
     Route::get('checkout/confirmation/{confNum}', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
+    //Route::get('checkout/checkoutBilling',[CheckoutController::class, 'billing'])->name('checkout.billing');
+    Route::post('checkout/storeBillingAddress', [CheckoutController::class, 'storeBillingAddress'])->name('checkout.storeBillingAddress');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact.view');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
@@ -169,7 +171,7 @@ Route::middleware(['admin'])->group(function () {
     // Route for Cancel Order Functionality - Aryan
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 
-    // Route for Password Revocery Functionality - Aryan
+    // Route for Password Recovery Functionality - Aryan
     Route::get('/password/recover', [PasswordResetController::class, 'showRecoveryForm'])->name('password.recover');
     Route::post('/password/recover', [PasswordResetController::class, 'processRecovery']);
     Route::post('/password/verify', [PasswordResetController::class, 'verifyAnswer'])->name('password.verifyAnswer');

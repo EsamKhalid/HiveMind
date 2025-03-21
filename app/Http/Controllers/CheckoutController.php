@@ -162,7 +162,7 @@ class CheckoutController extends Controller
         // $basket->delete();
 
 
-        return redirect()->route('checkout.checkout')->with('addressSaved');
+        return view('checkout.checkoutBilling');
     }
 
     public function storeGuest(Request $request)
@@ -223,7 +223,7 @@ class CheckoutController extends Controller
         foreach ($basketItems as $order_item) {
 
             if ($order_item->stock_level < $order_item->quantity) { //Checks if the selected product in basket is higher than the available product stock level.
-                return redirect()->route('checkout.view')->withErrors(['msg' => ' PROUCT OUT OF STOCK']); //Returns error, does not place order.
+                return redirect()->route('checkout.view')->withErrors(['msg' => ' PRODUCT OUT OF STOCK']); //Returns error, does not place order.
             }
 
         }
@@ -259,7 +259,7 @@ class CheckoutController extends Controller
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
-            return redirect()->route('checkout.confirmation', $order->confirmation_number);
+            return redirect()->route('checkout.storeBillingAddress');
 
         } else {
             $guestID = session()->get('guest_id');
@@ -310,4 +310,14 @@ class CheckoutController extends Controller
         return view('checkout.confirmation', ['confirmation_number' => $confNum]);
     }
 
+    public function storeBillingAddress() 
+    {
+        //return redirect()->route('checkout.checkout', $order->confirmation_number);
+        return redirect()->route('checkout.checkout');
+    }
+
+    //public function billing()
+    //{
+    //    return view('checkout.billing');
+    //}
 }

@@ -20,7 +20,6 @@
             const nextForm = document.getElementById(next);
             currentForm.classList.add('hidden')
             nextForm.classList.remove('hidden')
-            nextFomr.classList.add('flex')
         }
     </script>
 </head>
@@ -155,8 +154,8 @@
                             @endif
                             <a class="p-3 bg-green-500 w-fit cursor-pointer ml-auto rounded-lg" onclick="showNextForm('address','guestDetails')">BACK</a>
                         </form>
-                @endif
-            <form action="{{ route('checkout.storeAddress') }}" method="post" class="hidden bg-stone-500 p-3 rounded-lg justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg w-[40%]">
+            @else
+            <form action="{{ route('checkout.storeAddress') }}" method="post" class="bg-stone-500 p-3 rounded-lg justify-between max-h-[80%] h-fit text-xs sm:text-sm md:text-base lg:text-lg w-[40%]">
                             @csrf
                             @if($address != null)
                                 <div class="flex flex-col items-start mb-1 xl:mb-2">
@@ -229,7 +228,7 @@
                                 </div>
                             @endif
                         </form>
-            
+            @endif
             </div>
 
 
@@ -240,4 +239,4 @@
 
     @include('layouts.footer')
 </body>
-</html>inc
+</html>
