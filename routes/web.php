@@ -37,7 +37,10 @@ use App\Http\Controllers\EnquiriesController;
 
 use App\Http\Controllers\GuestOrderController;
 
+use App\Http\Controllers\WishlistController;
+
 use App\Http\Controllers\StatisticsController;
+
 
 Route::get('/', function () {
     return view('home');
@@ -92,6 +95,8 @@ Route::post('signup.signup', [SignupController::class, 'store'])->name('signup.s
 
 Route::get('products',[ProductController::class,'list'])->name('products');
 
+// view wishlist
+Route::get('wishlist.wishlist',[TestController::class,'wishlist'])->name('wishlist');
 
 
 //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -205,6 +210,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('review/productReview/{id}', [ReviewController::class, 'productReview'])->name('review.productReview');
     Route::post('/review/storeProductReview/{id}', [ReviewController::class, 'storeProductReview'])->name('review.storeProductReview');
 
+
+    Route::get('wishlist',[WishlistController::class, 'view'])->name('wishlist.view');
+    Route::post('wishlist/add',[WishlistController::class, 'addtoWishlist'])->name('wishlist.add');
+    Route::post('wishlist/remove',[WishlistController::class, 'removeFromWishlist'])->name('wishlist.remove');
     
     // NOTE FROM HARRY (15/02/25)
     // IF YOU WANT TO USE MY INVENTORY CODE FROM "resources/views/inventory/inventory.blade.php"
