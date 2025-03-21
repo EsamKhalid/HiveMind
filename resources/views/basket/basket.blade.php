@@ -26,9 +26,22 @@
             <div class="card bg-yellow-50 dark:bg-stone-700 p-8 rounded-lg shadow-md text-center w-[80%]">
                 <h1 class="text-6xl mb-6 dark:text-amber">Basket</h1>
 
-                @if($errors->any())
-                <h4 class="text-3xl text-red-600">{{$errors->first()}}</h4>
-                @endif
+                @if ($errors->any())
+        <div class="bg-red-500 text-white p-4 rounded mb-4 text-center">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            
+        </div>
+        @endif
+
+         @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4 text-center">
+                {{ session('success') }}
+            </div>
+            @endif
 
                 <div class="flex justify-between transition-all duration-1000 flex-col xl:flex-row">
                     <div class="bg-white p-5 rounded-lg w-full xl:w-1/3 flex flex-col justify-between mr-4">

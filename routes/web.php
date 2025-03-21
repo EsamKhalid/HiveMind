@@ -8,9 +8,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\SettingsController;
+
 
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\InventoryController;
@@ -31,6 +34,10 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\ReportController;
 // end
 use App\Http\Controllers\EnquiriesController;
+
+use App\Http\Controllers\GuestOrderController;
+
+use App\Http\Controllers\StatisticsController;
 
 Route::get('/', function () {
     return view('home');
@@ -124,11 +131,19 @@ Route::middleware(['admin'])->group(function () {
     Route::put('admin/returns/{returnRequest}/deny', [AdminOrderController::class, 'denyReturn'])->name('admin.return.deny');
 
     Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
+    Route::get('admin/statistics', [StatisticsController::class, 'view'])->name('admin.statistics');
 });
+
 
 
 /**Middleware is a mechanism that allows you to perform actions such as authentication, logging, validaition and such 
  * before or after the request is processed by your controller. Ultimately, it acts as a bridge between request and a response. */
+
+
+
+    Route::get('orders/guest/validate', [GuestOrderController::class, 'view'])->name('orders.guest.validate');
+    Route::get('orders/guest/getOrder', [GuestOrderController::class, 'getOrder'])->name('orders.guest.getOrder');
+    Route::get('orders/guest/displayOrder/{confnum}/{surname}', [GuestOrderController::class, 'displayOrder'])->name('orders.guest.displayOrder');
 
 
 
@@ -152,7 +167,7 @@ Route::middleware(['admin'])->group(function () {
 
     Route::post('checkout/save-address', [CheckoutController::class, 'storeAddress'])->name('checkout.storeAddress');
     Route::post('checkout/save-guest', [CheckoutController::class, 'storeGuest'])->name('checkout.storeGuest');
-    Route::get('checkout/confirmation', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
+    Route::get('checkout/confirmation/{confNum}', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact.view');
@@ -170,6 +185,16 @@ Route::middleware(['admin'])->group(function () {
     // Route for Cancel Order Functionality - Aryan
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 
+    // Route for Password Revocery Functionality - Aryan
+    Route::get('/password/recover', [PasswordResetController::class, 'showRecoveryForm'])->name('password.recover');
+    Route::post('/password/recover', [PasswordResetController::class, 'processRecovery']);
+    Route::post('/password/verify', [PasswordResetController::class, 'verifyAnswer'])->name('password.verifyAnswer');
+    Route::get('/password/resetForm', [PasswordResetController::class, 'resetForm'])->name('password.resetForm');
+    Route::post('/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.reset');
+    
+    // Routes to update Memorable information
+    Route::get('/settings/security', [SettingsController::class, 'securityView'])->name('settings.security');
+    Route::post('/settings/security', [SettingsController::class, 'securityUpdate'])->name('settings.security.update');
 
 
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');

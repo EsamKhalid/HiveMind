@@ -26,6 +26,8 @@ class User extends Authenticatable
         'phone_number',
         'password',
         'permission_level',
+        'memorable_question',
+        'memorable_answer',
     ];
     
     /** (Default method)

@@ -1,58 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Orders</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <title>Your account</title>
     </head>
-    <body class="bg-gray-100 min-h-screen">
+    <body>
         @include('layouts.navbar')
-
-        <header class="bg-gradient-to- pt-4 pb-8 shadow-md border">
-            <a
-                href="{{ route('account') }}"
-                class="fas fa-arrow-left fa-2x pl-4"
-            ></a>
-            <div class="max-w-7xl mx-auto text-center">
-                <h1 class="text-4xl font-extrabold">My Orders</h1>
-                <p class="text-lg mt-2 text-gray-600">
-                    Here are your recent purchases.
-                </p>
-            </div>
-        </header>
-
-        @if (session('success'))
-        <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
-            {{ session("success") }}
+        <div class="flex justify-center">
+            @if($errors->any())
+            <h4 class="text-3xl">{{$errors->first()}}</h4>
+            @endif
         </div>
-        @endif @if (session('error'))
-        <div class="bg-red-100 text-red-800 p-4 rounded mb-4">
-            {{ session("error") }}
-        </div>
-        @endif
 
-        <main>
-            <section class="max-w-7xl mx-auto p-6">
-                @if ($orders->isEmpty())
-                <div class="text-center mt-10 mb-20">
-                    <p class="text-gray-600 text-lg">You have no orders yet. </p>
-                    <a href="{{ route('products') }}" class="underline text-yellow-500 hover:text-yellow-600">Shop now!</a>
-                </div>
-                @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    @foreach ($orders as $index => $order)
-                    <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
-                        <div class="mb-4">
+        <main class="flex justify-center items-center min-h-screen">
+            <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
 
-                            <h3 class="text-2xl font-bold text-grey-800">
-                                Confirmation Number: {{ $order->confirmation_number}}
-                            </h3>
-                        </div>
                         <div class="text-gray-700">
                             <p class="mb-2">
-                                <strong>Order ID: </strong>
-                                {{ $order->id }}
+                                <strong>Confirmation Number: </strong>
+                                {{ $order->confirmation_number }}
                             </p>
                             <p class="mb-2">
                                 <strong>Order Date:</strong>
@@ -108,17 +74,19 @@
                                     Price: £{{ number_format($item->products->price, 2) }}
                                     <br />
                                     <a
-                                        class="rounded bg-yellow-300 hover:bg-yellow-400 py-1 px-2"
-                                        href="{{ route('review.productReview', $item->products->id) }}">
-                                            Review
-                                    </a>
+                                        class="rounded bg-amber p-1"
+                                        href="{{
+                                            route('review.productReview', $item->products->id)
+                                        }}"
+                                        >Review</a
+                                    >
                                 </li>
                                 @endforeach
                             </ul>
                             @if ($order->order_status === 'Delivered')
 
                                 <a href="{{ route('orders.return', $order->id) }}" 
-                                    class="bg-blue-400 text-white px-4 py-2 mt-6 mr-[50%] rounded block text-center hover:bg-blue-500 transition-colors">
+                                    class="bg-blue-400 text-white px-4 py-2 mt-4 mr-[50%] rounded block text-center hover:bg-blue-500 transition-colors">
                                     Return Items
                                 </a>
                             @elseif ($order->order_status === 'Return Requested')
@@ -138,11 +106,27 @@
                             <button
                                 class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed"
                                 title="Cannot request return until order is delivered"
-                                disabled>
-                                    Return Items
+                                disabled
+                            >
+                                Return Items
                             </button>
-                            @endif
+                            @endif @if (in_array($order->order_status,
+                            ['Pending', 'Processing']))
+                            <form
+                                action="{{ route('orders.cancel', $order->id) }}"
+                                method="POST"
+                                class="inline-block"
+                                onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone.');"
+                            >
+                                @csrf @method('DELETE')
+                                <button
+                                    type="submit"
+                                    class="bg-red-500 text-white px-4 py-2 mt-2 rounded hover:bg-red-600 transition-colors"
+                                >
+                                    Cancel Order
+                                </button>
 
+                            @endif
                             @if (in_array($order->order_status, ['pending', 'Processing', 'Shipped']))
                                 <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to cancel this order? This action cannot be undone and a small fee may still be charged.');">
@@ -156,10 +140,6 @@
                             @endif
                         </div>
                     </div>
-                    @endforeach
-                </div>
-                @endif
-            </section>
         </main>
 
         @include('layouts.footer')

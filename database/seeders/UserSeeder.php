@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
                 'phone_number' => 0,
                 'password' => bcrypt("password"),
                 'permission_level' => "user", // Add this line
+                'memorable_question' => 'test',
+                'memorable_answer' => bcrypt("test"),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -32,6 +34,8 @@ class UserSeeder extends Seeder
                 'phone_number' => 0,
                 'password' => bcrypt("password"),
                 'permission_level' => "admin",
+                'memorable_question' => 'test',
+                'memorable_answer' => bcrypT("test"),
                 'created_at' => now(),
                 'updated_at' => now()
             ]

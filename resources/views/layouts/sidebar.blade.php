@@ -89,14 +89,15 @@
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.user-management') }}"
-                            ><p>Manage users</p>
+                            ><p>Manage Users</p>
                             <i
                                 class="fa-solid fa-sitemap text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
                             ></i
                         ></a>
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            ><p>Refunds & returns</p>
+
+                            ><p>Refunds & Returns</p>
                             <i
                                 class="fa-solid fa-store text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
                             ></i
@@ -104,7 +105,15 @@
                         <a
                             class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.reports') }}"
-                            ><p>View reports</p>
+                            ><p>View Reports</p>
+                            <i
+                                class="fa-solid fa-newspaper text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
+                            ></i
+                        ></a>
+                        <a
+                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            href="{{ route('admin.statistics') }}"
+                            ><p>View Statistics</p>
                             <i
                                 class="fa-solid fa-chart-line text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
                             ></i
