@@ -78,7 +78,7 @@
                              <h1 class="text-center text-xl mt-5">
                                 {{strtoupper($product->product_name)}}
                             </h1>
-                            <p class="text-center">{{ $product->stock_level == 0 ? 'This product is out of stock' : ' In Stock' }}</p>
+                            <p class="text-center">{{ $product->stock_level == 0 ? 'This product is out of stock' : ' In Stock (' .  $product->stock_level .')'  }}</p>
                             <p class="text-center font-bold">£{{$product->price}}</p>
                         </div></a
                     >

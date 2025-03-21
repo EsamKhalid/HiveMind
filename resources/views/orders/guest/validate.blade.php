@@ -7,11 +7,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
-    <body>
+    <body class="bg-white dark:bg-stone-950">
         @include('layouts.navbar')
 
         <main class="mt-12 mb-12 flex flex-col items-center">
-            <h1 class="text-4xl font-bold text-stone-800 mb-6">
+            <h1 class="text-4xl font-bold text-stone-300 mb-6">
                 Track my Order
             </h1>
 
@@ -26,13 +26,13 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('orders.guest.getOrder') }}" method="GET">
+            <form class="bg-stone-800 rounded-lg p-5" action="{{ route('orders.guest.getOrder') }}" method="GET">
                 @csrf
 
                 <div class="mb-4">
                     <label
                         for="surname"
-                        class="block text-stone-700 text-sm font-bold mb-2"
+                        class="block text-stone-300 text-sm font-bold mb-2"
                         >Surname:</label
                     >
                     <input
@@ -48,7 +48,7 @@
                 <div class="mb-6">
                     <label
                         for="confirmation"
-                        class="block text-stone-700 text-sm font-bold mb-2"
+                        class="block text-stone-3   00 text-sm font-bold mb-2"
                         >Confirmation Number (6-digits):</label
                     >
                     <input
