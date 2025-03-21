@@ -10,8 +10,8 @@
                 <div class="inline-block">
                     <p class="text-6xl mb-5 dark:text-white">Payment Details</p>
                     <form
-                        action="{{ route('checkout.storeBillingAddress') }}"
-                        method="post"
+                        action="{{ route('checkout.checkout') }}"
+                        method="get"
                         class="bg-stone-300 p-3 rounded-lg dark:bg-stone-800 transition-colors duration-1000"
                     >
                         @csrf
@@ -55,5 +55,5 @@
         </main>
 
         @include('layouts.footer')
-    </body class="transition-none >
+    </body class="transition-none" >
 </html>
