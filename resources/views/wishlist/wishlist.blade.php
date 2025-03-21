@@ -49,7 +49,7 @@
                     <ul class="h-full w-full">
                         @foreach ($wishlistItems as $wishlistItem)
                             <li
-                                class="bg-white rounded-lg flex bg-white text-stone-800 dark:text-amber dark:bg-stone-800 text-center items-center p-2 mb-2 w-full">
+                                class="rounded-lg flex bg-white text-stone-800 dark:text-amber dark:bg-stone-800 text-center items-center p-2 mb-2 w-full">
                                 <div class="flex justify-start items-center p-2 w-1/3">
                                     <img class="size-[60px] min-w-[60px] md:size-[125px] lg:min-w-[125px] rounded "
                                         src="{{ asset('Images/product images/' . $wishlistItem->product_name . '.png') }}" />
