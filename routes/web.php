@@ -164,8 +164,10 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 
 
-
+    // Route for user settings
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+    Route::post('/update-settings', [UserController::class, 'updateSettings'])->name('update.settings');
+
 
 
     Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');
