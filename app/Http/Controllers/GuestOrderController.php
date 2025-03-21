@@ -16,8 +16,11 @@ class GuestOrderController extends Controller
 
         $order = Order::where('confirmation_number', $confNum)->first();
 
-        if($order != null){
-            if($surname == $order->guest->last_name){
+        if($order != null){ 
+            if($order->guest == null){
+                return redirect()->route('orders.guest.validate')->withErrors(['msg' => 'Please login to view your order']);
+            }
+            else if($surname == $order->guest->last_name){
             return view('orders.guest.displayOrder', ['order' => $order]);
         }
         else{

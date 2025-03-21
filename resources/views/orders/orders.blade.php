@@ -35,8 +35,9 @@
         <main>
             <section class="max-w-7xl mx-auto p-6">
                 @if ($orders->isEmpty())
-                <div class="text-center mt-10">
-                    <p class="text-gray-600 text-lg">You have no orders yet.</p>
+                <div class="text-center mt-10 mb-20">
+                    <p class="text-gray-600 text-lg">You have no orders yet. </p>
+                    <a href="{{ route('products') }}" class="underline text-yellow-500 hover:text-yellow-600">Shop now!</a>
                 </div>
                 @else
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
