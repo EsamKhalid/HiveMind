@@ -24,7 +24,7 @@ class StatisticsController extends Controller
         foreach($orders as $ord){
             $revenue = $revenue + $ord->total_amount;
         }
-        $avgOrderValue = $revenue / count($orders);
+        $avgOrderValue = count($orders) > 0 ? $revenue / count($orders) : 0;
         $avgOrderValue = number_format((float)$avgOrderValue, 2, '.', '');
         $noReturnedOrders = Order::where('order_status', "Return Approved")->count();
         
@@ -37,7 +37,7 @@ class StatisticsController extends Controller
             $inventoryItems = $inventoryItems += $product->stock_level;
         }
         
-        $returnRate =  number_format((float)$noReturnedOrders / count($orders), 2, '.', '') * 10;
+        $returnRate = count($orders) > 0 ? number_format((float)$noReturnedOrders / count($orders), 2, '.', '') * 10 : 0;
 
         $noEnquiries = Enquiries::count();
 
@@ -54,48 +54,27 @@ class StatisticsController extends Controller
             $avgProductRating = $avgProductRating + $review->rating;
         }        
 
-         if($noProdReviews > 0){
-              $avgProductRating = $avgProductRating / $noProdReviews;
-        }
-        else{
-            $avgProductRating = 0;
-        }
-
-       
+        $avgProductRating = $noProdReviews > 0 ? $avgProductRating / $noProdReviews : 0;
 
         foreach($siteReviews as $review){
             $avgSiteRating = $avgSiteRating + $review->rating;
         }
 
-        if($noSiteReviews > 0){
-             $avgSiteRating = $avgSiteRating / $noSiteReviews;
-        }
-        else{
-            $avgSiteRating = 0;
-        }
+        $avgSiteRating = $noSiteReviews > 0 ? $avgSiteRating / $noSiteReviews : 0;
 
         $orderItems = OrderItem::all();
 
-        ($orderItems[0]->products->product_type);
+        if (count($orderItems) > 0 && isset($orderItems[0]->products->product_type)) {
+            ($orderItems[0]->products->product_type);
+        }
 
         $categorySales = array("Beauty" => 0, "Health" => 0, "Haircare" => 0, "Skincare" => 0, "Merchandise" => 0);
 
         foreach($orderItems as $order){
-            $categorySales[$order->products->product_type] += 1;
+            if (isset($order->products->product_type)) {
+                $categorySales[$order->products->product_type] += 1;
+            }
         }
-        
-
-        // $test = "var";
-
-        // $arr = array("var" => 0, "var2" => 10);  
-
-        // $arr[$test] += 2;
-
-        // dd($arr["var"]);
-
-
-        
-    
 
         $data = compact(
             'unregisteredUsers',
@@ -115,9 +94,7 @@ class StatisticsController extends Controller
             'inventoryItems',
         );
 
-        
         return view('admin.statistics', ['data' => $data]);    
-        
     }
 }
 
