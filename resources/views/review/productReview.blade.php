@@ -4,7 +4,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Your account</title>
     </head>
-    <body>
+    <body class="rounded-lg dark:bg-stone-950 transition-colors transition-all">
         @include('layouts.navbar')
         <div class="flex justify-center">
             @if($errors->any())
@@ -14,7 +14,7 @@
 
         <main class="flex justify-center items-center min-h-screen">
             <div
-                class="flex flex-col justify-center items-center text-center w-full max-w-lg p-4"
+                class="flex flex-col justify-center items-center text-center w-full max-w-lg p-4 dark:text-white"
             >
                 <div class="mb-4">
                     <p class="text-3xl">Review: {{$product->product_name}}</p>
