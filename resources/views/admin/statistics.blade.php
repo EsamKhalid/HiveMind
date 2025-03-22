@@ -8,16 +8,13 @@
     <body class="bg-white dark:bg-stone-950 flex">
         @include('layouts.sidebar')
 
-        <div class="flex flex-col justify-center overflow-x-auto w-full p-10">
-            <div class="text-center mb-10">
-                <p
-                    class="text-7xl text-white p-5 bg-yellow-400 dark:bg-stone-400 dark:bg-opacity-40 rounded-md"
-                >
-                    <i class="fa-solid fa-chart-line text-7xl mr-4 my-auto"></i>
-                    Statistics
-                </p>
+        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Statistics <i class="fa-solid fa-chart-line text-4xl ml-2 my-auto"></i></h1>
+                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">See HiveMind Sales and Statistics below.</p>
             </div>
-
+        </header>
+        <div class="flex flex-col justify-center overflow-x-auto w-full p-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md">
                     <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">User Statistics</h2>

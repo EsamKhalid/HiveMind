@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <title>Dashboard 🐝</title>
-        <link rel="icon" href="/favicon.ico">
-    </head>
 
-    <body class="transition-none bg-stone-200 dark:bg-stone-950 flex">
-        @include('layouts.sidebar')
-        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
-            <div class="max-w-7xl mx-auto text-center">
-                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000"><i
-                                class="fa-solid fa-inbox text-yellow-500 text-4xl"></i> Admin Dashboard</h1>
-                <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage/track all admin-related activities from this dashboard</p>
-            </div>
-        </header>
-        
-        <div
-            id="notifications"
-            class="mx-auto mb-auto flex-col w-[80%] mt-[1%]"
-        >
-        
+<head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Dashboard 🐝</title>
+    <link rel="icon" href="/favicon.ico">
+</head>
+
+<body class="transition-none bg-stone-200 dark:bg-stone-950 flex">
+    @include('layouts.sidebar')
+    <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000"><i
+                    class="fa-solid fa-inbox text-yellow-500 text-4xl"></i> Admin Dashboard</h1>
+            <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage/track all
+                admin-related activities from this dashboard</p>
+        </div>
+    </header>
+
+    <div id="notifications" class="mx-auto mb-auto flex-col w-[80%] mt-[1%]">
+
 
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10">
 
             <!-- analytics -->
             <div>
-                <h2 class="text-3xl font-bold mb-4 text-stone-950 dark:text-white">Analytics</h2>
+                <h2 class="text-3xl font-bold mb-4 text-stone-950 dark:text-white">Analytics<i class="fa-solid fa-chart-line ml-5 mr-1 text-xl md:text-xl 2xl:text-3xl"></i></h2>
 
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md mb-4">
                     <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">Reports</h2>
@@ -50,7 +49,8 @@
 
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md mb-4">
                     <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">Notifications</h2>
-                    <p class="text-stone-950 dark:text-white">View all notifications about users, orders and inventory updates.</p>
+                    <p class="text-stone-950 dark:text-white">View all notifications about users, orders and inventory
+                        updates.</p>
                     <br>
                     <a href="{{ route('admin.notifications') }}"
                         class="bg-yellow-600 hover:bg-yellow-700 transition duration-200 text-white px-6 py-3 rounded-lg text-center font-semibold shadow-md">
@@ -61,8 +61,8 @@
 
             <!-- customer -->
             <div>
-                <h2 class="text-3xl font-bold mb-4 text-stone-950 dark:text-white">Customer</h2>
-                
+                <h2 class="text-3xl font-bold mb-4 text-stone-950 dark:text-white">Customer<i class="fa-solid fa-user ml-5 mr-1 text-xl md:text-xl 2xl:text-3xl"></i>
+                </h2>
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md mb-4">
                     <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">Manage Users</h2>
                     <p class="text-stone-950 dark:text-white">View all users and their details.</p>
@@ -106,8 +106,8 @@
 
             <!-- inventory -->
             <div>
-                <h2 class="text-3xl font-bold mb-4 text-stone-950 dark:text-white">Inventory</h2>
-                
+                <h2 class="text-3xl font-bold mb-4 text-stone-950 dark:text-white">Inventory<i class="fa-solid fa-warehouse ml-5 mr-1 text-xl md:text-xl 2xl:text-3xl"></i></h2>
+
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md mb-4">
                     <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white">Inventory</h2>
                     <p class="text-stone-950 dark:text-white">Manage the inventory for HiveMind.</p>
@@ -119,8 +119,9 @@
                 </div>
             </div>
 
-            </div>
         </div>
-        
-    </body>
+    </div>
+
+</body>
+
 </html>
