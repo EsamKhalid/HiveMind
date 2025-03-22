@@ -32,9 +32,13 @@ class AdminController extends Controller
    {
 
       $notifications = $this->notifs();
+      $live_reports = $this->livereports();
+      $statistics = $this->statistics();
 
       return view('admin.notifications', [
          'notifications' => $notifications,
+         'live_reports' => $live_reports,
+         'statistics' => $statistics,
       ]);
    }
 

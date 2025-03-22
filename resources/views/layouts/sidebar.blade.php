@@ -166,13 +166,6 @@
                         ></a>
                         <a
                             class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            ><p>Settings</p>
-                            <i
-                                class="fa-solid fa-gear ml-5 mr-1 text-xl md:text-xl 2xl:text-3xl text-yellow-500"
-                            ></i
-                        ></a>
-                        <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('faq') }}"
                             ><p>Help</p>
                             <i
