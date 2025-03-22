@@ -67,9 +67,13 @@
                             class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.dashboard') }}"
                             ><p>Dashboard</p>
-</a>
+
+                            <i
+                                class="fa-solid fa-desktop text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
+                            ></i
+                        ></a>
                         <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.notifications') }}"
                             ><p>Notifications</p>
 
@@ -78,7 +82,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.inventory') }}"
                             ><p>Inventory</p>
                             <i
@@ -86,70 +90,21 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.user-management') }}"
                             ><p>Manage Users</p>
                             <i
                                 class="fa-solid fa-sitemap text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
                             ></i
                         ></a>
-                        <a
-
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-
-                            ><p>Refunds & Returns</p>
-                            <i
-                                class="fa-solid fa-store text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
-                            ></i
-                        ></a>
-                        <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            href="{{ route('admin.reports') }}"
-                            ><p>View Reports</p>
-                            <i
-                                class="fa-solid fa-newspaper text-yellow-500 text-base md:text-2xl 2xl:text-4xl"
-                            ></i
-                        ></a>
-                        <a
-                            class="text-sm md:text-lg 2xl:text-3xl my-1 2xl:my-4 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            href="{{ route('admin.statistics') }}"
-
-                            ><p>View Statistics</p>
-                            <i
-                                class="fa-solid fa-chart-line text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
-                            ></i
-                        ></a>
-                        <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            href="{{ route('home') }}"
-                            ><p>Customer view</p>
-                            <i
-                                class="fa-solid fa-right-left text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
-                            ></i
-                        ></a>
-                        <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            href="{{ route('admin.adminOrder') }}"
-                            ><p>Orders and Returns</p>
-                            <i
-                                class="fa-solid fa-box text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
-                            ></i
-                        ></a>
-                        <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            href="{{ route('admin.userEnquiries') }}"
-                            ><p>User Enquiries</p>
-                            <i
-                                class="fa-solid fa-message text-yellow-500 text-xl md:text-xl 2xl:text-3xl"
-                            ></i
-                        ></a>
+                
                     </div>
                     <div
                         id="bottom-half-sidebar"
                         class="flex flex-col mb-[30%] dark:text-white"
                     >
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             onclick="toggleTheme()"
                             ><p>Theme</p>
                             <i
@@ -157,7 +112,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('account') }}"
                             ><p>Account</p>
                             <i
@@ -165,14 +120,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
-                            ><p>Settings</p>
-                            <i
-                                class="fa-solid fa-gear ml-5 mr-1 text-xl md:text-xl 2xl:text-3xl text-yellow-500"
-                            ></i
-                        ></a>
-                        <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-2 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('faq') }}"
                             ><p>Help</p>
                             <i
