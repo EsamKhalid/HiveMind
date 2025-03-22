@@ -45,7 +45,7 @@
                         @foreach($reports as $report)
                             <tr class="bg-white dark:bg-stone-800 dark:text-white text-center border">
                                 <td class="p-1 text-sm lg:text-2xl">
-                                    <a href="{{ $report->report_link }}" class="text-black dark:text-white hover:underline">
+                                    <a href="{{ asset('pdfs/' . $report->report_name . '.pdf') }}" download="{{ $report->report_name }}" class="text-white hover:underline">
                                         {{ $report->report_name }}
                                     </a>
                                 </td>
