@@ -305,7 +305,7 @@ class BasketController extends Controller
 
         // echo $request->input('product_id');
 
-        return redirect()->route('basket.view');
+        return redirect()->route('products');
 
         //} else {
         //    return redirect()->route('login')->with('success', 'Signup successful!');
