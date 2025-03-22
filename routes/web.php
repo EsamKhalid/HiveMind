@@ -208,8 +208,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/settings/security', [SettingsController::class, 'securityView'])->name('settings.security');
     Route::post('/settings/security', [SettingsController::class, 'securityUpdate'])->name('settings.security.update');
 
-
+    // Route for user settings
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
+    Route::post('/update-settings', [UserController::class, 'updateSettings'])->name('update.settings');
+
 
 
     Route::get('review/siteReview', [ReviewController::class, 'siteReview'])->name('review.siteReview');

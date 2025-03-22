@@ -36,4 +36,13 @@ class UserController extends Controller
     public function terms(){
       return view('user.terms');
     }
+
+    public function updateSettings(Request $request) {
+      $request-> validate([ 'terms_conditions'=>'required|boolean']);
+      $user = Auth::user();
+      $user->update(['terms_conditions' => $request->has('terms_conditions') ? 1 :0]);
+      return redirect()->route('settings')->with('success', 'Settings updated successfully!');
+    }
+
+
 }

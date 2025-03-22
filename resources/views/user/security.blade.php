@@ -3,7 +3,7 @@
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="bg-yellow-50 dark:bg-stone-950">
     @include('layouts.navbar')
 
     <main>
