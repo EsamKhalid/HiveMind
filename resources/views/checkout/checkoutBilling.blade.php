@@ -3,39 +3,57 @@
     <head>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
-        <header></header>
-        @include('layouts.navbar')
-
-        <main>
+    @include('layouts.navbar')
+    <body class="bg-stone-300 rounded-lg dark:bg-stone-800 transition-colors transition-all">
+        <main class="bg-white dark:bg-stone-950">
             <div class="flex justify-center m-4">
                 <div class="inline-block">
-                    <p class="text-6xl">Checkout</p>
+                    <p class="text-6xl mb-5 dark:text-white">Payment Details</p>
                     <form
-                        action="{{ route('checkout.saveBillingAddress') }}"
-                        method="post"
+                        action="{{ route('checkout.checkout') }}"
+                        method="get"
+                        class="bg-stone-300 p-3 rounded-lg dark:bg-stone-800 transition-colors duration-1000"
                     >
                         @csrf
-                        <label for="street_address">Street Address</label>
-                        <input type="text" name="street_address" required />
-                        <br />
-                        <label for="city">City</label>
-                        <input type="text" name="city" required />
-                        <br />
-                        <label for="county">County</label>
-                        <input type="text" name="county" required />
-                        <br />
-                        <label for="country">Country</label>
-                        <input type="text" name="country" required />
-                        <br />
-                        <label for="post_code">Post Code</label>
-                        <input type="text" name="post_code" required />
-                        <button type="submit">Go To Confirmation</button>
+                        <div class="flex flex-col items-start mb-1 xl:mb-2">
+                                    <label for="name" class="xl:w-full mx-auto block text-center text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">Name</label>
+                                    <input type="text" name="name" id="name" placeholder="Name on card"
+                                        required class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
+                                </div>
+                                <input type="hidden" name="type" value="billing" />
+                                <div class="flex flex-col items-start mb-1 xl:mb-2">
+                                    <label for="address" class="xl:w-full mx-auto block text-center text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">Billing Address</label>
+                                    <input type="text" name="address" id="address" placeholder="Billing Address" required
+                                        class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
+                                </div>
+                                <div class="flex flex-col items-start mb-1 xl:mb-2">
+                                    <label for="card_number" class="xl:w-full mx-auto block text-center text-black dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">Card Number</label>
+                                    <input type="text" name="card_number" id="card_number" placeholder="Card Number" required
+                                        class="w-[90%] xl:w-full mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
+                                </div>
+
+                                <div class="flex flex-row items-start w-[90%] mx-auto justify-between align-center">
+                                    <div class="w-1/2">
+                                    <label for="expiry_date" class=" mr-2 block text-black text-center dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">Expiry Date</label>
+                                    <input type="date" name="expiry_date" id="expiry_date" placeholder="Expiry date" required
+                                        class="w-[90%] mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
+                                    </div>
+                                    <div class="w-1/2">
+                                        <label for="cvv" class="mx-auto block text-black text-center dark:text-white lg:dark:text-white mb-1 transition-colors duration-1000">CVV</label>
+                                    <input type="text" name="cvv" id="cvv" placeholder="CVV" required
+                                        class="w-[90%] mx-auto p-1 xl:p-3 mb-1 xl:mb-2 border border-stone-300 rounded dark:bg-stone-200 transition-colors duration-1000" />
+                                    </div>
+                                    </div>
+
+                                <div class="flex justify-center mt-5">
+                                    <button type="submit"
+                                        class="bg-green-400 dark:bg-green-700 text-black py-2 px-6 rounded-md hover:text-white transition-colors duration-1000">Confirm Order</button>
+                                </div>
                     </form>
                 </div>
             </div>
         </main>
 
         @include('layouts.footer')
-    </body>
+    </body class="transition-none" >
 </html>

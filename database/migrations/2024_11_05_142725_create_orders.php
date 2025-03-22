@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('payment_method');
             $table->date('payment_date')->nullable();
             $table->decimal('amount_paid', 10, 2)->nullable();
+            $table->integer('confirmation_number');
             $table->timestamps();
         });
     }

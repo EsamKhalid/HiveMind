@@ -6,17 +6,17 @@
         <title>My Orders</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-gray-100 min-h-screen">
+    <body class="bg-stone-100 dark:bg-stone-950  min-h-screen transition-colours duration-1000">
         @include('layouts.navbar')
 
-        <header class="bg-gradient-to- pt-4 pb-8 shadow-md border">
+        <header class="bg-stone-200 dark:bg-stone-900 pt-4 pb-8 shadow-md dark:shadow-sm dark:shadow-stone-800 transition-colours duration-1000">
             <a
-                href="{{ route('account') }}"
-                class="fas fa-arrow-left fa-2x pl-4"
+                href="{{ url()->previous()}}"
+                class="fas fa-arrow-left fa-2x pl-4 dark:text-amber"
             ></a>
             <div class="max-w-7xl mx-auto text-center">
-                <h1 class="text-4xl font-extrabold">My Orders</h1>
-                <p class="text-lg mt-2 text-gray-600">
+                <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">My Orders</h1>
+                <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">
                     Here are your recent purchases.
                 </p>
             </div>
@@ -33,21 +33,25 @@
         @endif
 
         <main>
-            <section class="max-w-7xl mx-auto p-6">
+            <section class="max-w-7xl mx-auto p-6 mb-10">
                 @if ($orders->isEmpty())
+
                 <div class="text-center mt-10">
-                    <p class="text-gray-600 text-lg">You have no orders yet.</p>
+                    <p class="text-stone-600 dark:text-yellow-200 text-lg transition-colours duration-1000">You have no orders yet.</p>
+                    <a href="{{ route('products') }}" class="underline text-yellow-500 hover:text-yellow-600">Shop now!</a>
+
                 </div>
                 @else
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach ($orders as $index => $order)
-                    <div class="bg-white shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg">
+                    <div class="bg-white dark:bg-stone-600 shadow-md rounded-lg p-6 transition-transform hover:scale-105 hover:shadow-lg mb-[10%] transition-colours duration-1000">
                         <div class="mb-4">
-                            <h3 class="text-2xl font-bold text-grey-800">
-                                Order #{{ $index + 1 }}
+
+                            <h3 class="text-2xl font-bold text-stone-800 dark:text-yellow-200 transition-colours duration-1000">
+                                Confirmation Number: {{ $order->confirmation_number}}
                             </h3>
                         </div>
-                        <div class="text-gray-700">
+                        <div class="text-stone-700 dark:text-yellow-100 transition-colours duration-1000">
                             <p class="mb-2">
                                 <strong>Order ID: </strong>
                                 {{ $order->id }}
@@ -93,30 +97,28 @@
                                 @foreach ($order->orderItems as $item)
                                 <li class="mb-2">
 
-                                    <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold">
+                                    <a href="{{ route('products.show', $item->products->id) }}" class="underline font-semibold text-stone-900 dark:text-yellow-400 transition-colours duration-1000">
                                         {{ $item->products->product_name }}
                                     </a>
                                     @if ($item->returnItem && $item->order->order_status === 'Return Approved')
-                                        <span class="bg-gray-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
+                                        <span class="bg-stone-100 text-green-600 ml-1 p-1 rounded font-bold"> (Returned)</span>
                                     @endif
                                     <br/>
                                     <!--Description: {{ $item->products->description }}<br/>-->
                                     Quantity: {{ $item->quantity }}<br/>
 
                                     Price: £{{ number_format($item->products->price, 2) }}
-                                    <br />
-                                    <a
-                                        class="rounded bg-yellow-300 hover:bg-yellow-400 py-1 px-2"
-                                        href="{{ route('review.productReview', $item->products->id) }}">
-                                            Review
-                                    </a>
+                                    <br/>
+                    
                                 </li>
                                 @endforeach
                             </ul>
                             @if ($order->order_status === 'Delivered')
 
                                 <a href="{{ route('orders.return', $order->id) }}" 
-                                    class="bg-blue-400 text-white px-4 py-2 mt-6 mr-[50%] rounded block text-center hover:bg-blue-500 transition-colors">
+
+                                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold px-4 py-2 mt-6 mr-[50%] rounded block text-center transition-colors">
+
                                     Return Items
                                 </a>
                             @elseif ($order->order_status === 'Return Requested')
@@ -130,11 +132,11 @@
                                 </form>
                             @elseif ($order->order_status === 'Return Approved')
                             @elseif ($order->order_status === 'Return Denied')
-                                <p class="bg-gray-100 text-red-400 mt-4 p-2 rounded font-semibold">Please contact customer support if unsatisfied with the return request outcome (+353-123-4567, admin@hivemind.com).</p>
+                                <p class="bg-stone-100 text-red-400 mt-4 p-2 rounded font-semibold">Please contact customer support if unsatisfied with the return request outcome (+353-123-4567, admin@hivemind.com).</p>
 
                             @else
                             <button
-                                class="bg-gray-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed"
+                                class="bg-stone-400 text-white px-4 py-2 mt-4 rounded cursor-not-allowed"
                                 title="Cannot request return until order is delivered"
                                 disabled>
                                     Return Items

@@ -162,17 +162,17 @@ class CheckoutController extends Controller
         // $basket->delete();
 
 
-        return redirect()->route('basket.view');
+        return view('checkout.checkoutBilling');
     }
 
     public function storeGuest(Request $request)
     {
 
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email_address' => 'required',
-            'phone_number' => 'required',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email_address' => 'required|string|email|max:255|unique:guests,email_address',
+            'phone_number' => 'required|string|max:12|regex:/^\+?[0-9]{10,12}$/',
         ]);
 
         $guestID = session()->get('guest_id');
@@ -185,7 +185,7 @@ class CheckoutController extends Controller
             'phone_number' => $request->input('phone_number'),
         ]);
 
-        return redirect()->route('basket.view');
+        return redirect()->route('checkout.view');
     }
 
     public function checkout()
@@ -212,18 +212,18 @@ class CheckoutController extends Controller
             $guest = Guest::where('id', $guestID)->first();
 
             if (($guest->first_name == null) || ($guest->last_name == null) || ($guest->email_address == null) || ($guest->phone_number == null)) {
-                return redirect()->route('basket.view')->withErrors(['msg' => ' PLEASE FILL IN DETAILS']);
+                return redirect()->route('checkout.view')->withErrors(['msg' => ' PLEASE FILL IN DETAILS']);
             }
         }
 
         if ($address == null) {
-            return redirect()->route('basket.view')->withErrors(['msg' => ' PLEASE FILL IN ADDRESS']);
+            return redirect()->route('checkout.view')->withErrors(['msg' => ' PLEASE FILL IN ADDRESS']);
         }
 
         foreach ($basketItems as $order_item) {
 
             if ($order_item->stock_level < $order_item->quantity) { //Checks if the selected product in basket is higher than the available product stock level.
-                return redirect()->route('basket.view')->withErrors(['msg' => ' PROUCT OUT OF STOCK']); //Returns error, does not place order.
+                return redirect()->route('checkout.view')->withErrors(['msg' => ' PRODUCT OUT OF STOCK']); //Returns error, does not place order.
             }
 
         }
@@ -238,6 +238,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'card',
                 'amount_paid' => $basket->$total_amount,
                 'payment_date' => now(),
+                'confirmation_number' => mt_rand(100000,999999),
             ]);
 
             foreach ($basketItems as $order_item) {
@@ -258,7 +259,7 @@ class CheckoutController extends Controller
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
-            return redirect()->route('orders');
+            return redirect()->route('checkout.confirmation', $order->confirmation_number);
 
         } else {
             $guestID = session()->get('guest_id');
@@ -272,6 +273,7 @@ class CheckoutController extends Controller
                 'payment_method' => 'card',
                 'amount_paid' => $basket->$total_amount,
                 'payment_date' => now(),
+                'confirmation_number' => mt_rand(100000,999999),
             ]);
 
             foreach ($basketItems as $order_item) {
@@ -292,7 +294,7 @@ class CheckoutController extends Controller
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
-            return view('checkout.confirmation');
+            return redirect()->route('checkout.confirmation', $order->confirmation_number);
         }
 
 
@@ -303,9 +305,19 @@ class CheckoutController extends Controller
 
     }
 
-    public function confirmation()
+    public function confirmation($confNum)
     {
-        return view('checkout.confirmation');
+        return view('checkout.confirmation', ['confirmation_number' => $confNum]);
     }
 
+    public function storeBillingAddress() 
+    {
+        //return redirect()->route('checkout.checkout', $order->confirmation_number);
+        return redirect()->route('checkout.checkout');
+    }
+
+    //public function billing()
+    //{
+    //    return view('checkout.billing');
+    //}
 }

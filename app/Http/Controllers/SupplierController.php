@@ -26,6 +26,26 @@ class SupplierController extends Controller
             'supplier_phone' => $request->supplier_phone,
         ]);
 
-        return redirect()->route('supplier.view');
+        return redirect()->route('admin.inventory');
     }
+
+    public function list(Request $request) {
+        $search = $request->input('search');
+        $filter = $request->input('filter');
+
+        $suppliers = Supplier::query();
+
+        if ($search) {
+            $suppliers->where('supplier_name', 'like', '%' . $search . '%');
+        }
+
+        if ($filter && $filter != 'none') {
+            $suppliers->where('supplier_name', '=', $filter);
+        }
+
+        $suppliers = $suppliers->get();
+
+        return view('admin.supplier', compact('suppliers', 'search', 'filter'));
+    }
+
 }

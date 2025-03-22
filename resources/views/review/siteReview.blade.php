@@ -104,7 +104,7 @@
                     <textarea
                         name="review"
                         placeholder="Review Text (max 500 characters)"
-                        class="w-full p-3 border border-gray-300 rounded"
+                        class="w-full p-3 border border-stone-300 rounded"
                         rows="4"
                     ></textarea>
                     <button

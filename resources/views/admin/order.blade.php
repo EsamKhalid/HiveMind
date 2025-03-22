@@ -7,9 +7,14 @@
     <title>Stock Order</title>
 </head>
 
-<body class="dark:bg-stone-900 transition-all duration-1000 w-screen">
-    <header></header>
+<body class="dark:bg-stone-900 bg-stone-200 transition:none transition-all duration-1000 w-screen">
     @include('layouts.sidebar')
+    <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Stock Order Page</h1>
+            <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Reorder stock from suppliers here.</p>
+        </div>
+    </header>
 
     <main>
         <div class="flex justify-center m-4">
@@ -23,20 +28,20 @@
                     <h1 class="text-3xl font-bold mb-6 dark:text-amber">Stock Order</h1>
 
                     <div class="flex flex-col items-center mb-4">
-                        <label for="stock_quantity" class="block text-gray-600 dark:text-white mb-2">Stock Quantity</label>
-                        <input type="number" name="stock_quantity" class="w-1/4 p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required min="1" />
+                        <label for="stock_quantity" class="block text-stone-600 dark:text-white mb-2">Stock Quantity</label>
+                        <input type="number" name="stock_quantity" class="w-1/4 p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required min="1" />
                     </div>
 
                     <div class="flex flex-col items-center mb-4">
-                        <label for="lead_time" class="block text-gray-600 dark:text-white mb-2">Lead Time (in days)</label>
-                        <input type="number" name="lead_time" class="w-1/4 p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required min="0" />
+                        <label for="lead_time" class="block text-stone-600 dark:text-white mb-2">Lead Time (in days)</label>
+                        <input type="number" name="lead_time" class="w-1/4 p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required min="0" />
                     </div>
 
                     <h1 class="text-3xl font-bold mb-6 dark:text-amber">Supplier Details</h1>
 
                     <div class="flex flex-col items-center mb-4">
-                        <label for="supplier_id" class="block text-gray-600 dark:text-white mb-2">Select Supplier</label>
-                        <select name="supplier_id" id="supplier_id" class="w-1/4 p-3 mb-4 border border-gray-300 rounded dark:bg-stone-300" required>
+                        <label for="supplier_id" class="block text-stone-600 dark:text-white mb-2">Select Supplier</label>
+                        <select name="supplier_id" id="supplier_id" class="w-1/4 p-3 mb-4 border border-stone-300 rounded dark:bg-stone-300" required>
                             <option value="">Select Supplier</option>
                             @foreach($suppliers as $supplier)
                                 <option value="{{ $supplier->id }}" name="{{ $supplier->supplier_name }}"
@@ -56,6 +61,15 @@
                 </a>
             </div>
         </div>
+        <div>
+            @if(session()->has('error'))
+            <!-- unsuccessful deletion-->
+             {{ session()->get('error') }}
+        </div>
+        @elseif(session()->has('success'))
+        <!-- successful deletion-->
+        {{ session()->get('success') }}
+        @endif
     </main>
 </body>
 

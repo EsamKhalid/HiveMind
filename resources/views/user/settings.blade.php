@@ -49,6 +49,10 @@
             <p> Have any questions? Read our <a href="{{ route(name:'faq') }}"class="text-blue-500 hover:underline"> FAQs</a>
              or if you would like<a href="{{ route(name:'contact.view') }}" class="text-blue-500 hover:underline"> Contact Us</a>.</p>
         </div>
+        <p class="text-9xl text-red-500">settings</p>
+        <div class="custom-diagonal-white-right-static"></div>
+
+        <a href="{{ route('settings.security') }}" class="block underline py-2 px-4 hover:bg-stone-200">Security Settings</a>
         </main>
     </body>
 </html>
