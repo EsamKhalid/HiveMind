@@ -97,7 +97,7 @@
                 <form action="{{ route('admin.inventory')}}" method="GET" class="w-full mr-3">
                     <input type="text" name="search"
                         class="rounded w-full placeholder:text-stone-500 dark:text-stone-900"
-                        placeholder="search for a product" />
+                        placeholder="Search for a product" />
                     <br />
                 </form>
                 <div
