@@ -7,15 +7,19 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Reports</title>
     </head>
-    <body class="bg-white dark:bg-stone-950 flex">
+    <body class="transition-none bg-stone-200 dark:bg-stone-950 flex">
     @include('layouts.sidebar')
-    <div class=" mx-auto mb-auto flex-col w-[80%] mt-[4%]">
-        <p class="text-7xl text-white p-5 bg-yellow-400 dark:bg-gray-400 dark:bg-opacity-40 rounded-md"> <i class="fa-solid fa-inbox text-7xl mr-4 my-auto"></i>Reports</p>
+    <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Reports</h1>
+            <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">View annual sales reports from HiveMind</p>
+        </div>
+    </header>
 
 
         {{--search bar--}}
         <div class="flex justify-center pt-5 ">
-            <div class="flex justify-center w-[75vw] border">
+            <div class="flex justify-center w-[75vw]">
                 <form
                     action="{{ route('admin.reports') }}"
                     method="GET"
@@ -43,11 +47,11 @@
         
             
             {{--Print out reports--}}
-        <div class="flex justify-center text-xl ">
+        <div class="flex justify-center text-xl text-stone-950 dark:text-yellow-400">
             <div class=" py-5 ">
                 {{--Print out initial table with titles--}}
                 
-                    <div class="flex justify-center w-[60vw] border ">
+                    <div class="flex justify-center w-[60vw] border">
                         <h1 class=" rounded w-full ml-3 ">
                             
                             Report Title
