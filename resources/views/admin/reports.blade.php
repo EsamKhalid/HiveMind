@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Jo'Ardie Richardson's work -->
+<head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Reports</title>
+</head>
 
-    <head>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <title>Reports</title>
-    </head>
-    <body class="transition-none bg-stone-200 dark:bg-stone-950 flex">
+<body class="transition-none bg-stone-200 dark:bg-stone-950 flex w-full mx-auto">
     @include('layouts.sidebar')
+
     <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Reports</h1>
@@ -16,89 +16,48 @@
         </div>
     </header>
 
-
-        {{--search bar--}}
-        <div class="flex justify-center pt-5 ">
-            <div class="flex justify-center w-[75vw]">
-                <form
-                    action="{{ route('admin.reports') }}"
-                    method="GET"
-                    class="w-full mr-3"
-                >
-                    <input
-                        type="text"
-                        name="search"
-                        placeholder="Enter name or YYYY-MM-DD or YYYY"
-                        value="{{ request('report_name') }}" {{-- what does this do?--}}
-                        class="rounded w-full"
-                    />
-                </form>
-            </div>
+    {{-- Search bar --}}
+    <div class="flex justify-center pt-5">
+        <div class="flex justify-center w-[75vw]">
+            <form action="{{ route('admin.reports') }}" method="GET" class="w-full mr-3">
+                <input type="text" name="search" placeholder="Enter name or YYYY-MM-DD or YYYY" value="{{ request('report_name') }}" class="rounded w-full p-2 border border-stone-300 dark:bg-stone-600 dark:text-white">
+            </form>
         </div>
-
-        
-
-        @if(count($reports) === 0)
-        <div class="flex justify-center mt-5"><h1 class="text-3xl">No Reports Found</h1></div>
-        
-
-        @else
-
-        
-            
-            {{--Print out reports--}}
-        <div class="flex justify-center text-xl text-stone-950 dark:text-yellow-400">
-            <div class=" py-5 ">
-                {{--Print out initial table with titles--}}
-                
-                    <div class="flex justify-center w-[60vw] border">
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            Report Title
-                            
-                        </h1>
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            
-                            Created
-                        </h1>
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            
-                            Last Updated
-                        </h1>
-                    </div></a
-                >
-                {{--Loop for repeatedly outputting results--}}
-                @foreach($reports as $report)
-
-                <a href={{ $report->report_link }}>
-                    <div class="flex justify-center w-[60vw] border ">
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            {{ $report->report_name }}
-                            
-                        </h1>
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            
-                            {{ $report->created_at }}
-                        </h1>
-                        <h1 class=" rounded w-full ml-3 ">
-                            
-                            
-                            {{ $report->updated_at }}
-                        </h1>
-                    </div></a
-                >
-
-                @endforeach
-            </div>
-        </div>
-        
-        @endif 
-        
     </div>
-    </body>
-   
+
+    @if(count($reports) === 0)
+        <div class="flex justify-center mt-5">
+            <h1 class="text-3xl text-stone-950 dark:text-white">No Reports Found</h1>
+        </div>
+    @else
+        {{-- Print out reports --}}
+        <div class="flex justify-center overflow-x-auto w-full">
+            <div class="w-[80%]">
+                <table class="w-full border-collapse border border-stone-300 my-10">
+                    <thead class="bg-stone-300 dark:bg-stone-700 dark:text-white ">
+                        <tr>
+                            <th class="p-1 text-sm lg:text-2xl">Report Title</th>
+                            <th class="p-1 text-sm lg:text-2xl">Created</th>
+                            <th class="p-1 text-sm lg:text-2xl">Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($reports as $report)
+                            <tr class="bg-white dark:bg-stone-800 dark:text-white text-center border">
+                                <td class="p-1 text-sm lg:text-2xl">
+                                    <a href="{{ $report->report_link }}" class="text-black dark:text-white hover:underline">
+                                        {{ $report->report_name }}
+                                    </a>
+                                </td>
+                                <td class="p-1 text-sm lg:text-2xl">{{ $report->created_at }}</td>
+                                <td class="p-1 text-sm lg:text-2xl">{{ $report->updated_at }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
+</body>
+
 </html>
