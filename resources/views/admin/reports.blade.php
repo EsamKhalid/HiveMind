@@ -20,7 +20,7 @@
     <div class="flex justify-center pt-5">
         <div class="flex justify-center w-[75vw]">
             <form action="{{ route('admin.reports') }}" method="GET" class="w-full mr-3">
-                <input type="text" name="search" placeholder="Enter name or YYYY-MM-DD or YYYY" value="{{ request('report_name') }}" class="rounded w-full p-2 border border-stone-300 dark:bg-stone-600 dark:text-white">
+                <input type="text" name="search" placeholder="Enter name or YYYY-MM-DD or YYYY" value="{{ request('report_name') }}" class="rounded w-full p-2 border border-stone-300 dark:bg-stone-600 dark:text-white dark:placeholder-white" />
             </form>
         </div>
     </div>
@@ -45,7 +45,7 @@
                         @foreach($reports as $report)
                             <tr class="bg-white dark:bg-stone-800 dark:text-white text-center border">
                                 <td class="p-1 text-sm lg:text-2xl">
-                                    <a href="{{ asset('pdfs/' . $report->report_name . '.pdf') }}" download="{{ $report->report_name }}" class="text-white hover:underline">
+                                    <a href="{{ asset('pdfs/' . $report->report_name . '.pdf') }}" download="{{ $report->report_name }}" class="text-black dark:text-white hover:underline">
                                         {{ $report->report_name }}
                                     </a>
                                 </td>
