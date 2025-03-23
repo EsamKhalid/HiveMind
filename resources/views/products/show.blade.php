@@ -149,7 +149,8 @@
             }
         };
 
-        function TOGGLE_REVIEW() {
+        function TOGGLE_REVIEW() 
+        {
             const reviewsContainer =
                 document.getElementById("REVIEWS_CONTAINER");
             const collapseIcon = document.getElementById("COLLAPSE_ICON");
@@ -163,6 +164,7 @@
                 collapseIcon.classList.remove("fa-chevron-down");
                 collapseIcon.classList.add("fa-chevron-up");
             }
+        }
 
         </script>
         <script>
