@@ -34,10 +34,10 @@
         />
         <label
             for="drawer-toggle"
-            class="z-10 flex flex-col absolute top-0 left-0 p-4 transition-all ease-in-out duration-1000 bg-cybpnk-ylw2 rounded-lg peer-checked:left-[80%] peer-checked:rotate-[720deg] md:peer-checked:left-[35%] lg:peer-checked:left-[400px]"
+            class="z-10 flex flex-col absolute top-0 left-0 px-3 py-2 lg:px-5 lg:py-4 transition-all ease-in-out duration-1000 bg-cybpnk-ylw2 rounded-lg peer-checked:left-[80%] peer-checked:rotate-[180deg] md:peer-checked:left-[35%] lg:peer-checked:left-[400px]"
         >
-            <i id="hamburger" class="fa-solid fa-bars"></i>
-            <i id="cross" class="fa-solid fa-x hidden"></i>
+            <i id="hamburger" class="fa-solid fa-bars text-lg"></i>
+            <i id="cross" class="fa-solid fa-x hidden text-lg"></i>
         </label>
         <div
             class="fixed top-0 left-0 z-1 w-[80%] lg:w-[400px] md:w-[35%] h-full transition-all ease-in-out duration-1000 transform -translate-x-full bg-white dark:bg-stone-950 shadow-lg dark:shadow-md peer-checked:translate-x-0"
