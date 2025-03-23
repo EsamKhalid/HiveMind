@@ -39,7 +39,7 @@
                     <form action="{{ route('admin.orders.processAll') }}" method="POST" onsubmit="return confirm('Are you sure you want to process all orders (excluding returns and your own orders) to the next stage?');">
                         @csrf
                         @method('PATCH')
-                        <button type="submit" class="bg-purple-500 text-white px-8 py-3 mb-8 rounded-lg hover:bg-purple-700 dark:bg-red-500 dark:hover:bg-red-700 transition">
+                        <button type="submit" class="bg-yellow-500 text-white font-bold px-8 py-3 mb-8 rounded-lg hover:bg-yellow-600 dark:bg-red-500 dark:hover:bg-red-700 transition">
                             Process All Orders
                         </button>
                     </form>
