@@ -74,4 +74,16 @@ class InventoryController extends Controller
 
     }
 
+    public function addInventoryItem(){
+
+    }
+
+    public function editInventoryItem(){
+
+    }
+
+    public function removeInventoryItem(){
+        
+    }
+
 }

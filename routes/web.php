@@ -142,6 +142,8 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
     Route::get('admin/statistics', [StatisticsController::class, 'view'])->name('admin.statistics');
+
+    Route::post('admin/inventory', [InventoryController::class, 'editInventoryItem'])->name('admin.inventory.edit');
 });
 
 
