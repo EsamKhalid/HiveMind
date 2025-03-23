@@ -190,7 +190,7 @@
             </div>
         </div>
     </main>
-    <div class="hidden lg:block">
+    <div class="hidden lg:flex">
         @include('layouts.footer')
     </div>
 </body>
