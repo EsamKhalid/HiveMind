@@ -78,11 +78,11 @@ class ReviewController extends Controller
 
        if($user == null){
             ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
-             return redirect()->route('home');
+             return redirect()->route('products.show', $product->id);
         }
         else{
             ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
-             return redirect()->route('orders');
+             return redirect()->route('products.show', $product->id);
         }
 
         ;
