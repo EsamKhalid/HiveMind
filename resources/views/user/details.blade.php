@@ -6,13 +6,13 @@
     <title>Update Your Details</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="transition-none transition-colors ease-in-out duration-1000 bg-white dark:bg-stone-950">
+<body class="transition-none transition-colors ease-in-out duration-1000 bg-yellow-50 dark:bg-stone-950">
     @include('layouts.navbar')
     <main>
     <a  href="{{ route('account') }}"
         class="fas fa-arrow-left fa-3x pl-4 pt-2 dark:text-amber transition-colors ease-in-out duration-1000"></a>
 
-    <div class="xl:w-[40%] lg:w-[50%] md:w-[60%] max-w-full mx-auto mt-2 mb-20 p-8 bg-white dark:bg-stone-700 rounded-lg shadow-md transition-colors ease-in-out duration-1000">
+    <div class="xl:w-[40%] lg:w-[50%] md:w-[60%] max-w-full mx-auto mt-2 mb-20 p-8 bg-yellow-50 dark:bg-stone-700 rounded-lg shadow-md transition-colors ease-in-out duration-1000">
         <h1 class="text-3xl font-bold mb-6 text-stone-950 dark:text-yellow-400 transition-colors ease-in-out duration-1000">Update Your Details</h1>
 
         @if(session('success'))

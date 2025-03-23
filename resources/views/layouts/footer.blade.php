@@ -31,6 +31,13 @@
                     >Terms and Conditions apply</a
                 >
             </p>
+            <p class="text-lg">
+                <a
+                    href="{{ route('about') }}"
+                    class="text-lg text-blue-500 dark:text-amber hover:underline"
+                    >Learn more about us here</a
+                >
+            </p>
         </div>
         <!-- adding second third of footer (middle), includes donation button -->
         <div class="w-full md:w-1/3 flex flex-col mb-4 md:mb-0 px-8">

@@ -6,7 +6,7 @@
         <title>Contact Us 🐝</title>
         <link rel="icon" href="/favicon.ico">
     </head>
-    <body class="transition-none dark:bg-stone-900 duration-1000">
+    <body class="transition-none dark:bg-stone-900 bg-yellow-50 duration-1000">
     
         @include('layouts.navbar')
         
@@ -28,7 +28,7 @@
             </div>
             @endif
         <!-- title -->
-        <section class="bg-yellow-50  dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000 w-[69%] lg:w-[50%] mx-auto rounded-lg mt-5 mb-3">
+        <section class="bg-yellow-50 shadow-lg dark:dark:bg-stone-700 text-center py-16 transition-all duration-1000 w-[69%] lg:w-[50%] mx-auto rounded-lg mt-5 mb-3">
             <h1 class="text-4xl font-bold text-orange-800 dark:text-amber">Get in Touch</h1>
             <p class="text-lg text-stone-600 dark:text-white mt-4"> 
                 Want to get in touch? We'd be buzzing (get it?) to hear from you. Here's how you can reach us...
