@@ -4,7 +4,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <title>Your account</title>
     </head>
-    <body class="rounded-lg dark:bg-stone-950 transition-colors transition-all duration-1000">
+    <body class="rounded-lg dark:bg-stone-950 transition-none transition-all duration-1000">
         @include('layouts.navbar')
         <div class="flex justify-center">
             @if($errors->any())

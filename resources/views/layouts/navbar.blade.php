@@ -44,11 +44,11 @@
 
             <a href="{{ route('home') }}" class="flex items-center hover:text-yellow-100 duration-200">
                 <img src="{{ asset('../Images/HiveMind Logo.png') }}" alt="HiveMind Logo" class="h-12 w-auto mr-3" />
-                <h1 class="text-2xl font-bold">HiveMind</h1>
+                <h1 class="text-2xl font-bold hidden lg:block">HiveMind</h1>
             </a>
 
             <!-- icons section -->
-            <div class="flex space-x-4 items-center justify-end">
+            <div class="flex space-x-4 items-center justify-end text-sm">
                 <!-- navigation links -->
                 <!-- links are next to icons -->
                 <ul class="hidden lg:flex-row-reverse space-x-8 text-lg">
@@ -69,11 +69,11 @@
                     </li>
 
                 </ul>
-                <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer hover:text-yellow-100 dark:hover:text-amber"
+                <a class="fa-solid fa-lightbulb text-xl m-auto hover:cursor-pointer hover:text-yellow-100 dark:hover:text-amber"
                     onclick="toggleTheme()"></a>
                 <!-- search icon // trying to make it so that search bar appears when user clicks on icon (still a wip) -->
                 <form action="{{ route('products') }}" method="get">
-                    <div class="flex items-center space-x-4">
+                    <div class="flex items-center lg:space-x-4">
                         <!-- search bar -->
                         <input type="text" name="search" placeholder="Search"
                             class="hidden lg:block w-48 bg-white text-stone-800 placeholder-stone-500 border-black rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-white dark:text-stone-800" />

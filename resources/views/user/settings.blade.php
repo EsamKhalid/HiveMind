@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Settings</title>
 </head>
 <body class="bg-yellow-50 dark:bg-stone-950">
     @include('layouts.navbar')
 
-    <a  href="{{ route('account') }}"
-        class="fas fa-arrow-left fa-3x pl-4 pt-2 dark:text-amber transition-colors ease-in-out duration-1000"></a>
+    <main>
+        <a href="{{ route('account') }}"
+            class="fas fa-arrow-left fa-3x pl-4 pt-2 dark:text-amber transition-colors ease-in-out duration-1000"></a>
 
-        <main class="xl:w-[40%] lg:w-[50%] md:w-[60%] max-w-full mx-auto mt-2 mb-20 p-8 bg-white dark:bg-stone-700 rounded-lg shadow-md transition-colors ease-in-out duration-1000">
+        <div class="xl:w-[40%] lg:w-[50%] md:w-[60%] max-w-full mx-auto mt-2 mb-20 p-8 bg-white dark:bg-stone-700 rounded-lg shadow-md transition-colors ease-in-out duration-1000">
             <h1 class="text-4xl font-semibold text-stone-950 dark:text-yellow-400 mb-6 transition-colors ease-in-out duration-1000">Your Settings</h1>
 
             <div class="space-y-6">
@@ -47,8 +51,8 @@
                     </a>
                 </h2>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 
     @include('layouts.footer')
 </body>

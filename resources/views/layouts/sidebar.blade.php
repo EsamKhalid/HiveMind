@@ -64,7 +64,7 @@
                     >
                         <a
 
-                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-3 2xl:my-5 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.dashboard') }}"
                             ><p>Dashboard</p>
 
@@ -73,7 +73,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-3 2xl:my-5 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.notifications') }}"
                             ><p>Notifications</p>
 
@@ -82,7 +82,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-3 2xl:my-5 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.inventory') }}"
                             ><p>Inventory</p>
                             <i
@@ -90,7 +90,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-3 2xl:my-5 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('admin.user-management') }}"
                             ><p>Manage Users</p>
                             <i
@@ -104,7 +104,7 @@
                         class="flex flex-col mb-[30%] dark:text-white"
                     >
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-3 2xl:my-5 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             onclick="toggleTheme()"
                             ><p>Theme</p>
                             <i
@@ -112,7 +112,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl my-3 2xl:my-5 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
                             href="{{ route('account') }}"
                             ><p>Account</p>
                             <i
@@ -120,7 +120,7 @@
                             ></i
                         ></a>
                         <a
-                            class="text-xl md:text-lg 2xl:text-2xl my-1 2xl:my-2 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
+                            class="text-xl md:text-lg 2xl:text-2xl mt-3 2xl:my-5 p-2 w-full text-nowrap dark:hover:bg-stone-800 hover:bg-yellow-200 justify-between flex"
 
                             href="{{ route('faq') }}"
                             ><p>Help</p>

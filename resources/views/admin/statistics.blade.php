@@ -5,10 +5,10 @@
         <title>Dashboard</title>
     </head>
 
-    <body class="bg-white dark:bg-stone-950 flex">
+    <body class="bg-stone-200 dark:bg-stone-950 flex">
         @include('layouts.sidebar')
 
-        <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <header class="bg-gradient-to- bg-white dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
             <div class="max-w-7xl mx-auto text-center">
                 <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000"><i class="fa-solid fa-chart-line text-4xl mr-2 my-auto"></i> Statistics</h1>
                 <p class="text-lg mt-2 text-stone-800 dark:text-yellow-200 transition-colours duration-1000">See HiveMind Sales and Statistics below.</p>
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-center mt-10 w-fit mx-auto rounded-lg dark:bg-stone-800 p-3">
+            <div class="flex justify-center mt-10 w-fit mx-auto rounded-lg bg-white dark:bg-stone-800 p-3">
                 <div class="text-center ">
                     <h2 class="text-2xl font-bold mb-4 text-stone-950 dark:text-white  ">User Distribution</h2>
                     <canvas id="userChart"></canvas>
@@ -139,7 +139,5 @@
                 });
             </script>
         </div>
-
-        @include('layouts.footer')
     </body>
 </html>
