@@ -48,14 +48,10 @@
                         <div class="mb-4">
 
                             <h3 class="text-2xl font-bold text-stone-800 dark:text-yellow-200 transition-colours duration-1000">
-                                Confirmation Number: {{ $order->confirmation_number}}
+                                Confirmation Number #{{ $order->confirmation_number}}
                             </h3>
                         </div>
                         <div class="text-stone-700 dark:text-yellow-100 transition-colours duration-1000">
-                            <p class="mb-2">
-                                <strong>Order ID: </strong>
-                                {{ $order->id }}
-                            </p>
                             <p class="mb-2">
                                 <strong>Order Date:</strong>
                                 {{ $order->order_date }}
