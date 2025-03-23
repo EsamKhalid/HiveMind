@@ -101,17 +101,8 @@ Route::get('wishlist.wishlist',[TestController::class,'wishlist'])->name('wishli
 
 //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-Route::get('/admin/user-management', [UserManagementController::class, 'view'])->name('admin.user-management');
-
-Route::get('/admin/user-management/user/{id}', [UserManagementController::class, 'show'])->name('admin.view-user');
 
 
-Route::patch('/admin/user-management/user/update/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
-Route::delete('/admin/user-management/user/delete/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
-
-// Jo'Ardie Richardson's work
-Route::get('/admin/reports',[ReportController::class,'list'])->name('admin.reports');
-// end
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -142,6 +133,17 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('admin/userEnquiries', [EnquiriesController::class, 'view'])->name('admin.userEnquiries');
     Route::get('admin/statistics', [StatisticsController::class, 'view'])->name('admin.statistics');
+
+    Route::get('/admin/user-management', [UserManagementController::class, 'view'])->name('admin.user-management');
+
+    Route::get('/admin/user-management/user/{id}', [UserManagementController::class, 'show'])->name('admin.view-user');
+
+
+    Route::patch('/admin/user-management/user/update/{id}', [UserManagementController::class, 'update'])->name('admin.view-user.update');
+    Route::delete('/admin/user-management/user/delete/{id}', [UserManagementController::class, 'delete'])->name('admin.view-user.delete');
+
+
+    Route::get('/admin/reports',[ReportController::class,'list'])->name('admin.reports');
 });
 
 
