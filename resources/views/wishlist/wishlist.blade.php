@@ -96,8 +96,10 @@
             @endif
         </div>
     </main>
-
+    <div class="hidden lg:flex">
     @include('layouts.footer')
+    </div>
+    
 </body>
 
 </html>
