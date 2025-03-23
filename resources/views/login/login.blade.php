@@ -41,7 +41,7 @@
                 />
             </div>
 
-            <div class="mb-6">
+            <div class="mb-2">
                 <label for="password" class="block text-stone-700 dark:text-yellow-200 text-sm font-bold mb-2 transition-colors duration-1000">Password:</label>
                 <input 
                     type="password" 
@@ -52,7 +52,7 @@
                 />
             </div>
 
-            <div class="mt-2 mb-4">
+            <div class="mt-2 mb-5">
                 <a href="{{ route('password.recover') }}" class="text-blue-500 dark:text-amber hover:underline text-sm transition-colors duration-1000">
                     Forgot password?
                 </a>
@@ -61,7 +61,8 @@
             <div class="flex items-center justify-between">
                 <button 
                     type="submit" 
-                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline 
+                        dark:bg-yellow-500 dark:hover:bg-yellow-600 transition-colors">
                     Login
                 </button>
                 <button 
