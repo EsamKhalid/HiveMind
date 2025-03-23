@@ -6,9 +6,9 @@
         <title>Return Request - Admin</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-stone-200 min-h-screen dark:bg-stone-950">
+    <body class="bg-stone-200 min-h-screen dark:bg-stone-900">
         @include('layouts.sidebar')
-        <header class="bg-gradient-to- bg-white dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <header class="bg-gradient-to- bg-white dark:bg-stone-800 pt-8 pb-8 shadow-md border dark:border-none">
             <div class="max-w-7xl mx-auto text-center">
                 <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Return Requests</h1>
                 <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Manage all product return requests.</p>
@@ -16,18 +16,16 @@
         </header>
         <a
             href="{{ route('admin.adminOrder') }}"
-            class="fas fa-arrow-left fa-2x pl-4 pt-2"
+            class="fas fa-arrow-left fa-2x pl-4 pt-2 dark:text-yellow-400 transition-colours duration-1000"
         ></a>
 
-        <div
-            class="xl:w-[50%] lg:w-[70%] max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-2 mb-12"
-        >
+        <div class="xl:w-[50%] lg:w-[70%] max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-2 mb-12 dark:bg-stone-200">
             <h1 class="text-3xl font-bold mb-4">
                 Return Request for Order #{{ $order->id }}
             </h1>
             <p class="text-stone-600">Review and process this return request.</p>
 
-            <div class="mt-4 p-4 border rounded bg-stone-50">
+            <div class="mt-4 p-4 border rounded bg-stone-50 dark:bg-stone-300">
                 <h2 class="text-xl font-semibold mb-2">Order Details</h2>
                 <p><strong>Order ID:</strong> {{ $order->id }}</p>
                 @if($order->user != null)
@@ -48,7 +46,7 @@
                 </p>
             </div>
 
-            <div class="mt-6 p-4 border rounded bg-stone-50">
+            <div class="mt-6 p-4 border rounded bg-stone-50 dark:bg-stone-300">
                 <h2 class="text-xl font-semibold mb-2">
                     Return Request Details
                 </h2>
@@ -69,10 +67,10 @@
                 </p>
             </div>
 
-            <div class="mt-6 p-4 border rounded bg-stone-50">
+            <div class="mt-6 p-4 border rounded bg-stone-50 dark:bg-stone-300">
                 <h2 class="text-xl font-semibold mb-2">Items to be Returned</h2>
                 <table class="w-full border-collapse border border-stone-300">
-                    <thead class="bg-stone-200">
+                    <thead class="bg-stone-200 dark:bg-stone-400">
                         <tr>
                             <th class="border p-2">Item</th>
                             <th class="border p-2">Quantity</th>
@@ -111,7 +109,7 @@
                     @csrf @method('PUT')
                     <button
                         type="submit"
-                        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
                     >
                         Approve Return
                     </button>
@@ -125,7 +123,7 @@
                     @csrf @method('PUT')
                     <button
                         type="submit"
-                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                     >
                         Deny Return
                     </button>
