@@ -24,29 +24,27 @@ class CheckoutController extends Controller
 
     public function getBasket()
     {
-        //Retrieve Basket
+        // Retrieve Basket
 
-        //Check if user is logged in
+        // Check if user is logged in
         $user = Auth::user();
 
-        //If the user is logged in, fetch users' basket from database.
+        // If the user is logged in, fetch user's basket from database.
         if ($user) {
             $basket = Basket::where('user_id', $user->id)->first();
-        }
-
-        //If user is not logged in, fetch guests' basket from database.
-        else {
-            //Fetch guest id from session
+        } else {
+            // Fetch guest id from session
             $guestID = session()->get('guest_id');
 
-            //If guest id not found, create new guest and store id in session
+            // If guest id not found, create new guest and store id in session
             if (!$guestID) {
                 $guest = Guest::create();
                 $guestID = $guest->id;
                 session()->put('guest_id', $guestID);
             }
 
-            $basket = Basket::where('guest_id', $guestID)->first();
+            // Fetch or create basket for guest
+            $basket = Basket::firstOrCreate(['guest_id' => $guestID]);
         }
 
         return $basket;
@@ -165,27 +163,35 @@ class CheckoutController extends Controller
         return view('checkout.checkoutBilling');
     }
 
-    public function storeGuest(Request $request)
+   public function storeGuest(Request $request)
     {
-
         $request->validate([
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
-            'email_address' => 'required|string|email|max:255|unique:guests,email_address',
+            'email_address' => 'required|string|email|max:255',
             'phone_number' => 'required|string|max:12|regex:/^\+?[0-9]{10,12}$/',
         ]);
 
-        $guestID = session()->get('guest_id');
-        $guest = Guest::where('id', $guestID)->first();
+        $existingGuest = Guest::where('email_address', $request->input('email_address'))->first();
 
-        $guest->update([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'email_address' => $request->input('email_address'),
-            'phone_number' => $request->input('phone_number'),
-        ]);
+        if ($existingGuest) {
+            $guest = $existingGuest;
+        } else {
+            $guestID = session()->get('guest_id');
+            $guest = Guest::where('id', $guestID)->first();
+
+            $guest->update([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'email_address' => $request->input('email_address'),
+                'phone_number' => $request->input('phone_number'),
+            ]);
+        }
+
+        session()->put('guest_id', $guest->id);
 
         return redirect()->route('checkout.view');
+
     }
 
     public function checkout()
@@ -206,7 +212,6 @@ class CheckoutController extends Controller
                 'products.stock_level'
             )->get();
 
-
         if (!$user) {
             $guestID = session()->get('guest_id');
             $guest = Guest::where('id', $guestID)->first();
@@ -221,11 +226,9 @@ class CheckoutController extends Controller
         }
 
         foreach ($basketItems as $order_item) {
-
-            if ($order_item->stock_level < $order_item->quantity) { //Checks if the selected product in basket is higher than the available product stock level.
-                return redirect()->route('checkout.view')->withErrors(['msg' => ' PRODUCT OUT OF STOCK']); //Returns error, does not place order.
+            if ($order_item->stock_level < $order_item->quantity) {
+                return redirect()->route('checkout.view')->withErrors(['msg' => ' PRODUCT OUT OF STOCK']);
             }
-
         }
 
         if ($user) {
@@ -236,9 +239,9 @@ class CheckoutController extends Controller
                 'order_status' => 'pending',
                 'total_amount' => $basket->total_amount,
                 'payment_method' => 'card',
-                'amount_paid' => $basket->$total_amount,
+                'amount_paid' => $basket->total_amount,
                 'payment_date' => now(),
-                'confirmation_number' => mt_rand(100000,999999),
+                'confirmation_number' => mt_rand(100000, 999999),
             ]);
 
             foreach ($basketItems as $order_item) {
@@ -246,21 +249,18 @@ class CheckoutController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $order_item->product_id,
                     'quantity' => $order_item->quantity,
-
                 ]);
 
-                $product = Products::find($order_item->product_id); //Retrieves the product id of the basket item.
-                $product->stock_level = $product->stock_level - $order_item->quantity; //Reduces the stock level of the product by the quantity of item in basket.
+                $product = Products::find($order_item->product_id);
+                $product->stock_level = $product->stock_level - $order_item->quantity;
                 $product->save();
             }
 
             $basket = Basket::where('user_id', $user->id)->first();
-
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
             return redirect()->route('checkout.confirmation', $order->confirmation_number);
-
         } else {
             $guestID = session()->get('guest_id');
 
@@ -271,9 +271,9 @@ class CheckoutController extends Controller
                 'order_status' => 'pending',
                 'total_amount' => $basket->total_amount,
                 'payment_method' => 'card',
-                'amount_paid' => $basket->$total_amount,
+                'amount_paid' => $basket->total_amount,
                 'payment_date' => now(),
-                'confirmation_number' => mt_rand(100000,999999),
+                'confirmation_number' => mt_rand(100000, 999999),
             ]);
 
             foreach ($basketItems as $order_item) {
@@ -281,28 +281,21 @@ class CheckoutController extends Controller
                     'order_id' => $order->id,
                     'product_id' => $order_item->product_id,
                     'quantity' => $order_item->quantity,
-
                 ]);
 
-                $product = Products::find($order_item->product_id); //Retrieves the product id of the basket item.
-                $product->stock_level = $product->stock_level - $order_item->quantity; //Reduces the stock level of the product by the quantity of item in basket.
+                $product = Products::find($order_item->product_id);
+                $product->stock_level = $product->stock_level - $order_item->quantity;
                 $product->save();
             }
 
             $basket = Basket::where('guest_id', $guestID)->first();
-
             BasketItems::where('basket_id', $basket->id)->delete();
             $basket->delete();
 
             return redirect()->route('checkout.confirmation', $order->confirmation_number);
         }
 
-
-
         return redirect()->route('review.siteReview');
-
-
-
     }
 
     public function confirmation($confNum)
