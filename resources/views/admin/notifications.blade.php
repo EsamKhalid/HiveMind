@@ -6,10 +6,10 @@
     <title>Notifications</title>
 </head>
 
-<body class="bg-white dark:bg-stone-950 flex">
+<body class="bg-stone-200 dark:bg-stone-950 flex">
     @include('layouts.sidebar')
 
-    <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+    <header class="bg-gradient-to- bg-white dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000"><i
                     class="fa-solid fa-inbox text-yellow-500 text-4xl"></i> Notifications</h1>
