@@ -87,116 +87,21 @@
 
                 </form>
 
-                    <button onclick="OPEN()" class="bg-amber text-black dark:text-white hover:text-white dark:hover:text-amber dark:dark:bg-stone-700 w-full mt-5 rounded-md transition-all duration-500 p-5">
+                <form action="{{route('review.productReview', $product->id)}}" method="get">
+                    <button class="bg-amber text-black dark:text-white hover:text-white dark:hover:text-amber dark:dark:bg-stone-700 w-full mt-5 rounded-md transition-all duration-500 p-5">
                         Submit Review
                     </button>
+                </form>
+
+                    
 
                 </div>
         </div>
     </div>
     
-        <div
-            id="REVIEW_MODAL"
-            class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[1000] hidden"
-        >
-            <div class="bg-white p-5 rounded-lg w-[400px] shadow-md">
-                <h2 class="text-2xl font-bold mb-4">Submit Your Review</h2>
-                <form
-                    action="{{ route('review.storeProductReview', $product->id) }}"
-                    method="POST"
-                >
-                    @csrf
-                    <div class="mb-4">
-                        <label
-                            for="name"
-                            class="block text-sm font-medium text-stone-700"
-                            >Name</label
-                        >
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            class="mt-1 block w-full p-2 border border-stone-300 rounded-md"
-                            required
-                        />
-                    </div>
-                    <div class="mb-4">
-                        <label
-                            for="rating"
-                            class="block text-sm font-medium text-stone-700"
-                            >Rating</label
-                        >
-                        <select
-                            name="rating"
-                            id="rating"
-                            class="mt-1 block w-full p-2 border border-stone-300 rounded-md"
-                            required
-                        >
-                            <option value="1">1 Star</option>
-                            <option value="2">2 Stars</option>
-                            <option value="3">3 Stars</option>
-                            <option value="4">4 Stars</option>
-                            <option value="5">5 Stars</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label
-                            for="review_title"
-                            class="block text-sm font-medium text-stone-700"
-                            >Review Title</label
-                        >
-                        <input
-                            type="text"
-                            name="review_title"
-                            id="review_title"
-                            class="mt-1 block w-full p-2 border border-stone-300 rounded-md"
-                            required
-                        />
-                    </div>
-                    <div class="mb-4">
-                        <label
-                            for="review"
-                            class="block text-sm font-medium text-stone-700"
-                            >Review</label
-                        >
-                        <textarea
-                            name="review"
-                            id="review"
-                            rows="4"
-                            class="mt-1 block w-full p-2 border border-stone-300 rounded-md"
-                            required
-                        ></textarea>
-                    </div>
-                    <div class="flex justify-end">
-                        <button
-                            type="button"
-                            onclick="CLOSE()"
-                            class="bg-stone-500 text-white px-4 py-2 rounded-md mr-2"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            type="submit"
-                            class="bg-amber px-4 py-2 rounded-md"
-                        >
-                            Submit Review
-                        </button>
-                    </div>
+       
                 
-        <div class="flex justify-center mt-24 h-fit">
-            <div class="bg-amber size-10 w-1/2 text-center">
-                <div class="relative flex items-center justify-center py-2">
-                    <h1 class="text-2xl font-bold">Reviews</h1>
-                    <button
-                        onclick="TOGGLE_REVIEW()"
-                        class="absolute right-0 top-[0px] bg-stone-500 text-white px-4 py-2 rounded-md"
-                    >
-                        <i id="COLLAPSE_ICON" class="fa fa-chevron-down"></i>
-
-                    </button>
-                </div>
-            </form>
-        </div>
+     
     </div>
     <div class="flex justify-center mt-24 h-fit">
         <div class="bg-amber size-10 w-1/2 text-center">
