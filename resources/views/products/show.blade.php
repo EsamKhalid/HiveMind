@@ -42,7 +42,7 @@
     <a href="{{ url()->previous() }}" class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"></a>
 
     <div class="flex justify-center p-3">
-        <div class="flex flex-col lg:flex-row justify-center mt-[10%] px-5 pb-7 pt-5 dark:bg-stone-800 rounded-lg">
+        <div class="flex flex-col lg:flex-row justify-center mt-[10%] px-5 pb-7 pt-5 bg-stone-300 dark:bg-stone-800 rounded-lg">
             <div class="mr-5">
                 <div class="img-magnifier-container">
                     <img id="product-image"
@@ -54,9 +54,9 @@
 
                 
             </div>
-            <div class="inline-block justify-center size-[35vh] my-10 text-stone-800 dark:text-yellow-200">
+            <div class="inline-block justify-center size-[35vh] my-10 text-stone-800 dark:text-yellow-200 h-fit">
                     <div class="flex justify-left">
-                        <h1 class="text-5xl text-left pb-4">
+                        <h1 class="text-3xl md:text-4xl text-left pb-4">
                             {{ $product->product_name }}
                         </h1>
                     </div>
@@ -64,7 +64,7 @@
                     <p class="text-left pb-4">
                         {{ $product->description }}
                     </p>
-
+                <div class="text-sm">
                     <form action="{{ route('basket.add') }}" method="post">
                         @csrf
                         <input
@@ -72,7 +72,7 @@
                             name="product_id"
                             value="{{ $product->id }}"
                         />
-                        <button type="submit" class="bg-yellow-400 text-black dark:text-white py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500 w-full">
+                        <button type="submit" class="bg-yellow-400 text-black dark:text-white py-3 px-6 lg:py-4 lg:px-8 rounded-md hover:bg-yellow-500 dark:hover:dark:bg-stone-900 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500 w-full">
                             Add to Basket
                         </button>
                     </form>
@@ -81,18 +81,18 @@
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}" />
                     <button
-                        class="w-full bg-yellow-400 text-black mt-4 py-6 px-12 rounded-md hover:bg-yellow-500 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
+                        class="w-full bg-yellow-400 text-black dark:text-white mt-4 py-3 px-6 lg:py-4 lg:px-8 rounded-md hover:bg-yellow-500 dark:hover:dark:bg-stone-900 dark:dark:bg-stone-700 dark:hover:text-amber transition-all duration-500">
                         Add to Wishlist
                     </button>
 
                 </form>
 
                 <form action="{{route('review.productReview', $product->id)}}" method="get">
-                    <button class="bg-amber text-black dark:text-white hover:text-white dark:hover:text-amber dark:dark:bg-stone-700 w-full mt-5 rounded-md transition-all duration-500 p-5">
+                    <button class="bg-amber text-black dark:text-white hover:bg-yellow-500 dark:hover:text-amber dark:hover:dark:bg-stone-900 dark:dark:bg-stone-700 w-full mt-5 rounded-md transition-all duration-500 py-3 px-6 lg:py-4 lg:px-8">
                         Submit Review
                     </button>
                 </form>
-
+                </div>
                     
 
                 </div>

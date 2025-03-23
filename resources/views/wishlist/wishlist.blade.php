@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-stone-100 dark:bg-stone-950 min-h-screen transition-colours duration-1000">
+<body class="bg-stone-100 dark:bg-stone-950 min-h-screen transition-none transition-colours duration-1000">
     @include('layouts.navbar')
 
     <header
