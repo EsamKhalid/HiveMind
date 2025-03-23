@@ -81,7 +81,7 @@
                             <input type="checkbox" id="drawer-toggle" class="relative sr-only peer opacity-0"
                                 onclick="hideCheckoutButton()" />
                             <label for="drawer-toggle"
-                                class="z-10 flex flex-col absolute top-0 right-0 left-0 p-4 transition-all ease-in-out bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[80%]">
+                                class="z-10 flex flex-col absolute top-0 right-0 left-0 p-4 transition-all ease-in-out bg-amber dark:bg-stone-90 rounded-lg peer-checked:top-[75%]">
                                 <i class="fa-solid fa-chevron-up"></i>
                             </label>
 

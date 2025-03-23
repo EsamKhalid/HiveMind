@@ -44,7 +44,7 @@
 
             <a href="{{ route('home') }}" class="flex items-center hover:text-yellow-100 duration-200">
                 <img src="{{ asset('../Images/HiveMind Logo.png') }}" alt="HiveMind Logo" class="h-12 w-auto mr-3" />
-                <h1 class="text-2xl font-bold">HiveMind</h1>
+                <h1 class="text-2xl font-bold hidden lg:block">HiveMind</h1>
             </a>
 
             <!-- icons section -->
@@ -69,11 +69,11 @@
                     </li>
 
                 </ul>
-                <a class="fa-solid fa-lightbulb text-2xl m-auto hover:cursor-pointer hover:text-yellow-100 dark:hover:text-amber"
+                <a class="fa-solid fa-lightbulb text-xl m-auto hover:cursor-pointer hover:text-yellow-100 dark:hover:text-amber"
                     onclick="toggleTheme()"></a>
                 <!-- search icon // trying to make it so that search bar appears when user clicks on icon (still a wip) -->
                 <form action="{{ route('products') }}" method="get">
-                    <div class="flex items-center space-x-4">
+                    <div class="flex items-center lg:space-x-4">
                         <!-- search bar -->
                         <input type="text" name="search" placeholder="Search"
                             class="hidden lg:block w-48 bg-white text-stone-800 placeholder-stone-500 border-black rounded-full px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-white dark:text-stone-800" />
@@ -82,24 +82,24 @@
                         <button type="submit"
                             class="text-stone-800 dark:text-yellow-100 dark:hover:text-amber transition-colors duration-1000"
                             name="productSearchIcon">
-                            <i class="fas fa-search dark:hover:text-amber"></i>
+                            <i class="fas fa-search fa-xl dark:hover:text-amber"></i>
                         </button>
                     </div>
                 </form>
                 <a href="{{ route('basket.view') }}"
-                    class="fas fa-shopping-basket dark:hover:text-amber hover:text-stone-200"></a>
+                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-stone-200"></a>
 
                 <a
                     href="{{ route('wishlist.view') }}"
-                    class="fas fa-heart dark:hover:text-amber hover:text-gray-200"
+                    class="fas fa-heart fa-xl dark:hover:text-amber hover:text-gray-200"
                 ></a>
 
                 @auth
                     <a href="{{ route('account') }}"
-                        class="fas fa-user hover:text-stone-200 transition dark:hover:text-amber"></a>
+                        class="fas fa-user fa-xl hover:text-stone-200 transition dark:hover:text-amber"></a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="fas fa-user hover:text-stone-200 transition dark:hover:text-amber"></a>
+                        class="fas fa-user fa-xl hover:text-stone-200 transition dark:hover:text-amber"></a>
                 @endauth
             </div>
     </div>
