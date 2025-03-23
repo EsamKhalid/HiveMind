@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Supplier</title>
 </head>
-<body class="transition-none dark:bg-stone-950 transition-all duration-1000">
+<body class="transition-none dark:bg-stone-950 bg-stone-200 transition-all duration-1000">
     <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
         <div class="max-w-7xl mx-auto text-center">
             <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Supplier Page</h1>
