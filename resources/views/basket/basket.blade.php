@@ -119,13 +119,13 @@
                                 <ul class="h-full mb-6 w-full">
                                     @foreach($basketItems as $basketItem)
                                         <div
-                                            class="bg-white dark:bg-yellow-500 mx-auto rounded-lg flex justify-between sm:justify-between text-center items-center p-2 lg:mx-3 mb-2 w-[95%] lg:w-[98%] shadow-md z-10">
+                                            class="bg-white dark:bg-stone-800 mx-auto rounded-lg flex justify-between sm:justify-between text-center items-center p-2 lg:mx-3 mb-2 w-[95%] lg:w-[98%] shadow-md z-10">
                                             <div class="flex">
                                                 <img class="size-16 lg:size-[100px] min-w-[50px] lg:mr-5 rounded flex-grow flex-shrink-0 "
                                                     src="{{ asset('Images/product images/' . $basketItem->product_name . '.png') }}" />
 
                                                 <div class="flex flex-col flex-shrink">
-                                                    <a href={{route('products.show', $basketItem->id)}} class="text-xs sm:text-sm md:text-base lg:text-lg underline hover:text-amber dark:hover:text-white text-center h-fit my-auto ">
+                                                    <a href={{route('products.show', $basketItem->id)}} class="text-xs sm:text-sm md:text-base lg:text-lg underline text-black dark:text-white hover:text-amber dark:hover:text-white text-center h-fit my-auto ">
                                                         {{$basketItem->product_name}}</a>
                                                     <!--Quantity Controllers -->
                                                     <div class="flex mt-1 mx-auto lg:ml-0 lg:mr-5 lg:mb-3 lg:mt-0">
@@ -137,7 +137,7 @@
                                                                 class="px-2 bg-white text-grey-800 rounded-md shadow-md hover:text-amber h-fit"
                                                                 type="submit"><i class="fa-solid fa-minus text-xs sm:text-sm md:text-base lg:text-lg"></i></button>
                                                         </form>
-                                                        <p class="m-3 h-fit mt-1 text-xs sm:text-sm md:text-base lg:text-lg">{{$basketItem->quantity}}</p>
+                                                        <p class="m-3 h-fit mt-1 text-xs sm:text-sm md:text-base lg:text-lg text-black dark:text-white">{{$basketItem->quantity}}</p>
                                                         <!-- increase button -->
                                                         <form action="{{ route('basket.increaseQuantity') }}" method="post"
                                                             class="flex">

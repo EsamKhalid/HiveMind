@@ -48,7 +48,7 @@
             </a>
 
             <!-- icons section -->
-            <div class="flex space-x-4 items-center justify-end">
+            <div class="flex space-x-4 items-center justify-end text-sm">
                 <!-- navigation links -->
                 <!-- links are next to icons -->
                 <ul class="hidden lg:flex-row-reverse space-x-8 text-lg">
@@ -82,24 +82,24 @@
                         <button type="submit"
                             class="text-stone-800 dark:text-yellow-100 dark:hover:text-amber transition-colors duration-1000"
                             name="productSearchIcon">
-                            <i class="fas fa-search fa-xl dark:hover:text-amber"></i>
+                            <i class="fas fa-search dark:hover:text-amber"></i>
                         </button>
                     </div>
                 </form>
                 <a href="{{ route('basket.view') }}"
-                    class="fas fa-shopping-basket fa-xl dark:hover:text-amber hover:text-stone-200"></a>
+                    class="fas fa-shopping-basket dark:hover:text-amber hover:text-stone-200"></a>
 
                 <a
                     href="{{ route('wishlist.view') }}"
-                    class="fas fa-heart fa-xl dark:hover:text-amber hover:text-gray-200"
+                    class="fas fa-heart dark:hover:text-amber hover:text-gray-200"
                 ></a>
 
                 @auth
                     <a href="{{ route('account') }}"
-                        class="fas fa-user fa-xl hover:text-stone-200 transition dark:hover:text-amber"></a>
+                        class="fas fa-user hover:text-stone-200 transition dark:hover:text-amber"></a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="fas fa-user fa-xl hover:text-stone-200 transition dark:hover:text-amber"></a>
+                        class="fas fa-user hover:text-stone-200 transition dark:hover:text-amber"></a>
                 @endauth
             </div>
     </div>

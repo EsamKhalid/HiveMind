@@ -5,7 +5,7 @@
         <link rel="icon" href="/favicon.ico">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="transition-none transition-all ease-in-out duration-1000 transform bg-yellow-50 text-stone-950 dark:bg-stone-950 dark:text-yellow-100 ">
+    <body class="transition-none transition-all duration-1000 transform bg-yellow-50 text-stone-950 dark:bg-stone-950 dark:text-yellow-100 ">
         <header>@include('layouts.navbar')</header>
         <div class="aboutUsPage w-[80%] lg:w-fit mx-auto">
             <h2
