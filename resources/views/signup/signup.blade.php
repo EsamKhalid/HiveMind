@@ -41,7 +41,7 @@
                         <input
                             type="text"
                             name="first_name"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-500 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
                             maxlength="50"
                             value="{{ old('first_name') }}"
                             placeholder="First Name"
@@ -58,7 +58,7 @@
                         <input
                             type="text"
                             name="last_name"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-500 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
                             maxlength="50"
                             value="{{ old('last_name') }}"
                             placeholder="Last Name"
@@ -75,7 +75,7 @@
                         <input
                             type="email"
                             name="email_address"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-500 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
                             maxlength="50"
                             value="{{ old('email_address') }}"
                             placeholder="Email"
@@ -92,7 +92,7 @@
                         <input
                             type="text"
                             name="phone_number"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-500 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
                             maxlength="50"
                             value="{{ old('phone_number') }}"
                             placeholder="Phone Number"
@@ -110,7 +110,7 @@
                             type="password"
                             name="password"
                             id="password"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-500 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
                             placeholder="Enter your password"
                         />
                         @error('password')
@@ -126,7 +126,7 @@
                         <input
                             type="password"
                             name="password_confirmation"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-200 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-stone-700 dark:text-yellow-500 leading-tight focus:outline-none focus:shadow-outline transition-colors duration-1000"
                             placeholder="Enter your password"
                         />
                     </div>
@@ -136,13 +136,13 @@
 
                         <label
                             for="memorable_question"
-                            class="block text-gray-700 text-sm font-bold mb-2"
+                            class="block text-stone-700 text-sm font-bold mb-2 dark:text-yellow-200 transition-colors duration-1000"
                             >Memorable Question:</label
                         >
                         <select
                             name="memorable_question"
                             id="memorable_question"
-                            class="shadow appearance-none border rounded w-full py-2 px-3"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 dark:text-yellow-500 transition-colors duration-1000"
                             required
                         >
                             <option value="" disabled selected hidden>
@@ -180,13 +180,13 @@
                     <div class="mb-6">
                         <label
                             for="memorable_answer"
-                            class="block text-gray-700 text-sm font-bold mb-2"
+                            class="block text-stone-700 text-sm font-bold mb-2 dark:text-yellow-200 transition-colors duration-1000"
                             >Memorable Answer:</label
                         >
                         <input
                             type="text"
                             name="memorable_answer"
-                            class="shadow appearance-none border rounded w-full py-2 px-3"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 dark:text-yellow-500 transition-colors duration-1000"
                             placeholder="Enter your answer"
                             required
                         />
