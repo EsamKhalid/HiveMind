@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Supplier</title>
 </head>
-<body class="transition-none dark:bg-stone-900 transition-all duration-1000 w-">
-    <header></header>
+<body class="transition-none dark:bg-stone-950 transition-all duration-1000">
+    <header class="bg-gradient-to- bg-stone-200 dark:bg-stone-900 pt-8 pb-8 shadow-md border dark:border-none">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold text-stone-950 dark:text-yellow-400 transition-colours duration-1000">Supplier Page</h1>
+            <p class="text-lg mt-2  text-stone-800 dark:text-yellow-200 transition-colours duration-1000">Add a new supplier.</p>
+        </div>
+    </header>
     @include('layouts.sidebar')
     <main>
         <div class="flex justify-center m-4">
