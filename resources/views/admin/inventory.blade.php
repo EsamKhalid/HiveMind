@@ -34,9 +34,9 @@
                             <option value="health"> Health</option>
                             <option value="haircare">Haircare</option>
                             <option value="skincare">Skincare</option>
-                            <option value="body"> Body</option>
+
                             <option value="merchandise"> Merchandise</option>
-                            <option value="home">Home</option>
+
                         </select>
                     </div>
                     <div class="space-y-2 lg:space-y-0 space-x-2 hidden justify-evenly lg:flex-row lg:flex w-4/5">
@@ -61,18 +61,12 @@
                             class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
                             <i class="fas fa-pump-soap"></i> Skincare
                         </button>
-                        <button name="filter" value="body"
-                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-red-600 hover:bg-red-500">
-                            <i class="fas fa-shower"></i> Body
-                        </button>
+
                         <button name="filter" value="merchandise"
                             class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
                             <i class="fas fa-tshirt"></i> Merchandise
                         </button>
-                        <button name="filter" value="home"
-                            class=" items-center gap-2 px-4 py-2 w-24 lg:w-fit text-white rounded-lg transition-colors whitespace-nowrap bg-indigo-600 hover:bg-indigo-500">
-                            <i class="fas fa-home"></i> Home
-                        </button>
+
                     </div>
                     <div class="flex flex-col-reverse lg:flex-row mt-3 space-y-2 lg:space-y-0">
                         <button name="stockLevel" value="out_of_stock"
@@ -120,7 +114,7 @@
                                     ({{$product->stock_level}})
                                 </div>
                             </div>
-                            <a href={{ route("admin.show", $product->id)  }}>
+                            <a href="{{ route('admin.show', $product->id)  }}">
                                 <button type="submit" class="bg-amber w-full rounded"> Record Stock Order </button>
                             </a>
                             
