@@ -68,11 +68,11 @@ class StatisticsController extends Controller
             ($orderItems[0]->products->product_type);
         }
 
-        $categorySales = array("Beauty" => 0, "Health" => 0, "Haircare" => 0, "Skincare" => 0, "Merchandise" => 0);
+        $categorySales = array("beauty" => 0, "health" => 0, "haircare" => 0, "skincare" => 0, "merchandise" => 0);
 
         foreach($orderItems as $order){
             if (isset($order->products->product_type)) {
-                $categorySales[$order->products->product_type] += 1;
+                $categorySales[strtolower($order->products->product_type)] += 1;
             }
         }
 
