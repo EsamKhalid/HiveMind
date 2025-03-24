@@ -33,7 +33,7 @@
                 <div class="flex justify-center">
                     <img
                         class="w-1/2"
-                        src="{{ asset('Images/product images/' . $product->id . '.png') }}"
+                        src="{{ $product->id > 25 ? asset('\Images\Site Images\bee.png') : asset('Images/product images/' . $product->id . '.png') }}"
                     />
                 </div>
 

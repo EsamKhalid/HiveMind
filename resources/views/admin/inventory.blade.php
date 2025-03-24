@@ -84,7 +84,7 @@
                     </div>
                 </form>
                 <a href="{{ route('admin.inventory.create') }}" class="w-full lg:w-auto">
-                    <button class="px-4 py-2 w-full lg:w-auto text-white rounded-lg transition-colors whitespace-nowrap bg-blue-600 hover:bg-blue-500">
+                    <button class="px-4 py-2 w-full lg:w-auto text-white rounded-lg transition-colors whitespace-nowrap bg-yellow-600 hover:bg-yellow-500">
                         <i class="fas fa-plus"></i> Add New Product
                     </button>
                 </a>

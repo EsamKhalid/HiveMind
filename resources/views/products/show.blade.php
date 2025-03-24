@@ -64,7 +64,7 @@
                     <img id="product-image"
                         class="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] size-full transition-all duration-500 dark:brightness-[80%] dark:hover:brightness-90 rounded-lg"
 
-                        src="{{ asset('Images/product images/' . $product->id . '.png') }}"
+                         src="{{ $product->id > 25 ? asset('\Images\Site Images\bee.png') : asset('Images/product images/' . $product->id . '.png') }}"
                         alt="{{ $product->product_name }}" />
                 </div>
 

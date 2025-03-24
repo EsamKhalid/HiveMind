@@ -122,7 +122,7 @@
                                             class="bg-white dark:bg-stone-800 mx-auto rounded-lg flex justify-between sm:justify-between text-center items-center p-2 lg:mx-3 mb-2 w-[95%] lg:w-[98%] shadow-md z-10">
                                             <div class="flex">
                                                 <img class="size-16 lg:size-[100px] min-w-[50px] lg:mr-5 rounded flex-grow flex-shrink-0 "
-                                                    src="{{ asset('Images/product images/' . $basketItem->id . '.png') }}" />
+                                                    src="{{ $basketItem->id > 25 ? asset('Images/placeholder.png') : asset('Images/product images/' . $basketItem->id . '.png') }}" />
 
                                                 <div class="flex flex-col flex-shrink">
                                                     <a href={{route('products.show', $basketItem->id)}} class="text-xs sm:text-sm md:text-base lg:text-lg underline text-black dark:text-white hover:text-amber dark:hover:text-white text-center h-fit my-auto ">
