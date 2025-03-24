@@ -116,4 +116,36 @@ class InventoryController extends Controller
         return redirect()->route('admin.inventory')->with('success', 'Product updated successfully.');
     }
 
+    public function createView()
+    {
+        return view('admin.createInventory');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'product_name' => 'required|max:255',
+            'price' => 'required|numeric',
+            'stock_level' => 'required|integer',
+            'product_type' => 'required|string',
+            'description' => 'nullable|string',
+            'ingredients' => 'nullable|string',
+            'recipes' => 'nullable|string',
+            'directions' => 'nullable|string',
+        ]);
+
+        Products::create([
+            'product_name' => $request->input('product_name'),
+            'price' => $request->input('price'),
+            'stock_level' => $request->input('stock_level'),
+            'product_type' => $request->input('product_type'),
+            'description' => $request->input('description'),
+            'ingredients' => $request->input('ingredients'),
+            'recipes' => $request->input('recipes'),
+            'directions' => $request->input('directions'),
+        ]);
+
+        return redirect()->route('admin.inventory')->with('success', 'Product added successfully.');
+    }
+
 }

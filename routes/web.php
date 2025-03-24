@@ -148,6 +148,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/reports',[ReportController::class,'list'])->name('admin.reports');
     Route::post('admin/inventory', [InventoryController::class, 'editInventoryItem'])->name('admin.inventory.edit');
     Route::delete('/admin/inventory/{id}', [InventoryController::class, 'delete'])->name('admin.inventory.delete');
+
+    Route::get('/admin/inventory/create', [App\Http\Controllers\InventoryController::class, 'createView'])->name('admin.inventory.create');
+    Route::post('/admin/inventory/store', [App\Http\Controllers\InventoryController::class, 'store'])->name('admin.inventory.store');
 });
 
 
