@@ -69,19 +69,12 @@
                         href="{{route('products.show', $product->id)}}"
                         class="w-fit"
                         ><div class="h-auto hover:scale-110 transition-all duration-500 max-w-3/4 p-5">
-                            @if($product->product_name == "Honey-Infused Hair Oil")
-                            <img
-                                class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100"
-                                src="{{ asset('Images/Merchandise Images/Oil/Oil.png') }}"
-                            />
-                            @else
                             <img
                             
                                 class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100 rounded-lg dark:border-yellow-100 dark:border-2"
 
                                 src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
                             />
-                            @endif
                              <h1 class="text-center text-xl mt-5">
                                 {{strtoupper($product->product_name)}}
                             </h1>

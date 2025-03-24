@@ -42,7 +42,7 @@
     <a href="{{ url()->previous() }}" class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"></a>
 
     <div class="flex justify-center p-3">
-        <div class="flex flex-col lg:flex-row justify-center mt-[10%] px-5 pb-7 pt-5 bg-stone-300 dark:bg-stone-800 rounded-lg">
+        <div class="flex flex-col lg:flex-row justify-center mt-[10%] px-5 pb-7 pt-5 bg-yellow-200 dark:bg-stone-800 rounded-lg">
             <div class="mr-5">
                 <div class="img-magnifier-container">
                     <img id="product-image"
