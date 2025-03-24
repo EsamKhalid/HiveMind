@@ -104,14 +104,16 @@ Route::get('wishlist.wishlist',[TestController::class,'wishlist'])->name('wishli
 
 
 
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['admin'])->group(function () {   
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('admin/inventory', [InventoryController::class, 'list'])->name('admin.inventory');
     Route::get('admin/inventory/order/{id}', [InventoryController::class, 'show'])->name('admin.show'); 
-
+    Route::get('admin/editInventory/{id}', [InventoryController::class, 'editView'])->name('admin.inventoryEdit');
+    Route::patch('admin/inventory/{id}', [InventoryController::class, 'update'])->name('admin.inventory.update');
     //Route::patch('admin/order', [InventoryController::class, 'order'])->name('admin.order'); 
 
-    Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order');
+    //Route::post('admin/inventory', [InventoryController::class, 'order'])->name('admin.order');
+    Route::post('/admin/order', [InventoryController::class, 'order'])->name('admin.order');
     Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
 
 
@@ -144,6 +146,8 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('/admin/reports',[ReportController::class,'list'])->name('admin.reports');
+    Route::post('admin/inventory', [InventoryController::class, 'editInventoryItem'])->name('admin.inventory.edit');
+    Route::delete('/admin/inventory/{id}', [InventoryController::class, 'delete'])->name('admin.inventory.delete');
 });
 
 
@@ -233,5 +237,5 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/inventory', [ProductController::class, 'inventory_products']);
     Route::get('admin', [AdminController::class, 'adm'])->name('adm');
 
-     
+
 
