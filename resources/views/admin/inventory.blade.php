@@ -121,8 +121,13 @@
                                 </div>
                             </div>
                             <a href={{ route("admin.show", $product->id)  }}>
-                                <button type="submit" class="bg-amber w-full"> Record Stock Order </button>
+                                <button type="submit" class="bg-amber w-full rounded"> Record Stock Order </button>
                             </a>
+                            
+                            <a href="{{route('admin.inventoryEdit', $product->id)}}">
+                                <button type="submit" class="bg-amber w-full rounded mt-2"> Edit Product </button>
+                            </a>
+                            
                         </div>
                     @endforeach
                 </div>
