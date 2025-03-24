@@ -25,9 +25,13 @@ class DetailsController extends Controller
         'email_address' => 'required|string|email|max:255|unique:users,email_address,' . $user->id,
         'phone_number' => 'nullable|regex:/^[0-9\-\+\(\) ]+$/|max:15',
         'current_password' => ['required'],
-        'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-    ], [
-        'password.confirmed' => 'The password confirmation does not match.',
+        'password' => [
+            'required',
+            'string',
+            'min:8',
+            'confirmed',
+            'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/'
+        ],
         'phone_number.regex' => 'Please enter a valid phone number.',
     ]);
 

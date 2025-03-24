@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'last_name' => "user",
                 'email_address' => "test@user.com",
                 'phone_number' => 0,
-                'password' => bcrypt("password"),
+                'password' => bcrypt("Passw0rd."),
                 'permission_level' => "user", // Add this line
                 'memorable_question' => 'test',
                 'memorable_answer' => bcrypt("test"),
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
                 'last_name' => "user",
                 'email_address' => "admin@user.com",
                 'phone_number' => 0,
-                'password' => bcrypt("password"),
+                'password' => bcrypt("Passw0rd."),
                 'permission_level' => "admin",
                 'memorable_question' => 'test',
                 'memorable_answer' => bcrypT("test"),
