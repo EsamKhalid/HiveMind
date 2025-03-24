@@ -41,6 +41,22 @@
     @include('layouts.navbar')
     <a href="{{ url()->previous() }}" class="fas fa-arrow-left fa-3x p-5 absolute top-16 left-0 dark:text-amber"></a>
 
+
+    <div class="w-screen">
+            @if ($errors->any())
+            <div
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 w-96"
+            >
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+        </div>
+
+
     <div class="flex justify-center p-3">
         <div class="flex flex-col lg:flex-row justify-center mt-[10%] px-5 pb-7 pt-5 bg-yellow-200 dark:bg-stone-800 rounded-lg">
             <div class="mr-5">

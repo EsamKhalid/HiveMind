@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\SiteReviews;
 use App\Models\ProductReviews;
-
 use App\Models\Products;
+use App\Models\Order; 
 
 class ReviewController extends Controller
 {
@@ -48,26 +48,44 @@ class ReviewController extends Controller
     {
         $user = Auth::user();
         $rating = $request->rating;
-
         $product = Products::findOrFail($id);
 
-        
-
-        // VALIDATE WHETHER THE USER HAS ALREADY SUBMITTED A REVIEW
-
-        if($user){
+        if ($user) {
             $existingReview = ProductReviews::where('product_id', $id)
-                                    ->where('user_id', $user->id)
-                                    ->first();
+                                            ->where('user_id', $user->id)
+                                            ->first();
 
-        }
-        else{
-            $existingReview = null;
-        }
+            $hasOrdered = Order::where('user_id', $user->id)
+                            ->whereHas('orderItems', function($query) use ($id) {
+                                $query->where('product_id', $id);
+                            });
 
-        
-        // NOTE FROM HARRY (08/03/25)
-        // VALIDATOR *DOES* WORK THOUGH, WITHOUT A VALID AJAX HANDLER, THE MESSAGES DONT EXACTLY APPEAR
+            $orders = Order::where('user_id', $user->id)->get();
+
+            $orderItems = [];
+
+            foreach($orders as $order){
+                foreach($order->orderItems as $item){
+                    array_push($orderItems, $item);
+                }
+            }
+
+            // Check if the product being reviewed is in the orderItems array
+            $productInOrderItems = false;
+            foreach($orderItems as $item) {
+                if ($item->product_id == $id) {
+                    $productInOrderItems = true;
+                    break;
+                }
+            }
+
+            if (!$productInOrderItems) {
+                return redirect()->route('products.show', ['id' => $id])
+                                 ->withErrors(['msg' => 'You can only review products you have ordered and had delivered.']);
+            }
+        } else {
+            return redirect()->route('login')->withErrors(['msg' => 'You need to be logged in to submit a review.']);
+        }
 
         if ($existingReview) 
         {
@@ -75,16 +93,7 @@ class ReviewController extends Controller
                          ->withErrors(['msg' => 'You have already submitted a review for this product.']);
         }
 
-
-       if($user == null){
-            ProductReviews::create(['product_id'=> $id, 'user_id'=> null, 'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
-             return redirect()->route('products.show', $product->id);
-        }
-        else{
-            ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
-             return redirect()->route('products.show', $product->id);
-        }
-
-        ;
+        ProductReviews::create(['product_id'=> $id, 'user_id'=> $user->id, 'rating' => $request->rating, 'review' => $request->review, 'review_title' => $request->title]);
+        return redirect()->route('products.show', $product->id);
     }
 }

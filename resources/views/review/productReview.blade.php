@@ -8,9 +8,17 @@
         class="rounded-lg dark:bg-stone-950 transition-none transition-all duration-1000"
     >
         @include('layouts.navbar')
-        <div class="flex justify-center">
-            @if($errors->any())
-            <h4 class="text-3xl">{{$errors->first()}}</h4>
+        <div>
+            @if ($errors->any())
+            <div
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 w-96"
+            >
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
             @endif
         </div>
 
@@ -124,11 +132,6 @@
                     >
                         Submit
                     </button>
-                    <a
-                        href="{{ route('orders') }}"
-                        class="text-blue-500 underline mt-2 block"
-                        >Skip</a
-                    >
                 </form>
             </div>
         </main>
