@@ -146,6 +146,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('admin/statistics', [StatisticsController::class, 'view'])->name('admin.statistics');
 
     Route::post('admin/inventory', [InventoryController::class, 'editInventoryItem'])->name('admin.inventory.edit');
+    Route::delete('/admin/inventory/{id}', [InventoryController::class, 'delete'])->name('admin.inventory.delete');
 });
 
 

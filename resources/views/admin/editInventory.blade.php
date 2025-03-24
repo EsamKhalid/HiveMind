@@ -187,6 +187,18 @@
                         </button>
                     </div>
                 </form>
+                <form
+                    action="{{ route('admin.inventory.delete', $product->id) }}"
+                    method="POST"
+                >
+                    @csrf @method('DELETE')
+                    <button
+                        type="submit"
+                        class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-400"
+                    >
+                        Delete Product
+                    </button>
+                </form>
             </div>
         </div>
     </body>

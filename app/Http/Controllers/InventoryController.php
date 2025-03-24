@@ -74,6 +74,14 @@ class InventoryController extends Controller
 
     }
 
+    public function delete($id)
+    {
+        $product = Products::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('admin.inventory')->with('success', 'Product removed successfully.');
+    }
+
     public function editView($id)
     {
         $product = Products::findOrFail($id);
@@ -106,18 +114,6 @@ class InventoryController extends Controller
         ]);
 
         return redirect()->route('admin.inventory')->with('success', 'Product updated successfully.');
-    }
-
-    public function addInventoryItem(){
-
-    }
-
-    public function editInventoryItem(){
-
-    }
-
-    public function removeInventoryItem(){
-        
     }
 
 }
