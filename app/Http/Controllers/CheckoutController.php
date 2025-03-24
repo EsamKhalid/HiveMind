@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -13,6 +14,7 @@ use App\Models\BasketItems;
 use App\Models\Addresses;
 use App\Models\Products;
 use App\Models\Guest;
+use App\Models\BillingInformation;
 
 class CheckoutController extends Controller
 {
@@ -107,15 +109,6 @@ class CheckoutController extends Controller
                     'type' => "shipping",
                 ]);
             }
-            // Addresses::create([
-            //     'user_id' => $user->id,
-            //     'street_address' => $request->street_address,
-            //     'city' => $request->city,
-            //     'county' => $request->county,
-            //     'country' => $request->country,
-            //     'post_code' => $request->post_code,
-            //     'type' => "billing",
-            // ]);
         } else {
             $address->street_address = $request->street_address;
             $address->city = $request->city;
@@ -126,40 +119,10 @@ class CheckoutController extends Controller
         }
 
 
-        // $basketItems = BasketItems::where('basket_id', $basket->id)
-        //     ->join('products', 'basket_items.product_id', '=', 'products.id')
-        //     ->select(
-        //         'basket_items.*',
-        //         'products.product_name',
-        //         'products.description',
-        //         'products.price'
-        //     )->get();
+        return redirect()->route('checkout.viewBilling');
+    }
 
-        // $order = Order::create([
-        //     'user_id' => $user->id,
-        //     'order_date' => now(),
-        //     'order_status' => 'pending',
-        //     'total_amount' => $basket->total_amount,
-        //     'payment_method' => 'card',
-        //     'amount_paid' => $basket->$total_amount,
-        //     'payment_date' => now(),
-        // ]);
-
-        // foreach ($basketItems as $order_item)
-        //     OrderItem::create([
-        //         'order_id' => $order->id,
-        //         'product_id' => $order_item->product_id,
-        //         'quantity' => $order_item->quantity,
-
-        //     ]);
-
-        // $basket = Basket::where('user_id', $user->id)->first();
-
-        // BasketItems::where('basket_id', $basket->id)->delete();
-
-        // $basket->delete();
-
-
+     public function viewBilling(){
         return view('checkout.checkoutBilling');
     }
 
@@ -194,7 +157,38 @@ class CheckoutController extends Controller
 
     }
 
-    public function checkout()
+    public function storeBillingInformation(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'card_number' => 'required|string|regex:/^\d{16}$/',
+            'expiry_date' => 'required|date|after:today',
+            'cvv' => 'required|string|regex:/^\d{3,4}$/',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('checkout.viewBilling')
+                             ->withErrors($validator)
+                             ->withInput();
+        }
+
+        $user = Auth::user();
+
+        BillingInformation::create([
+            'name' => $request->input('name'),
+            'user_id' => $user ? $user->id : null,
+            'billing_address' => $request->input('address'),
+            'card_number' => $request->input('card_number'),
+            'expiry_date' => $request->input('expiry_date'),
+            'cvv' => $request->input('cvv'),
+        ]);
+        
+
+        return redirect()->route('checkout.checkout');
+    }
+
+    public function checkout(Request $request)
     {
         $user = Auth::user();
         $basket = $this->getBasket();
@@ -294,8 +288,6 @@ class CheckoutController extends Controller
 
             return redirect()->route('checkout.confirmation', $order->confirmation_number);
         }
-
-        return redirect()->route('review.siteReview');
     }
 
     public function confirmation($confNum)
@@ -309,8 +301,4 @@ class CheckoutController extends Controller
         return redirect()->route('checkout.checkout');
     }
 
-    //public function billing()
-    //{
-    //    return view('checkout.billing');
-    //}
 }

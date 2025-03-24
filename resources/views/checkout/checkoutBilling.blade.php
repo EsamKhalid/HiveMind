@@ -6,12 +6,23 @@
     @include('layouts.navbar')
     <body class="bg-stone-300 rounded-lg dark:bg-stone-800 transition-colors transition-all">
         <main class="bg-white dark:bg-stone-950">
+            @if ($errors->any())
+            <div
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 w-96"
+            >
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="flex justify-center m-4">
                 <div class="inline-block">
                     <p class="text-6xl mb-5 dark:text-white">Payment Details</p>
                     <form
-                        action="{{ route('checkout.checkout') }}"
-                        method="get"
+                        action="{{ route('checkout.storeBillingInformation') }}"
+                        method="POST"
                         class="bg-stone-300 p-3 rounded-lg dark:bg-stone-800 transition-colors duration-1000"
                     >
                         @csrf

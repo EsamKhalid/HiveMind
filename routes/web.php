@@ -186,7 +186,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('checkout/confirmation/{confNum}', [CheckoutController::class, 'confirmation'])->name('checkout.confirmation');
     Route::get('checkout/checkout',[CheckoutController::class, 'checkout'])->name('checkout.checkout');
     //Route::get('checkout/checkoutBilling',[CheckoutController::class, 'billing'])->name('checkout.billing');
+    Route::get('checkout/BillingInfo', [CheckoutController::class, 'viewBilling'])->name('checkout.viewBilling');
     Route::post('checkout/storeBillingAddress', [CheckoutController::class, 'storeBillingAddress'])->name('checkout.storeBillingAddress');
+    Route::post('checkout/storeBillingInformation', [CheckoutController::class, 'storeBillingInformation'])->name('checkout.storeBillingInformation');
 
     Route::get('contact', [ContactController::class, 'view'])->name('contact.view');
     Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
