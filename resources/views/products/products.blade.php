@@ -73,7 +73,7 @@
                             
                                 class="w-[300px] dark:brightness-[70%] dark:hover:brightness-100 transition-all duration-500 dark:saturate-[80%] dark:hover:saturate-100 rounded-lg dark:border-yellow-100 dark:border-2"
 
-                                src="{{ asset('Images/product images/' . $product->product_name . '.png') }}"
+                                src="{{ asset('Images/product images/' . $product->id . '.png') }}"
                             />
                              <h1 class="text-center text-xl mt-5">
                                 {{strtoupper($product->product_name)}}
